@@ -1,0 +1,61 @@
+object MainForm1: TMainForm1
+  Left = 577
+  Height = 644
+  Top = 207
+  Width = 964
+  Caption = 'MainForm1'
+  ClientHeight = 624
+  ClientWidth = 964
+  Menu = MainMenu
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '0.9.30'
+  object SourceMemo: TMemo
+    Left = 0
+    Height = 624
+    Top = 0
+    Width = 526
+    Align = alLeft
+    ReadOnly = True
+    ScrollBars = ssAutoBoth
+    TabOrder = 0
+  end
+  object KnowledgeMemo: TMemo
+    Left = 531
+    Height = 624
+    Top = 0
+    Width = 433
+    Align = alClient
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+  end
+  object Splitter1: TSplitter
+    Left = 526
+    Height = 624
+    Top = 0
+    Width = 5
+  end
+  object ActionList: TActionList
+    left = 88
+    top = 32
+    object actLoadNewSource: TAction
+      Caption = 'Load  new source...'
+      OnExecute = actLoadNewSourceExecute
+    end
+  end
+  object MainMenu: TMainMenu
+    left = 88
+    top = 96
+    object mmiSources: TMenuItem
+      Caption = 'Sources'
+      object MenuItem2: TMenuItem
+        Action = actLoadNewSource
+        OnClick = MenuItem2Click
+      end
+    end
+  end
+  object OpenDialog: TOpenDialog
+    left = 168
+    top = 32
+  end
+end
