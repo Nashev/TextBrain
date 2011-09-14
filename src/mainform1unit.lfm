@@ -39,7 +39,7 @@ object MainForm1: TMainForm1
     left = 88
     top = 32
     object actLoadNewSource: TAction
-      Caption = 'Load  new source...'
+      Caption = 'Load new source...'
       OnExecute = actLoadNewSourceExecute
     end
   end
@@ -50,7 +50,6 @@ object MainForm1: TMainForm1
       Caption = 'Sources'
       object MenuItem2: TMenuItem
         Action = actLoadNewSource
-        OnClick = MenuItem2Click
       end
     end
   end

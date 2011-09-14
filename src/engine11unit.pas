@@ -101,11 +101,17 @@ type
 
 implementation
 
+resourcestring
+  rsDProofs = ' (%d proofs)';
+  rsProofFromFileSDDS = 'From file %s (%d-%d): "%s".';
+
+
+
 { TWord }
 
 function TWord.ToString: string;
 begin
-  Result := FWord + ' (' + IntToStr(ProofCount) + ' proofs)';
+  Result := FWord + Format(rsDProofs, [ProofCount]);
 end;
 
 constructor TWord.Create(ASourceInfo: TSourceInfo; AWord: string);
@@ -183,7 +189,7 @@ end;
 
 function TSimpleTextFileSourceInfo.ToString: string;
 begin
-  Result := Format('From file %s (%d-%d): "%s".',
+  Result := Format(rsProofFromFileSDDS,
     [FSource.FFileName, FPosition, FPosition + FLength,
     copy(FSource.ToString, FPosition, FLength)]);
 end;
@@ -216,8 +222,7 @@ end;
 
 function TSimpleTextFileSource.ToString: string;
 begin
-  Result := FFileName + #13#10'-----------------------------------------------------------'#13#10 +
-    #13#10 + FFileContent;
+  Result := FFileName + #13#10'-----------------------------------------------------------'#13#10#13#10 + FFileContent;
 end;
 
 constructor TSimpleTextFileSource.Create(AFileName: string);

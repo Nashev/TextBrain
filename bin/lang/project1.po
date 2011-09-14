@@ -1,0 +1,23 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: engine11unit.rsdproofs
+msgid " (%d proofs)"
+msgstr ""
+
+#: engine11unit.rsprooffromfilesdds
+msgid "From file %s (%d-%d): \"%s\"."
+msgstr ""
+
+#: TMAINFORM1.ACTLOADNEWSOURCE.CAPTION
+msgid "Load new source..."
+msgstr ""
+
+#: TMAINFORM1.MAINFORM1.CAPTION
+msgid "MainForm1"
+msgstr ""
+
+#: TMAINFORM1.MMISOURCES.CAPTION
+msgid "Sources"
+msgstr ""
+
