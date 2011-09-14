@@ -11,13 +11,13 @@ type
   TSourceInfo = class;
 
   TSourceItem = class
-    function ToString: string; virtual; abstract;
+//    function ToString: string; virtual; abstract;
     function GetSourceInfo: TSourceInfo; virtual; abstract;
   end;
 
   TSource = class
   public
-    function ToString: string; virtual; abstract;
+//    function ToString: string; virtual; abstract;
     function eof: Boolean;virtual; abstract;
     function GetNextItem: TSourceItem; virtual; abstract;
   end;
@@ -26,7 +26,7 @@ type
   protected
     function GetSource: TSource; virtual; abstract;
   public
-    function ToString: string; virtual; abstract;
+//    function ToString: string; virtual; abstract;
     property Source: TSource read GetSource;
   end;
 
@@ -34,7 +34,7 @@ type
   protected
     function GetProof(Index: Integer): TSourceInfo; virtual; abstract;
   public
-    function ToString: string; virtual; abstract;
+//    function ToString: string; virtual; abstract;
     function ProofCount: Integer; virtual; abstract;
     procedure AddProof(AProof: TSourceInfo); virtual; abstract;
     property Proof[Index: Integer]: TSourceInfo read GetProof;
