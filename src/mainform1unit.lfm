@@ -4,15 +4,15 @@ object MainForm1: TMainForm1
   Top = 207
   Width = 964
   Caption = 'MainForm1'
-  ClientHeight = 624
+  ClientHeight = 625
   ClientWidth = 964
   Menu = MainMenu
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '0.9.30'
+  LCLVersion = '0.9.31'
   object SourceMemo: TMemo
     Left = 0
-    Height = 624
+    Height = 625
     Top = 0
     Width = 526
     Align = alLeft
@@ -22,7 +22,7 @@ object MainForm1: TMainForm1
   end
   object KnowledgeMemo: TMemo
     Left = 531
-    Height = 624
+    Height = 625
     Top = 0
     Width = 433
     Align = alClient
@@ -31,16 +31,20 @@ object MainForm1: TMainForm1
   end
   object Splitter1: TSplitter
     Left = 526
-    Height = 624
+    Height = 625
     Top = 0
     Width = 5
   end
   object ActionList: TActionList
     left = 88
     top = 32
-    object actLoadNewSource: TAction
-      Caption = 'Load new source...'
-      OnExecute = actLoadNewSourceExecute
+    object actLoadNewAnsiSource: TAction
+      Caption = 'Load new Ansi source...'
+      OnExecute = actLoadNewAnsiSourceExecute
+    end
+    object actLoadNewUTF8Source: TAction
+      Caption = 'Load new UTF8 source...'
+      OnExecute = actLoadNewUTF8SourceExecute
     end
   end
   object MainMenu: TMainMenu
@@ -49,7 +53,10 @@ object MainForm1: TMainForm1
     object mmiSources: TMenuItem
       Caption = 'Sources'
       object MenuItem2: TMenuItem
-        Action = actLoadNewSource
+        Action = actLoadNewAnsiSource
+      end
+      object MenuItem1: TMenuItem
+        Action = actLoadNewUTF8Source
       end
     end
   end

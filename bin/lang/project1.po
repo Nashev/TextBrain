@@ -9,11 +9,16 @@ msgstr ""
 msgid "From file %s (%d-%d): \"%s\"."
 msgstr ""
 
-#: TMAINFORM1.ACTLOADNEWSOURCE.CAPTION
-msgid "Load new source..."
+#: TMAINFORM1.ACTLOADNEWANSISOURCE.CAPTION
+msgid "Load new Ansi source..."
 msgstr ""
 
-#: TMAINFORM1.MAINFORM1.CAPTION
+#: TMAINFORM1.ACTLOADNEWUTF8SOURCE.CAPTION
+msgid "Load new UTF8 source..."
+msgstr ""
+
+#: TMAINFORM1.CAPTION
+msgctxt "TMAINFORM1.CAPTION"
 msgid "MainForm1"
 msgstr ""
 
