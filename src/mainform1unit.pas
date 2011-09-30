@@ -57,9 +57,10 @@ begin
   with OpenDialog do
     if Execute then
       begin
-        Source := TSimpleAnsiTextFileSource.Create(FileName);
-        FBrain.AddSource(Source);
-        SourceMemo.Text := Source.ToString;
+        Source := TSimpleAnsiTextFileSource.Create(nil, FileName);
+        SourceMemo.Text := Source.InfoText;
+        Application.ProcessMessages;
+        Source.IntegrateToBrain(FBrain);
         ShowBrainContent;
       end;
 end;
@@ -71,9 +72,10 @@ begin
   with OpenDialog do
     if Execute then
       begin
-        Source := TSimpleUTF8TextFileSource.Create(FileName);
-        FBrain.AddSource(Source);
-        SourceMemo.Text := Source.ToString;
+        Source := TSimpleUTF8TextFileSource.Create(nil, FileName);
+        SourceMemo.Text := Source.InfoText;
+        Application.ProcessMessages;
+        Source.IntegrateToBrain(FBrain);
         ShowBrainContent;
       end;
 end;
@@ -91,12 +93,14 @@ begin
   KnowledgeMemo.Lines.BeginUpdate;
   try
     KnowledgeMemo.Clear;
-    for i := 0 to FBrain.KnowledgeBase.Count - 1 do
+    for i := 0 to FBrain.Count - 1 do
       begin
-        Item := FBrain.KnowledgeBase[i];
-        KnowledgeMemo.Lines.Add(Item.ToString);
-        for j := 0 to Item.ProofCount - 1 do
-          KnowledgeMemo.Lines.Add('           '#9 + Item.Proof[j].ToString);
+        Item := FBrain[i];
+        if (Item is TSource) or (Item is TSourceItem) then
+          Continue;
+        KnowledgeMemo.Lines.Add(Item.InfoText);
+        for j := 0 to Item.Basis.Count - 1 do
+          KnowledgeMemo.Lines.Add('           '#9 + Item.Basis[j].InfoText);
       end;
   finally
     KnowledgeMemo.Lines.EndUpdate;

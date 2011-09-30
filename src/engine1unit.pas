@@ -9,33 +9,39 @@ uses
 
 type
   TKnowledgeBaseSubset = class;
-  TKnowledgeBaseSubsetClass = class of TKnowledgeBaseSubset;
+  TTabledKnowledgeBaseSubset = class;
+  TTabledKnowledgeBaseSubsetClass = class of TTabledKnowledgeBaseSubset;
   TKnowledgeItem = class;
+  TBrain = class;
   TDetector = class;
   TDetectorClass = class of TDetector;
 
+  { TKnowledgeItem }
+
   TKnowledgeItem = class
   private
-    FBasis: TKnowledgeBaseSubset;
-    FOwner: TKnowledgeBaseSubset;
+    FDetectorClass: TDetectorClass;
+    FBasis: TTabledKnowledgeBaseSubset;
+    FOwner: TBrain;
   protected
-    function GetProof(Index: Integer): TKnowledgeItem; virtual; abstract;
-    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; virtual; abstract;
-    function GetDetectorClass: TDetectorClass; virtual; abstract;
-    function GetBasisClass: TKnowledgeBaseSubsetClass; virtual; abstract;
+//    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; virtual; abstract;
+    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; virtual; abstract;
   public
-    property Owner: TKnowledgeBaseSubset read FOwner;
-    function LinkCount: Integer; virtual; abstract;
-    property LinkedKnowledge[Index: Integer]: TKnowledgeItem read GetLinkedKnowledge;
+    constructor Create(ADetectorClass: TDetectorClass);
+    procedure IntegrateToBrain(ABrain: TBrain); // need be called when this item will be ready for merge.
 
-    property DetectorClass: TDetectorClass read GetDetectorClass;
-    property Basis: TKnowledgeBaseSubset read FBasis;
+    property Owner: TBrain read FOwner;
+    //function LinkCount: Integer; virtual; abstract;
+    //property LinkedKnowledge[Index: Integer]: TKnowledgeItem read GetLinkedKnowledge;
+
+    property DetectorClass: TDetectorClass read FDetectorClass;
+    property Basis: TTabledKnowledgeBaseSubset read FBasis;
 
     function ToString: UTF8String; virtual; abstract; reintroduce;
     function InfoText: UTF8String; virtual;
 
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
-    function Merge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
+    function Merge(AOtherItem: TKnowledgeItem): Boolean;
   end;
 
   TSourceItem = class;
@@ -43,8 +49,8 @@ type
   TSource = class(TKnowledgeItem)
   public
     function ToString: UTF8String; virtual; abstract; reintroduce;
-    function eof: Boolean;virtual; abstract;
-    function ReadNextItem: TSourceItem; virtual; abstract;
+    function EOF: Boolean;virtual; abstract;
+    function ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem; virtual; abstract;
   end;
 
   TSourceItem = class(TKnowledgeItem)
@@ -54,9 +60,9 @@ type
 
   TSequenceInfo = class(TKnowledgeItem)
   private
-    FPrevious: TKnowledgeItem;
+    FPreviousItem: TKnowledgeItem;
   public
-    property PreviousItem: TKnowledgeItem read FPrevious;
+    property PreviousItem: TKnowledgeItem read FPreviousItem;
     constructor Create(APreviousItem: TKnowledgeItem);
   end;
 
@@ -75,19 +81,25 @@ type
     function CurrentItem: TKnowledgeItem; virtual; abstract;
   end;
 
+  { TKnowledgeBaseSubset }
+
   TKnowledgeBaseSubset = class
-  protected
-    function GetSuperset: TKnowledgeBaseSubset; virtual; abstract;
+  private
+    FSubsets: TList;
+    FSuperset: TKnowledgeBaseSubset;
   public
+    constructor Create(ASuperset: TKnowledgeBaseSubset); virtual;
+    destructor Destroy; override;
+
     // subset content management
     function GetIterator: TKnowledgeIterator; virtual; abstract;
 
     // subset hierarchy
-    property Superset: TKnowledgeBaseSubset read GetSuperset;
+    property Superset: TKnowledgeBaseSubset read FSuperset;
     procedure RegisterSubset(ASubset: TKnowledgeBaseSubset);
     procedure UnRegisterSubset(ASubset: TKnowledgeBaseSubset);
-    procedure SupersetItemAdded(AItem: TKnowledgeItem);
-    procedure SupersetItemChanged(AItem: TKnowledgeItem);
+    procedure SupersetItemAdded(AItem: TKnowledgeItem); virtual;
+    procedure SupersetItemChanged(AItem: TKnowledgeItem); virtual;
   end;
 
   { TFunctionalKnowledgeBaseSubset }
@@ -136,26 +148,32 @@ type
     function CurrentItem: TKnowledgeItem; override;
   end;
 
+  { TDetector }
+
   TDetector = class
   public
-    procedure Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AKnowledgeItem: TKnowledgeItem); virtual; abstract;
+    procedure Evalute(AKnowledgeItem: TKnowledgeItem); virtual; abstract;
+    function SelfClass: TDetectorClass;
   end;
 
   { TSourceDetector }
 
-  TSourceDetector = class
+  TSourceDetector = class(TDetector)
   public
-    procedure Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AKnowledgeItem: TKnowledgeItem); override;
+    procedure Evalute(AKnowledgeItem: TKnowledgeItem); override;
   end;
 
-  TBrain = class(TKnowledgeBaseSubset)
+  { TBrain }
+
+  TBrain = class(TTabledKnowledgeBaseSubset)
   private
   protected
     function GetDetector(Index: Integer): TDetector; virtual; abstract;
-    function GetSuperset: TKnowledgeBaseSubset; override;
   public
     function DetectorCount: Integer; virtual; abstract;
     property Detectors[Index: Integer]: TDetector read GetDetector;
+    function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
+    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; virtual; abstract;
   end;
 
 
@@ -165,21 +183,93 @@ implementation
 resourcestring
   rsKnowledgeBasisInfo = ' (%d basis)';
 
+{ TDetector }
+
+function TDetector.SelfClass: TDetectorClass;
+begin
+  Result := TDetectorClass(ClassType);
+end;
+
+{ TBrain }
+
+function TBrain.Add(AItem: TKnowledgeItem): TKnowledgeItem;
+var
+  i: Integer;
+begin
+  for i := 0 to Count - 1 do
+    if Items[i].Merge(AItem) then
+      begin
+        Result := Items[i]; // TODO: detect anything om merge
+        Exit;
+      end;
+
+  Result := InternalAdd(AItem);
+
+  for i := 0 to DetectorCount - 1 do
+    Detectors[i].Evalute(Result);
+end;
+
+{ TKnowledgeBaseSubset }
+
+constructor TKnowledgeBaseSubset.Create(ASuperset: TKnowledgeBaseSubset);
+begin
+  inherited Create;
+  FSuperset := ASuperset;
+  if Assigned(FSuperset) then
+    FSuperset.RegisterSubset(Self);
+end;
+
+destructor TKnowledgeBaseSubset.Destroy;
+begin
+  if Assigned(FSuperset) then
+    FSuperset.UnRegisterSubset(Self);
+  inherited Destroy;
+end;
+
+procedure TKnowledgeBaseSubset.RegisterSubset(ASubset: TKnowledgeBaseSubset);
+begin
+  if not Assigned(FSubsets) then
+    FSubsets := TList.Create;
+  FSubsets.Add(ASubset);
+end;
+
+procedure TKnowledgeBaseSubset.UnRegisterSubset(ASubset: TKnowledgeBaseSubset);
+begin
+  FSubsets.Remove(ASubset);
+end;
+
+procedure TKnowledgeBaseSubset.SupersetItemAdded(AItem: TKnowledgeItem);
+var
+  i: Integer;
+begin
+  // default forwarding
+  if Assigned(FSubsets) then
+    for i := 0 to FSubsets.Count - 1 do
+      TKnowledgeBaseSubset(FSubsets[i]).SupersetItemAdded(AItem);
+end;
+
+procedure TKnowledgeBaseSubset.SupersetItemChanged(AItem: TKnowledgeItem);
+var
+  i: Integer;
+begin
+  // default forwarding
+  if Assigned(FSubsets) then
+    for i := 0 to FSubsets.Count - 1 do
+      TKnowledgeBaseSubset(FSubsets[i]).SupersetItemChanged(AItem);
+end;
+
 { TSourceDetector }
 
-procedure TSourceDetector.Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset;
-  AKnowledgeItem: TKnowledgeItem);
+procedure TSourceDetector.Evalute(AKnowledgeItem: TKnowledgeItem);
 begin
-  inherited Evalute(AKnowledgeBaseSubset, AKnowledgeItem);
   if AKnowledgeItem is TSource then
-    while not TSource(AKnowledgeItem).eof do
-      AKnowledgeBaseSubset.Add(); тут типа надо Brain найти?
+    while not TSource(AKnowledgeItem).EOF do
+      TSource(AKnowledgeItem).ReadNextItem(SelfClass);
 end;
 
 { TTabledKnowledgeIterator }
 
-constructor TTabledKnowledgeIterator.Create(
-  AKnowledgeBaseSubset: TTabledKnowledgeBaseSubset);
+constructor TTabledKnowledgeIterator.Create(AKnowledgeBaseSubset: TTabledKnowledgeBaseSubset);
 begin
   inherited Create(AKnowledgeBaseSubset);
 end;
@@ -220,8 +310,7 @@ end;
 
 { TFunctionalKnowledgeIterator }
 
-constructor TFunctionalKnowledgeIterator.Create(
-  AKnowledgeBaseSubset: TTFunctionalKnowledgeBaseSubset);
+constructor TFunctionalKnowledgeIterator.Create(AKnowledgeBaseSubset: TFunctionalKnowledgeBaseSubset);
 begin
   inherited Create(AKnowledgeBaseSubset);
   FSupersetIterator := KnowledgeBaseSubset.GetIterator;
@@ -229,7 +318,7 @@ end;
 
 procedure TFunctionalKnowledgeIterator.FindNext;
 begin
-  while not FSupersetIterator.eof do
+  while not FSupersetIterator.EOF do
     begin
       FSupersetIterator.Next;
       if TFunctionalKnowledgeBaseSubset(KnowledgeBaseSubset).IsKnowledgeInSubset(FSupersetIterator.CurrentItem) then
@@ -251,7 +340,7 @@ end;
 procedure TFunctionalKnowledgeIterator.Next;
 begin
   Assert(EOF, '{ABFF5494-6642-46AE-A6E4-90BEB348CDF4}');
-  FindNext;
+  FindNext;  // TODO: check eof effect (need here double next to detect eof?)
 end;
 
 function TFunctionalKnowledgeIterator.CurrentItem: TKnowledgeItem;
@@ -262,7 +351,7 @@ end;
 
 { TKnowledgeIterator }
 
-constructor TKnowledgeIterator.Create(AKnowledgeBaseSubset: TTKnowledgeBaseSubset);
+constructor TKnowledgeIterator.Create(AKnowledgeBaseSubset: TKnowledgeBaseSubset);
 begin
   FKnowledgeBaseSubset := AKnowledgeBaseSubset;
 end;
@@ -274,30 +363,38 @@ begin
   FPreviousItem := APreviousItem;
 end;
 
-{ TBrain }
-
-function TBrain.GetSource(Index: Integer): TSource;
-begin
-  Result := nil;
-end;
-
-function TBrain.GetSuperset: TKnowledgeBaseSubset;
-begin
-  Result := inherited GetSuperset;
-end;
-
 { TKnowledgeItem }
 
-procedure TKnowledgeItem.SetBasis(AValue: TKnowledgeBaseSubset);
+constructor TKnowledgeItem.Create(ADetectorClass: TDetectorClass);
 begin
-  if FBasis = AValue then
-     Exit;
-  FBasis := AValue;
+  inherited Create;
+  FDetectorClass := ADetectorClass;
+  FBasis := GetBasisClass.Create(nil); // TODO: Is we need a superset for basis?
+end;
+
+procedure TKnowledgeItem.IntegrateToBrain(ABrain: TBrain);
+begin
+  FOwner := ABrain;
+  ABrain.Add(Self);
+  //FBasis.Superset := ABrain; TODO: Is we need a superset for basis?
 end;
 
 function TKnowledgeItem.InfoText: UTF8String;
 begin
-  Result := ToString + Format(rsKnowledgeBasisInfo, [ProofCount]);
+  Result := ToString + Format(rsKnowledgeBasisInfo, [Basis.Count]);
+end;
+
+function TKnowledgeItem.Merge(AOtherItem: TKnowledgeItem): Boolean;
+var
+  i: Integer;
+begin
+  Result := IsSameKnowledge(AOtherItem);
+  if Result then
+    begin
+      for i := 0 to AOtherItem.Basis.Count - 1 do
+        Basis.Add(AOtherItem.Basis[i]);
+      AOtherItem.Free;
+    end;
 end;
 
 end.

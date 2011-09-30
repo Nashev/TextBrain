@@ -10,36 +10,53 @@ uses
 type
   PUTF8Char = type PChar;
 
+  TBasisKnowledgeSubset1 = class(TTabledKnowledgeBaseSubset)
+  private
+    FItems: TObjectList;
+  protected
+    function GetItem(Index: Integer): TKnowledgeItem; override;
+  public
+    constructor Create(ASuperset: TKnowledgeBaseSubset); override;
+    destructor Destroy; override;
+
+    function Count: Integer; override;
+    function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
+  end;
+
   TBrain1 = class(TBrain)
   private
-    FSources, FDetectors: TObjectList;
-    FItems: TObjectList;
+    FDetectors: TObjectList;
+    FItems: TBasisKnowledgeSubset1;
   protected
     function GetItem(Index: integer): TKnowledgeItem; override;
     function GetDetector(Index: integer): TDetector; override;
-    function GetSource(Index: integer): TSource; override;
   public
-    constructor Create;
+    constructor Create; reintroduce;
     destructor Destroy; override;
+
     function Count: integer; override;
-    function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
+    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
     function DetectorCount: integer; override;
-    function SourceCount: integer; override;
-    procedure AddSource(ASource: TSource); override;
   end;
+
+  { TSimpleTextFileSource }
 
   TSimpleTextFileSource = class(TSource)
   private
     FFileName: UTF8String;
     FFileContent: UTF8String;
-    FPosition: PUTF8String;
+    FPosition: PUTF8Char;
   protected
+    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; virtual; abstract;
   public
+    constructor Create(ADetectorClass: TDetectorClass; AFileName: UTF8String);
     function ToString: UTF8String; override;
-    constructor Create(AFileName: UTF8String); virtual;
+    function InfoText: UTF8String; override;
+    function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
+
     function EOF: boolean; override;
-    function GetNextItem: TSourceItem; override;
+    function ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem; override;
   end;
 
   { TSimpleAnsiTextFileSource }
@@ -55,32 +72,25 @@ type
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; override;
   end;
 
+  { TSimpleTextFileSourceItem }
+
   TSimpleTextFileSourceItem = class(TSourceItem)
   private
-    FSource: TSimpleTextFileSource;
     FPosition: PUTF8Char;
-    FLength: Integer;
     FSize: Integer;
+    function Source: TSimpleTextFileSource;
+  protected
+    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
   public
-    constructor Create(ASource: TSimpleTextFileSource; APosition: PUTF8Char; ALength, ASize: integer);
+    function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
+    constructor Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+    function InfoText: UTF8String; override;
     function ToString: UTF8String; override;
   end;
 
-  { TKnowledgeItem1 }
-
   TKnowledgeItem1 = class(TKnowledgeItem)
-  private
-    FProofs: TObjectList;
   protected
-    function GetProof(Index: integer): TKnowledgeItem; override;
-    function GetDetectorClass: TDetectorClass; override;
-    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; override;
-  public
-    function LinkCount: Integer; override;
-    constructor Create(ASourceInfo: TKnowledgeItem);
-    function ProofCount: integer; override;
-    procedure AddProof(AProof: TKnowledgeItem); override;
-    function Merge(AOtherItem: TKnowledgeItem): boolean; override;
+    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
   end;
 
   { TWord }
@@ -88,14 +98,13 @@ type
   TWord = class(TKnowledgeItem1)
   public
     class function FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
-    class function FindWordOrRegisterModified(
-      AKnowledgeBaseSubset: TKnowledgeBaseSubset;
-      AModifiedWord: UTF8String;
-      AOriginalWord: TWord
-    ): TWord;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
-    function SameWord(AWord: UTF8String): Boolean;
+    function IsSameWord(AWord: UTF8String): Boolean;
     function ToString: UTF8String; override;
+  end;
+
+  TWordDetector = class(TDetector)
+    procedure Evalute(AKnowledgeItem: TKnowledgeItem); override;
   end;
 
   { TModifiedWord }
@@ -104,39 +113,24 @@ type
   private
     FModifiedWord: UTF8String;
   public
-    constructor Create(AOriginalWord: TWord; AModifiedWord: UTF8String); reintroduce;
+    constructor Create(ADetectorClass: TDetectorClass; AOriginalWord: TWord; AModifiedWord: UTF8String); reintroduce;
     function ToString: UTF8String; override;
-  end;
-
-  TWordDetector = class(TDetector)
-    procedure Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AKnowledgeItem: TKnowledgeItem); override;
-    procedure Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset); override;
   end;
 
   { TCapitalizedWordDetector }
 
   TCapitalizedWordDetector = class(TDetector)
-    procedure Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AKnowledgeItem: TKnowledgeItem); override;
-    procedure Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset); override;
+    procedure Evalute(AKnowledgeItem: TKnowledgeItem); override;
   end;
 
   { TWordWasCapitalizedFact }
 
-  TWordWasCapitalizedFact = class(TKnowledgeItem)
-  private
-    FNotLowercasedWord, FLowercasedWord: TWord;
-  protected
-    function GetProof(Index: integer): TKnowledgeItem; override;
-    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; override;
-    function GetDetectorClass: TDetectorClass; override;
+  TWordWasCapitalizedFact = class(TKnowledgeItem1) // it doubles some TWord.Basis, when word had based on other word.
   public
-    constructor Create(ANotLowercasedWord, ALowercasedWord: TWord);
-    procedure AddProof(AProof: TKnowledgeItem); override;
+    constructor Create(ADetectorClass: TDetectorClass; ACapitalizedWord, ALowercasedWord: TWord);
     function ToString: UTF8String; override;
-    function LinkCount: Integer; override;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
-    function ProofCount: integer; override;
-    function Merge(AOtherItem: TKnowledgeItem): boolean; override;
+    //function Merge(AOtherItem: TKnowledgeItem): Boolean; override;
   end;
 
 implementation
@@ -146,13 +140,75 @@ uses FileUtil;
 resourcestring
   rsProofFromFileSDDS = 'From file %s (%d-%d): "%s".';
 
+{ TCapitalizedWordDetector }
+
+procedure TCapitalizedWordDetector.Evalute(AKnowledgeItem: TKnowledgeItem);
+var
+  OriginalWord: TWord;
+  NewWordUnicode, LowercaseWordUnicode: UnicodeString; // WideString;
+  LowercaseWord: UTF8String;
+  LowercaseWordItem: TWord;
+begin
+  if not (AKnowledgeItem is TWord) then
+    Exit
+  else
+    OriginalWord := TWord(AKnowledgeItem);
+
+  NewWordUnicode := UTF8Decode(OriginalWord.ToString);
+  LowercaseWordUnicode := WideLowerCase(NewWordUnicode);
+  if LowercaseWordUnicode = NewWordUnicode then
+    Exit;
+
+  LowercaseWord := UTF8Encode(LowercaseWordUnicode);
+
+  LowercaseWordItem := TWord.FindWord(AKnowledgeItem.Owner, LowercaseWord);
+  if not Assigned(LowercaseWordItem) then
+    begin
+      LowercaseWordItem := TModifiedWord.Create(SelfClass, OriginalWord, LowercaseWord);
+      LowercaseWordItem.IntegrateToBrain(OriginalWord.Owner);
+    end
+  else
+    LowercaseWordItem.Basis.Add(OriginalWord); // TODO: indeed?
+
+  TWordWasCapitalizedFact.Create(SelfClass, OriginalWord, LowercaseWordItem).IntegrateToBrain(OriginalWord.Owner);
+end;
+
+{ TBasisKnowledgeSubset1 }
+
+function TBasisKnowledgeSubset1.GetItem(Index: Integer): TKnowledgeItem;
+begin
+  Result := TKnowledgeItem(FItems[Index]);
+end;
+
+constructor TBasisKnowledgeSubset1.Create(ASuperset: TKnowledgeBaseSubset);
+begin
+  inherited Create(ASuperset);
+  FItems := TObjectList.Create(False);
+end;
+
+destructor TBasisKnowledgeSubset1.Destroy;
+begin
+  FreeAndNil(FItems);
+  inherited Destroy;
+end;
+
+function TBasisKnowledgeSubset1.Count: Integer;
+begin
+  Result := FItems.Count;
+end;
+
+function TBasisKnowledgeSubset1.Add(AItem: TKnowledgeItem): TKnowledgeItem;
+begin
+  Result := AItem;
+  FItems.Add(AItem);
+end;
+
 { TModifiedWord }
 
-constructor TModifiedWord.Create(AOriginalWord: TWord;
-  AModifiedWord: UTF8String);
+constructor TModifiedWord.Create(ADetectorClass: TDetectorClass; AOriginalWord: TWord; AModifiedWord: UTF8String);
 begin
-  Assert(AOriginalWord.ProofCount > 0, '{CD1B333C-C278-4990-84A9-E97A5D6F9E59}');
-  inherited Create(AOriginalWord.Proof[0]);
+  inherited Create(ADetectorClass);
+  Basis.Add(AOriginalWord);
   FModifiedWord := AModifiedWord;
 end;
 
@@ -163,259 +219,180 @@ end;
 
 { TWordWasCapitalizedFact }
 
-function TWordWasCapitalizedFact.GetProof(Index: integer): TKnowledgeItem;
+constructor TWordWasCapitalizedFact.Create(ADetectorClass: TDetectorClass; ACapitalizedWord, ALowercasedWord: TWord);
 begin
-  Result := FNotLowercasedWord.Proof[Index];
-end;
-
-function TWordWasCapitalizedFact.GetLinkedKnowledge(Index: Integer): TKnowledgeItem;
-begin
-  case Index of
-    0:  Result := FNotLowercasedWord;
-    1:  Result := FLowercasedWord;
-  end;
-end;
-
-function TWordWasCapitalizedFact.GetDetectorClass: TDetectorClass;
-begin
-  Result := TCapitalizedWordDetector;
-end;
-
-constructor TWordWasCapitalizedFact.Create(ANotLowercasedWord, ALowercasedWord: TWord);
-begin
-  inherited Create;
-  FNotLowercasedWord  := ANotLowercasedWord;
-  FLowercasedWord     := ALowercasedWord;
-end;
-
-procedure TWordWasCapitalizedFact.AddProof(AProof: TKnowledgeItem);
-begin
-  Assert(False, 'not acceptable');
+  inherited Create(ADetectorClass);
+  Basis.Add(ACapitalizedWord); // Basis[0]
+  Basis.Add(ALowercasedWord);  // Basis[1]
 end;
 
 function TWordWasCapitalizedFact.ToString: UTF8String;
 begin
-  Result := 'link: ' + FNotLowercasedWord.ToString + ' <-> ' + FLowercasedWord.ToString;
-end;
-
-function TWordWasCapitalizedFact.LinkCount: Integer;
-begin
-  Result := 2;
+  Result := 'link: ' + Basis[0].ToString + ' -> ' + Basis[1].ToString;
 end;
 
 function TWordWasCapitalizedFact.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
 begin
-  Result := (AOtherItem is TWordWasCapitalizedFact) and (TWordWasCapitalizedFact(AOtherItem).FNotLowercasedWord = FNotLowercasedWord);
+  Result := (AOtherItem is TWordWasCapitalizedFact)
+        and (Basis[0] = AOtherItem.Basis[0]);
+
+  // In case of TWord it's not possible to merge because TWord haven't duplicates!
+  Assert(not Result, '{FBC0AA5E-BFEE-4AC5-8113-7B519A457E1D}');
 end;
 
-function TWordWasCapitalizedFact.ProofCount: integer;
-begin
-  Result := FNotLowercasedWord.ProofCount;
-end;
-
-function TWordWasCapitalizedFact.Merge(AOtherItem: TKnowledgeItem): boolean;
-begin
-  Result := IsSameKnowledge(AOtherItem);
-  if Result then
-    AOtherItem.Free;
-end;
-
-{ TCapitalizedWordDetector }
-
-class function TWord.FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
-var
-  i: Integer;
-  Item: TKnowledgeItem;
-begin
-  Result := nil;
-  for i := 0 to AKnowledgeBaseSubset.Count - 1 do
-    begin
-      Item := AKnowledgeBaseSubset[i];
-      if not (Item is TWord) then
-        Continue;
-      if TWord(Item).SameWord(AWord) then
-        begin
-          Result := TWord(Item);
-          Exit;
-        end;
-    end;
-end;
-
-class function TWord.FindWordOrRegisterModified(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AModifiedWord: UTF8String; AOriginalWord: TWord): TWord;
-var
-  i: Integer;
-  Item: TKnowledgeItem;
-begin
-  Result := FindWord(AKnowledgeBaseSubset, AModifiedWord);
-  if not Assigned(Result) then
-    Result := TWord(AKnowledgeBaseSubset.Add(TModifiedWord.Create(AOriginalWord, AModifiedWord)))
-  else
-    Result.AddProof(AOriginalWord); // TODO: indeed?
-end;
-
-
-procedure TCapitalizedWordDetector.Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AKnowledgeItem: TKnowledgeItem);
-var
-  NewWord, LowercaseWord: WideString;
-  CapitalizedWordItem, LowercaseWordItem: TWord;
-begin
-  NewWord := AKnowledgeItem.ToString;
-  LowercaseWord := WideLowerCase(NewWord);
-  if LowercaseWord = NewWord then
-    Exit;
-
-  CapitalizedWordItem := TWord.FindWord(AKnowledgeBaseSubset, NewWord);
-  LowercaseWordItem   := TWord.FindWordOrRegisterModified(AKnowledgeBaseSubset, LowercaseWord, CapitalizedWordItem);
-
-  AKnowledgeBaseSubset.Add(TWordWasCapitalizedFact.Create(CapitalizedWordItem, LowercaseWordItem));
-end;
-
-procedure TCapitalizedWordDetector.Evalute(
-  AKnowledgeBaseSubset: TKnowledgeBaseSubset);
-begin
-  // do nothing;
-end;
+// no need to multiply basis. But in case of TWord it's not possible to merge because TWord haven't duplicates!
+//function TWordWasCapitalizedFact.Merge(AOtherItem: TKnowledgeItem): boolean;
+//begin
+//  Result := IsSameKnowledge(AOtherItem);
+//  if Result then
+//    AOtherItem.Free;
+//end;
 
 { TWord }
 
+class function TWord.FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
+begin
+  Result := nil;
+  with AKnowledgeBaseSubset.GetIterator do
+    try
+      while not EOF do
+        begin
+          if not (CurrentItem is TWord) then
+            Continue;
+          if TWord(CurrentItem).IsSameWord(AWord) then
+            begin
+              Result := TWord(CurrentItem);
+              Exit;
+            end;
+          Next;
+        end;
+    finally
+      Free;
+    end;
+end;
+
 function TWord.ToString: UTF8String;
 begin
-  Assert(ProofCount > 0, '{0190F889-CB9D-48D3-A01A-369E4B823FC1}');
-  Result := Proof[0].ToString;
+  Assert(Basis.Count > 0, '{0190F889-CB9D-48D3-A01A-369E4B823FC1}');
+  Result := (Basis[0] as TSourceItem).ToString;
   if (Length(Result) = 1) and (ord(Result[1]) <= 32) then
     Result := '#' + IntToStr(ord(Result[1]));
 end;
 
 function TWord.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
 begin
-  Result := (AOtherItem is TWord) and SameWord(TWord(AOtherItem).AsString);
+  Result := (AOtherItem is TWord) and IsSameWord(TWord(AOtherItem).ToString);
 end;
 
-function TWord.SameWord(AWord: UTF8String): Boolean;
+function TWord.IsSameWord(AWord: UTF8String): Boolean;
 var
-  OwnWord: TUTF8String;
+  OwnWord: UTF8String;
 begin
-  OwnWord := AsString;
+  OwnWord := ToString;
   Result := (CompareStr(OwnWord, AWord) = 0);
 end;
 
 { TKnowledgeItem1 }
 
-function TKnowledgeItem1.GetProof(Index: integer): TSourceInfo;
+function TKnowledgeItem1.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
 begin
-  Result := TSourceInfo(FProofs[Index]);
-end;
-
-function TKnowledgeItem1.GetDetectorClass: TDetectorClass;
-begin
-  Result := nil;
-end;
-
-function TKnowledgeItem1.GetLinkedKnowledge(Index: Integer): TKnowledgeItem;
-begin
-  Assert(False, 'Not acceptable!')
-end;
-
-function TKnowledgeItem1.LinkCount: Integer;
-begin
-  Result := 0;
-end;
-
-constructor TKnowledgeItem1.Create(ASourceInfo: TSourceInfo);
-begin
-  FProofs := TObjectList.Create(True);
-  AddProof(ASourceInfo);
-end;
-
-function TKnowledgeItem1.ProofCount: integer;
-begin
-  Result := FProofs.Count;
-end;
-
-procedure TKnowledgeItem1.AddProof(AProof: TSourceInfo);
-begin
-  FProofs.Add(AProof);
-end;
-
-function TKnowledgeItem1.Merge(AOtherItem: TKnowledgeItem): boolean;
-var
-  i: Integer;
-begin
-  Result := IsSameKnowledge(AOtherItem);
-  if Result then
-    begin
-      for i := 0 to AOtherItem.ProofCount - 1 do
-        AddProof(AOtherItem.Proof[i]);
-      (AOtherItem as TKnowledgeItem1).FProofs.OwnsObjects := False;
-      AOtherItem.Free;
-    end;
+  Result := TBasisKnowledgeSubset1;
 end;
 
 { TWordDetector }
 
-procedure TWordDetector.Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset;
-  AKnowledgeItem: TSourceItem);
+procedure TWordDetector.Evalute(AKnowledgeItem: TKnowledgeItem);
+var
+  NewWord: TWord;
 begin
-  AKnowledgeBaseSubset.Add(TWord.Create(ASourceItem.GetSourceInfo, ASourceItem.ToString));
-end;
-
-procedure TWordDetector.Evalute(AKnowledgeBaseSubset: TKnowledgeBaseSubset);
-begin
-  // do nothing;
-end;
-
-{ TSimpleTextFileSourceInfo }
-
-constructor TSimpleTextFileSourceInfo.Create(ASource: TSimpleTextFileSource;
-  APosition: integer; ALength: integer);
-begin
-  FSource := ASource;
-  FPosition := APosition;
-  FLength := ALength;
-end;
-
-function TSimpleTextFileSourceInfo.GetSource: TSource;
-begin
-  Result := FSource;
+  if AKnowledgeItem is TSourceItem then
+    begin
+      NewWord := TWord.Create(SelfClass);
+      NewWord.Basis.Add(AKnowledgeItem);
+      NewWord.IntegrateToBrain(AKnowledgeItem.Owner);
+    end;
 end;
 
 { TSimpleTextFileSourceItem }
 
-constructor TSimpleTextFileSourceItem.Create(ASource: TSimpleTextFileSource; APosition: PUTF8Char; ALength, ASize: integer);
+function TSimpleTextFileSourceItem.Source: TSimpleTextFileSource;
 begin
-  FSource := ASource;
+  Result := Basis[0] as TSimpleTextFileSource;
+end;
+
+function TSimpleTextFileSourceItem.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
+begin
+  Result := TBasisKnowledgeSubset1;
+end;
+
+function TSimpleTextFileSourceItem.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
+begin
+  Result := (AOtherItem is TSimpleTextFileSourceItem) and (TSimpleTextFileSourceItem(AOtherItem).FPosition = FPosition);
+  // can't be any dublicate TSimpleTextFileSourceItem
+  Assert(False, '{0C131094-7D77-427F-8DCD-14784A50FD7A}');
+end;
+
+constructor TSimpleTextFileSourceItem.Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+begin
+  inherited Create(ADetectorClass);
+  Basis.Add(ASource);
   FPosition := APosition;
-  FLength   := ALength;
   FSize     := ASize;
+end;
+
+function TSimpleTextFileSourceItem.InfoText: UTF8String;
+var
+  s: string;
+  CodedS: PUTF8String;
+begin
+  s := copy(String(FPosition), 1, FSize);
+  CodedS := @s[1];
+  Result :=
+    Format(
+      rsProofFromFileSDDS, [
+        Source.FFileName,
+        FPosition,
+        length(CodedS^),
+        s
+      ]
+    );
 end;
 
 function TSimpleTextFileSourceItem.ToString: UTF8String;
 var
-  SourceContent: UTF8String;
+  s: string;
 begin
-  SourceContent := FSource.FFileContent;
-  Result :=
-    Format(
-      rsProofFromFileSDDS, [
-        FSource.FFileName,
-        FPosition,
-        FPosition + FLength,
-        copy(UTF8String(FPosition), 1, FLength)
-      ]
-    );
+  s := copy(String(FPosition), 1, FSize);
+  Result := UTF8String(@s[1]);
 end;
 
 { TSimpleTextFileSource }
 
 function TSimpleTextFileSource.ToString: UTF8String;
 begin
+  Result := FFileContent;
+end;
+
+function TSimpleTextFileSource.InfoText: UTF8String;
+begin
   Result := FFileName + #13#10'-----------------------------------------------------------'#13#10#13#10 + FFileContent;
 end;
 
-constructor TSimpleTextFileSource.Create(AFileName: string);
+function TSimpleTextFileSource.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
+begin
+  Result := (AOtherItem is TSimpleTextFileSource) and (TSimpleTextFileSource(AOtherItem).FFileName = FFileName);
+end;
+
+function TSimpleTextFileSource.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
+begin
+  Result := TBasisKnowledgeSubset1;
+end;
+
+constructor TSimpleTextFileSource.Create(ADetectorClass: TDetectorClass; AFileName: UTF8String);
 var
   StringList: TStringList;
 begin
+  inherited Create(ADetectorClass);
   FFileName := AFileName;
   StringList := TStringList.Create;
     try
@@ -432,9 +409,9 @@ begin
   Result := FPosition^ = #0;
 end;
 
-function TSimpleTextFileSource.GetNextItem: TSourceItem;
+function TSimpleTextFileSource.ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem;
 var
-  EndPosition: PUTF8String;
+  EndPosition: PUTF8Char;
   NextChar: UnicodeChar;
   CharSize: SizeInt;
 const
@@ -454,19 +431,22 @@ begin
   // skip spaces
   if Pos(NextChar, DelimiterChars) > 0 then
     begin
-      Result := TSimpleTextFileSourceItem.Create(Self, NextChar, FPosition - @FFileContent[1] + 1);
+      Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, CharSize);
+      Result.IntegrateToBrain(Owner);
       Inc(FPosition, CharSize);
       Exit;
     end;
 
   EndPosition := FPosition;
-
+  CharSize := Utf8ToUnicode(@NextChar, PChar(EndPosition), 1);
   // collect nonspaces:
   repeat
-    Inc(EndPosition);
-  until (FPosition^ = #0) or (Pos(FPosition^, DelimiterChars) > 0);
+    Inc(EndPosition, CharSize);
+    CharSize := Utf8ToUnicode(@NextChar, PChar(EndPosition), 1);
+  until (EndPosition^ = #0) or (Pos(NextChar, DelimiterChars) > 0);
 
-  Result := TSimpleTextFileSourceItem.Create(Self, copy(string(FPosition), 1, EndPosition - FPosition), FPosition - @FFileContent[1] + 1);
+  Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, EndPosition - FPosition);
+  Result.IntegrateToBrain(Owner);
 
   FPosition := EndPosition;
 end;
@@ -489,27 +469,14 @@ end;
 
 { TBrain1 }
 
-function TBrain1.GetDetector(Index: integer): TDetector;
-begin
-  Result := TDetector(FDetectors[Index]);
-end;
-
-function TBrain1.GetSource(Index: integer): TSource;
-begin
-  Result := TSource(FSources[Index]);
-end;
-
-function TBrain1.GetKnowledgeBase: TKnowledgeBase;
-begin
-  Result := FKnowledgeBase;
-end;
-
 constructor TBrain1.Create;
 begin
-  FSources := TObjectList.Create(True);
-  FDetectors := TObjectList.Create(True);
-  FItems := TObjectList.Create(True);
+  inherited Create(nil);
 
+  FDetectors := TObjectList.Create(True);
+  FItems := TBasisKnowledgeSubset1.Create(nil);
+
+  FDetectors.Add(TSourceDetector.Create);
   FDetectors.Add(TWordDetector.Create);
   FDetectors.Add(TCapitalizedWordDetector.Create);
 end;
@@ -517,9 +484,13 @@ end;
 destructor TBrain1.Destroy;
 begin
   FreeAndNil(FItems);
-  FreeAndNil(FSources);
   FreeAndNil(FDetectors);
   inherited Destroy;
+end;
+
+function TBrain1.GetDetector(Index: integer): TDetector;
+begin
+  Result := TDetector(FDetectors[Index]);
 end;
 
 function TBrain1.DetectorCount: integer;
@@ -527,21 +498,9 @@ begin
   Result := FDetectors.Count;
 end;
 
-function TBrain1.SourceCount: integer;
-begin
-  Result := FSources.Count;
-end;
-
-procedure TBrain1.AddSource(ASource: TSource);
-begin
-  FSources.Add(ASource);
-  while not ASource.EOF do
-    Add(ASource.GetNextItem);
-end;
-
 function TBrain1.GetItem(Index: integer): TKnowledgeItem;
 begin
-  Result := TKnowledgeItem(FItems[Index]);
+  Result := FItems[Index];
 end;
 
 function TBrain1.Count: integer;
@@ -549,20 +508,9 @@ begin
   Result := FItems.Count;
 end;
 
-function TBrain1.Add(AItem: TKnowledgeItem): TKnowledgeItem;
-var
-  i: Integer;
+function TBrain1.InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem;
 begin
-  for i := 0 to Count - 1 do
-    if Items[i].Merge(AItem) then
-      begin
-        Result := Items[i]; // TODO: detect anything om merge
-        Exit;
-      end;
-  FItems.Add(AItem);
-  Result := AItem;
-  for i := 0 to DetectorCount - 1 do
-    Detectors[i].Evalute(KnowledgeBase, Result);
+  Result := FItems.Add(AItem);
 end;
 
 end.

@@ -1,12 +1,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: engine11unit.rsdproofs
-msgid " (%d proofs)"
-msgstr ""
-
 #: engine11unit.rsprooffromfilesdds
 msgid "From file %s (%d-%d): \"%s\"."
+msgstr ""
+
+#: engine1unit.rsknowledgebasisinfo
+msgid " (%d basis)"
 msgstr ""
 
 #: TMAINFORM1.ACTLOADNEWANSISOURCE.CAPTION
