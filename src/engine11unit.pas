@@ -45,7 +45,7 @@ type
   private
     FFileName: UTF8String;
     FFileContent: UTF8String;
-    FPosition: PUTF8Char;
+    FPosition, FEndChar: PUTF8Char;
   protected
     function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; virtual; abstract;
@@ -96,6 +96,8 @@ type
   { TWord }
 
   TWord = class(TKnowledgeItem1)
+  private
+    FContentCashe: string;
   public
     class function FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
@@ -257,13 +259,12 @@ begin
     try
       while not EOF do
         begin
-          if not (CurrentItem is TWord) then
-            Continue;
-          if TWord(CurrentItem).IsSameWord(AWord) then
-            begin
-              Result := TWord(CurrentItem);
-              Exit;
-            end;
+          if (CurrentItem is TWord) then
+            if TWord(CurrentItem).IsSameWord(AWord) then
+              begin
+                Result := TWord(CurrentItem);
+                Exit;
+              end;
           Next;
         end;
     finally
@@ -273,10 +274,14 @@ end;
 
 function TWord.ToString: UTF8String;
 begin
-  Assert(Basis.Count > 0, '{0190F889-CB9D-48D3-A01A-369E4B823FC1}');
-  Result := (Basis[0] as TSourceItem).ToString;
-  if (Length(Result) = 1) and (ord(Result[1]) <= 32) then
-    Result := '#' + IntToStr(ord(Result[1]));
+  if FContentCashe = '' then
+    begin
+      Assert(Basis.Count > 0, '{0190F889-CB9D-48D3-A01A-369E4B823FC1}');
+      FContentCashe := (Basis[0] as TSourceItem).ToString;
+      if (Length(FContentCashe) = 1) and (ord(FContentCashe[1]) <= 32) then
+        FContentCashe := '#' + IntToStr(ord(FContentCashe[1]));
+    end;
+  Result := FContentCashe;
 end;
 
 function TWord.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
@@ -343,17 +348,17 @@ end;
 function TSimpleTextFileSourceItem.InfoText: UTF8String;
 var
   s: string;
-  CodedS: PUTF8String;
+  CodedS: UTF8String;
 begin
   s := copy(String(FPosition), 1, FSize);
-  CodedS := @s[1];
+  CodedS := UTF8String(@s[1]);
   Result :=
     Format(
       rsProofFromFileSDDS, [
         Source.FFileName,
-        FPosition,
-        length(CodedS^),
-        s
+        SizeInt(FPosition - @Source.FFileContent[1]),
+        length(CodedS),
+        CodedS
       ]
     );
 end;
@@ -402,18 +407,61 @@ begin
       StringList.Free;
     end;
   FPosition := @FFileContent[1];
+  FEndChar := @FFileContent[Length(FFileContent)];
 end;
 
 function TSimpleTextFileSource.EOF: boolean;
 begin
-  Result := FPosition^ = #0;
+  Result := (FPosition = FEndChar);
 end;
 
 function TSimpleTextFileSource.ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem;
 var
   EndPosition: PUTF8Char;
-  NextChar: UnicodeChar;
+  NextChar: array [0..2] of WideChar;
+  PNextChar: PWideChar;
   CharSize: SizeInt;
+  ReadedChars: SizeInt;
+  RestSize: SizeInt;
+
+  function UTF8CharSize(AChar: PUTF8Char): SizeUint;
+  var
+    LookAhead: SizeUInt;
+    TempBYTE, IBYTE: byte;
+  begin
+    IBYTE := byte(AChar^);
+    if (IBYTE and $80) = 0 then
+      Result := 1
+    else
+      begin
+        Result := 0;
+        TempByte := IByte;
+        while (TempBYTE and $80) <> 0 do
+          begin
+            TempBYTE:=(TempBYTE shl 1) and $FE;
+            inc(Result);
+          end;
+        //Test for the "Result" conforms UTF-8 string
+        //This means the 10xxxxxx pattern.
+        if Result > 5 then
+          begin
+            //Insuficient chars in string to decode
+            //UTF-8 array. Fallback to single char.
+            Result := 1;
+          end;
+        for LookAhead := 1 to Result-1 do
+          begin
+            if ((byte((AChar+LookAhead)^) and $80)<>$80) or
+               ((byte((AChar+LookAhead)^) and $40)<>$00) then
+              begin
+                //Invalid UTF-8 sequence, fallback.
+                Result:= LookAhead;
+                break;
+              end;
+          end;
+      end;
+  end;
+
 const
   // TODO: letter / non letter by Unicode routines
   DelimiterChars: UnicodeString =
@@ -427,9 +475,14 @@ const
 begin
   Assert(eof);
 
-  CharSize := Utf8ToUnicode(@NextChar, PChar(FPosition), 1);
-  // skip spaces
-  if Pos(NextChar, DelimiterChars) > 0 then
+  PNextChar := @NextChar[0];
+  RestSize := FEndChar - FPosition;
+
+  CharSize := UTF8CharSize(FPosition);
+  ReadedChars := Utf8ToUnicode(PNextChar, 1, FPosition, RestSize);
+  Assert(ReadedChars = 2, '{04B9447D-F1F6-4BBF-9083-C441B545FC9C}');
+  // check if now is a delimiter
+  if Pos(NextChar[0], DelimiterChars) > 0 then
     begin
       Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, CharSize);
       Result.IntegrateToBrain(Owner);
@@ -438,12 +491,16 @@ begin
     end;
 
   EndPosition := FPosition;
-  CharSize := Utf8ToUnicode(@NextChar, PChar(EndPosition), 1);
-  // collect nonspaces:
+  // collect nondelimiters:
   repeat
     Inc(EndPosition, CharSize);
-    CharSize := Utf8ToUnicode(@NextChar, PChar(EndPosition), 1);
-  until (EndPosition^ = #0) or (Pos(NextChar, DelimiterChars) > 0);
+    RestSize := FEndChar - EndPosition;
+    if RestSize <= 0 then
+      Break;
+    CharSize := UTF8CharSize(EndPosition);
+    ReadedChars := Utf8ToUnicode(PNextChar, 1, EndPosition, RestSize);
+    Assert(ReadedChars = 2, '{78DC9A6D-6CD9-45D0-971A-90A78E959157}');
+  until (EndPosition >= FEndChar) or (Pos(NextChar[0], DelimiterChars) > 0);
 
   Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, EndPosition - FPosition);
   Result.IntegrateToBrain(Owner);
