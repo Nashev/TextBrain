@@ -36,6 +36,7 @@ type
 
     function Count: integer; override;
     function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
+    property Detectors: TObjectList read FDetectors;
     function DetectorCount: integer; override;
   end;
 
@@ -380,7 +381,10 @@ end;
 
 function TSimpleTextFileSource.InfoText: UTF8String;
 begin
-  Result := FFileName + #13#10'-----------------------------------------------------------'#13#10#13#10 + FFileContent;
+  Result := FFileName + #13#10
+    + ' retain ' + IntToStr(FEndChar - FPosition) + ' bytes'
+    + ' of ' + IntToStr(FEndChar - @FFileContent[1]) + ' bytes.'
+    + ' ' + IntToStr(100 - Round(100 * (FEndChar - FPosition) / (FEndChar - @FFileContent[1]))) + '% done.'
 end;
 
 function TSimpleTextFileSource.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;

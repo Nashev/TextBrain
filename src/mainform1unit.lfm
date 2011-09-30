@@ -12,8 +12,8 @@ object MainForm1: TMainForm1
   LCLVersion = '0.9.31'
   object SourceMemo: TMemo
     Left = 0
-    Height = 625
-    Top = 0
+    Height = 599
+    Top = 26
     Width = 526
     Align = alLeft
     ReadOnly = True
@@ -22,8 +22,8 @@ object MainForm1: TMainForm1
   end
   object KnowledgeMemo: TMemo
     Left = 531
-    Height = 625
-    Top = 0
+    Height = 599
+    Top = 26
     Width = 433
     Align = alClient
     ScrollBars = ssAutoBoth
@@ -31,9 +31,38 @@ object MainForm1: TMainForm1
   end
   object Splitter1: TSplitter
     Left = 526
-    Height = 625
-    Top = 0
+    Height = 599
+    Top = 26
     Width = 5
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 964
+    Align = alTop
+    ClientHeight = 26
+    ClientWidth = 964
+    TabOrder = 3
+    object Button1: TButton
+      Left = 880
+      Height = 25
+      Top = 0
+      Width = 75
+      Anchors = [akTop, akLeft, akRight]
+      Caption = 'Clear'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
+    object ToggleBox1: TToggleBox
+      Left = 24
+      Height = 23
+      Top = 0
+      Width = 90
+      Caption = 'Pause'
+      OnChange = ToggleBox1Change
+      TabOrder = 1
+    end
   end
   object ActionList: TActionList
     left = 88

@@ -17,6 +17,10 @@ msgstr ""
 msgid "Load new UTF8 source..."
 msgstr ""
 
+#: TMAINFORM1.BUTTON1.CAPTION
+msgid "Clear"
+msgstr ""
+
 #: TMAINFORM1.CAPTION
 msgctxt "TMAINFORM1.CAPTION"
 msgid "MainForm1"
@@ -24,5 +28,9 @@ msgstr ""
 
 #: TMAINFORM1.MMISOURCES.CAPTION
 msgid "Sources"
+msgstr ""
+
+#: TMAINFORM1.TOGGLEBOX1.CAPTION
+msgid "Pause"
 msgstr ""
 
