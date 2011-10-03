@@ -1,7 +1,7 @@
 object MainForm1: TMainForm1
-  Left = 577
+  Left = 502
   Height = 644
-  Top = 207
+  Top = 208
   Width = 964
   Caption = 'MainForm1'
   ClientHeight = 625
@@ -54,14 +54,25 @@ object MainForm1: TMainForm1
       OnClick = Button1Click
       TabOrder = 0
     end
-    object ToggleBox1: TToggleBox
+    object ToggleBoxPause: TToggleBox
       Left = 24
       Height = 23
       Top = 0
       Width = 90
       Caption = 'Pause'
-      OnChange = ToggleBox1Change
+      OnChange = ToggleBoxPauseChange
       TabOrder = 1
+    end
+    object ToggleBoxSilent: TToggleBox
+      Left = 120
+      Height = 23
+      Top = 0
+      Width = 90
+      Caption = 'Silent'
+      Checked = True
+      OnChange = ToggleBoxPauseChange
+      State = cbChecked
+      TabOrder = 2
     end
   end
   object ActionList: TActionList

@@ -99,6 +99,8 @@ type
   TWord = class(TKnowledgeItem1)
   private
     FContentCashe: string;
+  protected
+    function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
     class function FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
@@ -253,9 +255,20 @@ end;
 
 { TWord }
 
+function TWord.TryMergeToBrain(ABrain: TBrain): Boolean;
+var
+  FoundedWord: TWord;
+begin
+  Result := False;
+  FoundedWord := FindWord(ABrain, ToString);
+  if Assigned(FoundedWord) then
+    Result := FoundedWord.Merge(Self);
+end;
+
 class function TWord.FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
 begin
   Result := nil;
+  // TODO: GetWordIndexSubset[ABrain].FindWord
   with AKnowledgeBaseSubset.GetIterator do
     try
       while not EOF do
@@ -485,7 +498,7 @@ begin
   CharSize := UTF8CharSize(FPosition);
   ReadedChars := Utf8ToUnicode(PNextChar, 1, FPosition, RestSize);
   Assert(ReadedChars = 2, '{04B9447D-F1F6-4BBF-9083-C441B545FC9C}');
-  // check if now is a delimiter
+  // check if now there are a delimiter
   if Pos(NextChar[0], DelimiterChars) > 0 then
     begin
       Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, CharSize);

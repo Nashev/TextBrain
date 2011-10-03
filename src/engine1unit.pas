@@ -26,6 +26,7 @@ type
   protected
 //    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; virtual; abstract;
     function GetBasisClass: TTabledKnowledgeBaseSubsetClass; virtual; abstract;
+    function TryMergeToBrain(ABrain: TBrain): Boolean; virtual;
   public
     constructor Create(ADetectorClass: TDetectorClass);
     procedure IntegrateToBrain(ABrain: TBrain); // need be called when this item will be ready for merge.
@@ -196,13 +197,6 @@ function TBrain.Add(AItem: TKnowledgeItem): TKnowledgeItem;
 var
   i: Integer;
 begin
-  for i := 0 to Count - 1 do
-    if Items[i].Merge(AItem) then
-      begin
-        Result := Items[i]; // TODO: detect anything om merge
-        Exit;
-      end;
-
   Result := InternalAdd(AItem);
 
   for i := 0 to DetectorCount - 1 do
@@ -372,11 +366,27 @@ begin
   FBasis := GetBasisClass.Create(nil); // TODO: Is we need a superset for basis?
 end;
 
+function TKnowledgeItem.TryMergeToBrain(ABrain: TBrain): Boolean;
+var
+  i: Integer;
+begin
+  Result := False;
+  for i := 0 to ABrain.Count - 1 do
+    if ABrain.Items[i].Merge(Self) then // TODO: detect anything om merge
+      begin
+        Result := True;
+        Exit;
+      end;
+end;
+
 procedure TKnowledgeItem.IntegrateToBrain(ABrain: TBrain);
 begin
   FOwner := ABrain;
-  ABrain.Add(Self);
-  //FBasis.Superset := ABrain; TODO: Is we need a superset for basis?
+  if not TryMergeToBrain(ABrain) then
+    begin
+      ABrain.Add(Self);
+      //FBasis.Superset := ABrain; TODO: Is we need a superset for basis?
+    end;
 end;
 
 function TKnowledgeItem.InfoText: UTF8String;

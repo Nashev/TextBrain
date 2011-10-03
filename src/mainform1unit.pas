@@ -26,13 +26,14 @@ type
     Panel1: TPanel;
     SourceMemo: TMemo;
     Splitter1: TSplitter;
-    ToggleBox1: TToggleBox;
+    ToggleBoxPause: TToggleBox;
+    ToggleBoxSilent: TToggleBox;
     procedure actLoadNewAnsiSourceExecute(Sender: TObject);
     procedure actLoadNewUTF8SourceExecute(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure ToggleBox1Change(Sender: TObject);
+    procedure ToggleBoxPauseChange(Sender: TObject);
   private
     FBrain: TBrain1;
     Source: TSimpleTextFileSource;
@@ -50,6 +51,9 @@ type
   { TNewItemDetector }
 
   TNewItemDetector = class(TDetector)
+  private
+    LastMessagesTime: TDateTime;
+  public
     procedure Evalute(AKnowledgeItem: TKnowledgeItem); override;
   end;
 
@@ -61,9 +65,14 @@ procedure TNewItemDetector.Evalute(AKnowledgeItem: TKnowledgeItem);
 begin
   if Assigned(MainForm1.Source) then
     MainForm1.SourceMemo.Text := MainForm1.Source.InfoText;
-  MainForm1.KnowledgeMemo.Lines.Add(AKnowledgeItem.InfoText);
-  Application.ProcessMessages;
-  while MainForm1.ToggleBox1.Checked do
+  if not MainForm1.ToggleBoxSilent.Checked then
+    MainForm1.KnowledgeMemo.Lines.Add(AKnowledgeItem.InfoText);
+  if (Now - LastMessagesTime) > (333 / (24*60*60*1000)) then
+    begin
+      Application.ProcessMessages;
+      LastMessagesTime := Now;
+    end;
+  while MainForm1.ToggleBoxPause.Checked do
     begin
       Application.ProcessMessages;
       Sleep(10);
@@ -114,7 +123,7 @@ begin
   FreeAndNil(FBrain);
 end;
 
-procedure TMainForm1.ToggleBox1Change(Sender: TObject);
+procedure TMainForm1.ToggleBoxPauseChange(Sender: TObject);
 begin
 
 end;

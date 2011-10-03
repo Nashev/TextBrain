@@ -30,7 +30,12 @@ msgstr ""
 msgid "Sources"
 msgstr ""
 
-#: TMAINFORM1.TOGGLEBOX1.CAPTION
+#: TMAINFORM1.TOGGLEBOXPAUSE.CAPTION
+msgctxt "TMAINFORM1.TOGGLEBOXPAUSE.CAPTION"
 msgid "Pause"
+msgstr ""
+
+#: TMAINFORM1.TOGGLEBOXSILENT.CAPTION
+msgid "Silent"
 msgstr ""
 
