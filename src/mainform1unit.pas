@@ -16,7 +16,8 @@ type
     actLoadNewUTF8Source: TAction;
     actLoadNewAnsiSource: TAction;
     ActionList: TActionList;
-    Button1: TButton;
+    ButtonClear: TButton;
+    ButtonShowSubsets: TButton;
     MainMenu: TMainMenu;
     KnowledgeMemo: TMemo;
     MenuItem1: TMenuItem;
@@ -30,10 +31,10 @@ type
     ToggleBoxSilent: TToggleBox;
     procedure actLoadNewAnsiSourceExecute(Sender: TObject);
     procedure actLoadNewUTF8SourceExecute(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure ButtonClearClick(Sender: TObject);
+    procedure ButtonShowSubsetsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure ToggleBoxPauseChange(Sender: TObject);
   private
     FBrain: TBrain1;
     Source: TSimpleTextFileSource;
@@ -66,13 +67,16 @@ begin
   if Assigned(MainForm1.Source) then
     MainForm1.SourceMemo.Text := MainForm1.Source.InfoText;
   if not MainForm1.ToggleBoxSilent.Checked then
-    MainForm1.KnowledgeMemo.Lines.Add(AKnowledgeItem.InfoText);
+    begin
+      MainForm1.KnowledgeMemo.Lines.Add(AKnowledgeItem.InfoText);
+      MainForm1.KnowledgeMemo.Lines.Add(AKnowledgeItem.Owner.Subset[0].ContentText);
+    end;
   if (Now - LastMessagesTime) > (333 / (24*60*60*1000)) then
     begin
       Application.ProcessMessages;
       LastMessagesTime := Now;
     end;
-  while MainForm1.ToggleBoxPause.Checked do
+  while MainForm1.ToggleBoxPause.Checked and not Application.Terminated do
     begin
       Application.ProcessMessages;
       Sleep(10);
@@ -113,19 +117,22 @@ begin
       end;
 end;
 
-procedure TMainForm1.Button1Click(Sender: TObject);
+procedure TMainForm1.ButtonClearClick(Sender: TObject);
 begin
   KnowledgeMemo.Lines.Clear;
+end;
+
+procedure TMainForm1.ButtonShowSubsetsClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to FBrain.SubsetsCount - 1 do
+    KnowledgeMemo.Lines.Add(FBrain.Subset[i].InfoText);
 end;
 
 procedure TMainForm1.FormDestroy(Sender: TObject);
 begin
   FreeAndNil(FBrain);
-end;
-
-procedure TMainForm1.ToggleBoxPauseChange(Sender: TObject);
-begin
-
 end;
 
 procedure TMainForm1.ShowBrainContent;

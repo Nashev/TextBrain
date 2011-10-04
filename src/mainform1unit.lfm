@@ -1,7 +1,7 @@
 object MainForm1: TMainForm1
-  Left = 502
+  Left = 496
   Height = 644
-  Top = 208
+  Top = 209
   Width = 964
   Caption = 'MainForm1'
   ClientHeight = 625
@@ -44,14 +44,14 @@ object MainForm1: TMainForm1
     ClientHeight = 26
     ClientWidth = 964
     TabOrder = 3
-    object Button1: TButton
+    object ButtonClear: TButton
       Left = 880
       Height = 25
       Top = 0
       Width = 75
-      Anchors = [akTop, akLeft, akRight]
+      Anchors = [akTop, akRight]
       Caption = 'Clear'
-      OnClick = Button1Click
+      OnClick = ButtonClearClick
       TabOrder = 0
     end
     object ToggleBoxPause: TToggleBox
@@ -60,7 +60,6 @@ object MainForm1: TMainForm1
       Top = 0
       Width = 90
       Caption = 'Pause'
-      OnChange = ToggleBoxPauseChange
       TabOrder = 1
     end
     object ToggleBoxSilent: TToggleBox
@@ -70,9 +69,18 @@ object MainForm1: TMainForm1
       Width = 90
       Caption = 'Silent'
       Checked = True
-      OnChange = ToggleBoxPauseChange
       State = cbChecked
       TabOrder = 2
+    end
+    object ButtonShowSubsets: TButton
+      Left = 792
+      Height = 25
+      Top = 0
+      Width = 83
+      Anchors = [akTop, akRight]
+      Caption = 'Show subsets'
+      OnClick = ButtonShowSubsetsClick
+      TabOrder = 3
     end
   end
   object ActionList: TActionList

@@ -38,12 +38,12 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="33">
+    <Units Count="30">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="project1"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="17" Y="12"/>
@@ -60,21 +60,20 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="46"/>
-        <CursorPos X="1" Y="70"/>
+        <TopLine Value="52"/>
+        <CursorPos X="1" Y="72"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
         <Filename Value="engine1unit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Engine1Unit"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="362"/>
-        <CursorPos X="34" Y="375"/>
+        <TopLine Value="122"/>
+        <CursorPos X="44" Y="144"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -83,17 +82,17 @@
         <Filename Value="engine11unit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Engine11Unit"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="245"/>
-        <CursorPos X="20" Y="260"/>
+        <TopLine Value="259"/>
+        <CursorPos X="1" Y="281"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit3>
       <Unit4>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="22"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
@@ -102,7 +101,7 @@
       </Unit4>
       <Unit5>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\stringl.inc"/>
-        <EditorIndex Value="27"/>
+        <EditorIndex Value="19"/>
         <WindowIndex Value="0"/>
         <TopLine Value="754"/>
         <CursorPos X="28" Y="770"/>
@@ -111,7 +110,7 @@
       </Unit5>
       <Unit6>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\streams.inc"/>
-        <EditorIndex Value="23"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
@@ -120,7 +119,7 @@
       </Unit6>
       <Unit7>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\filutilh.inc"/>
-        <EditorIndex Value="24"/>
+        <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="35" Y="9"/>
@@ -129,7 +128,7 @@
       </Unit7>
       <Unit8>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
-        <EditorIndex Value="25"/>
+        <EditorIndex Value="17"/>
         <WindowIndex Value="0"/>
         <TopLine Value="246"/>
         <CursorPos X="7" Y="270"/>
@@ -138,7 +137,7 @@
       </Unit8>
       <Unit9>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\fpmake.inc"/>
-        <EditorIndex Value="26"/>
+        <EditorIndex Value="18"/>
         <WindowIndex Value="0"/>
         <TopLine Value="104"/>
         <CursorPos X="24" Y="178"/>
@@ -148,7 +147,7 @@
       <Unit10>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win32\windows.pp"/>
         <UnitName Value="windows"/>
-        <EditorIndex Value="28"/>
+        <EditorIndex Value="20"/>
         <WindowIndex Value="0"/>
         <TopLine Value="21"/>
         <CursorPos X="16" Y="40"/>
@@ -157,7 +156,7 @@
       </Unit10>
       <Unit11>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\ustringh.inc"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="54" Y="98"/>
@@ -166,7 +165,7 @@
       </Unit11>
       <Unit12>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\systemh.inc"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
         <TopLine Value="252"/>
         <CursorPos X="14" Y="297"/>
@@ -175,7 +174,7 @@
       </Unit12>
       <Unit13>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\wstringh.inc"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="14" Y="42"/>
@@ -184,7 +183,7 @@
       </Unit13>
       <Unit14>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\objpash.inc"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="54"/>
         <CursorPos X="8" Y="79"/>
@@ -193,7 +192,7 @@
       </Unit14>
       <Unit15>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\objpas.inc"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="381"/>
         <CursorPos X="11" Y="396"/>
@@ -201,279 +200,241 @@
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\astrings.inc"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="677"/>
-        <CursorPos X="4" Y="702"/>
-        <UsageCount Value="3"/>
-      </Unit16>
-      <Unit17>
-        <Filename Value="D:\work\FPC\2.4.4\source\packages\univint\src\StringCompare.pas"/>
-        <UnitName Value="StringCompare"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="619"/>
-        <CursorPos X="5" Y="194"/>
-        <UsageCount Value="3"/>
-      </Unit17>
-      <Unit18>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\sysutils.pp"/>
         <UnitName Value="sysutils"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1251"/>
         <CursorPos X="19" Y="1217"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="72"/>
         <Loaded Value="True"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\wininc\ascfun.inc"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="378"/>
-        <CursorPos X="10" Y="403"/>
-        <UsageCount Value="3"/>
-      </Unit19>
-      <Unit20>
+      </Unit16>
+      <Unit17>
         <Filename Value="D:\work\FPC\2.4.4\source\packages\fcl-base\src\contnrs.pp"/>
         <UnitName Value="contnrs"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1926"/>
         <CursorPos X="19" Y="1951"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="72"/>
         <Loaded Value="True"/>
-      </Unit20>
-      <Unit21>
+      </Unit17>
+      <Unit18>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysstrh.inc"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="57"/>
         <CursorPos X="34" Y="82"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="72"/>
         <Loaded Value="True"/>
-      </Unit21>
-      <Unit22>
+      </Unit18>
+      <Unit19>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysstr.inc"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="125"/>
         <CursorPos X="3" Y="144"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
-      </Unit22>
-      <Unit23>
+      </Unit19>
+      <Unit20>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\wstrings.inc"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1400"/>
         <CursorPos X="27" Y="1428"/>
-        <UsageCount Value="16"/>
+        <UsageCount Value="45"/>
         <Loaded Value="True"/>
-      </Unit23>
-      <Unit24>
+      </Unit20>
+      <Unit21>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\datih.inc"/>
-        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="144"/>
+        <TopLine Value="129"/>
         <CursorPos X="11" Y="184"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit24>
-      <Unit25>
+        <UsageCount Value="5"/>
+      </Unit21>
+      <Unit22>
         <Filename Value="D:\work\FPC\2.4.4\source\packages\winunits-jedi\src\jwawinbase.pas"/>
         <UnitName Value="JwaWinBase"/>
-        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="9570"/>
         <CursorPos X="11" Y="9619"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit25>
-      <Unit26>
+        <UsageCount Value="5"/>
+      </Unit22>
+      <Unit23>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\wininc\redef.inc"/>
-        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1134"/>
+        <TopLine Value="1119"/>
         <CursorPos X="24" Y="1154"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit26>
-      <Unit27>
+        <UsageCount Value="5"/>
+      </Unit23>
+      <Unit24>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\netware\ccs-os.imp"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="21"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="None"/>
-      </Unit27>
-      <Unit28>
+      </Unit24>
+      <Unit25>
         <Filename Value="D:\work\FPC\2.4.4\source\packages\ptc\src\core\timeri.inc"/>
-        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="23"/>
         <CursorPos X="21" Y="185"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit28>
-      <Unit29>
+        <UsageCount Value="5"/>
+      </Unit25>
+      <Unit26>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win32\system.pp"/>
         <UnitName Value="System"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="266"/>
         <CursorPos X="18" Y="288"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit29>
-      <Unit30>
+        <UsageCount Value="5"/>
+      </Unit26>
+      <Unit27>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\sysos.inc"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="8" Y="10"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit30>
-      <Unit31>
+        <UsageCount Value="5"/>
+      </Unit27>
+      <Unit28>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\wince\sysutils.pp"/>
         <UnitName Value="sysutils"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="438"/>
         <CursorPos X="11" Y="460"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit31>
-      <Unit32>
+        <UsageCount Value="5"/>
+      </Unit28>
+      <Unit29>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\netware\sysutils.pp"/>
         <UnitName Value="sysutils"/>
-        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="447"/>
         <CursorPos X="11" Y="469"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit32>
+        <UsageCount Value="5"/>
+      </Unit29>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="104" Column="28" TopLine="90"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="378" Column="1" TopLine="362"/>
       </Position1>
       <Position2>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="488" Column="1" TopLine="379"/>
+        <Caret Line="379" Column="1" TopLine="362"/>
       </Position2>
       <Position3>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="256" Column="49" TopLine="246"/>
+        <Caret Line="380" Column="1" TopLine="362"/>
       </Position3>
       <Position4>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="29" Column="77" TopLine="17"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="381" Column="1" TopLine="362"/>
       </Position4>
       <Position5>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="362" Column="32" TopLine="362"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="391" Column="1" TopLine="362"/>
       </Position5>
       <Position6>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="373" Column="9" TopLine="358"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="401" Column="1" TopLine="365"/>
       </Position6>
       <Position7>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="374" Column="1" TopLine="359"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="402" Column="1" TopLine="366"/>
       </Position7>
       <Position8>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="103" Column="65" TopLine="79"/>
+        <Caret Line="416" Column="1" TopLine="394"/>
       </Position8>
       <Position9>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="260" Column="5" TopLine="236"/>
+        <Caret Line="356" Column="1" TopLine="334"/>
       </Position9>
       <Position10>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="373" Column="3" TopLine="362"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="357" Column="1" TopLine="334"/>
       </Position10>
       <Position11>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="375" Column="35" TopLine="353"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="415" Column="1" TopLine="393"/>
       </Position11>
       <Position12>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="69" Column="1" TopLine="51"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="378" Column="1" TopLine="356"/>
       </Position12>
       <Position13>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="65" Column="24" TopLine="43"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="379" Column="1" TopLine="356"/>
       </Position13>
       <Position14>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="66" Column="64" TopLine="43"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="380" Column="1" TopLine="356"/>
       </Position14>
       <Position15>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="68" Column="19" TopLine="46"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="381" Column="1" TopLine="365"/>
       </Position15>
       <Position16>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="67" Column="7" TopLine="46"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="391" Column="1" TopLine="365"/>
       </Position16>
       <Position17>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\datih.inc"/>
-        <Caret Line="91" Column="6" TopLine="76"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="401" Column="1" TopLine="365"/>
       </Position17>
       <Position18>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="67" Column="8" TopLine="46"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="402" Column="1" TopLine="366"/>
       </Position18>
       <Position19>
-        <Filename Value="D:\work\FPC\2.4.4\source\packages\winunits-jedi\src\jwawinbase.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="416" Column="1" TopLine="394"/>
       </Position19>
       <Position20>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\wininc\redef.inc"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="351" Column="1" TopLine="329"/>
       </Position20>
       <Position21>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\wininc\redef.inc"/>
-        <Caret Line="544" Column="16" TopLine="508"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="352" Column="1" TopLine="329"/>
       </Position21>
       <Position22>
-        <Filename Value="D:\work\FPC\2.4.4\source\packages\ptc\src\core\timeri.inc"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="415" Column="1" TopLine="393"/>
       </Position22>
       <Position23>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\win32\system.pp"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="378" Column="1" TopLine="362"/>
       </Position23>
       <Position24>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\win32\system.pp"/>
-        <Caret Line="288" Column="18" TopLine="266"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="379" Column="1" TopLine="362"/>
       </Position24>
       <Position25>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\wince\sysutils.pp"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="380" Column="1" TopLine="362"/>
       </Position25>
       <Position26>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\datih.inc"/>
-        <Caret Line="181" Column="14" TopLine="141"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="381" Column="1" TopLine="362"/>
       </Position26>
       <Position27>
-        <Filename Value="D:\work\FPC\2.4.4\source\rtl\netware\sysutils.pp"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="391" Column="1" TopLine="362"/>
       </Position27>
       <Position28>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="70" Column="1" TopLine="46"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="393" Column="1" TopLine="368"/>
       </Position28>
       <Position29>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="72" Column="1" TopLine="46"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="340" Column="1" TopLine="318"/>
       </Position29>
       <Position30>
-        <Filename Value="mainform1unit.pas"/>
-        <Caret Line="73" Column="1" TopLine="46"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="406" Column="8" TopLine="370"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -516,20 +477,39 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="2">
+    <BreakPoints Count="5">
       <Item1>
         <Kind Value="bpkSource"/>
-        <Source Value="engine1unit.pas"/>
-        <Line Value="240"/>
+        <Source Value="engine11unit.pas"/>
+        <InitialEnabled Value="False"/>
+        <Line Value="255"/>
       </Item1>
       <Item2>
         <Kind Value="bpkSource"/>
         <Source Value="engine11unit.pas"/>
         <InitialEnabled Value="False"/>
-        <Line Value="502"/>
+        <Line Value="235"/>
       </Item2>
+      <Item3>
+        <Kind Value="bpkSource"/>
+        <Source Value="engine11unit.pas"/>
+        <InitialEnabled Value="False"/>
+        <Line Value="341"/>
+      </Item3>
+      <Item4>
+        <Kind Value="bpkSource"/>
+        <Source Value="engine11unit.pas"/>
+        <InitialEnabled Value="False"/>
+        <Line Value="378"/>
+      </Item4>
+      <Item5>
+        <Kind Value="bpkSource"/>
+        <Source Value="engine11unit.pas"/>
+        <InitialEnabled Value="False"/>
+        <Line Value="281"/>
+      </Item5>
     </BreakPoints>
-    <Watches Count="3">
+    <Watches Count="5">
       <Item1>
         <Expression Value="s"/>
       </Item1>
@@ -539,6 +519,12 @@
       <Item3>
         <Expression Value="RestSize"/>
       </Item3>
+      <Item4>
+        <Expression Value="AWord"/>
+      </Item4>
+      <Item5>
+        <Expression Value="TWord(AItem).FContentCashe"/>
+      </Item5>
     </Watches>
     <Exceptions Count="3">
       <Item1>

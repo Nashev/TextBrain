@@ -9,6 +9,17 @@ uses
 
 type
   PUTF8Char = type PChar;
+  EWrongCallException = class(Exception)
+  end;
+
+  { TKnowledgeItem1 }
+
+  TKnowledgeItem1 = class(TKnowledgeItem)
+  protected
+    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
+  end;
+
+  { TBasisKnowledgeSubset1 }
 
   TBasisKnowledgeSubset1 = class(TTabledKnowledgeBaseSubset)
   private
@@ -22,6 +33,8 @@ type
     function Count: Integer; override;
     function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
   end;
+
+  { TBrain1 }
 
   TBrain1 = class(TBrain)
   private
@@ -89,9 +102,81 @@ type
     function ToString: UTF8String; override;
   end;
 
-  TKnowledgeItem1 = class(TKnowledgeItem)
+  TWordIndex = class;
+  TWordIndexInfo = class;
+  TWordIndexRealInfo = class;
+  TWord = class;
+
+  { TWordIndexInfo }
+
+  TWordIndexInfo = class
   protected
-    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
+    function GetLowerWordInfo: TWordIndexInfo; virtual; abstract;
+    function GetHigherWordInfo: TWordIndexInfo; virtual; abstract;
+    procedure SetHigherWordInfo(AValue: TWordIndexInfo); virtual; abstract;
+    procedure SetLowerWordInfo(AValue: TWordIndexInfo); virtual; abstract;
+  public
+    property LowerWordInfo: TWordIndexInfo read GetLowerWordInfo write SetLowerWordInfo;
+    property HigherWordInfo: TWordIndexInfo read GetHigherWordInfo write SetHigherWordInfo;
+    function Weight: Integer; virtual; abstract;
+    function UpdateWeight: TWordIndexInfo; virtual; abstract;
+    function RegisterNewWord(AWord: TWord):TWordIndexInfo; virtual; abstract;
+    function FindWord(AWord: UTF8String): TWord; virtual; abstract;
+  end;
+
+  { TWordIndexRealInfo }
+
+  TWordIndexRealInfo = class(TWordIndexInfo)
+  private
+    Word: TWord;
+    FLowerWordInfo: TWordIndexInfo;
+    FHigherWordInfo: TWordIndexInfo;
+    FWeight: Integer;
+  protected
+    function GetLowerWordInfo: TWordIndexInfo; override;
+    function GetHigherWordInfo: TWordIndexInfo; override;
+    procedure SetHigherWordInfo(AValue: TWordIndexInfo); override;
+    procedure SetLowerWordInfo(AValue: TWordIndexInfo); override;
+  public
+    destructor Destroy; override;
+    function Weight: Integer; override;
+    function UpdateWeight: TWordIndexInfo; override;
+    function RegisterNewWord(AWord: TWord):TWordIndexInfo; override;
+    function FindWord(AWord: UTF8String): TWord; override;
+  end;
+
+  { TWordIndexStubInfo }
+
+  TWordIndexStubInfo = class(TWordIndexInfo)
+  protected
+    function GetLowerWordInfo: TWordIndexInfo; override;
+    function GetHigherWordInfo: TWordIndexInfo; override;
+    procedure SetHigherWordInfo(AValue: TWordIndexInfo); override;
+    procedure SetLowerWordInfo(AValue: TWordIndexInfo); override;
+  public
+    function Weight: Integer; override;
+    function UpdateWeight:TWordIndexInfo; override;
+    function RegisterNewWord(AWord: TWord):TWordIndexInfo; override;
+    function FindWord(AWord: UTF8String): TWord; override;
+  end;
+
+  TWordIndex = class(TKnowledgeBaseSubset)
+  private
+    Stub: TWordIndexStubInfo;
+    Root: TWordIndexInfo;
+  public
+    function FindWord(AWord: UTF8String): TWord;
+
+    constructor Create(ASuperset: TKnowledgeBaseSubset); override;
+    destructor Destroy; override;
+
+    // subset content management
+    function GetIterator: TKnowledgeIterator; override;
+    function ContentText: UTF8String; override;
+
+    // subset hierarchy
+    procedure SupersetItemAdded(AItem: TKnowledgeItem); override;
+    function InfoText: UTF8String; override;
   end;
 
   { TWord }
@@ -102,7 +187,7 @@ type
   protected
     function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
-    class function FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
+    class function FindWord(ABrain: TBrain; AWord: UTF8String): TWord;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
     function IsSameWord(AWord: UTF8String): Boolean;
     function ToString: UTF8String; override;
@@ -140,10 +225,216 @@ type
 
 implementation
 
-uses FileUtil;
+uses FileUtil, Math;
 
 resourcestring
   rsProofFromFileSDDS = 'From file %s (%d-%d): "%s".';
+
+function TWordIndex.FindWord(AWord: UTF8String): TWord;
+begin
+  Result := Root.FindWord(AWord);
+end;
+
+constructor TWordIndex.Create(ASuperset: TKnowledgeBaseSubset);
+begin
+  inherited Create(ASuperset);
+  Stub := TWordIndexStubInfo.Create;
+  Root := Stub;
+end;
+
+destructor TWordIndex.Destroy;
+begin
+  FreeAndNil(Root);
+  FreeAndNil(Stub);
+  inherited Destroy;
+end;
+
+function TWordIndex.GetIterator: TKnowledgeIterator;
+begin
+  // TODO
+  Result := nil;
+end;
+
+function TWordIndex.ContentText: UTF8String;
+
+  procedure AddContentText(APrefix: UTF8string; AWordIndexInfo: TWordIndexInfo);
+  begin
+    if AWordIndexInfo is TWordIndexRealInfo then
+      with TWordIndexRealInfo(AWordIndexInfo) do
+        begin
+          AddContentText(APrefix + '*', LowerWordInfo);
+          Result := Result + APrefix + ' ' + Word.ToString + ' (' + IntToStr(Weight) + ' weight)'#13#10;
+          AddContentText(APrefix + '*', HigherWordInfo);
+        end;
+  end;
+
+begin
+  Result := InfoText + #13#10;
+  AddContentText('*', Root);
+end;
+
+procedure TWordIndex.SupersetItemAdded(AItem: TKnowledgeItem);
+begin
+  if not (AItem is TWord) then
+    Exit;
+
+  Root := Root.RegisterNewWord(AItem as TWord);
+end;
+
+function TWordIndex.InfoText: UTF8String;
+begin
+  Result := inherited InfoText + ' Weight of root is ' + IntToStr(Root.Weight);
+  if Root is TWordIndexRealInfo then
+    Result := Result + ', word:' + TWordIndexRealInfo(Root).Word.InfoText;
+end;
+
+{ TWordIndexStubInfo }
+
+function TWordIndexStubInfo.GetLowerWordInfo: TWordIndexInfo;
+begin
+  Result := Self;
+end;
+
+function TWordIndexStubInfo.GetHigherWordInfo: TWordIndexInfo;
+begin
+  Result := Self;
+end;
+
+procedure TWordIndexStubInfo.SetHigherWordInfo(AValue: TWordIndexInfo);
+begin
+  raise EWrongCallException.Create('TWordIndexStubInfo.SetHigherWordInfo');
+end;
+
+procedure TWordIndexStubInfo.SetLowerWordInfo(AValue: TWordIndexInfo);
+begin
+  raise EWrongCallException.Create('TWordIndexStubInfo.SetLowerWordInfo');
+end;
+
+function TWordIndexStubInfo.Weight: Integer;
+begin
+  Result := 0;
+end;
+
+function TWordIndexStubInfo.UpdateWeight:TWordIndexInfo;
+begin
+  Result := Self;// do nothing
+end;
+
+function TWordIndexStubInfo.RegisterNewWord(AWord: TWord): TWordIndexInfo;
+begin
+  Result := TWordIndexRealInfo.Create;
+  TWordIndexRealInfo(Result).Word := AWord;
+  TWordIndexRealInfo(Result).LowerWordInfo := Self;
+  TWordIndexRealInfo(Result).HigherWordInfo := Self;
+  Result := TWordIndexRealInfo(Result).UpdateWeight;
+end;
+
+function TWordIndexStubInfo.FindWord(AWord: UTF8String): TWord;
+begin
+  Result := nil;
+end;
+
+{TWordIndexRealInfo}
+
+function TWordIndexRealInfo.GetLowerWordInfo: TWordIndexInfo;
+begin
+  Result := FLowerWordInfo;
+end;
+
+function TWordIndexRealInfo.GetHigherWordInfo: TWordIndexInfo;
+begin
+  Result := FHigherWordInfo;
+end;
+
+procedure TWordIndexRealInfo.SetHigherWordInfo(AValue: TWordIndexInfo);
+begin
+  FHigherWordInfo := AValue;
+end;
+
+procedure TWordIndexRealInfo.SetLowerWordInfo(AValue: TWordIndexInfo);
+begin
+  FLowerWordInfo := AValue;
+end;
+
+destructor TWordIndexRealInfo.Destroy;
+begin
+  if FLowerWordInfo.Weight > 0 then
+    FreeAndNil(FLowerWordInfo);
+  if FHigherWordInfo.Weight > 0 then
+    FreeAndNil(FHigherWordInfo);
+  inherited Destroy;
+end;
+
+function TWordIndexRealInfo.Weight: Integer;
+begin
+  Result := FWeight;
+end;
+
+function TWordIndexRealInfo.UpdateWeight:TWordIndexInfo;
+var
+  Middle: TWordIndexInfo;
+  LowerWeight, HigherWeight: Integer;
+begin
+  Result := Self;
+  LowerWeight  := LowerWordInfo.Weight;
+  HigherWeight := HigherWordInfo.Weight;
+  if LowerWeight >= (HigherWeight + 2) then
+    begin
+      if LowerWordInfo.LowerWordInfo.Weight > HigherWeight then // to prevent simple inverting of balance
+        begin
+          Result := LowerWordInfo;
+          Middle := Result.HigherWordInfo;
+          LowerWordInfo := Middle;
+          LowerWeight   := Middle.Weight;
+          FWeight := max(LowerWeight, HigherWeight) + 1; // calculate our weight
+          Result.HigherWordInfo := Self;
+          Result := Result.UpdateWeight; // it look to our weight, becouse now we are its child
+        end
+    end
+  else if HigherWeight >= (LowerWeight + 2) then
+    begin
+      if HigherWordInfo.HigherWordInfo.Weight > LowerWeight then
+        begin
+          Result := HigherWordInfo;
+          Middle := Result.LowerWordInfo;
+          HigherWordInfo := Middle;
+          HigherWeight   := Middle.Weight;
+          FWeight := max(LowerWeight, HigherWeight) + 1;
+          Result.LowerWordInfo := Self;
+          Result := Result.UpdateWeight;
+        end
+    end
+  else
+    FWeight := max(LowerWeight, HigherWeight) + 1;
+end;
+
+function TWordIndexRealInfo.RegisterNewWord(AWord: TWord):TWordIndexInfo;
+var
+  Compare: Integer;
+begin
+  Compare := CompareStr(AWord.ToString, Word.ToString);
+  if Compare = 0 then
+    raise Exception('Double registering' + AWord.ToString)
+  else if Compare < 0 then
+    LowerWordInfo := LowerWordInfo.RegisterNewWord(AWord)
+  else // > 0
+    HigherWordInfo := HigherWordInfo.RegisterNewWord(AWord);
+  Result := UpdateWeight;
+end;
+
+function TWordIndexRealInfo.FindWord(AWord: UTF8String): TWord;
+var
+  Compare: Integer;
+begin
+  Result := nil;
+  Compare := CompareStr(AWord, Word.ToString);
+  if Compare = 0 then
+    Result := Word
+  else if Compare < 0 then
+    Result := LowerWordInfo.FindWord(AWord)
+  else
+    Result := HigherWordInfo.FindWord(AWord);
+end;
 
 { TCapitalizedWordDetector }
 
@@ -206,6 +497,7 @@ function TBasisKnowledgeSubset1.Add(AItem: TKnowledgeItem): TKnowledgeItem;
 begin
   Result := AItem;
   FItems.Add(AItem);
+  SupersetItemAdded(Result);
 end;
 
 { TModifiedWord }
@@ -265,25 +557,22 @@ begin
     Result := FoundedWord.Merge(Self);
 end;
 
-class function TWord.FindWord(AKnowledgeBaseSubset: TKnowledgeBaseSubset; AWord: UTF8String): TWord;
+
+var
+  //todo: IndexList, BrainList: TList;
+  MainBrainWordIndex: TWordIndex = nil;
+
+function GetWordIndexSubset(ABrain: TBrain): TWordIndex;
 begin
-  Result := nil;
-  // TODO: GetWordIndexSubset[ABrain].FindWord
-  with AKnowledgeBaseSubset.GetIterator do
-    try
-      while not EOF do
-        begin
-          if (CurrentItem is TWord) then
-            if TWord(CurrentItem).IsSameWord(AWord) then
-              begin
-                Result := TWord(CurrentItem);
-                Exit;
-              end;
-          Next;
-        end;
-    finally
-      Free;
-    end;
+  // todo: Result := IndexList[BrainList.IndexOf(ABrain)];
+  if not Assigned(MainBrainWordIndex) then
+    MainBrainWordIndex := TWordIndex.Create(ABrain);
+  Result := MainBrainWordIndex;
+end;
+
+class function TWord.FindWord(ABrain: TBrain; AWord: UTF8String): TWord;
+begin
+  Result := GetWordIndexSubset(ABrain).FindWord(AWord);
 end;
 
 function TWord.ToString: UTF8String;
@@ -292,8 +581,6 @@ begin
     begin
       Assert(Basis.Count > 0, '{0190F889-CB9D-48D3-A01A-369E4B823FC1}');
       FContentCashe := (Basis[0] as TSourceItem).ToString;
-      if (Length(FContentCashe) = 1) and (ord(FContentCashe[1]) <= 32) then
-        FContentCashe := '#' + IntToStr(ord(FContentCashe[1]));
     end;
   Result := FContentCashe;
 end;
@@ -361,11 +648,9 @@ end;
 
 function TSimpleTextFileSourceItem.InfoText: UTF8String;
 var
-  s: string;
   CodedS: UTF8String;
 begin
-  s := copy(String(FPosition), 1, FSize);
-  CodedS := UTF8String(@s[1]);
+  CodedS := ToString;
   Result :=
     Format(
       rsProofFromFileSDDS, [
@@ -383,6 +668,8 @@ var
 begin
   s := copy(String(FPosition), 1, FSize);
   Result := UTF8String(@s[1]);
+  if (Length(Result) = 1) and (ord(Result[1]) <= 32) then
+    Result := '#' + IntToStr(ord(Result[1]));
 end;
 
 { TSimpleTextFileSource }

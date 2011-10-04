@@ -43,6 +43,7 @@ type
 
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
     function Merge(AOtherItem: TKnowledgeItem): Boolean;
+    procedure Changed; virtual;
   end;
 
   TSourceItem = class;
@@ -88,17 +89,23 @@ type
   private
     FSubsets: TList;
     FSuperset: TKnowledgeBaseSubset;
+    function GetSubset(Index: Integer): TKnowledgeBaseSubset;
+    function GetSubsetsCount: Integer;
   public
     constructor Create(ASuperset: TKnowledgeBaseSubset); virtual;
     destructor Destroy; override;
 
     // subset content management
     function GetIterator: TKnowledgeIterator; virtual; abstract;
+    function InfoText: UTF8String; virtual;
+    function ContentText: UTF8String; virtual;
 
     // subset hierarchy
     property Superset: TKnowledgeBaseSubset read FSuperset;
     procedure RegisterSubset(ASubset: TKnowledgeBaseSubset);
     procedure UnRegisterSubset(ASubset: TKnowledgeBaseSubset);
+    property SubsetsCount: Integer read GetSubsetsCount;
+    property Subset[Index: Integer]: TKnowledgeBaseSubset read GetSubset;
     procedure SupersetItemAdded(AItem: TKnowledgeItem); virtual;
     procedure SupersetItemChanged(AItem: TKnowledgeItem); virtual;
   end;
@@ -134,6 +141,7 @@ type
     function Count: Integer; virtual; abstract;
     property Items[Index: Integer]: TKnowledgeItem read GetItem; default;
     function Add(AItem: TKnowledgeItem): TKnowledgeItem; virtual; abstract;
+    function InfoText: UTF8String; override;
   end;
 
   { TTabledKnowledgeIterator }
@@ -198,12 +206,26 @@ var
   i: Integer;
 begin
   Result := InternalAdd(AItem);
+  SupersetItemAdded(Result);
 
   for i := 0 to DetectorCount - 1 do
     Detectors[i].Evalute(Result);
 end;
 
 { TKnowledgeBaseSubset }
+
+function TKnowledgeBaseSubset.GetSubset(Index: Integer): TKnowledgeBaseSubset;
+begin
+  Result := TKnowledgeBaseSubset(FSubsets[Index]);
+end;
+
+function TKnowledgeBaseSubset.GetSubsetsCount: Integer;
+begin
+  if Assigned(FSubsets) then
+    Result := FSubsets.Count
+  else
+    Result := 0;
+end;
 
 constructor TKnowledgeBaseSubset.Create(ASuperset: TKnowledgeBaseSubset);
 begin
@@ -218,6 +240,26 @@ begin
   if Assigned(FSuperset) then
     FSuperset.UnRegisterSubset(Self);
   inherited Destroy;
+end;
+
+function TKnowledgeBaseSubset.InfoText: UTF8String;
+begin
+  Result := ClassName;
+end;
+
+function TKnowledgeBaseSubset.ContentText: UTF8String;
+begin
+  Result := InfoText + #13#10;
+  with GetIterator do
+    try
+      while not EOF do
+        begin
+          Result := Result + '  ' + CurrentItem.InfoText;
+          Next;
+        end;
+    finally
+      Free;
+    end;
 end;
 
 procedure TKnowledgeBaseSubset.RegisterSubset(ASubset: TKnowledgeBaseSubset);
@@ -293,6 +335,11 @@ end;
 function TTabledKnowledgeBaseSubset.GetIterator: TKnowledgeIterator;
 begin
   Result := TTabledKnowledgeIterator.Create(Self);
+end;
+
+function TTabledKnowledgeBaseSubset.InfoText: UTF8String;
+begin
+  Result := Inherited InfoText + ', Count: ' + IntToStr(Count);
 end;
 
 { TFunctionalKnowledgeBaseSubset }
@@ -405,6 +452,12 @@ begin
         Basis.Add(AOtherItem.Basis[i]);
       AOtherItem.Free;
     end;
+end;
+
+procedure TKnowledgeItem.Changed;
+begin
+  if Assigned(FOwner) then
+    FOwner.SupersetItemAdded(Self);
 end;
 
 end.
