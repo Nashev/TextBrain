@@ -57,11 +57,10 @@
         <ComponentName Value="MainForm1"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm1Unit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="52"/>
-        <CursorPos X="1" Y="72"/>
+        <TopLine Value="60"/>
+        <CursorPos X="43" Y="60"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -72,8 +71,8 @@
         <UnitName Value="Engine1Unit"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="122"/>
-        <CursorPos X="44" Y="144"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -82,10 +81,11 @@
         <Filename Value="engine11unit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Engine11Unit"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="259"/>
-        <CursorPos X="1" Y="281"/>
+        <TopLine Value="772"/>
+        <CursorPos X="12" Y="776"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>

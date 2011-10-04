@@ -722,8 +722,7 @@ end;
 function TSimpleTextFileSource.ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem;
 var
   EndPosition: PUTF8Char;
-  NextChar: array [0..2] of WideChar;
-  PNextChar: PWideChar;
+  NextChar: UTF8String;
   CharSize: SizeInt;
   ReadedChars: SizeInt;
   RestSize: SizeInt;
@@ -768,7 +767,7 @@ var
 
 const
   // TODO: letter / non letter by Unicode routines
-  DelimiterChars: UnicodeString =
+  DelimiterChars: UTF8string =
     #1#2#3#4#5#6#7#8#9 +
     #10#11#12#13#14#15#16#17#18#19 +
     #20#21#22#23#24#25#26#27#28#29 +
@@ -779,14 +778,12 @@ const
 begin
   Assert(eof);
 
-  PNextChar := @NextChar[0];
   RestSize := FEndChar - FPosition;
 
   CharSize := UTF8CharSize(FPosition);
-  ReadedChars := Utf8ToUnicode(PNextChar, 1, FPosition, RestSize);
-  Assert(ReadedChars = 2, '{04B9447D-F1F6-4BBF-9083-C441B545FC9C}');
+  NextChar := Copy(UTF8String(FPosition^), 1, 1);
   // check if now there are a delimiter
-  if Pos(NextChar[0], DelimiterChars) > 0 then
+  if Pos(NextChar, DelimiterChars) > 0 then
     begin
       Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, CharSize);
       Result.IntegrateToBrain(Owner);
@@ -802,9 +799,8 @@ begin
     if RestSize <= 0 then
       Break;
     CharSize := UTF8CharSize(EndPosition);
-    ReadedChars := Utf8ToUnicode(PNextChar, 1, EndPosition, RestSize);
-    Assert(ReadedChars = 2, '{78DC9A6D-6CD9-45D0-971A-90A78E959157}');
-  until (EndPosition >= FEndChar) or (Pos(NextChar[0], DelimiterChars) > 0);
+    NextChar := Copy(UTF8String(EndPosition^), 1, 1);
+  until (EndPosition >= FEndChar) or (Pos(NextChar, DelimiterChars) > 0);
 
   Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, EndPosition - FPosition);
   Result.IntegrateToBrain(Owner);
