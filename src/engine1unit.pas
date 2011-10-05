@@ -9,6 +9,7 @@ uses
 
 type
   TKnowledgeBaseSubset = class;
+  //TKnowledgeBaseSubsetClass = class of TKnowledgeBaseSubset;
   TTabledKnowledgeBaseSubset = class;
   TTabledKnowledgeBaseSubsetClass = class of TTabledKnowledgeBaseSubset;
   TKnowledgeItem = class;
@@ -20,29 +21,34 @@ type
 
   TKnowledgeItem = class
   private
-    FDetectorClass: TDetectorClass;
+    //FDetectorClass: TDetectorClass;
     FBasis: TTabledKnowledgeBaseSubset;
+    FConsequences: TTabledKnowledgeBaseSubset;
     FOwner: TBrain;
   protected
 //    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; virtual; abstract;
     function GetBasisClass: TTabledKnowledgeBaseSubsetClass; virtual; abstract;
+    function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; virtual; abstract;
     function TryMergeToBrain(ABrain: TBrain): Boolean; virtual;
+    function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
+    function Merge(AOtherItem: TKnowledgeItem): Boolean;
   public
     constructor Create(ADetectorClass: TDetectorClass);
+    destructor Destroy;
     procedure IntegrateToBrain(ABrain: TBrain); // need be called when this item will be ready for merge.
 
     property Owner: TBrain read FOwner;
     //function LinkCount: Integer; virtual; abstract;
     //property LinkedKnowledge[Index: Integer]: TKnowledgeItem read GetLinkedKnowledge;
 
-    property DetectorClass: TDetectorClass read FDetectorClass;
+    //property DetectorClass: TDetectorClass read FDetectorClass;
+
     property Basis: TTabledKnowledgeBaseSubset read FBasis;
+    property Consequences: TTabledKnowledgeBaseSubset read FConsequences; // opposite side of Basis: filled only when item added to some basis
 
     function ToString: UTF8String; virtual; abstract; reintroduce;
     function InfoText: UTF8String; virtual;
 
-    function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
-    function Merge(AOtherItem: TKnowledgeItem): Boolean;
     procedure Changed; virtual;
   end;
 
@@ -190,7 +196,7 @@ implementation
 
 
 resourcestring
-  rsKnowledgeBasisInfo = ' (%d basis)';
+  rsKnowledgeInfo = ' (%d basis, %d consequences)';
 
 { TDetector }
 
@@ -409,21 +415,15 @@ end;
 constructor TKnowledgeItem.Create(ADetectorClass: TDetectorClass);
 begin
   inherited Create;
-  FDetectorClass := ADetectorClass;
+  //FDetectorClass := ADetectorClass;
   FBasis := GetBasisClass.Create(nil); // TODO: Is we need a superset for basis?
+  FConsequences := GetConsequencesClass.Create(nil); // TODO: Is we need a superset for basis?
 end;
 
-function TKnowledgeItem.TryMergeToBrain(ABrain: TBrain): Boolean;
-var
-  i: Integer;
+destructor TKnowledgeItem.Destroy;
 begin
-  Result := False;
-  for i := 0 to ABrain.Count - 1 do
-    if ABrain.Items[i].Merge(Self) then // TODO: detect anything om merge
-      begin
-        Result := True;
-        Exit;
-      end;
+  FreeAndNil(FBasis);
+  FreeAndNil(FConsequences);
 end;
 
 procedure TKnowledgeItem.IntegrateToBrain(ABrain: TBrain);
@@ -436,22 +436,32 @@ begin
     end;
 end;
 
-function TKnowledgeItem.InfoText: UTF8String;
-begin
-  Result := ToString + Format(rsKnowledgeBasisInfo, [Basis.Count]);
-end;
-
-function TKnowledgeItem.Merge(AOtherItem: TKnowledgeItem): Boolean;
+function TKnowledgeItem.TryMergeToBrain(ABrain: TBrain): Boolean;
 var
   i: Integer;
 begin
-  Result := IsSameKnowledge(AOtherItem);
-  if Result then
-    begin
-      for i := 0 to AOtherItem.Basis.Count - 1 do
-        Basis.Add(AOtherItem.Basis[i]);
-      AOtherItem.Free;
-    end;
+  Result := False;
+  for i := 0 to ABrain.Count - 1 do
+    if IsSameKnowledge(ABrain.Items[i]) then
+      begin
+        ABrain.Items[i].Merge(Self);  // TODO: detect anything om merge
+        Result := True;
+        Exit;
+      end;
+end;
+
+function TKnowledgeItem.InfoText: UTF8String;
+begin
+  Result := ToString + Format(rsKnowledgeInfo, [Basis.Count, Consequences.Count]);
+end;
+
+procedure TKnowledgeItem.Merge(AOtherItem: TKnowledgeItem);
+var
+  i: Integer;
+begin
+  for i := 0 to AOtherItem.Basis.Count - 1 do
+    Basis.Add(AOtherItem.Basis[i]);
+  AOtherItem.Free;
 end;
 
 procedure TKnowledgeItem.Changed;

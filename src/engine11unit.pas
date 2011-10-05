@@ -9,7 +9,11 @@ uses
 
 type
   PUTF8Char = type PChar;
+
   EWrongCallException = class(Exception)
+  end;
+
+  EWrongStateException = class(Exception)
   end;
 
   { TKnowledgeItem1 }
@@ -17,6 +21,7 @@ type
   TKnowledgeItem1 = class(TKnowledgeItem)
   protected
     function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
+    function GetConsequencesClass: TKnowledgeBaseSubsetClass; override;
   end;
 
   { TBasisKnowledgeSubset1 }
@@ -95,6 +100,7 @@ type
     function Source: TSimpleTextFileSource;
   protected
     function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
+    function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
     constructor Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
@@ -216,11 +222,12 @@ type
   { TWordWasCapitalizedFact }
 
   TWordWasCapitalizedFact = class(TKnowledgeItem1) // it doubles some TWord.Basis, when word had based on other word.
+  protected
+    function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
     constructor Create(ADetectorClass: TDetectorClass; ACapitalizedWord, ALowercasedWord: TWord);
     function ToString: UTF8String; override;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
-    //function Merge(AOtherItem: TKnowledgeItem): Boolean; override;
   end;
 
 implementation
@@ -414,7 +421,7 @@ var
 begin
   Compare := CompareStr(AWord.ToString, Word.ToString);
   if Compare = 0 then
-    raise Exception('Double registering' + AWord.ToString)
+    raise EWrongStateException('Double registering' + AWord.ToString)
   else if Compare < 0 then
     LowerWordInfo := LowerWordInfo.RegisterNewWord(AWord)
   else // > 0
@@ -516,6 +523,11 @@ end;
 
 { TWordWasCapitalizedFact }
 
+function TWordWasCapitalizedFact.TryMergeToBrain(ABrain: TBrain): Boolean;
+begin
+  Result := False; // always unique
+end;
+
 constructor TWordWasCapitalizedFact.Create(ADetectorClass: TDetectorClass; ACapitalizedWord, ALowercasedWord: TWord);
 begin
   inherited Create(ADetectorClass);
@@ -534,7 +546,8 @@ begin
         and (Basis[0] = AOtherItem.Basis[0]);
 
   // In case of TWord it's not possible to merge because TWord haven't duplicates!
-  Assert(not Result, '{FBC0AA5E-BFEE-4AC5-8113-7B519A457E1D}');
+  if Result then
+    raise EWrongStateException.Create('TWordWasCapitalizedFact.IsSameKnowledge: ' + InfoText);
 end;
 
 // no need to multiply basis. But in case of TWord it's not possible to merge because TWord haven't duplicates!
@@ -579,7 +592,8 @@ function TWord.ToString: UTF8String;
 begin
   if FContentCashe = '' then
     begin
-      Assert(Basis.Count > 0, '{0190F889-CB9D-48D3-A01A-369E4B823FC1}');
+      if Basis.Count <= 0 then
+        raise EWrongStateException.Create(InfoText);
       FContentCashe := (Basis[0] as TSourceItem).ToString;
     end;
   Result := FContentCashe;
@@ -601,6 +615,11 @@ end;
 { TKnowledgeItem1 }
 
 function TKnowledgeItem1.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
+begin
+  Result := TBasisKnowledgeSubset1;
+end;
+
+function TKnowledgeItem1.GetConsequencesClass: TKnowledgeBaseSubsetClass;
 begin
   Result := TBasisKnowledgeSubset1;
 end;
@@ -631,11 +650,14 @@ begin
   Result := TBasisKnowledgeSubset1;
 end;
 
+function TSimpleTextFileSourceItem.TryMergeToBrain(ABrain: TBrain): Boolean;
+begin
+  Result := False; // always unique
+end;
+
 function TSimpleTextFileSourceItem.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
 begin
   Result := (AOtherItem is TSimpleTextFileSourceItem) and (TSimpleTextFileSourceItem(AOtherItem).FPosition = FPosition);
-  // can't be any dublicate TSimpleTextFileSourceItem
-  Assert(False, '{0C131094-7D77-427F-8DCD-14784A50FD7A}');
 end;
 
 constructor TSimpleTextFileSourceItem.Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
