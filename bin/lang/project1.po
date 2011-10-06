@@ -9,6 +9,10 @@ msgstr ""
 msgid " (%d basis)"
 msgstr ""
 
+#: engine1unit.rsknowledgeinfo
+msgid " (%d basis, %d consequences)"
+msgstr ""
+
 #: TMAINFORM1.ACTLOADNEWANSISOURCE.CAPTION
 msgid "Load new Ansi source..."
 msgstr ""

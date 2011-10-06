@@ -20,23 +20,38 @@ type
 
   TKnowledgeItem1 = class(TKnowledgeItem)
   protected
-    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
-    function GetConsequencesClass: TKnowledgeBaseSubsetClass; override;
+    function GetBasisClass: TBasisClass; override;
+    function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; override;
   end;
 
-  { TBasisKnowledgeSubset1 }
+  { TBasis1 }
 
-  TBasisKnowledgeSubset1 = class(TTabledKnowledgeBaseSubset)
+  TBasis1 = class(TBasis)
   private
     FItems: TObjectList;
   protected
     function GetItem(Index: Integer): TKnowledgeItem; override;
+    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
+  public
+    constructor Create(AOwner: TKnowledgeItem); override;
+    destructor Destroy; override;
+
+    function Count: Integer; override;
+  end;
+
+  { TTabledKnowledgeBaseSubset1 }
+
+  TTabledKnowledgeBaseSubset1 = class(TTabledKnowledgeBaseSubset)
+  private
+    FItems: TObjectList;
+  protected
+    function GetItem(Index: Integer): TKnowledgeItem; override;
+    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
   public
     constructor Create(ASuperset: TKnowledgeBaseSubset); override;
     destructor Destroy; override;
 
     function Count: Integer; override;
-    function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
   end;
 
   { TBrain1 }
@@ -44,16 +59,16 @@ type
   TBrain1 = class(TBrain)
   private
     FDetectors: TObjectList;
-    FItems: TBasisKnowledgeSubset1;
+    FItems: TTabledKnowledgeBaseSubset1;
   protected
     function GetItem(Index: integer): TKnowledgeItem; override;
     function GetDetector(Index: integer): TDetector; override;
+    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
   public
     constructor Create; reintroduce;
     destructor Destroy; override;
 
     function Count: integer; override;
-    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
     property Detectors: TObjectList read FDetectors;
     function DetectorCount: integer; override;
   end;
@@ -66,7 +81,8 @@ type
     FFileContent: UTF8String;
     FPosition, FEndChar: PUTF8Char;
   protected
-    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
+    function GetBasisClass: TBasisClass; override;
+    function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; override;
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; virtual; abstract;
   public
     constructor Create(ADetectorClass: TDetectorClass; AFileName: UTF8String);
@@ -99,7 +115,8 @@ type
     FSize: Integer;
     function Source: TSimpleTextFileSource;
   protected
-    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; override;
+    function GetBasisClass: TBasisClass; override;
+    function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; override;
     function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
@@ -236,6 +253,36 @@ uses FileUtil, Math;
 
 resourcestring
   rsProofFromFileSDDS = 'From file %s (%d-%d): "%s".';
+
+{ TBasis1 }
+
+function TBasis1.GetItem(Index: Integer): TKnowledgeItem;
+begin
+  Result := TKnowledgeItem(FItems[Index]);
+end;
+
+function TBasis1.InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem;
+begin
+  Result := AItem;
+  FItems.Add(AItem);
+end;
+
+constructor TBasis1.Create(AOwner: TKnowledgeItem);
+begin
+  inherited Create(AOwner);
+  FItems := TObjectList.Create(False);
+end;
+
+destructor TBasis1.Destroy;
+begin
+  FreeAndNil(FItems);
+  inherited Destroy;
+end;
+
+function TBasis1.Count: Integer;
+begin
+  Result := FItems.Count;
+end;
 
 function TWordIndex.FindWord(AWord: UTF8String): TWord;
 begin
@@ -476,35 +523,34 @@ begin
   TWordWasCapitalizedFact.Create(SelfClass, OriginalWord, LowercaseWordItem).IntegrateToBrain(OriginalWord.Owner);
 end;
 
-{ TBasisKnowledgeSubset1 }
+{ TTabledKnowledgeBaseSubset1 }
 
-function TBasisKnowledgeSubset1.GetItem(Index: Integer): TKnowledgeItem;
+function TTabledKnowledgeBaseSubset1.GetItem(Index: Integer): TKnowledgeItem;
 begin
   Result := TKnowledgeItem(FItems[Index]);
 end;
 
-constructor TBasisKnowledgeSubset1.Create(ASuperset: TKnowledgeBaseSubset);
+constructor TTabledKnowledgeBaseSubset1.Create(ASuperset: TKnowledgeBaseSubset);
 begin
   inherited Create(ASuperset);
   FItems := TObjectList.Create(False);
 end;
 
-destructor TBasisKnowledgeSubset1.Destroy;
+destructor TTabledKnowledgeBaseSubset1.Destroy;
 begin
   FreeAndNil(FItems);
   inherited Destroy;
 end;
 
-function TBasisKnowledgeSubset1.Count: Integer;
+function TTabledKnowledgeBaseSubset1.Count: Integer;
 begin
   Result := FItems.Count;
 end;
 
-function TBasisKnowledgeSubset1.Add(AItem: TKnowledgeItem): TKnowledgeItem;
+function TTabledKnowledgeBaseSubset1.InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem;
 begin
   Result := AItem;
   FItems.Add(AItem);
-  SupersetItemAdded(Result);
 end;
 
 { TModifiedWord }
@@ -567,7 +613,10 @@ begin
   Result := False;
   FoundedWord := FindWord(ABrain, ToString);
   if Assigned(FoundedWord) then
-    Result := FoundedWord.Merge(Self);
+    begin
+      FoundedWord.Merge(Self);
+      Result := True;
+    end;
 end;
 
 
@@ -614,14 +663,14 @@ end;
 
 { TKnowledgeItem1 }
 
-function TKnowledgeItem1.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
+function TKnowledgeItem1.GetBasisClass: TBasisClass;
 begin
-  Result := TBasisKnowledgeSubset1;
+  Result := TBasis1;
 end;
 
-function TKnowledgeItem1.GetConsequencesClass: TKnowledgeBaseSubsetClass;
+function TKnowledgeItem1.GetConsequencesClass: TTabledKnowledgeBaseSubsetClass;
 begin
-  Result := TBasisKnowledgeSubset1;
+  Result := TTabledKnowledgeBaseSubset1;
 end;
 
 { TWordDetector }
@@ -645,9 +694,14 @@ begin
   Result := Basis[0] as TSimpleTextFileSource;
 end;
 
-function TSimpleTextFileSourceItem.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
+function TSimpleTextFileSourceItem.GetBasisClass: TBasisClass;
 begin
-  Result := TBasisKnowledgeSubset1;
+  Result := TBasis1;
+end;
+
+function TSimpleTextFileSourceItem.GetConsequencesClass: TTabledKnowledgeBaseSubsetClass;
+begin
+  Result := TTabledKnowledgeBaseSubset1;
 end;
 
 function TSimpleTextFileSourceItem.TryMergeToBrain(ABrain: TBrain): Boolean;
@@ -714,9 +768,14 @@ begin
   Result := (AOtherItem is TSimpleTextFileSource) and (TSimpleTextFileSource(AOtherItem).FFileName = FFileName);
 end;
 
-function TSimpleTextFileSource.GetBasisClass: TTabledKnowledgeBaseSubsetClass;
+function TSimpleTextFileSource.GetBasisClass: TBasisClass;
 begin
-  Result := TBasisKnowledgeSubset1;
+  Result := TBasis1;
+end;
+
+function TSimpleTextFileSource.GetConsequencesClass: TTabledKnowledgeBaseSubsetClass;
+begin
+  Result := TTabledKnowledgeBaseSubset1;
 end;
 
 constructor TSimpleTextFileSource.Create(ADetectorClass: TDetectorClass; AFileName: UTF8String);
@@ -746,7 +805,6 @@ var
   EndPosition: PUTF8Char;
   NextChar: UTF8String;
   CharSize: SizeInt;
-  ReadedChars: SizeInt;
   RestSize: SizeInt;
 
   function UTF8CharSize(AChar: PUTF8Char): SizeUint;
@@ -853,7 +911,7 @@ begin
   inherited Create(nil);
 
   FDetectors := TObjectList.Create(True);
-  FItems := TBasisKnowledgeSubset1.Create(nil);
+  FItems := TTabledKnowledgeBaseSubset1.Create(nil);
 
   FDetectors.Add(TSourceDetector.Create);
   FDetectors.Add(TWordDetector.Create);

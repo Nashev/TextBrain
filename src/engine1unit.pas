@@ -12,6 +12,8 @@ type
   //TKnowledgeBaseSubsetClass = class of TKnowledgeBaseSubset;
   TTabledKnowledgeBaseSubset = class;
   TTabledKnowledgeBaseSubsetClass = class of TTabledKnowledgeBaseSubset;
+  TBasis = class;
+  TBasisClass = class of TBasis;
   TKnowledgeItem = class;
   TBrain = class;
   TDetector = class;
@@ -22,19 +24,19 @@ type
   TKnowledgeItem = class
   private
     //FDetectorClass: TDetectorClass;
-    FBasis: TTabledKnowledgeBaseSubset;
+    FBasis: TBasis;
     FConsequences: TTabledKnowledgeBaseSubset;
     FOwner: TBrain;
   protected
 //    function GetLinkedKnowledge(Index: Integer): TKnowledgeItem; virtual; abstract;
-    function GetBasisClass: TTabledKnowledgeBaseSubsetClass; virtual; abstract;
+    function GetBasisClass: TBasisClass; virtual; abstract;
     function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; virtual; abstract;
     function TryMergeToBrain(ABrain: TBrain): Boolean; virtual;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
-    function Merge(AOtherItem: TKnowledgeItem): Boolean;
+    procedure Merge(AOtherItem: TKnowledgeItem); virtual;
   public
     constructor Create(ADetectorClass: TDetectorClass);
-    destructor Destroy;
+    destructor Destroy; override;
     procedure IntegrateToBrain(ABrain: TBrain); // need be called when this item will be ready for merge.
 
     property Owner: TBrain read FOwner;
@@ -43,7 +45,7 @@ type
 
     //property DetectorClass: TDetectorClass read FDetectorClass;
 
-    property Basis: TTabledKnowledgeBaseSubset read FBasis;
+    property Basis: TBasis read FBasis;
     property Consequences: TTabledKnowledgeBaseSubset read FConsequences; // opposite side of Basis: filled only when item added to some basis
 
     function ToString: UTF8String; virtual; abstract; reintroduce;
@@ -142,11 +144,12 @@ type
   TTabledKnowledgeBaseSubset = class(TKnowledgeBaseSubset)
   protected
     function GetItem(Index: Integer): TKnowledgeItem; virtual; abstract;
+    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; virtual; abstract;
   public
     function GetIterator: TKnowledgeIterator; override;
     function Count: Integer; virtual; abstract;
     property Items[Index: Integer]: TKnowledgeItem read GetItem; default;
-    function Add(AItem: TKnowledgeItem): TKnowledgeItem; virtual; abstract;
+    function Add(AItem: TKnowledgeItem): TKnowledgeItem; virtual;
     function InfoText: UTF8String; override;
   end;
 
@@ -161,6 +164,17 @@ type
     procedure First; override;
     procedure Next; override;
     function CurrentItem: TKnowledgeItem; override;
+  end;
+
+
+  { TBasis }
+
+  TBasis = class(TTabledKnowledgeBaseSubset)
+    FOwner: TKnowledgeItem;
+  public
+    constructor Create(AOwner: TKnowledgeItem); virtual; reintroduce;
+    property Owner: TKnowledgeItem read FOwner;
+    function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
   end;
 
   { TDetector }
@@ -188,7 +202,6 @@ type
     function DetectorCount: Integer; virtual; abstract;
     property Detectors[Index: Integer]: TDetector read GetDetector;
     function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
-    function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; virtual; abstract;
   end;
 
 
@@ -197,6 +210,20 @@ implementation
 
 resourcestring
   rsKnowledgeInfo = ' (%d basis, %d consequences)';
+
+{ TBasis }
+
+constructor TBasis.Create(AOwner: TKnowledgeItem);
+begin
+  inherited Create(nil);
+  FOwner := AOwner;
+end;
+
+function TBasis.Add(AItem: TKnowledgeItem): TKnowledgeItem;
+begin
+  Result := inherited Add(AItem);
+  AItem.Consequences.Add(Owner);
+end;
 
 { TDetector }
 
@@ -343,6 +370,12 @@ begin
   Result := TTabledKnowledgeIterator.Create(Self);
 end;
 
+function TTabledKnowledgeBaseSubset.Add(AItem: TKnowledgeItem): TKnowledgeItem;
+begin
+  Result := InternalAdd(AItem);
+  SupersetItemAdded(Result);
+end;
+
 function TTabledKnowledgeBaseSubset.InfoText: UTF8String;
 begin
   Result := Inherited InfoText + ', Count: ' + IntToStr(Count);
@@ -416,8 +449,8 @@ constructor TKnowledgeItem.Create(ADetectorClass: TDetectorClass);
 begin
   inherited Create;
   //FDetectorClass := ADetectorClass;
-  FBasis := GetBasisClass.Create(nil); // TODO: Is we need a superset for basis?
-  FConsequences := GetConsequencesClass.Create(nil); // TODO: Is we need a superset for basis?
+  FBasis := GetBasisClass.Create(Self);
+  FConsequences := GetConsequencesClass.Create(nil);
 end;
 
 destructor TKnowledgeItem.Destroy;

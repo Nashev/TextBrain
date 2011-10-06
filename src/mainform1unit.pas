@@ -123,11 +123,16 @@ begin
 end;
 
 procedure TMainForm1.ButtonShowSubsetsClick(Sender: TObject);
-var
-  i: Integer;
+  procedure ShowKnowledgeSet(APrefix: string; AKnowledgeBaseSubset: TKnowledgeBaseSubset);
+  var
+    i: Integer;
+  begin
+    KnowledgeMemo.Lines.Add(APrefix + ' ' + AKnowledgeBaseSubset.InfoText);
+    for i := 0 to AKnowledgeBaseSubset.SubsetsCount - 1 do
+      ShowKnowledgeSet('*' + APrefix, AKnowledgeBaseSubset.Subset[i]);
+  end;
 begin
-  for i := 0 to FBrain.SubsetsCount - 1 do
-    KnowledgeMemo.Lines.Add(FBrain.Subset[i].InfoText);
+  ShowKnowledgeSet('', FBrain);
 end;
 
 procedure TMainForm1.FormDestroy(Sender: TObject);
