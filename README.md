@@ -3,10 +3,10 @@ TextBrain
 
 Experiments with AI, based on text. 
 
-Initially it must load text, extract words, reecognize same words in difereent cases, 
-store links betweeen them, add all of them into single database (brain) as knowledges
+Initially it must load text, extract a words, recognize a same words in different cases, 
+store links between them, and add all of them into a single database ("brain") as a "knowledges".
 
-Adding any new knowledge to the brain must alow automatically produce some additional
-knowledge by knowledge detectors.
+Adding any new "knowledge" to the "brain" must allow to automatically produce some additional
+"knowledge" by "knowledge detectors".
 
-Must be interface to browse brain content and then make some requests.
+Must be interface to browse "brain" content and then make some requests.
