@@ -5,46 +5,86 @@ msgstr "Content-Type: text/plain; charset=UTF-8"
 msgid "From file %s (%d-%d): \"%s\"."
 msgstr ""
 
-#: engine1unit.rsknowledgebasisinfo
-msgid " (%d basis)"
-msgstr ""
-
 #: engine1unit.rsknowledgeinfo
 msgid " (%d basis, %d consequences)"
 msgstr ""
 
-#: TMAINFORM1.ACTLOADNEWANSISOURCE.CAPTION
+#: tmainform.actloadnewansisource.caption
+msgctxt "TMAINFORM.ACTLOADNEWANSISOURCE.CAPTION"
 msgid "Load new Ansi source..."
 msgstr ""
 
-#: TMAINFORM1.ACTLOADNEWUTF8SOURCE.CAPTION
+#: tmainform.actloadnewutf8source.caption
+msgctxt "TMAINFORM.ACTLOADNEWUTF8SOURCE.CAPTION"
 msgid "Load new UTF8 source..."
 msgstr ""
 
-#: TMAINFORM1.BUTTONCLEAR.CAPTION
+#: tmainform.buttonclear.caption
+msgctxt "TMAINFORM.BUTTONCLEAR.CAPTION"
+msgid "Clear"
+msgstr ""
+
+#: tmainform.buttonshowsubsets.caption
+msgctxt "TMAINFORM.BUTTONSHOWSUBSETS.CAPTION"
+msgid "Show subsets"
+msgstr ""
+
+#: tmainform.caption
+msgid "Text Brain"
+msgstr ""
+
+#: tmainform.mmisources.caption
+msgctxt "TMAINFORM.MMISOURCES.CAPTION"
+msgid "Sources"
+msgstr ""
+
+#: tmainform.toggleboxpause.caption
+msgctxt "TMAINFORM.TOGGLEBOXPAUSE.CAPTION"
+msgid "Pause"
+msgstr ""
+
+#: tmainform.toggleboxsilent.caption
+msgctxt "TMAINFORM.TOGGLEBOXSILENT.CAPTION"
+msgid "Silent"
+msgstr ""
+
+#: tmainform1.actloadnewansisource.caption
+msgctxt "tmainform1.actloadnewansisource.caption"
+msgid "Load new Ansi source..."
+msgstr ""
+
+#: tmainform1.actloadnewutf8source.caption
+msgctxt "tmainform1.actloadnewutf8source.caption"
+msgid "Load new UTF8 source..."
+msgstr ""
+
+#: tmainform1.buttonclear.caption
 msgctxt "TMAINFORM1.BUTTONCLEAR.CAPTION"
 msgid "Clear"
 msgstr ""
 
-#: TMAINFORM1.BUTTONSHOWSUBSETS.CAPTION
+#: tmainform1.buttonshowsubsets.caption
+msgctxt "tmainform1.buttonshowsubsets.caption"
 msgid "Show subsets"
 msgstr ""
 
-#: TMAINFORM1.CAPTION
+#: tmainform1.caption
 msgctxt "TMAINFORM1.CAPTION"
 msgid "MainForm1"
 msgstr ""
 
-#: TMAINFORM1.MMISOURCES.CAPTION
+#: tmainform1.mmisources.caption
+msgctxt "tmainform1.mmisources.caption"
 msgid "Sources"
 msgstr ""
 
-#: TMAINFORM1.TOGGLEBOXPAUSE.CAPTION
+#: tmainform1.toggleboxpause.caption
 msgctxt "TMAINFORM1.TOGGLEBOXPAUSE.CAPTION"
 msgid "Pause"
 msgstr ""
 
-#: TMAINFORM1.TOGGLEBOXSILENT.CAPTION
+#: tmainform1.toggleboxsilent.caption
+msgctxt "tmainform1.toggleboxsilent.caption"
 msgid "Silent"
 msgstr ""
 

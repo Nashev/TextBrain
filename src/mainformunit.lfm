@@ -1,0 +1,115 @@
+object MainForm: TMainForm
+  Left = 496
+  Height = 644
+  Top = 209
+  Width = 964
+  Caption = 'Text Brain'
+  ClientHeight = 624
+  ClientWidth = 964
+  Menu = MainMenu
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.0.14.0'
+  object SourceMemo: TMemo
+    Left = 0
+    Height = 598
+    Top = 26
+    Width = 526
+    Align = alLeft
+    ReadOnly = True
+    ScrollBars = ssAutoBoth
+    TabOrder = 0
+  end
+  object KnowledgeMemo: TMemo
+    Left = 531
+    Height = 598
+    Top = 26
+    Width = 433
+    Align = alClient
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+  end
+  object Splitter1: TSplitter
+    Left = 526
+    Height = 598
+    Top = 26
+    Width = 5
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 964
+    Align = alTop
+    ClientHeight = 26
+    ClientWidth = 964
+    TabOrder = 3
+    object ButtonClear: TButton
+      Left = 880
+      Height = 25
+      Top = 0
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Clear'
+      OnClick = ButtonClearClick
+      TabOrder = 0
+    end
+    object ToggleBoxPause: TToggleBox
+      Left = 24
+      Height = 23
+      Top = 0
+      Width = 90
+      Caption = 'Pause'
+      TabOrder = 1
+    end
+    object ToggleBoxSilent: TToggleBox
+      Left = 120
+      Height = 23
+      Top = 0
+      Width = 90
+      Caption = 'Silent'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+    end
+    object ButtonShowSubsets: TButton
+      Left = 792
+      Height = 25
+      Top = 0
+      Width = 83
+      Anchors = [akTop, akRight]
+      Caption = 'Show subsets'
+      OnClick = ButtonShowSubsetsClick
+      TabOrder = 3
+    end
+  end
+  object ActionList: TActionList
+    left = 88
+    top = 32
+    object actLoadNewAnsiSource: TAction
+      Caption = 'Load new Ansi source...'
+      OnExecute = actLoadNewAnsiSourceExecute
+    end
+    object actLoadNewUTF8Source: TAction
+      Caption = 'Load new UTF8 source...'
+      OnExecute = actLoadNewUTF8SourceExecute
+    end
+  end
+  object MainMenu: TMainMenu
+    left = 88
+    top = 96
+    object mmiSources: TMenuItem
+      Caption = 'Sources'
+      object MenuItem2: TMenuItem
+        Action = actLoadNewAnsiSource
+      end
+      object MenuItem1: TMenuItem
+        Action = actLoadNewUTF8Source
+      end
+    end
+  end
+  object OpenDialog: TOpenDialog
+    left = 168
+    top = 32
+  end
+end

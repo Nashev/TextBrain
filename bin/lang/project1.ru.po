@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: TextBrain\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+
+#: engine11unit.rsprooffromfilesdds
+msgid "From file %s (%d-%d): \"%s\"."
+msgstr "Из файла %s (%d-%d): \"%s\"."
+
+#: engine1unit.rsknowledgeinfo
+msgid " (%d basis, %d consequences)"
+msgstr " (%d basis, %d consequences)"
+
+#: tmainform.actloadnewansisource.caption
+msgctxt "tmainform.actloadnewansisource.caption"
+msgid "Load new Ansi source..."
+msgstr "Загрузить новый текст в кодировке ANSI..."
+
+#: tmainform.actloadnewutf8source.caption
+msgctxt "tmainform.actloadnewutf8source.caption"
+msgid "Load new UTF8 source..."
+msgstr "Загрузить новый текст в кодировке UTF-8..."
+
+#: tmainform.buttonclear.caption
+msgctxt "tmainform.buttonclear.caption"
+msgid "Clear"
+msgstr "Очистить"
+
+#: tmainform.buttonshowsubsets.caption
+msgctxt "tmainform.buttonshowsubsets.caption"
+msgid "Show subsets"
+msgstr "Показать подмножества"
+
+#: tmainform.caption
+msgid "Text Brain"
+msgstr ""
+
+#: tmainform.mmisources.caption
+msgctxt "tmainform.mmisources.caption"
+msgid "Sources"
+msgstr "Исходный текст"
+
+#: tmainform.toggleboxpause.caption
+msgctxt "tmainform.toggleboxpause.caption"
+msgid "Pause"
+msgstr "Пауза"
+
+#: tmainform.toggleboxsilent.caption
+msgctxt "tmainform.toggleboxsilent.caption"
+msgid "Silent"
+msgstr "Тихий режим"
+
+#: tmainform1.actloadnewansisource.caption
+msgctxt "tmainform1.actloadnewansisource.caption"
+msgid "Load new Ansi source..."
+msgstr "Загрузить новый текст в кодировке ANSI..."
+
+#: tmainform1.actloadnewutf8source.caption
+msgctxt "tmainform1.actloadnewutf8source.caption"
+msgid "Load new UTF8 source..."
+msgstr "Загрузить новый текст в кодировке UTF-8..."
+
+#: tmainform1.buttonclear.caption
+msgctxt "TMAINFORM1.BUTTONCLEAR.CAPTION"
+msgid "Clear"
+msgstr "Очистить"
+
+#: tmainform1.buttonshowsubsets.caption
+msgctxt "tmainform1.buttonshowsubsets.caption"
+msgid "Show subsets"
+msgstr "Показать подмножества"
+
+#: tmainform1.caption
+msgctxt "TMAINFORM1.CAPTION"
+msgid "MainForm1"
+msgstr "Главное окно"
+
+#: tmainform1.mmisources.caption
+msgctxt "tmainform1.mmisources.caption"
+msgid "Sources"
+msgstr "Исходный текст"
+
+#: tmainform1.toggleboxpause.caption
+msgctxt "TMAINFORM1.TOGGLEBOXPAUSE.CAPTION"
+msgid "Pause"
+msgstr "Пауза"
+
+#: tmainform1.toggleboxsilent.caption
+msgctxt "tmainform1.toggleboxsilent.caption"
+msgid "Silent"
+msgstr "Тихий режим"
+

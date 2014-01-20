@@ -7,14 +7,14 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, MainForm1Unit, Engine1Unit, Engine11Unit
+  Forms, MainFormUnit, Engine1Unit, Engine11Unit
   { you can add units after this };
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TMainForm1, MainForm1);
+  Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
 
