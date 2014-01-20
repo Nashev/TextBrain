@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 496
+  Left = 464
   Height = 644
-  Top = 209
+  Top = 219
   Width = 964
   Caption = 'Text Brain'
   ClientHeight = 624
@@ -12,8 +12,8 @@ object MainForm: TMainForm
   LCLVersion = '1.0.14.0'
   object SourceMemo: TMemo
     Left = 0
-    Height = 598
-    Top = 26
+    Height = 600
+    Top = 24
     Width = 526
     Align = alLeft
     ReadOnly = True
@@ -22,8 +22,8 @@ object MainForm: TMainForm
   end
   object KnowledgeMemo: TMemo
     Left = 531
-    Height = 598
-    Top = 26
+    Height = 600
+    Top = 24
     Width = 433
     Align = alClient
     ScrollBars = ssAutoBoth
@@ -31,52 +31,52 @@ object MainForm: TMainForm
   end
   object Splitter1: TSplitter
     Left = 526
-    Height = 598
-    Top = 26
+    Height = 600
+    Top = 24
     Width = 5
   end
   object Panel1: TPanel
     Left = 0
-    Height = 26
+    Height = 24
     Top = 0
     Width = 964
     Align = alTop
-    ClientHeight = 26
+    ClientHeight = 24
     ClientWidth = 964
     TabOrder = 3
     object ButtonClear: TButton
-      Left = 880
-      Height = 25
+      Left = 832
+      Height = 21
       Top = 0
-      Width = 75
+      Width = 123
       Anchors = [akTop, akRight]
       Caption = 'Clear'
       OnClick = ButtonClearClick
       TabOrder = 0
     end
     object ToggleBoxPause: TToggleBox
-      Left = 24
-      Height = 23
+      Left = 0
+      Height = 21
       Top = 0
-      Width = 90
+      Width = 114
       Caption = 'Pause'
       TabOrder = 1
     end
     object ToggleBoxSilent: TToggleBox
       Left = 120
-      Height = 23
+      Height = 21
       Top = 0
-      Width = 90
+      Width = 146
       Caption = 'Silent'
       Checked = True
       State = cbChecked
       TabOrder = 2
     end
     object ButtonShowSubsets: TButton
-      Left = 792
-      Height = 25
+      Left = 664
+      Height = 21
       Top = 0
-      Width = 83
+      Width = 163
       Anchors = [akTop, akRight]
       Caption = 'Show subsets'
       OnClick = ButtonShowSubsetsClick

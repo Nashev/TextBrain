@@ -251,9 +251,6 @@ implementation
 
 uses FileUtil, Math;
 
-resourcestring
-  rsProofFromFileSDDS = 'From file %s (%d-%d): "%s".';
-
 { TBasis1 }
 
 function TBasis1.GetItem(Index: Integer): TKnowledgeItem;
@@ -309,6 +306,9 @@ begin
   Result := nil;
 end;
 
+resourcestring
+  rsWordIndexContentText = ' "%s" (%d weight)';
+
 function TWordIndex.ContentText: UTF8String;
 
   procedure AddContentText(APrefix: UTF8string; AWordIndexInfo: TWordIndexInfo);
@@ -317,7 +317,7 @@ function TWordIndex.ContentText: UTF8String;
       with TWordIndexRealInfo(AWordIndexInfo) do
         begin
           AddContentText(APrefix + '*', LowerWordInfo);
-          Result := Result + APrefix + ' ' + Word.ToString + ' (' + IntToStr(Weight) + ' weight)'#13#10;
+          Result := Result + APrefix + Format(rsWordIndexContentText, [Word.ToString, Weight]) + #13#10;
           AddContentText(APrefix + '*', HigherWordInfo);
         end;
   end;
@@ -335,11 +335,15 @@ begin
   Root := Root.RegisterNewWord(AItem as TWord);
 end;
 
+resourcestring
+  rsWordIndexInfoText = ' Weight of root is %d';
+  rsWordIndexInfoTextAddon = ', word: "%s"';
+
 function TWordIndex.InfoText: UTF8String;
 begin
-  Result := inherited InfoText + ' Weight of root is ' + IntToStr(Root.Weight);
+  Result := inherited InfoText + Format(rsWordIndexInfoText, [Root.Weight]);
   if Root is TWordIndexRealInfo then
-    Result := Result + ', word:' + TWordIndexRealInfo(Root).Word.InfoText;
+    Result := Result + Format(rsWordIndexInfoTextAddon, [TWordIndexRealInfo(Root).Word.InfoText]);
 end;
 
 { TWordIndexStubInfo }
@@ -462,13 +466,16 @@ begin
     FWeight := max(LowerWeight, HigherWeight) + 1;
 end;
 
+resourcestring
+  rsWrongStateExceptionDoubleRegist = 'Double registering';
+
 function TWordIndexRealInfo.RegisterNewWord(AWord: TWord):TWordIndexInfo;
 var
   Compare: Integer;
 begin
   Compare := CompareStr(AWord.ToString, Word.ToString);
   if Compare = 0 then
-    raise EWrongStateException('Double registering' + AWord.ToString)
+    raise EWrongStateException.CreateFmt(rsWrongStateExceptionDoubleRegist, [AWord.ToString])
   else if Compare < 0 then
     LowerWordInfo := LowerWordInfo.RegisterNewWord(AWord)
   else // > 0
@@ -581,9 +588,12 @@ begin
   Basis.Add(ALowercasedWord);  // Basis[1]
 end;
 
+resourcestring
+  rsWordWasCapitalizedFactToString = 'link: %s -> %s';
+
 function TWordWasCapitalizedFact.ToString: UTF8String;
 begin
-  Result := 'link: ' + Basis[0].ToString + ' -> ' + Basis[1].ToString;
+  Result := Format(rsWordWasCapitalizedFactToString, [Basis[0].ToString, Basis[1].ToString]);
 end;
 
 function TWordWasCapitalizedFact.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
@@ -722,6 +732,9 @@ begin
   FSize     := ASize;
 end;
 
+resourcestring
+  rsSimpleTextFileSourceItemInfoText = 'From file %s (%d-%d): "%s".';
+
 function TSimpleTextFileSourceItem.InfoText: UTF8String;
 var
   CodedS: UTF8String;
@@ -729,7 +742,7 @@ begin
   CodedS := ToString;
   Result :=
     Format(
-      rsProofFromFileSDDS, [
+      rsSimpleTextFileSourceItemInfoText, [
         Source.FFileName,
         SizeInt(FPosition - @Source.FFileContent[1]),
         length(CodedS),
@@ -755,12 +768,17 @@ begin
   Result := FFileContent;
 end;
 
+resourcestring
+  rsSimpleTextFileSourceInfoText = '%s'#13#10' retain %d bytes of %d bytes. %d%% done.';
+
 function TSimpleTextFileSource.InfoText: UTF8String;
 begin
-  Result := FFileName + #13#10
-    + ' retain ' + IntToStr(FEndChar - FPosition) + ' bytes'
-    + ' of ' + IntToStr(FEndChar - @FFileContent[1]) + ' bytes.'
-    + ' ' + IntToStr(100 - Round(100 * (FEndChar - FPosition) / (FEndChar - @FFileContent[1]))) + '% done.'
+  Result := Format(rsSimpleTextFileSourceInfoText, [
+    FFileName,
+    FEndChar - FPosition,
+    FEndChar - @FFileContent[1],
+    100 - Round(100 * (FEndChar - FPosition) / (FEndChar - @FFileContent[1]))
+  ]);
 end;
 
 function TSimpleTextFileSource.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;

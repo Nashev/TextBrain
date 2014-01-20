@@ -207,10 +207,6 @@ type
 
 implementation
 
-
-resourcestring
-  rsKnowledgeInfo = ' (%d basis, %d consequences)';
-
 { TBasis }
 
 constructor TBasis.Create(AOwner: TKnowledgeItem);
@@ -376,9 +372,12 @@ begin
   SupersetItemAdded(Result);
 end;
 
+resourcestring
+  rsTabledKnowledgeBaseSubsetInfoText = ', Count: %d';
+
 function TTabledKnowledgeBaseSubset.InfoText: UTF8String;
 begin
-  Result := Inherited InfoText + ', Count: ' + IntToStr(Count);
+  Result := Inherited InfoText + format(rsTabledKnowledgeBaseSubsetInfoText, [Count]);
 end;
 
 { TFunctionalKnowledgeBaseSubset }
@@ -482,6 +481,9 @@ begin
         Exit;
       end;
 end;
+
+resourcestring
+  rsKnowledgeInfo = ' (%d basis, %d consequences)';
 
 function TKnowledgeItem.InfoText: UTF8String;
 begin

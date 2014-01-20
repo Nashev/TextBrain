@@ -1,0 +1,81 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: engine11unit.rssimpletextfilesourceinfotext
+msgid ""
+"%s\n"
+" retain %d bytes of %d bytes. %d%% done.\n"
+msgstr ""
+
+#: engine11unit.rssimpletextfilesourceiteminfotext
+msgctxt "engine11unit.rssimpletextfilesourceiteminfotext"
+msgid "From file %s (%d-%d): \"%s\"."
+msgstr ""
+
+#: engine11unit.rswordindexcontenttext
+msgid " \"%s\" (%d weight)"
+msgstr ""
+
+#: engine11unit.rswordindexinfotext
+msgid " Weight of root is %d"
+msgstr ""
+
+#: engine11unit.rswordindexinfotextaddon
+msgid ", word: \"%s\""
+msgstr ""
+
+#: engine11unit.rswordwascapitalizedfacttostring
+msgid "link: %s -> %s"
+msgstr ""
+
+#: engine11unit.rswrongstateexceptiondoubleregist
+msgid "Double registering"
+msgstr ""
+
+#: engine1unit.rsknowledgeinfo
+msgid " (%d basis, %d consequences)"
+msgstr ""
+
+#: engine1unit.rstabledknowledgebasesubsetinfotext
+msgid ", Count: %d"
+msgstr ""
+
+#: tmainform.actloadnewansisource.caption
+msgctxt "TMAINFORM.ACTLOADNEWANSISOURCE.CAPTION"
+msgid "Load new Ansi source..."
+msgstr ""
+
+#: tmainform.actloadnewutf8source.caption
+msgctxt "TMAINFORM.ACTLOADNEWUTF8SOURCE.CAPTION"
+msgid "Load new UTF8 source..."
+msgstr ""
+
+#: tmainform.buttonclear.caption
+msgctxt "TMAINFORM.BUTTONCLEAR.CAPTION"
+msgid "Clear"
+msgstr ""
+
+#: tmainform.buttonshowsubsets.caption
+msgctxt "TMAINFORM.BUTTONSHOWSUBSETS.CAPTION"
+msgid "Show subsets"
+msgstr ""
+
+#: tmainform.caption
+msgid "Text Brain"
+msgstr ""
+
+#: tmainform.mmisources.caption
+msgctxt "TMAINFORM.MMISOURCES.CAPTION"
+msgid "Sources"
+msgstr ""
+
+#: tmainform.toggleboxpause.caption
+msgctxt "TMAINFORM.TOGGLEBOXPAUSE.CAPTION"
+msgid "Pause"
+msgstr ""
+
+#: tmainform.toggleboxsilent.caption
+msgctxt "TMAINFORM.TOGGLEBOXSILENT.CAPTION"
+msgid "Silent"
+msgstr ""
+
