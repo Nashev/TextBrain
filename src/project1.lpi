@@ -59,7 +59,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainFormUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="60"/>
@@ -73,10 +72,11 @@
         <Filename Value="engine1unit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Engine1Unit"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="14"/>
-        <CursorPos X="3" Y="24"/>
+        <TopLine Value="151"/>
+        <CursorPos X="5" Y="173"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -87,8 +87,8 @@
         <UnitName Value="Engine11Unit"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="817"/>
-        <CursorPos X="28" Y="823"/>
+        <TopLine Value="17"/>
+        <CursorPos X="5" Y="39"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -258,123 +258,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="592" Column="54" TopLine="569"/>
+        <Caret Line="606" Column="82" TopLine="570"/>
       </Position1>
       <Position2>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="604" Column="70" TopLine="569"/>
+        <Caret Line="609" Column="99" TopLine="573"/>
       </Position2>
       <Position3>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="606" Column="82" TopLine="570"/>
+        <Caret Line="652" Column="24" TopLine="616"/>
       </Position3>
       <Position4>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="609" Column="99" TopLine="573"/>
+        <Caret Line="736" Column="69" TopLine="700"/>
       </Position4>
       <Position5>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="652" Column="24" TopLine="616"/>
+        <Caret Line="761" Column="18" TopLine="725"/>
       </Position5>
       <Position6>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="736" Column="69" TopLine="700"/>
+        <Caret Line="772" Column="88" TopLine="753"/>
       </Position6>
       <Position7>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="761" Column="18" TopLine="725"/>
+        <Caret Line="873" Column="31" TopLine="838"/>
       </Position7>
       <Position8>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="772" Column="88" TopLine="753"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="490" Column="74" TopLine="466"/>
       </Position8>
       <Position9>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="873" Column="31" TopLine="838"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position9>
       <Position10>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="490" Column="74" TopLine="466"/>
+        <Caret Line="28" Column="18" TopLine="1"/>
       </Position10>
       <Position11>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="33" Column="29" TopLine="1"/>
       </Position11>
       <Position12>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="28" Column="18" TopLine="1"/>
+        <Caret Line="49" Column="73" TopLine="13"/>
       </Position12>
       <Position13>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="33" Column="29" TopLine="1"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position13>
       <Position14>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="49" Column="73" TopLine="13"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="130" Column="42" TopLine="94"/>
       </Position14>
       <Position15>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="132" Column="27" TopLine="96"/>
       </Position15>
       <Position16>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="130" Column="42" TopLine="94"/>
+        <Caret Line="135" Column="22" TopLine="99"/>
       </Position16>
       <Position17>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="132" Column="27" TopLine="96"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="218" Column="14" TopLine="185"/>
       </Position17>
       <Position18>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="135" Column="22" TopLine="99"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="286" Column="34" TopLine="250"/>
       </Position18>
       <Position19>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="218" Column="14" TopLine="185"/>
+        <Caret Line="376" Column="54" TopLine="340"/>
       </Position19>
       <Position20>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="286" Column="34" TopLine="250"/>
+        <Caret Line="421" Column="55" TopLine="385"/>
       </Position20>
       <Position21>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="376" Column="54" TopLine="340"/>
+        <Caret Line="427" Column="55" TopLine="391"/>
       </Position21>
       <Position22>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="421" Column="55" TopLine="385"/>
+        <Caret Line="486" Column="22" TopLine="450"/>
       </Position22>
       <Position23>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="427" Column="55" TopLine="391"/>
+        <Caret Line="490" Column="18" TopLine="466"/>
       </Position23>
       <Position24>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="486" Column="22" TopLine="450"/>
+        <Caret Line="51" Column="14" TopLine="33"/>
       </Position24>
       <Position25>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="490" Column="18" TopLine="466"/>
+        <Caret Line="286" Column="34" TopLine="250"/>
       </Position25>
       <Position26>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="51" Column="14" TopLine="33"/>
+        <Caret Line="375" Column="14" TopLine="355"/>
       </Position26>
       <Position27>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="286" Column="34" TopLine="250"/>
+        <Caret Line="488" Column="14" TopLine="464"/>
       </Position27>
       <Position28>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="375" Column="14" TopLine="355"/>
-      </Position28>
-      <Position29>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="488" Column="14" TopLine="464"/>
-      </Position29>
-      <Position30>
         <Filename Value="mainformunit.pas"/>
         <Caret Line="156" Column="44" TopLine="123"/>
+      </Position28>
+      <Position29>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="823" Column="28" TopLine="817"/>
+      </Position29>
+      <Position30>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="24" Column="3" TopLine="14"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -401,6 +401,7 @@
     <Linking>
       <Debugging>
         <DebugInfoType Value="dsStabs"/>
+        <UseExternalDbgSyms Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>
       <Options>
