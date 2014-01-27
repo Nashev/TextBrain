@@ -4,8 +4,8 @@ object MainForm: TMainForm
   Top = 219
   Width = 1183
   Caption = 'Text Brain'
-  ClientHeight = 614
-  ClientWidth = 1183
+  ClientHeight = 0
+  ClientWidth = 0
   Menu = MainMenu
   OnCreate = FormCreate
   OnDestroy = FormDestroy

@@ -6,11 +6,82 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ComCtrls, ActnList, Menus, ExtCtrls, Engine1Unit, Engine11Unit, LCLType;
+  ComCtrls, ActnList, Menus, ExtCtrls, Engine1Unit, Engine11Unit, LCLType,
+  LMessages, Messages, Windows;
 
 type
-
   { TMainForm }
+
+  //trick
+
+  { TMemo }
+
+  TMemo = class(StdCtrls.TCustomMemo)
+  private
+    FCanvas: TControlCanvas;
+    procedure DestroyWnd; override;
+    procedure WMPaint(var Message: TLMPaint); message LM_PAINT;
+    procedure PaintWindow(DC: HDC); override;
+    procedure DrawHighlights;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+  published
+    property Align;
+    property Alignment;
+    property Anchors;
+    property BidiMode;
+    property BorderSpacing;
+    property BorderStyle;
+    property CharCase;
+    property Color;
+    property Constraints;
+    property DragCursor;
+    property DragKind;
+    property DragMode;
+    property Enabled;
+    property Font;
+    property HideSelection;
+    property Lines;
+    property MaxLength;
+    property OnChange;
+    property OnClick;
+    property OnContextPopup;
+    property OnDblClick;
+    property OnDragDrop;
+    property OnDragOver;
+    property OnEditingDone;
+    property OnEndDrag;
+    property OnEnter;
+    property OnExit;
+    property OnKeyDown;
+    property OnKeyPress;
+    property OnKeyUp;
+    property OnMouseDown;
+    property OnMouseEnter;
+    property OnMouseLeave;
+    property OnMouseMove;
+    property OnMouseUp;
+    property OnMouseWheel;
+    property OnMouseWheelDown;
+    property OnMouseWheelUp;
+    property OnStartDrag;
+    property OnUTF8KeyPress;
+    property ParentBidiMode;
+    property ParentColor;
+    property ParentFont;
+    property PopupMenu;
+    property ParentShowHint;
+    property ReadOnly;
+    property ScrollBars;
+    property ShowHint;
+    property TabOrder;
+    property TabStop;
+    property Visible;
+    property WantReturns;
+    property WantTabs;
+    property WordWrap;
+  end;
 
   TMainForm = class(TForm)
     actLoadNewUTF8Source: TAction;
@@ -77,6 +148,70 @@ implementation
 resourcestring
   rsBrainSubsetHeader = 'Brain subset %d:';
   rsNoSourceFile = 'No source file';
+
+{ TMemo }
+
+constructor TMemo.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+
+  FCanvas := TControlCanvas.Create;
+  TControlCanvas(FCanvas).Control := Self;
+end;
+
+destructor TMemo.Destroy;
+begin
+  FreeAndNil(FCanvas);
+  inherited Destroy;
+end;
+
+procedure TMemo.DestroyWnd;
+begin
+  if FCanvas <> nil then
+    TControlCanvas(FCanvas).FreeHandle;
+  inherited DestroyWnd;
+end;
+
+procedure TMemo.WMPaint(var Message: TLMPaint);
+begin
+  if (csDestroying in ComponentState) or (not HandleAllocated) then exit;
+  Include(FControlState, csCustomPaint);
+  inherited WMPaint(Message);
+  Exclude(FControlState, csCustomPaint);
+end;
+
+procedure TMemo.PaintWindow(DC: HDC);
+var
+  DCChanged: boolean;
+begin
+  DCChanged := (not FCanvas.HandleAllocated) or (FCanvas.Handle <> DC);
+  if DCChanged then
+    FCanvas.Handle := DC;
+  try
+    inherited PaintWindow(DC);
+    DrawHighlights;
+  finally
+    if DCChanged then FCanvas.Handle := 0;
+  end;
+end;
+
+procedure TMemo.DrawHighlights;
+var
+  r: LResult;
+begin
+  FCanvas.Pen.Color := clRed;
+  FCanvas.Pen.Width := 5;
+  FCanvas.Pen.Style := psSolid;
+  r := Windows.SendMessage(Handle, EM_POSFROMCHAR, SelStart, 0);
+  if r <> -1 then
+    FCanvas.MoveTo(LoWord(r), HiWord(r));
+
+  r := Windows.SendMessage(Handle, EM_POSFROMCHAR, SelStart + SelLength, 0);
+  if r <> -1 then
+    FCanvas.LineTo(LoWord(r), HiWord(r));
+end;
+
+{ TNewItemDetector }
 
 procedure TNewItemDetector.Evalute(AKnowledgeItem: TKnowledgeItem);
 var
