@@ -1,37 +1,42 @@
 object MainForm: TMainForm
   Left = 464
-  Height = 644
+  Height = 634
   Top = 219
-  Width = 964
+  Width = 1183
   Caption = 'Text Brain'
-  ClientHeight = 624
-  ClientWidth = 964
+  ClientHeight = 614
+  ClientWidth = 1183
   Menu = MainMenu
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   LCLVersion = '1.0.14.0'
   object SourceMemo: TMemo
     Left = 0
-    Height = 600
+    Height = 495
     Top = 24
     Width = 526
     Align = alLeft
+    HideSelection = False
     ReadOnly = True
     ScrollBars = ssAutoBoth
     TabOrder = 0
   end
   object KnowledgeMemo: TMemo
     Left = 531
-    Height = 600
+    Height = 495
     Top = 24
-    Width = 433
+    Width = 652
     Align = alClient
+    HideSelection = False
+    OnClick = KnowledgeMemoClick
+    OnKeyDown = KnowledgeMemoKeyDown
+    OnKeyUp = KnowledgeMemoKeyDown
     ScrollBars = ssAutoBoth
     TabOrder = 1
   end
   object Splitter1: TSplitter
     Left = 526
-    Height = 600
+    Height = 495
     Top = 24
     Width = 5
   end
@@ -39,13 +44,13 @@ object MainForm: TMainForm
     Left = 0
     Height = 24
     Top = 0
-    Width = 964
+    Width = 1183
     Align = alTop
     ClientHeight = 24
-    ClientWidth = 964
+    ClientWidth = 1183
     TabOrder = 3
     object ButtonClear: TButton
-      Left = 832
+      Left = 1051
       Height = 21
       Top = 0
       Width = 123
@@ -73,7 +78,7 @@ object MainForm: TMainForm
       TabOrder = 2
     end
     object ButtonShowSubsets: TButton
-      Left = 664
+      Left = 883
       Height = 21
       Top = 0
       Width = 163
@@ -84,7 +89,7 @@ object MainForm: TMainForm
     end
   end
   object ButtonShowBrainContent: TButton
-    Left = 496
+    Left = 715
     Height = 21
     Top = 0
     Width = 163
@@ -92,6 +97,24 @@ object MainForm: TMainForm
     Caption = 'Show brain content'
     OnClick = ButtonShowBrainContentClick
     TabOrder = 4
+  end
+  object StatusMemo: TMemo
+    Left = 0
+    Height = 90
+    Top = 524
+    Width = 1183
+    Align = alBottom
+    HideSelection = False
+    TabOrder = 5
+  end
+  object Splitter2: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 519
+    Width = 1183
+    Align = alBottom
+    ResizeAnchor = akBottom
   end
   object ActionList: TActionList
     left = 88

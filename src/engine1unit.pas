@@ -59,11 +59,14 @@ type
   TSource = class(TKnowledgeItem)
   public
     function ToString: UTF8String; virtual; abstract; reintroduce;
-    function EOF: Boolean;virtual; abstract;
+    function EOF: Boolean; virtual; abstract;
     function ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem; virtual; abstract;
   end;
 
   TSourceItem = class(TKnowledgeItem)
+  public
+    function GetItemStart: Integer; virtual; abstract;
+    function GetItemLength: Integer; virtual; abstract;
   end;
 
   { TSequenceInfo }
@@ -89,6 +92,15 @@ type
     procedure First; virtual; abstract;
     procedure Next; virtual; abstract;
     function CurrentItem: TKnowledgeItem; virtual; abstract;
+  end;
+
+  { TEmptyIterator }
+  TEmptyIterator = class(TKnowledgeIterator)
+    constructor Create; reintroduce;
+    function EOF: boolean; override;
+    procedure First; override;
+    procedure Next; override;
+    function CurrentItem: TKnowledgeItem; override;
   end;
 
   { TKnowledgeBaseSubset }
@@ -207,6 +219,33 @@ type
 
 implementation
 
+{ TEmptyIterator }
+
+constructor TEmptyIterator.Create;
+begin
+  // do nothing
+end;
+
+function TEmptyIterator.EOF: boolean;
+begin
+  Result := True;
+end;
+
+procedure TEmptyIterator.First;
+begin
+  // do nothing
+end;
+
+procedure TEmptyIterator.Next;
+begin
+  // do nothing
+end;
+
+function TEmptyIterator.CurrentItem: TKnowledgeItem;
+begin
+  Assert(False, 'TEmptyIterator.CurrentItem called!');
+end;
+
 { TBasis }
 
 constructor TBasis.Create(AOwner: TKnowledgeItem);
@@ -283,7 +322,7 @@ begin
     try
       while not EOF do
         begin
-          Result := Result + '  ' + CurrentItem.InfoText;
+          Result := Result + '  ' + CurrentItem.InfoText + #13#10;
           Next;
         end;
     finally
@@ -483,11 +522,11 @@ begin
 end;
 
 resourcestring
-  rsKnowledgeInfo = ' (%d basis, %d consequences)';
+  rsKnowledgeInfo = '%s: "%s" (%d basis, %d consequences)';
 
 function TKnowledgeItem.InfoText: UTF8String;
 begin
-  Result := ToString + Format(rsKnowledgeInfo, [Basis.Count, Consequences.Count]);
+  Result := Format(rsKnowledgeInfo, [ClassName, ToString, Basis.Count, Consequences.Count]);
 end;
 
 procedure TKnowledgeItem.Merge(AOtherItem: TKnowledgeItem);

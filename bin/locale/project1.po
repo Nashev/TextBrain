@@ -1,5 +1,12 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: TextBrain\n"
+"Last-Translator: nashev <nashev@mail.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
 
 #: engine11unit.rssimpletextfilesourceinfotext
 msgid ""
@@ -9,7 +16,7 @@ msgstr ""
 
 #: engine11unit.rssimpletextfilesourceiteminfotext
 msgctxt "engine11unit.rssimpletextfilesourceiteminfotext"
-msgid "From file %s (%d-%d): \"%s\"."
+msgid "%s: from file %s (%d-%d): \"%s\"."
 msgstr ""
 
 #: engine11unit.rswordindexcontenttext
@@ -33,11 +40,39 @@ msgid "Double registering"
 msgstr ""
 
 #: engine1unit.rsknowledgeinfo
-msgid " (%d basis, %d consequences)"
+msgid "%s: \"%s\" (%d basis, %d consequences)"
 msgstr ""
 
 #: engine1unit.rstabledknowledgebasesubsetinfotext
 msgid ", Count: %d"
+msgstr ""
+
+#: mainformunit.rsbrainsubsetheader
+msgid "Brain subset %d:"
+msgstr ""
+
+#: mainformunit.rsnosourcefile
+msgid "No source file"
+msgstr ""
+
+#: mainformunit.rssubsetcontent
+msgid "Subset content: "
+msgstr ""
+
+#: mainformunit.rssubsetcontentempty
+msgid "Subset content empty."
+msgstr ""
+
+#: mainformunit.rssubsetindex
+msgid "Subset %d "
+msgstr ""
+
+#: mainformunit.rssubsetsubsets
+msgid "Subsets (%d): "
+msgstr ""
+
+#: mainformunit.rssubsetsubsetsempty
+msgid "No subsets."
 msgstr ""
 
 #: tmainform.actloadnewansisource.caption

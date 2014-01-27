@@ -22,9 +22,10 @@ msgstr ""
 " осталось %d байт из %d (%d%% завершено).\n"
 
 #: engine11unit.rssimpletextfilesourceiteminfotext
+#| msgid "From file %s (%d-%d): \"%s\"."
 msgctxt "engine11unit.rssimpletextfilesourceiteminfotext"
-msgid "From file %s (%d-%d): \"%s\"."
-msgstr "Из файла %s (%d-%d): \"%s\"."
+msgid "%s: from file %s (%d-%d): \"%s\"."
+msgstr "%s: из файла %s (%d-%d): \"%s\"."
 
 #: engine11unit.rswordindexcontenttext
 msgid " \"%s\" (%d weight)"
@@ -47,12 +48,41 @@ msgid "Double registering"
 msgstr "Повторная регистрация"
 
 #: engine1unit.rsknowledgeinfo
-msgid " (%d basis, %d consequences)"
-msgstr " (причин %d, следствий %d)"
+#| msgid " (%d basis, %d consequences)"
+msgid "%s: \"%s\" (%d basis, %d consequences)"
+msgstr "%s: \"%s\" (причин %d, следствий %d)"
 
 #: engine1unit.rstabledknowledgebasesubsetinfotext
 msgid ", Count: %d"
 msgstr ", Количество: %d"
+
+#: mainformunit.rsbrainsubsetheader
+msgid "Brain subset %d:"
+msgstr "Набор знаний %d:"
+
+#: mainformunit.rsnosourcefile
+msgid "No source file"
+msgstr "Текст не загружен"
+
+#: mainformunit.rssubsetcontent
+msgid "Subset content: "
+msgstr "Состав набора:"
+
+#: mainformunit.rssubsetcontentempty
+msgid "Subset content empty."
+msgstr "Набор пуст."
+
+#: mainformunit.rssubsetindex
+msgid "Subset %d "
+msgstr "Вложенный набор (%d):"
+
+#: mainformunit.rssubsetsubsets
+msgid "Subsets (%d): "
+msgstr "Вложенные наборы (%d):"
+
+#: mainformunit.rssubsetsubsetsempty
+msgid "No subsets."
+msgstr "Нет вложенных наборов."
 
 #: tmainform.actloadnewansisource.caption
 msgctxt "tmainform.actloadnewansisource.caption"

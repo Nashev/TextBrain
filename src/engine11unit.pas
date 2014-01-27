@@ -113,6 +113,7 @@ type
   private
     FPosition: PUTF8Char;
     FSize: Integer;
+    FItemStart, FItemLength: Integer;
     function Source: TSimpleTextFileSource;
   protected
     function GetBasisClass: TBasisClass; override;
@@ -123,6 +124,8 @@ type
     constructor Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
     function InfoText: UTF8String; override;
     function ToString: UTF8String; override;
+    function GetItemStart: Integer; override;
+    function GetItemLength: Integer; override;
   end;
 
   TWordIndex = class;
@@ -303,7 +306,7 @@ end;
 function TWordIndex.GetIterator: TKnowledgeIterator;
 begin
   // TODO
-  Result := nil;
+  Result := TEmptyIterator.Create;
 end;
 
 resourcestring
@@ -725,15 +728,22 @@ begin
 end;
 
 constructor TSimpleTextFileSourceItem.Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+var
+  s: string;
 begin
   inherited Create(ADetectorClass);
   Basis.Add(ASource);
   FPosition := APosition;
   FSize     := ASize;
+  s := copy(Source.FFileContent, 1, SizeInt(FPosition - @Source.FFileContent[1]));
+  FItemStart := Length(UTF8Decode(UTF8String(@s[1])));
+
+  s := copy(String(FPosition), 1, FSize);
+  FItemLength := Length(UTF8Decode(UTF8String(@s[1])));
 end;
 
 resourcestring
-  rsSimpleTextFileSourceItemInfoText = 'From file %s (%d-%d): "%s".';
+  rsSimpleTextFileSourceItemInfoText = '%s: from file %s (%d-%d): "%s".';
 
 function TSimpleTextFileSourceItem.InfoText: UTF8String;
 var
@@ -743,9 +753,10 @@ begin
   Result :=
     Format(
       rsSimpleTextFileSourceItemInfoText, [
+        ClassName,
         Source.FFileName,
-        SizeInt(FPosition - @Source.FFileContent[1]),
-        length(CodedS),
+        GetItemStart,
+        GetItemLength,
         CodedS
       ]
     );
@@ -759,6 +770,16 @@ begin
   Result := UTF8String(@s[1]);
   if (Length(Result) = 1) and (ord(Result[1]) <= 32) then
     Result := '#' + IntToStr(ord(Result[1]));
+end;
+
+function TSimpleTextFileSourceItem.GetItemStart: Integer;
+begin
+  Result := FItemStart;
+end;
+
+function TSimpleTextFileSourceItem.GetItemLength: Integer;
+begin
+  Result := FItemLength;
 end;
 
 { TSimpleTextFileSource }
