@@ -14,6 +14,7 @@
       <Icon Value="0"/>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
+    <LazDoc Paths="docs"/>
     <i18n>
       <EnableI18N Value="True"/>
       <OutDir Value="..\bin\locale"/>
@@ -39,7 +40,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="26">
+    <Units Count="22">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -61,11 +62,10 @@
         <UnitName Value="MainFormUnit"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="60"/>
-        <CursorPos X="21" Y="113"/>
+        <TopLine Value="1"/>
+        <CursorPos X="3" Y="9"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -75,8 +75,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="151"/>
-        <CursorPos X="5" Y="173"/>
+        <TopLine Value="15"/>
+        <CursorPos X="17" Y="38"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -87,8 +87,8 @@
         <UnitName Value="Engine11Unit"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="17"/>
-        <CursorPos X="5" Y="39"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -98,42 +98,42 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit4>
       <Unit5>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\stringl.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="754"/>
         <CursorPos X="28" Y="770"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit5>
       <Unit6>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\streams.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit6>
       <Unit7>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\filutilh.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="35" Y="9"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit7>
       <Unit8>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="246"/>
         <CursorPos X="7" Y="270"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit8>
       <Unit9>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\fpmake.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="104"/>
         <CursorPos X="24" Y="178"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit9>
       <Unit10>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win32\windows.pp"/>
@@ -141,42 +141,42 @@
         <WindowIndex Value="0"/>
         <TopLine Value="21"/>
         <CursorPos X="16" Y="40"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="86"/>
       </Unit10>
       <Unit11>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\ustringh.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="54" Y="98"/>
-        <UsageCount Value="114"/>
+        <UsageCount Value="85"/>
       </Unit11>
       <Unit12>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\systemh.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="252"/>
         <CursorPos X="14" Y="297"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="80"/>
       </Unit12>
       <Unit13>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\wstringh.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="14" Y="42"/>
-        <UsageCount Value="124"/>
+        <UsageCount Value="95"/>
       </Unit13>
       <Unit14>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\objpash.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="54"/>
         <CursorPos X="8" Y="79"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="72"/>
       </Unit14>
       <Unit15>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\objpas.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="381"/>
         <CursorPos X="11" Y="396"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="72"/>
       </Unit15>
       <Unit16>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\sysutils.pp"/>
@@ -184,7 +184,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1251"/>
         <CursorPos X="19" Y="1217"/>
-        <UsageCount Value="120"/>
+        <UsageCount Value="91"/>
       </Unit16>
       <Unit17>
         <Filename Value="D:\work\FPC\2.4.4\source\packages\fcl-base\src\contnrs.pp"/>
@@ -192,189 +192,158 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1926"/>
         <CursorPos X="19" Y="1951"/>
-        <UsageCount Value="120"/>
+        <UsageCount Value="91"/>
       </Unit17>
       <Unit18>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysstrh.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="57"/>
         <CursorPos X="34" Y="82"/>
-        <UsageCount Value="120"/>
+        <UsageCount Value="91"/>
       </Unit18>
       <Unit19>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysstr.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="125"/>
         <CursorPos X="3" Y="144"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="90"/>
       </Unit19>
       <Unit20>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\wstrings.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1400"/>
         <CursorPos X="27" Y="1428"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="64"/>
       </Unit20>
       <Unit21>
-        <Filename Value="C:\lazarus\lcl\translations.pas"/>
-        <UnitName Value="Translations"/>
+        <Filename Value="C:\lazarus\lcl\comctrls.pp"/>
+        <UnitName Value="ComCtrls"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="753"/>
-        <CursorPos X="30" Y="775"/>
+        <TopLine Value="283"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="10"/>
       </Unit21>
-      <Unit22>
-        <Filename Value="C:\lazarus\components\lazutils\winfileutil.inc"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="553"/>
-        <CursorPos X="1" Y="581"/>
-        <UsageCount Value="10"/>
-      </Unit22>
-      <Unit23>
-        <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\objpas\objpas.pp"/>
-        <UnitName Value="objpas"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="88"/>
-        <CursorPos X="29" Y="111"/>
-        <UsageCount Value="10"/>
-      </Unit23>
-      <Unit24>
-        <Filename Value="C:\lazarus\lcl\defaulttranslator.pas"/>
-        <UnitName Value="DefaultTranslator"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="306"/>
-        <CursorPos X="35" Y="145"/>
-        <UsageCount Value="10"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="mainformunit.lfm"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="13"/>
-        <CursorPos X="33" Y="35"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit25>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="606" Column="82" TopLine="570"/>
+        <Caret Line="808" Column="30" TopLine="785"/>
       </Position1>
       <Position2>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="609" Column="99" TopLine="573"/>
+        <Caret Line="911" Column="65" TopLine="872"/>
       </Position2>
       <Position3>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="652" Column="24" TopLine="616"/>
+        <Caret Line="821" Column="36" TopLine="811"/>
       </Position3>
       <Position4>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="736" Column="69" TopLine="700"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position4>
       <Position5>
         <Filename Value="engine11unit.pas"/>
-        <Caret Line="761" Column="18" TopLine="725"/>
+        <Caret Line="94" Column="26" TopLine="55"/>
       </Position5>
       <Position6>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="772" Column="88" TopLine="753"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="116" Column="13" TopLine="94"/>
       </Position6>
       <Position7>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="873" Column="31" TopLine="838"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="111" Column="16" TopLine="94"/>
       </Position7>
       <Position8>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="490" Column="74" TopLine="466"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="15" Column="3" TopLine="1"/>
       </Position8>
       <Position9>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="15" Column="6" TopLine="1"/>
       </Position9>
       <Position10>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="28" Column="18" TopLine="1"/>
+        <Caret Line="172" Column="3" TopLine="149"/>
       </Position10>
       <Position11>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="33" Column="29" TopLine="1"/>
+        <Caret Line="144" Column="23" TopLine="121"/>
       </Position11>
       <Position12>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="49" Column="73" TopLine="13"/>
+        <Caret Line="13" Column="3" TopLine="1"/>
       </Position12>
       <Position13>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="144" Column="3" TopLine="121"/>
       </Position13>
       <Position14>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="130" Column="42" TopLine="94"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="13" Column="3" TopLine="1"/>
       </Position14>
       <Position15>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="132" Column="27" TopLine="96"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="144" Column="3" TopLine="121"/>
       </Position15>
       <Position16>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="135" Column="22" TopLine="99"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="13" Column="3" TopLine="1"/>
       </Position16>
       <Position17>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="218" Column="14" TopLine="185"/>
+        <Caret Line="144" Column="42" TopLine="128"/>
       </Position17>
       <Position18>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="286" Column="34" TopLine="250"/>
+        <Caret Line="48" Column="23" TopLine="17"/>
       </Position18>
       <Position19>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="376" Column="54" TopLine="340"/>
+        <Caret Line="172" Column="24" TopLine="153"/>
       </Position19>
       <Position20>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="421" Column="55" TopLine="385"/>
+        <Caret Line="123" Column="15" TopLine="97"/>
       </Position20>
       <Position21>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="427" Column="55" TopLine="391"/>
+        <Caret Line="135" Column="76" TopLine="97"/>
       </Position21>
       <Position22>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="486" Column="22" TopLine="450"/>
+        <Caret Line="383" Column="33" TopLine="345"/>
       </Position22>
       <Position23>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="490" Column="18" TopLine="466"/>
+        <Caret Line="385" Column="40" TopLine="347"/>
       </Position23>
       <Position24>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="51" Column="14" TopLine="33"/>
+        <Caret Line="392" Column="101" TopLine="354"/>
       </Position24>
       <Position25>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="286" Column="34" TopLine="250"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="821" Column="44" TopLine="782"/>
       </Position25>
       <Position26>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="375" Column="14" TopLine="355"/>
+        <Caret Line="449" Column="3" TopLine="447"/>
       </Position26>
       <Position27>
-        <Filename Value="engine1unit.pas"/>
-        <Caret Line="488" Column="14" TopLine="464"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="15" Column="3" TopLine="1"/>
       </Position27>
       <Position28>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="156" Column="44" TopLine="123"/>
+        <Caret Line="9" Column="9" TopLine="1"/>
       </Position28>
       <Position29>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="823" Column="28" TopLine="817"/>
+        <Filename Value="engine1unit.pas"/>
+        <Caret Line="33" Column="26" TopLine="18"/>
       </Position29>
       <Position30>
         <Filename Value="engine1unit.pas"/>
-        <Caret Line="24" Column="3" TopLine="14"/>
+        <Caret Line="38" Column="24" TopLine="15"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -394,13 +363,13 @@
       </SyntaxOptions>
     </Parsing>
     <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
       <Optimizations>
         <OptimizationLevel Value="0"/>
       </Optimizations>
     </CodeGeneration>
     <Linking>
       <Debugging>
-        <DebugInfoType Value="dsStabs"/>
         <UseExternalDbgSyms Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>

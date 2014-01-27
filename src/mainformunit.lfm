@@ -83,6 +83,16 @@ object MainForm: TMainForm
       TabOrder = 3
     end
   end
+  object ButtonShowBrainContent: TButton
+    Left = 496
+    Height = 21
+    Top = 0
+    Width = 163
+    Anchors = [akTop, akRight]
+    Caption = 'Show brain content'
+    OnClick = ButtonShowBrainContentClick
+    TabOrder = 4
+  end
   object ActionList: TActionList
     left = 88
     top = 32

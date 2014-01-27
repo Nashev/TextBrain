@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<fpdoc-descriptions><package name="project1"><module name="Engine1Unit"><element name="TKnowledgeItem.IsSameKnowledge"/><element name="TKnowledgeItem"><short>Is a base class for all knowledge items in a text brain</short>
+      </element>
+    <element name="TKnowledgeItem.Basis"><short>Basis is a set of knowledge items, which are was a sources to make this new knowledge item</short>
+      </element><element name="TKnowledgeItem.Consequences"><short>Consequences is a list of produced knowledge items, which are have this knowledge item as a basis</short><descr>This is an opposite side of Basis: filled only when this item added to some body basis</descr>
+      </element><element name="TKnowledgeItem.ToString"><short>String representation of this item itself</short>
+      </element><element name="TKnowledgeItem.InfoText"><short>Full generated text description of this knowledge item. Usually include string representation and some specific aditional info</short>
+      </element><element name="TKnowledgeItem.IntegrateToBrain"><descr>Note: This method need be called when this item will be ready for merge.</descr>
+      </element><element name="TBasis"><short>TBasis is a TTabledKnowledgeBaseSubset with owner and ability to add self to owner.consequences when add that item as a basis</short>
+      </element><element name="TTabledKnowledgeBaseSubset"><short>Is a abstract set of knowledge items with Items property and with direct iterator over Items</short>
+      </element><element name="TKnowledgeBaseSubset"><short>Set of knowledge items with support to organize tree of sets: it have one link to superset and list of subsets</short>
+      </element><element name="TFunctionalKnowledgeBaseSubset.GetIterator"><short>Not used yet</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

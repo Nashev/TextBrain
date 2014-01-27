@@ -69,6 +69,10 @@ msgctxt "tmainform.buttonclear.caption"
 msgid "Clear"
 msgstr "Очистить"
 
+#: tmainform.buttonshowbraincontent.caption
+msgid "Show brain content"
+msgstr "Показать знания"
+
 #: tmainform.buttonshowsubsets.caption
 msgctxt "tmainform.buttonshowsubsets.caption"
 msgid "Show subsets"

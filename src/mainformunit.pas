@@ -18,6 +18,7 @@ type
     ActionList: TActionList;
     ButtonClear: TButton;
     ButtonShowSubsets: TButton;
+    ButtonShowBrainContent: TButton;
     MainMenu: TMainMenu;
     KnowledgeMemo: TMemo;
     MenuItem1: TMenuItem;
@@ -33,6 +34,7 @@ type
     procedure actLoadNewUTF8SourceExecute(Sender: TObject);
     procedure ButtonClearClick(Sender: TObject);
     procedure ButtonShowSubsetsClick(Sender: TObject);
+    procedure ButtonShowBrainContentClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
@@ -123,6 +125,7 @@ begin
 end;
 
 procedure TMainForm.ButtonShowSubsetsClick(Sender: TObject);
+
   procedure ShowKnowledgeSet(APrefix: string; AKnowledgeBaseSubset: TKnowledgeBaseSubset);
   var
     i: Integer;
@@ -131,8 +134,14 @@ procedure TMainForm.ButtonShowSubsetsClick(Sender: TObject);
     for i := 0 to AKnowledgeBaseSubset.SubsetsCount - 1 do
       ShowKnowledgeSet('*' + APrefix, AKnowledgeBaseSubset.Subset[i]);
   end;
+
 begin
   ShowKnowledgeSet('', FBrain);
+end;
+
+procedure TMainForm.ButtonShowBrainContentClick(Sender: TObject);
+begin
+  ShowBrainContent;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
