@@ -33,6 +33,7 @@ object MainForm: TMainForm
     OnKeyUp = KnowledgeMemoKeyDown
     ScrollBars = ssAutoBoth
     TabOrder = 1
+    WordWrap = False
   end
   object Splitter1: TSplitter
     Left = 526
