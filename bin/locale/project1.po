@@ -47,6 +47,14 @@ msgstr ""
 msgid ", Count: %d"
 msgstr ""
 
+#: mainformunit.rsabouttext
+msgid ""
+"TextBrain now is a text analysis first prototype\n"
+"made by Nenashev Ilya (aka Nashev), Russia, Moscow.\n"
+"Project are hosted on GitHub at http://github.com/Nashev/TextBrain\n"
+"See additional information there.\n"
+msgstr ""
+
 #: mainformunit.rsbrainsubsetheader
 msgid "Brain subset %d:"
 msgstr ""
@@ -101,6 +109,27 @@ msgstr ""
 
 #: tmainform.caption
 msgid "Text Brain"
+msgstr ""
+
+#: tmainform.mmiabout.caption
+msgid "About..."
+msgstr ""
+
+#: tmainform.mmiexit.caption
+msgid "Exit"
+msgstr ""
+
+#: TMAINFORM.MMIEXITSEPARATOR.CAPTION
+msgctxt "TMAINFORM.MMIEXITSEPARATOR.CAPTION"
+msgid "-"
+msgstr ""
+
+#: tmainform.mmigithub.caption
+msgid "Open http://github.com/Nashev/TextBrain in default browser"
+msgstr ""
+
+#: tmainform.mmihelp.caption
+msgid "Help"
 msgstr ""
 
 #: tmainform.mmisources.caption

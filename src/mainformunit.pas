@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ComCtrls, ActnList, Menus, ExtCtrls, Engine1Unit, Engine11Unit, LCLType;
+  ComCtrls, ActnList, Menus, ExtCtrls, Engine1Unit, Engine11Unit, LCLType, LCLIntf;
 
 type
 
@@ -21,10 +21,15 @@ type
     ButtonShowBrainContent: TButton;
     MainMenu: TMainMenu;
     KnowledgeMemo: TMemo;
+    mmiExitSeparator: TMenuItem;
+    mmiExit: TMenuItem;
+    mmiAbout: TMenuItem;
+    mmiGithub: TMenuItem;
+    mmiHelp: TMenuItem;
     StatusMemo: TMemo;
-    MenuItem1: TMenuItem;
+    mmiLoadUTF8: TMenuItem;
     mmiSources: TMenuItem;
-    MenuItem2: TMenuItem;
+    mmiLoadAnsi: TMenuItem;
     OpenDialog: TOpenDialog;
     Panel1: TPanel;
     SourceMemo: TMemo;
@@ -43,6 +48,9 @@ type
     procedure KnowledgeMemoClick(Sender: TObject);
     procedure KnowledgeMemoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure mmiAboutClick(Sender: TObject);
+    procedure mmiExitClick(Sender: TObject);
+    procedure mmiGithubClick(Sender: TObject);
   private
     FBrain: TBrain1;
     Source: TSimpleTextFileSource;
@@ -249,6 +257,30 @@ begin
   FocusedItem := TObject(KnowlledgeLineItems[KnowledgeMemo.CaretPos.y]);
   if (FocusedItem <> nil) and (FocusedItem is TKnowledgeItem) then
     HighlightSource(TKnowledgeItem(FocusedItem));
+end;
+
+resourcestring
+  rsAboutText =
+    'TextBrain now is a text analysis first prototype'#13+
+    'made by Nenashev Ilya (aka Nashev), Russia, Moscow.'#13+
+    'Project are hosted on GitHub at http://github.com/Nashev/TextBrain'#13+
+    'See additional information there.';
+
+procedure TMainForm.mmiAboutClick(Sender: TObject);
+begin
+  ShowMessage(
+    rsAboutText
+  )
+end;
+
+procedure TMainForm.mmiExitClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TMainForm.mmiGithubClick(Sender: TObject);
+begin
+  OpenURL('http://github.com/Nashev/TextBrain');
 end;
 
 procedure TMainForm.HighlightSource(FocusedItem: TKnowledgeItem);

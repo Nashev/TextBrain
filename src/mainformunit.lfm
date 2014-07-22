@@ -4,15 +4,15 @@ object MainForm: TMainForm
   Top = 219
   Width = 1183
   Caption = 'Text Brain'
-  ClientHeight = 614
+  ClientHeight = 615
   ClientWidth = 1183
   Menu = MainMenu
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '1.0.14.0'
+  LCLVersion = '0.9.31'
   object SourceMemo: TMemo
     Left = 0
-    Height = 495
+    Height = 496
     Top = 24
     Width = 526
     Align = alLeft
@@ -23,7 +23,7 @@ object MainForm: TMainForm
   end
   object KnowledgeMemo: TMemo
     Left = 531
-    Height = 495
+    Height = 496
     Top = 24
     Width = 652
     Align = alClient
@@ -37,7 +37,7 @@ object MainForm: TMainForm
   end
   object Splitter1: TSplitter
     Left = 526
-    Height = 495
+    Height = 496
     Top = 24
     Width = 5
   end
@@ -102,7 +102,7 @@ object MainForm: TMainForm
   object StatusMemo: TMemo
     Left = 0
     Height = 90
-    Top = 524
+    Top = 525
     Width = 1183
     Align = alBottom
     HideSelection = False
@@ -112,7 +112,7 @@ object MainForm: TMainForm
     Cursor = crVSplit
     Left = 0
     Height = 5
-    Top = 519
+    Top = 520
     Width = 1183
     Align = alBottom
     ResizeAnchor = akBottom
@@ -134,11 +134,29 @@ object MainForm: TMainForm
     top = 96
     object mmiSources: TMenuItem
       Caption = 'Sources'
-      object MenuItem2: TMenuItem
+      object mmiLoadAnsi: TMenuItem
         Action = actLoadNewAnsiSource
       end
-      object MenuItem1: TMenuItem
+      object mmiLoadUTF8: TMenuItem
         Action = actLoadNewUTF8Source
+      end
+      object mmiExitSeparator: TMenuItem
+        Caption = '-'
+      end
+      object mmiExit: TMenuItem
+        Caption = 'Exit'
+        OnClick = mmiExitClick
+      end
+    end
+    object mmiHelp: TMenuItem
+      Caption = 'Help'
+      object mmiGithub: TMenuItem
+        Caption = 'Open http://github.com/Nashev/TextBrain in default browser'
+        OnClick = mmiGithubClick
+      end
+      object mmiAbout: TMenuItem
+        Caption = 'About...'
+        OnClick = mmiAboutClick
       end
     end
   end

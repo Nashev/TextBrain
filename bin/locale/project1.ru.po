@@ -55,6 +55,24 @@ msgstr "%s: \"%s\" (причин %d, следствий %d)"
 msgid ", Count: %d"
 msgstr ", Количество: %d"
 
+#: mainformunit.rsabouttext
+#, fuzzy
+#| msgid ""
+#| "TextBrain now is a text analysis first prototype\n"
+#| "made by Nenashev Ilya (aka Nashev), Russia, Moscow.\n"
+#| "Project are hosted on GitHub at http://github.com/Nashev/TextBrain\n"
+#| "See additional information there.\n"
+msgid ""
+"TextBrain now is a text analysis first prototype\n"
+"made by Nenashev Ilya (aka Nashev), Russia, Moscow.\n"
+"Project are hosted on GitHub at http://github.com/Nashev/TextBrain\n"
+"See additional information there.\n"
+msgstr ""
+"TextBrain это прототип системы анализа текста\n"
+"Автор - Ненашев Илья (aka Nashev), Россия, Москва.\n"
+"Проект ведётся на базе GitHub по адресу http://github.com/Nashev/TextBrain\n"
+"Дополнительную информацию ищите там.\n"
+
 #: mainformunit.rsbrainsubsetheader
 msgid "Brain subset %d:"
 msgstr "Набор знаний %d:"
@@ -110,6 +128,27 @@ msgstr "Показать подмножества"
 #: tmainform.caption
 msgid "Text Brain"
 msgstr "Text Brain"
+
+#: tmainform.mmiabout.caption
+msgid "About..."
+msgstr "О программе..."
+
+#: tmainform.mmiexit.caption
+msgid "Exit"
+msgstr "Выход"
+
+#: TMAINFORM.MMIEXITSEPARATOR.CAPTION
+msgctxt "TMAINFORM.MMIEXITSEPARATOR.CAPTION"
+msgid "-"
+msgstr "-"
+
+#: tmainform.mmigithub.caption
+msgid "Open http://github.com/Nashev/TextBrain in default browser"
+msgstr "Открыть http://github.com/Nashev/TextBrain в основном браузере"
+
+#: tmainform.mmihelp.caption
+msgid "Help"
+msgstr "Справка"
 
 #: tmainform.mmisources.caption
 msgctxt "tmainform.mmisources.caption"
