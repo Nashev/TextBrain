@@ -1,0 +1,1222 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    
+    
+    <title>Анализ тональности · Issue #51 · Nashev/TextBrain</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="Анализ тональности · Issue #51 · Nashev/TextBrain" name="twitter:title" /><meta content="http://habrahabr.ru/post/149605/
+пересекается с #46" name="twitter:description" /><meta content="https://avatars2.githubusercontent.com/u/190140?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars2.githubusercontent.com/u/190140?v=3&amp;s=400" property="og:image" /><meta content="Анализ тональности · Issue #51 · Nashev/TextBrain" property="og:title" /><meta content="https://github.com/Nashev/TextBrain/issues/51" property="og:url" /><meta content="http://habrahabr.ru/post/149605/
+пересекается с #46" property="og:description" />
+      <meta name="browser-stats-url" content="/_stats">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035">
+    <link rel="xhr-socket" href="/_sockets">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_issues" data-pjax-transient>
+      <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="59159550:12AD:B72DF0E:54DDD9AF" name="octolytics-dimension-request_id" /><meta content="190140" name="octolytics-actor-id" /><meta content="Nashev" name="octolytics-actor-login" /><meta content="f9e71e8b750e34e5eb9078232ed76a7e002069d0f163010238f37eb1aec89bcf" name="octolytics-actor-hash" />
+    
+    <meta content="Rails, view, issues#show" name="analytics-event" />
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="CfAeYBMWeB+UFcfebcgI5oXXEGChUwhPx0P4UmvlY+UiGYaqui5c9iJStfDv8m6tAJejbYGvgoGmnNX63OIxUg==" name="csrf-token" />
+
+    <link href="https://assets-cdn.github.com/assets/github-7f7a8d43d99dce26334cc1cb3b327f57a9309f9d6f215d6f3dff77d5e0c593a3.css" media="all" rel="stylesheet" />
+    <link href="https://assets-cdn.github.com/assets/github2-a8f2a7df6fdc952a46bc2ca532f6648544a4e0a803dba39a318d244baa77bbd5.css" media="all" rel="stylesheet" />
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="b3941243dd1d2edbd89ff1829245b524">
+
+      
+  <meta name="description" content="TextBrain - experiments with AI">
+  <meta name="go-import" content="github.com/Nashev/TextBrain git https://github.com/Nashev/TextBrain.git">
+
+  <meta content="190140" name="octolytics-dimension-user_id" /><meta content="Nashev" name="octolytics-dimension-user_login" /><meta content="2382186" name="octolytics-dimension-repository_id" /><meta content="Nashev/TextBrain" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="2382186" name="octolytics-dimension-repository_network_root_id" /><meta content="Nashev/TextBrain" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/Nashev/TextBrain/commits/origin.atom" rel="alternate" title="Recent Commits to TextBrain:origin" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_in  env-production windows vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" ga-data-click="Header, go to dashboard, icon:logo">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+
+      <div class="site-search repo-scope js-site-search" role="search">
+          <form accept-charset="UTF-8" action="/Nashev/TextBrain/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/Nashev/TextBrain/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input type="text"
+    class="js-site-search-field is-clearable"
+    data-hotkey="s"
+    name="q"
+    placeholder="Search"
+    data-global-scope-placeholder="Search GitHub"
+    data-repo-scope-placeholder="Search"
+    tabindex="1"
+    autocapitalize="off">
+  <div class="scope-badge">This repository</div>
+</form>
+      </div>
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item explore">
+          <a class="header-nav-link" href="/explore" data-ga-click="Header, go to explore, text:explore">Explore</a>
+        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/blog" data-ga-click="Header, go to blog, text:blog">Blog</a>
+          </li>
+        <li class="header-nav-item">
+          <a class="header-nav-link" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a>
+        </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name" href="/Nashev" data-ga-click="Header, go to profile, text:username">
+      <img alt="Nashev" class="avatar" data-user="190140" height="20" src="https://avatars1.githubusercontent.com/u/190140?v=3&amp;s=40" width="20" />
+      <span class="css-truncate">
+        <span class="css-truncate-target">Nashev</span>
+      </span>
+    </a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link js-menu-target tooltipped tooltipped-s" href="#" aria-label="Create new..." data-ga-click="Header, create new, icon:add">
+      <span class="octicon octicon-plus"></span>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      
+<ul class="dropdown-menu">
+  <li>
+    <a href="/new" data-ga-click="Header, create new repository, icon:repo"><span class="octicon octicon-repo"></span> New repository</a>
+  </li>
+  <li>
+    <a href="/organizations/new" data-ga-click="Header, create new organization, icon:organization"><span class="octicon octicon-organization"></span> New organization</a>
+  </li>
+
+
+    <li class="dropdown-divider"></li>
+    <li class="dropdown-header">
+      <span title="Nashev/TextBrain">This repository</span>
+    </li>
+      <li>
+        <a href="/Nashev/TextBrain/issues/new" data-ga-click="Header, create new issue, icon:issue"><span class="octicon octicon-issue-opened"></span> New issue</a>
+      </li>
+      <li>
+        <a href="/Nashev/TextBrain/settings/collaboration" data-ga-click="Header, create new collaborator, icon:person"><span class="octicon octicon-person"></span> New collaborator</a>
+      </li>
+</ul>
+
+    </div>
+  </li>
+
+  <li class="header-nav-item">
+        <a href="/notifications" aria-label="You have no unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:read" data-hotkey="g n">
+        <span class="mail-status all-read"></span>
+        <span class="octicon octicon-inbox"></span>
+</a>
+  </li>
+
+  <li class="header-nav-item">
+    <a class="header-nav-link tooltipped tooltipped-s" href="/settings/profile" id="account_settings" aria-label="Settings" data-ga-click="Header, go to settings, icon:settings">
+      <span class="octicon octicon-gear"></span>
+    </a>
+  </li>
+
+  <li class="header-nav-item">
+    <form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="hOJHy+6aoMEDs8Iv+OmQIXpcuOlEET0SPCWO868MK6s1NUsswrgwJJRL4hFlS3+ELfkwg/MHIqdCzSb9zQbR3w==" /></div>
+      <button class="header-nav-link sign-out-button tooltipped tooltipped-s" aria-label="Sign out" data-ga-click="Header, sign out, icon:logout">
+        <span class="octicon octicon-sign-out"></span>
+      </button>
+</form>  </li>
+
+</ul>
+
+
+    
+  </div>
+</div>
+
+      
+
+        
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope itemtype="http://schema.org/WebPage">
+    <div id="js-flash-container">
+      
+    </div>
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+<ul class="pagehead-actions">
+
+  <li>
+      <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="k0p68lTOdS3Sb0rCnlx4crh6N/F25VGC8BPtOIFrQTksRJILswqC6khUFgjA72JrvYvlzg77oI/61ZEWgcYntA==" /></div>    <input id="repository_id" name="repository_id" type="hidden" value="2382186" />
+
+      <div class="select-menu js-menu-container js-select-menu">
+        <a class="social-count js-social-count" href="/Nashev/TextBrain/watchers">
+          1
+        </a>
+        <a href="/Nashev/TextBrain/subscription"
+          class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0" aria-haspopup="true">
+          <span class="js-select-button">
+            <span class="octicon octicon-eye"></span>
+            Unwatch
+          </span>
+        </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header">
+              <span class="select-menu-title">Notifications</span>
+              <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+            </div>
+
+            <div class="select-menu-list js-navigation-container" role="menu">
+
+              <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input id="do_included" name="do" type="radio" value="included" />
+                  <span class="select-menu-item-heading">Not watching</span>
+                  <span class="description">Be notified when participating or @mentioned.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-eye"></span>
+                    Watch
+                  </span>
+                </div>
+              </div>
+
+              <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input checked="checked" id="do_subscribed" name="do" type="radio" value="subscribed" />
+                  <span class="select-menu-item-heading">Watching</span>
+                  <span class="description">Be notified of all conversations.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-eye"></span>
+                    Unwatch
+                  </span>
+                </div>
+              </div>
+
+              <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input id="do_ignore" name="do" type="radio" value="ignore" />
+                  <span class="select-menu-item-heading">Ignoring</span>
+                  <span class="description">Never be notified.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-mute"></span>
+                    Stop ignoring
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+</form>
+
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container on">
+
+    <form accept-charset="UTF-8" action="/Nashev/TextBrain/unstar" class="js-toggler-form starred js-unstar-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Ks6INFaGbCBc1N46AeDoLDrlRa5TLpKYjRGb7YizUif2g9Vo+pzceLyJIEoorVk16xWeKc0de3/CF1BbLK44Ew==" /></div>
+      <button
+        class="minibutton with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar Nashev/TextBrain">
+        <span class="octicon octicon-star"></span>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/Nashev/TextBrain/stargazers">
+          1
+        </a>
+</form>
+    <form accept-charset="UTF-8" action="/Nashev/TextBrain/star" class="js-toggler-form unstarred js-star-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="+04mY4dPQlW/er5ip81y66V5KlHxt1Ud3w9Oc/XLGYr81Gz6o67zk3u7R6mtaumleXwKksvgNTir2RI/86exaQ==" /></div>
+      <button
+        class="minibutton with-count js-toggler-target"
+        aria-label="Star this repository" title="Star Nashev/TextBrain">
+        <span class="octicon octicon-star"></span>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/Nashev/TextBrain/stargazers">
+          1
+        </a>
+</form>  </div>
+
+  </li>
+
+        <li>
+          <a href="/Nashev/TextBrain/fork" class="minibutton with-count js-toggler-target tooltipped-n" title="Fork your own copy of Nashev/TextBrain to your account" aria-label="Fork your own copy of Nashev/TextBrain to your account" rel="nofollow" data-method="post">
+            <span class="octicon octicon-repo-forked"></span>
+            Fork
+          </a>
+          <a href="/Nashev/TextBrain/network" class="social-count">0</a>
+        </li>
+
+</ul>
+
+        <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author"><a href="/Nashev" class="url fn" itemprop="url" rel="author"><span itemprop="title">Nashev</span></a></span><!--
+       --><span class="path-divider">/</span><!--
+       --><strong><a href="/Nashev/TextBrain" class="js-current-repository" data-pjax="#js-repo-pjax-container">TextBrain</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline  ">
+        <div class="repository-sidebar clearfix">
+            
+<nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container"
+     data-issue-count-url="/Nashev/TextBrain/issues/counts">
+  <ul class="sunken-menu-group">
+    <li class="tooltipped tooltipped-w" aria-label="Code">
+      <a href="/Nashev/TextBrain" aria-label="Code" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /Nashev/TextBrain">
+        <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+        <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Issues">
+        <a href="/Nashev/TextBrain/issues" aria-label="Issues" class="selected js-selected-navigation-item sunken-menu-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /Nashev/TextBrain/issues">
+          <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+          <span class="js-issue-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>      </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Pull Requests">
+      <a href="/Nashev/TextBrain/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g p" data-selected-links="repo_pulls /Nashev/TextBrain/pulls">
+          <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+          <span class="js-pull-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+
+
+      <li class="tooltipped tooltipped-w" aria-label="Wiki">
+        <a href="/Nashev/TextBrain/wiki" aria-label="Wiki" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g w" data-selected-links="repo_wiki /Nashev/TextBrain/wiki">
+          <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>      </li>
+  </ul>
+  <div class="sunken-menu-separator"></div>
+  <ul class="sunken-menu-group">
+
+    <li class="tooltipped tooltipped-w" aria-label="Pulse">
+      <a href="/Nashev/TextBrain/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-selected-links="pulse /Nashev/TextBrain/pulse">
+        <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+        <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Graphs">
+      <a href="/Nashev/TextBrain/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-selected-links="repo_graphs repo_contributors /Nashev/TextBrain/graphs">
+        <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+        <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+  </ul>
+
+
+    <div class="sunken-menu-separator"></div>
+    <ul class="sunken-menu-group">
+      <li class="tooltipped tooltipped-w" aria-label="Settings">
+        <a href="/Nashev/TextBrain/settings" aria-label="Settings" class="js-selected-navigation-item sunken-menu-item" data-selected-links="repo_settings /Nashev/TextBrain/settings">
+          <span class="octicon octicon-tools"></span> <span class="full-word">Settings</span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>      </li>
+    </ul>
+</nav>
+
+              <div class="only-with-full-nav">
+                  
+<div class="clone-url open"
+  data-protocol-type="http"
+  data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">HTTPS</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="https://github.com/Nashev/TextBrain.git" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url "
+  data-protocol-type="ssh"
+  data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">SSH</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="git@github.com:Nashev/TextBrain.git" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url "
+  data-protocol-type="subversion"
+  data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="https://github.com/Nashev/TextBrain" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+
+
+<p class="clone-options">You can clone with
+  <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>, <a href="#" class="js-clone-selector" data-protocol="ssh">SSH</a>, or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <span class="octicon octicon-question"></span>
+  </a>
+</p>
+
+
+  <a href="github-windows://openRepo/https://github.com/Nashev/TextBrain" class="minibutton sidebar-button" title="Save Nashev/TextBrain to your computer and use it in GitHub Desktop." aria-label="Save Nashev/TextBrain to your computer and use it in GitHub Desktop.">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+                <a href="/Nashev/TextBrain/archive/origin.zip"
+                   class="minibutton sidebar-button"
+                   aria-label="Download the contents of Nashev/TextBrain as a zip file"
+                   title="Download the contents of Nashev/TextBrain as a zip file"
+                   rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
+          
+<style type="text/css" media="screen">
+  span.labelstyle-0052cc, .linked-labelstyle-0052cc {  background-color: #0052cc !important;  color: #fff !important;}.labelstyle-0052cc.selected {  background-color: #0052cc !important;  color: #fff !important;}.label-select-menu .labelstyle-0052cc.selected {  background:rgba(0, 82, 204, 0.12) !important;  color: #003d99 !important;}
+
+span.labelstyle-44BBBB, .linked-labelstyle-44BBBB {  background-color: #44BBBB !important;  color: #123333 !important;}.labelstyle-44BBBB.selected {  background-color: #44BBBB !important;  color: #123333 !important;}.label-select-menu .labelstyle-44BBBB.selected {  background:rgba(68, 187, 187, 0.12) !important;  color: #379999 !important;}
+
+span.labelstyle-fbca04, .linked-labelstyle-fbca04 {  background-color: #fbca04 !important;  color: #332900 !important;}.labelstyle-fbca04.selected {  background-color: #fbca04 !important;  color: #332900 !important;}.label-select-menu .labelstyle-fbca04.selected {  background:rgba(251, 202, 4, 0.12) !important;  color: #997b02 !important;}
+
+span.labelstyle-009800, .linked-labelstyle-009800 {  background-color: #009800 !important;  color: #fff !important;}.labelstyle-009800.selected {  background-color: #009800 !important;  color: #fff !important;}.label-select-menu .labelstyle-009800.selected {  background:rgba(0, 152, 0, 0.12) !important;  color: #009900 !important;}
+
+span.labelstyle-eb6420, .linked-labelstyle-eb6420 {  background-color: #eb6420 !important;  color: #fff !important;}.labelstyle-eb6420.selected {  background-color: #eb6420 !important;  color: #fff !important;}.label-select-menu .labelstyle-eb6420.selected {  background:rgba(235, 100, 32, 0.12) !important;  color: #994114 !important;}
+
+span.labelstyle-5319e7, .linked-labelstyle-5319e7 {  background-color: #5319e7 !important;  color: #fff !important;}.labelstyle-5319e7.selected {  background-color: #5319e7 !important;  color: #fff !important;}.label-select-menu .labelstyle-5319e7.selected {  background:rgba(83, 25, 231, 0.12) !important;  color: #361099 !important;}
+</style>
+
+<div class="issues-listing" data-pjax>
+  <div class="context-loader large-format-loader">
+  <p><img alt="" height="64" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-128-338974454bb5c32803e82f601beb051d373744b024fe8742a76009700fd7e033.gif" width="64" /></p>
+  <p>Loading…</p>
+</div>
+
+    <div id="show_issue" class="js-issues-results">
+
+    
+  <div
+    id="partial-discussion-header"
+    class="gh-header js-details-container js-socket-channel js-updatable-content issue"
+    data-channel="Nashev/TextBrain:issue:50159741"
+    data-url="/Nashev/TextBrain/issues/51/show_partial?partial=title">
+
+  <div class="gh-header-show ">
+    <div class="gh-header-actions">
+        <button type="button" class="minibutton js-details-target">Edit</button>
+        <a href="/Nashev/TextBrain/issues/new" class="minibutton primary right" data-hotkey="c">
+          New issue
+        </a>
+    </div>
+
+    <h1 class="gh-header-title">
+      <span class="js-issue-title">Анализ тональности</span>
+      <span class="gh-header-number">#51</span>
+    </h1>
+  </div>
+
+    <div class="gh-header-edit">
+      <form accept-charset="UTF-8" action="/Nashev/TextBrain/issues/51" class="js-issue-update js-comment" data-remote="true" data-type="json" id="edit_header_50159741" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="XEQ2CXPyWoMAco4GUV47E1voghPMFArCjmVx+rs//iUl1VXRMfmirItsjQdGMvwJCj/JZWrWL4ST8zTWtjjWpw==" /></div>
+        <input class="edit-issue-title" id="issue_title" name="issue[title]" size="30" tabindex="1" type="text" value="Анализ тональности" />
+        <button class="button" type="submit" data-disable-with="Updating" tabindex="1">Save</button>
+        <button class="button-link js-details-target" type="button">Cancel</button>
+</form>    </div>
+
+  <div class="flex-table gh-header-meta">
+    <div class="flex-table-item">
+        <div class="state state-open">
+          <span class="octicon octicon-issue-opened"></span>
+          Open
+        </div>
+    </div>
+    <div class="flex-table-item flex-table-item-primary">
+        <a href="/Nashev" class="author">Nashev</a> opened this <span class="noun">Issue</span> <time datetime="2014-11-26T11:59:29Z" is="relative-time">Nov 26, 2014</time>
+        &middot; 0 comments
+    </div>
+  </div>
+</div>
+
+
+    <div id="discussion_bucket" class="tab-content clearfix">
+      <div class="discussion-sidebar">
+        <div id="partial-discussion-stats"
+     class="discussion-stats js-socket-channel js-updatable-content"
+     data-channel="Nashev/TextBrain:issue:50159741"
+     data-url="/Nashev/TextBrain/issues/51/show_partial?partial=discussion_stats">
+</div>
+
+<div class="discussion-sidebar-item sidebar-labels">
+  <div class="select-menu label-select-menu js-issue-show-label-select-menu js-menu-container js-select-menu" data-url="/Nashev/TextBrain/issues/labels/modify_assignment" data-multiple>
+    <form accept-charset="UTF-8" action="/Nashev/TextBrain/issues/labels/modify_assignment" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="ozMjAOBBXO2Aeix8oKaHzar8zr5Ko1Qz/tKkHxZoa6bjHr8MDUSoZeJ0uS67/8dE6Y2NEtaOGQQ8EQszhb/Msg==" /></div>
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container" aria-hidden="true">
+
+  <div class="select-menu-modal">
+    <div class="select-menu-header">
+      <span class="select-menu-title">Apply labels to this issue</span>
+      <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+    </div>
+
+    <div class="select-menu-filters">
+      <div class="select-menu-text-filter">
+        <input type="text" id="label-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter labels" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="select-menu-list" data-filterable-for="label-filter-field" data-filterable-type="substring">
+
+      <div class="select-menu-item js-navigation-item labelstyle-0052cc ">
+        <span class="select-menu-item-icon octicon octicon-check"></span>
+        <div class="select-menu-item-text">
+          <div class="color-label-wrapper">
+            <div data-name="Bookwriting" class="color-label labelstyle-0052cc">
+              <input style="display: none" type="checkbox"
+                     value="Bookwriting"
+                     name="labels[]"
+                     >
+              <span class="color" style="background-color: #0052cc"></span>
+              <span class="name">Bookwriting</span>
+              <span class="octicon octicon-x"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="select-menu-item js-navigation-item labelstyle-44BBBB ">
+        <span class="select-menu-item-icon octicon octicon-check"></span>
+        <div class="select-menu-item-text">
+          <div class="color-label-wrapper">
+            <div data-name="Concepts" class="color-label labelstyle-44BBBB">
+              <input style="display: none" type="checkbox"
+                     value="Concepts"
+                     name="labels[]"
+                     >
+              <span class="color" style="background-color: #44BBBB"></span>
+              <span class="name">Concepts</span>
+              <span class="octicon octicon-x"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="select-menu-item js-navigation-item labelstyle-fbca04 ">
+        <span class="select-menu-item-icon octicon octicon-check"></span>
+        <div class="select-menu-item-text">
+          <div class="color-label-wrapper">
+            <div data-name="GUI" class="color-label labelstyle-fbca04">
+              <input style="display: none" type="checkbox"
+                     value="GUI"
+                     name="labels[]"
+                     >
+              <span class="color" style="background-color: #fbca04"></span>
+              <span class="name">GUI</span>
+              <span class="octicon octicon-x"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="select-menu-item js-navigation-item labelstyle-009800 ">
+        <span class="select-menu-item-icon octicon octicon-check"></span>
+        <div class="select-menu-item-text">
+          <div class="color-label-wrapper">
+            <div data-name="Internal code architecture" class="color-label labelstyle-009800">
+              <input style="display: none" type="checkbox"
+                     value="Internal code architecture"
+                     name="labels[]"
+                     >
+              <span class="color" style="background-color: #009800"></span>
+              <span class="name">Internal code architecture</span>
+              <span class="octicon octicon-x"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="select-menu-item js-navigation-item labelstyle-eb6420 ">
+        <span class="select-menu-item-icon octicon octicon-check"></span>
+        <div class="select-menu-item-text">
+          <div class="color-label-wrapper">
+            <div data-name="Knowledge types" class="color-label labelstyle-eb6420">
+              <input style="display: none" type="checkbox"
+                     value="Knowledge types"
+                     name="labels[]"
+                     >
+              <span class="color" style="background-color: #eb6420"></span>
+              <span class="name">Knowledge types</span>
+              <span class="octicon octicon-x"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="select-menu-item js-navigation-item labelstyle-5319e7 ">
+        <span class="select-menu-item-icon octicon octicon-check"></span>
+        <div class="select-menu-item-text">
+          <div class="color-label-wrapper">
+            <div data-name="Newscrawling" class="color-label labelstyle-5319e7">
+              <input style="display: none" type="checkbox"
+                     value="Newscrawling"
+                     name="labels[]"
+                     >
+              <span class="color" style="background-color: #5319e7"></span>
+              <span class="name">Newscrawling</span>
+              <span class="octicon octicon-x"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="select-menu-no-results">Nothing to show</div>
+
+
+    <div class="select-menu-loading-overlay">Loading…</div>
+  </div>
+</div>
+
+      <input type="hidden" class="js-issue-number" name="issues[]" value="51">
+
+        <button class="discussion-sidebar-heading discussion-sidebar-toggle js-menu-target" aria-label="Manage labels" aria-haspopup="true" data-hotkey="l">
+          <span class="octicon octicon-gear"></span>
+          Labels
+        </button>
+</form>  </div>
+
+  <div class="labels css-truncate js-timeline-label-list"></div>
+</div>
+
+<div class="discussion-sidebar-item sidebar-milestone">
+  <div class="select-menu js-menu-container js-select-menu js-milestone-picker is-showing-clear-item js-load-contents" data-contents-url="/Nashev/TextBrain/issues/51/show_partial?partial=milestone_select_menu">
+      <button class="discussion-sidebar-heading discussion-sidebar-toggle js-menu-target" aria-label="Set milestone" aria-haspopup="true" data-hotkey="m">
+        <span class="octicon octicon-gear"></span>
+        Milestone
+      </button>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container" aria-hidden="true">
+        <div class="select-menu-modal">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Set milestone</span>
+            <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+          </div>
+
+          <form accept-charset="UTF-8" action="/Nashev/TextBrain/milestone" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="ISf/cBRw9sEshJBQUev9QGpUudOUNloQHecv85OqIN3J328Ret2zLVFWnD2U1Or5kSlgLKJBoSIa0op54F1KKQ==" /></div>
+            <div class="js-milestone-picker-body">
+              <div class="js-select-menu-deferred-content"></div>
+              <div class="select-menu-loading-overlay">Loading…</div>
+            </div>
+            <input type="hidden" class="js-issue-number" name="issues[]" value="51">
+</form>        </div>
+      </div>
+  </div>
+
+  <span class="js-milestone-infobar-item-wrapper">
+      <span class="text-muted">No milestone</span>
+
+  </span>
+</div>
+
+<div class="discussion-sidebar-item sidebar-assignee">
+  <div class="select-menu js-menu-container js-select-menu js-assignee-picker  js-load-contents" data-contents-url="/Nashev/TextBrain/issues/51/show_partial?partial=assignee_select_menu">
+      <button class="discussion-sidebar-heading discussion-sidebar-toggle js-menu-target" aria-label="Assign someone to this issue" aria-haspopup="true" data-hotkey="a">
+        <span class="octicon octicon-gear"></span>
+        Assignee
+      </button>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container" aria-hidden="true">
+        <div class="select-menu-modal">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Assign someone to this issue</span>
+            <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+          </div>
+          <div class="js-select-menu-deferred-content"></div>
+          <div class="select-menu-loading-overlay">Loading…</div>
+        </div>
+      </div>
+  </div>
+
+  <span class="css-truncate js-assignee-infobar-item-wrapper">
+        <form accept-charset="UTF-8" action="/Nashev/TextBrain/issues/51" class="sidebar-quick-assign js-issue-quick-assign" data-remote="true" id="edit_issue_50159741" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="Yqb8bgVkSivbZQ4xSA2WNgD8BQfdjqQo0BhfYdbSs8RPoDNfR7AO2sNLnFHKledO+cKKzNouNVuuR5dLmoBQqQ==" /></div>
+          <input type="hidden" name="issue[assignee]" value="Nashev">
+          <span class="text-muted">No one—<button type="submit" class="button-link muted-link">assign yourself</button></span>
+</form>
+        <div class="js-issue-self-assigned" style="display:none;">
+          <img alt="Nashev" class="avatar" data-user="190140" height="20" src="https://avatars1.githubusercontent.com/u/190140?v=3&amp;s=40" width="20" />
+          <a href="/Nashev/TextBrain/issues/assigned/Nashev" class="assignee css-truncate-target">Nashev</a>
+        </div>
+  </span>
+</div>
+
+  <div class="discussion-sidebar-item sidebar-notifications">
+    <h3 class="discussion-sidebar-heading">Notifications</h3>
+    <div class="thread-subscription-status js-thread-subscription-status js-socket-channel js-updatable-content"
+  data-channel="Nashev/TextBrain:thread-subscription:50159741:Nashev"
+  data-url="/notifications/thread_subscription?repository_id=2382186&amp;thread_class=Issue&amp;thread_id=50159741">
+
+  <span class="mega-octicon octicon-radio-tower"></span>
+
+  <form accept-charset="UTF-8" action="/notifications/thread" class="thread-subscribe-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="e8P03tNsnRInzoaDrkQyQFEDwDDUwb3VwvafpXVVfVdBsnOtVbrLZCunpmGN5ZQgHvb2US8CU4PJMtdnGsWPlA==" /></div>    <input type="hidden" name="repository_id" value="2382186">
+    <input type="hidden" name="thread_id" value="50159741">
+    <input type="hidden" name="thread_class" value="Issue">
+    <input type="hidden" name="id" value="mute">
+
+    <button class="minibutton" type="submit" data-disable-with>
+      <span class="octicon octicon-mute"></span>
+      Unsubscribe
+    </button>
+</form>
+  <p class="reason">You&#39;re receiving notifications because you authored the thread.</p>
+</div>
+
+  </div>
+
+<div id="partial-users-participants" class="discussion-sidebar-item js-socket-channel js-updatable-content"
+    data-channel="Nashev/TextBrain:issue:50159741"
+      data-url="/Nashev/TextBrain/issues/51/show_partial?partial=participants"
+  >
+  <div class="participation">
+
+    <h3 class="discussion-sidebar-heading">
+      1 participant
+    </h3>
+    <div class="participation-avatars">
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="Nashev" href="/Nashev"><img alt="Nashev" class="avatar" data-user="190140" height="20" src="https://avatars1.githubusercontent.com/u/190140?v=3&amp;s=40" width="20" /></a>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="discussion-sidebar-item lock-toggle">
+    <a href="#lock-confirmation" rel="facebox" class="lock-toggle-link">
+        <span class="octicon octicon-lock"></span>
+      Lock issue
+    </a>
+
+    <div id="lock-confirmation" style="display:none">
+      <h2 class="facebox-header">Lock conversation on this issue</h2>
+
+      <p>Locking the conversation means:</p>
+
+      <ul>
+          <li>Other users <strong>can't add new comments</strong> to this issue.</li>
+            <li>
+              You and other collaborators
+              <a href="https://help.github.com/articles/what-are-the-different-access-permissions">with access</a>
+              to this repository <strong>can still leave comments</strong> that others can see.
+            </li>
+      </ul>
+
+      <p>You can always unlock this issue again in the future.</p>
+
+      <div class="facebox-footer">
+        <form accept-charset="UTF-8" action="/Nashev/TextBrain/issues/51/lock" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="lnSKLpTYR1JGBRNmenXm1SGmlwSM9zTdfLaMaisWdCI1wEFWGnvtrzz5zAz+xjU5xA72xNIikEJBuYqWqtY9wA==" /></div>
+          <button type="submit" class="button danger button-block">
+            Lock this issue
+          </button>
+</form>      </div>
+    </div>
+  </div>
+
+
+      </div>
+
+      <div class="discussion-timeline js-quote-selection-container">
+
+        <div class="js-discussion js-socket-channel" data-channel="Nashev/TextBrain:marked-as-read:50159741">
+          
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/Nashev"><img alt="Nashev" class="timeline-comment-avatar" data-user="190140" height="48" src="https://avatars1.githubusercontent.com/u/190140?v=3&amp;s=96" width="48" /></a>
+    <div id="issue-50159741"
+     class="comment timeline-comment js-comment js-task-list-container owner-comment current-user"
+     data-body-version="42d2d865543948acfc21345582a83ae7">
+
+  <div class="timeline-comment-header ">
+
+    <div class="timeline-comment-actions">
+        <a class="timeline-comment-action js-comment-edit-button"
+           data-skip-pjax
+           href="#"
+           title="Edit comment"
+           aria-label="Edit comment">
+          <span class="octicon octicon-pencil"></span>
+        </a>
+    </div>
+
+    <span class="timeline-comment-label">Owner</span>
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/Nashev" class="author">Nashev</a>
+    </strong>
+
+    commented
+
+    <a href="#issue-50159741" class="timestamp">
+      <time datetime="2014-11-26T11:59:29Z" is="relative-time">Nov 26, 2014</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+      <p class="comment-form-stale">
+        The content you are editing has changed. Reload the page and try again.
+      </p>
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="http://habrahabr.ru/post/149605/">http://habrahabr.ru/post/149605/</a><br>
+пересекается с <a href="https://github.com/Nashev/TextBrain/issues/46" class="issue-link" title="Distant reading">#46</a></p>
+      </div>
+    </div>
+
+      <div class="context-loader">Sending request&hellip;</div>
+
+<div class="form-content js-write-bucket js-suggester-container js-uploadable-container js-upload-markdown-image upload-enabled is-default"
+     data-upload-policy-url="/upload/policies/assets">
+  <form accept-charset="UTF-8" action="/Nashev/TextBrain/issues/51" class="js-comment-update" data-remote="" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="55fMSNOjtPrn7wYDmNBgd9FPAcBD7CEXqexuQC4YFBr9pkjE6BZKhKXhcGGskFdNApwcCf2ABLVbvvZWuYqkqw==" /></div>
+
+    <input type="hidden" name="context" value="">
+
+    <textarea class="comment-form-textarea js-comment-field js-quick-submit js-task-list-field js-size-to-fit js-suggester-field" id="issue-50159741-body" name="issue[body]" tabindex="1">
+http://habrahabr.ru/post/149605/
+пересекается с #46</textarea>
+
+      <p class="drag-and-drop">
+    <span class="default">
+        Attach images by dragging &amp; dropping,
+        <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+        <a class="manual-file-chooser-text" href="#">selecting them</a>, or pasting
+        from the clipboard.
+    </span>
+    <span class="loading">
+      <img alt="" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" /> Uploading your images…
+    </span>
+    <span class="error bad-file">
+      Unfortunately, we don't support that file type.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a PNG, GIF, or JPG.
+      </span>
+    </span>
+    <span class="error too-big">
+      Yowza, that's a big file.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with an image file smaller than 10MB.
+      </span>
+    </span>
+    <span class="error empty">
+      This file is empty.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a file that's not empty.
+      </span>
+    </span>
+    <span class="error bad-browser">
+      This browser doesn't support image attachments.
+      <span class="drag-and-drop-error-info">
+        We recommend updating to the latest
+        <a href="http://windows.microsoft.com/ie">Internet Explorer</a>,
+        <a href="https://chrome.google.com">Google Chrome</a>, or
+        <a href="https://www.mozilla.org/firefox">Firefox</a>.
+      </span>
+    </span>
+    <span class="error failed-request">
+      Something went really wrong, and we can't process that image.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again.</a>
+      </span>
+    </span>
+  </p>
+
+
+    <div class="form-actions">
+      <button class="button" type="submit" tabindex="1" data-disable-with>Update comment</button>
+      <button type="button" tabindex="1"
+              class="button danger js-comment-cancel-button"
+              data-confirm-text="Are you sure you want to cancel? You have unsaved changes that will be reverted.">
+        Cancel
+      </button>
+    </div>
+
+    <div class="suggester-container">
+      <div class="suggester js-suggester js-navigation-container"
+           data-url="/Nashev/TextBrain/suggestions/issue/50159741">
+      </div>
+    </div>
+</form></div>
+
+<div class="comment-form-error comment-form-bottom js-comment-update-error"></div>
+
+  </div>
+</div>
+
+  </div>
+  
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header">
+      <span class="octicon octicon-bookmark discussion-item-icon"></span>
+      This was referenced <time datetime="2015-02-10T17:32:31Z" is="relative-time">Feb 10, 2015</time>
+    </div>
+
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-open right">
+                <span class="octicon octicon-issue-opened"></span>
+            Open
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-25640181">
+          <h3 class="discussion-item-ref-title">
+            <a href="/Nashev/TextBrain/issues/4" class="title-link">
+              Анализ текста - как сбор его характеристик/метрик, так и вычисление выводов из него.
+
+              <span class="issue-num">
+                #4
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-open right">
+                <span class="octicon octicon-issue-opened"></span>
+            Open
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-57436151">
+          <h3 class="discussion-item-ref-title">
+            <a href="/Nashev/TextBrain/issues/54" class="title-link">
+              Монетизацию придумать и сделать
+
+              <span class="issue-num">
+                #54
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+<!-- Rendered timeline since 2015-02-12 01:36:33 -->
+<div id="partial-timeline-marker"
+      class="js-timeline-marker js-socket-channel js-updatable-content"
+      data-channel="Nashev/TextBrain:issue:50159741"
+      data-url="/Nashev/TextBrain/issues/51/show_partial?partial=timeline_marker&amp;since=1423733793"
+      data-mark-as-read-url="/Nashev/TextBrain/notifications/mark?ids=50570086"
+      data-last-modified="Thu, 12 Feb 2015 09:36:33 GMT">
+</div>
+
+
+        </div>
+
+        <div class="discussion-timeline-actions">
+            
+  
+<div class="timeline-comment-wrapper timeline-new-comment js-comment-container ">
+  <a href="/Nashev"><img alt="Nashev" class="timeline-comment-avatar" data-user="190140" height="48" src="https://avatars1.githubusercontent.com/u/190140?v=3&amp;s=96" width="48" /></a>
+
+  <form accept-charset="UTF-8" action="/Nashev/TextBrain/issue_comments" class="js-new-comment-form" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="kW70UCWLMzK3KYsRcuy2M9XMc2+X33lwlCppZWXRNVsPQsCffUiDAcwZGpDEUUF+YGhW3hCuGngJxSFPozXV7Q==" /></div>
+    <div class="timeline-comment">
+      <input type="hidden" name="issue" value="51">
+        
+<div class="js-previewable-comment-form js-suggester-container previewable-comment-form write-selected" data-preview-url="/preview?repository=2382186">
+  <div class="comment-form-head tabnav">
+    <ul class="tabnav-tabs">
+      <li><a href="#" class="tabnav-tab write-tab js-write-tab selected">Write</a></li>
+      <li><a href="#" class="tabnav-tab preview-tab js-preview-tab">Preview</a></li>
+    </ul>
+    <span class="tabnav-right">
+      <a class="tabnav-widget text tabnav-extras" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
+        <span class="octicon octicon-markdown"></span>
+        Markdown supported
+      </a>
+      
+<a href="#fullscreen" class="enable-fullscreen js-enable-fullscreen tooltipped-n
+  tabnav-widget text tabnav-extras"  >
+  <span class="octicon octicon-screen-full"></span>
+  Edit in fullscreen
+</a>
+
+    </span>
+  </div>
+
+  <div class="comment-form-error js-comment-form-error" style="display:none">    There was an error creating your Issue.
+</div>
+  <div class="write-content js-write-bucket js-uploadable-container js-upload-markdown-image upload-enabled is-default" data-upload-policy-url="/upload/policies/assets">
+    <textarea name="comment[body]"
+              tabindex="1"
+              id="new_comment_field"
+              placeholder="Leave a comment"
+              class="input-contrast comment-form-textarea js-comment-field js-quick-submit js-size-to-fit js-quote-selection-target js-session-resumable js-suggester-field"
+              ></textarea>
+
+      <p class="drag-and-drop">
+    <span class="default">
+        Attach images by dragging &amp; dropping,
+        <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+        <a class="manual-file-chooser-text" href="#">selecting them</a>, or pasting
+        from the clipboard.
+    </span>
+    <span class="loading">
+      <img alt="" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" /> Uploading your images…
+    </span>
+    <span class="error bad-file">
+      Unfortunately, we don't support that file type.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a PNG, GIF, or JPG.
+      </span>
+    </span>
+    <span class="error too-big">
+      Yowza, that's a big file.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with an image file smaller than 10MB.
+      </span>
+    </span>
+    <span class="error empty">
+      This file is empty.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a file that's not empty.
+      </span>
+    </span>
+    <span class="error bad-browser">
+      This browser doesn't support image attachments.
+      <span class="drag-and-drop-error-info">
+        We recommend updating to the latest
+        <a href="http://windows.microsoft.com/ie">Internet Explorer</a>,
+        <a href="https://chrome.google.com">Google Chrome</a>, or
+        <a href="https://www.mozilla.org/firefox">Firefox</a>.
+      </span>
+    </span>
+    <span class="error failed-request">
+      Something went really wrong, and we can't process that image.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again.</a>
+      </span>
+    </span>
+  </p>
+
+  </div>
+  <div class="preview-content">
+    <div class="comment">
+  <div class="comment-content">
+    <div class="comment-body markdown-body">
+      <p>Nothing to preview</p>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="suggester-container">
+    <div class="suggester js-suggester js-navigation-container"
+         data-url="/Nashev/TextBrain/suggestions/issue/50159741">
+    </div>
+  </div>
+</div>
+
+        <div class="form-actions">
+          <div id="partial-new-comment-form-actions"
+      class="js-socket-channel js-updatable-content"
+      data-channel="Nashev/TextBrain:issue:50159741:state"
+        data-url="/Nashev/TextBrain/issues/51/show_partial?partial=form_actions"
+  >
+
+  <button type="submit" class="button primary" tabindex="2" data-disable-with data-disable-invalid>
+    Comment
+  </button>
+
+    <button type="submit" name="comment_and_close" value="1" class="button js-comment-and-button"
+    tabindex="3"
+    data-comment-text="Close and comment"
+    data-disable-with>
+    Close issue
+  </button>
+
+</div>
+
+
+        </div>
+    </div>
+</form>
+</div>
+
+
+        </div>
+      </div>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="https://developer.github.com">API</a></li>
+      <li><a href="http://training.github.com">Training</a></li>
+      <li><a href="http://shop.github.com">Shop</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+
+    </ul>
+
+    <a href="/" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.09649s from github-fe120-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="/site/terms">Terms</a></li>
+        <li><a href="/site/privacy">Privacy</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-suggester-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder=""></textarea>
+      <div class="suggester-container">
+        <div class="suggester fullscreen-suggester js-suggester js-navigation-container"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w"
+      aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-x flash-close js-ajax-error-dismiss" aria-label="Dismiss error"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-996268c2962f947579cb9ec2908bd576591bc94b6a2db184a78e78815022ba2c.js"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-a7bddfcfdd35f67bb7fe4fcd1c4fb64f6b3dad6d75980b243af9e7ad1f55035f.js"></script>
+      
+      
+
+  </body>
+</html>
+
