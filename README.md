@@ -14,7 +14,6 @@ Must be interface to browse "brain" content and then make some requests.
 
 This project are developed under Lazarus IDE on Free Pascal language (http://www.lazarus.freepascal.org/).
 
-== For me and guest developers ==
-See pages about used tools:
+== Used tools ==
 * http://wiki.freepascal.org/Talk:Translations_/_i18n_/_localizations_for_programs/ru
 * http://wiki.freepascal.org/FPDoc_Editor/ru
