@@ -8,15 +8,16 @@
       </element><element name="TKnowledgeItem.InfoText"><short>Full generated text description of this knowledge item. Usually include string representation and some specific aditional info</short>
       </element><element name="TKnowledgeItem.IntegrateToBrain"><descr>Note: This method need be called when this item will be ready for merge.</descr>
       </element><element name="TBasis"><short>TBasis is a TTabledKnowledgeBaseSubset with Owner knowledge item and ability to add Owner  to item's Consequences when add that item as a basis of they Owner</short>
-      </element><element name="TTabledKnowledgeBaseSubset"><short>Is a abstract set of knowledge items with Items property and with direct iterator over Items</short>
+      </element><element name="TTabledKnowledgeBaseSubset"><short>Is an abstract collection of a knowledge items. Has Items property and direct iterator over this Items.</short>
       <descr>Descendants can implement different way to store all contained TKnowledgeItem instances.
-For example, </descr>
+As an array, or as a memory stream, or a queue, or a TCollection, etc</descr>
       </element><element name="TKnowledgeBaseSubset"><short>Base subset of knowledge items with support to organize tree of subsets: it have a link to superset and list of subsets</short>
       <descr>It provide an possibility to get Iterator to theirs own contents and a notifications of content's changing to all their's subsets</descr>
       </element><element name="TFunctionalKnowledgeBaseSubset.GetIterator"><short>Not used yet</short>
       </element>
     <element name="TBrain"><short>Abstract class of TKnowledgeItem's owner, that is a 1) holder of all knowledges (TTabledKnowledgeBaseSubset) and 2) holder of all knowledge detectors</short>
       </element>
+    <short>First try to make some test brain engine</short>
     </module>
   </package>
 </fpdoc-descriptions>

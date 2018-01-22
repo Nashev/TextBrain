@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fpdoc-descriptions><package name="project1"><module name="Engine11Unit"><element name="TBrain1"><short>Implementation of TBrain</short>
+<fpdoc-descriptions><package name="project1"><module name="Engine11Unit"><element name="TBrain1"><short>Implementation of TBrain, first (and, today, just single)</short>
       </element>
+    <short>First try to implement of first try of text's brain engine</short>
     </module>
   </package>
 </fpdoc-descriptions>
