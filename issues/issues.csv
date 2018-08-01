@@ -1,5 +1,664 @@
-Id, Title, Creator, Assignee, Milestone, State, Body Text
-57,Воображаемые миры,Nashev,null, ,OPEN,Слово воображаемые в этом тексте возможно стоит заменить на конструируемые, с учетом того, что хранить и генерировать их могут не только мозги с воображением, но и компьютер с алгоритмами.
+Id, URL, Title, Creator, Assignee, Milestone, State, Labels, Body Text
+134,http://github.com/Nashev/textBrain/issues/134,https://towardsdatascience.com/how-i-trained-a-language-detection-ai-in-20-minutes-with-a-97-accuracy-fdeca0fb7724,Nashev, , ,OPEN,Concepts Internal code architecture Knowledge types Иметь ввиду https://towardsdatascience.com/how-i-trained-a-language-detection-ai-in-20-minutes-with-a-97-accuracy-fdeca0fb7724 - там ссылка на трёхязычный корпус, полезные библиотеки и описание приёмов работы
+,
+133,http://github.com/Nashev/textBrain/issues/133,Присмотреться к использованию супер компьютеров HPC Hub,Nashev, , ,OPEN,Concepts Internal code architecture Для глубокого анализа одного текста или широкого анализа корпуса текстов. Соответственно, понять какие архитектурные ограничения это накладывает и какие возможности даёт.
+
+А заодно стараться писать код и хранить данные максимально независимо от конкретной архитектуры,
+132,http://github.com/Nashev/textBrain/issues/132,Области окраски текста,Nashev, , ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Distant reading UseCase - Knowledge condensing UseCase - News crawling Визуализация Изображать на схеме книги области присутствия разных чувств, настроений, стилей, сюжетных штампов, видов изложения (биография (описание времени через перечень событий), обзор мест, обзор героев, описание испытываемых чувств (с делением по видам чувств), рассуждения автора, диалоги героев, и т.п.).
+
+Именно это должно давать общую картину книги.
+
+Это на ленте повествования можно изобразить. 
+
+Ещё могут быть ленты затрагиваемого времени и карты/схемы затрагиваемых мест, графы взаимодействия героев. На них тоже можно обозначать такие области окраски текста и практики тех или иных особенностей текста.,
+131,http://github.com/Nashev/textBrain/issues/131,"Визуализация данных для киноманов: скрапим рекомендации фильмов и делаем интерактивный граф",Nashev, , ,OPEN,Concepts Internal code architecture UseCase - Knowledge condensing UseCase - News crawling Визуализация [Визуализация данных для киноманов: скрапим рекомендации фильмов и делаем интерактивный граф](https://habrahabr.ru/company/ods/blog/348110/) - про сбор текстов с интернета, с обходом ограничения скачиваний с одного IP, семантический анализ, кластеризацию, визуализацию и т.п.,
+130,http://github.com/Nashev/textBrain/issues/130,Области семантического пространства искать по двуязычным словарям,Nashev, , ,OPEN,Когда одному слову английского языка приписываются значения ряда слов и словосочетаний другого языка, это значит что есть одна-две-несколько (больше одной, наверное, когда на самом деле омонимы, а не одно слово. Или стали омонимами, даже если корень единый, как у слова ключ) областей семантического поля, общие для этих слов. У каждого из слов своя область поля, но есть их пересечения. А из того, что с чем и насколько пересекается, а что с чем нет — наверное можно подбирать размерность семантического пространства и располагать пузыри областей слов и словосочетаний в нём.
+
+А словосочетания и даже фразы — это уточнение, сокращение, локализация области в семантическом пространстве путем обрезания не относящегося к делу за счёт пересечения областей исходного понятия и добавляем к нему уточнений,
+129,http://github.com/Nashev/textBrain/issues/129,https://data.worldbank.org,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Knowledge condensing UseCase - News crawling Визуализация Использовать всякие статистические данные из открытых источников типа этого,
+128,http://github.com/Nashev/textBrain/issues/128,Учесть опыт ИИ и психологов,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Adaptive teaching К статье https://psy-practice.com/publications/psikhicheskoe-zdorove/odinnadtsat-aspektov-zreloy-seksualnoy-lyubvi-po-k/ писал интересные комментарии программист https://m.facebook.com/sergey.kondratyev.777?_rdr
+
+Комментарии интересные, он старается разобрать мозги на подсистемы, собирает информацию. При случае наверное было б полезно пообщаться.,
+127,http://github.com/Nashev/textBrain/issues/127,Статический анализ программного кода,Nashev, , ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Distant reading UseCase - Knowledge condensing UseCase - Static code analysis Теоретически, итоговая система должна б суметь, просчитав какие-либо исходники, понаделать из прочитанного кучу выводов, уметь пересказать их на другом уровне абстракции, дать обзор применяемых подходов и т.п.
+
+Интересно, что для этого понадобится сделать эдакого, сверх нужного для простых текстов, а что из очевидно нужного для этой цели само собой понадобится и для целей distant reading?,
+126,http://github.com/Nashev/textBrain/issues/126,Сервис, который будет читать интернет, делать оригинальные выводы и публиковать их в свой блог,Nashev, , ,OPEN,Concepts GUI Knowledge types UseCase - Distant reading UseCase - Knowledge condensing UseCase - News crawling Идея из http://www.goertzel.org/benzine/WakingUpFromTheEconomyOfDreams.htm: «By creating a computer program that could read all the information on the Internet, understand much of it, and place new information back on the Internet, enhancing the environment that it lived in»,
+125,http://github.com/Nashev/textBrain/issues/125,Грамматическая и лексическая статистика и метрика - для изучения языка,Nashev, , ,OPEN,Concepts GUI Knowledge types UseCase - Adaptive teaching UseCase - Distant reading Визуализация Хочу сервис, который по переданному ему тексту выдаст статистику, какое количество и каких грамматических конструкций в нём содержится, и как это соотносится с аналогичной характеристикой того или иного корпуса текстов (#34). Сколько типовых, сколько редких, сколько уникальных.. Никто такого не видел? И то же по словарному составу.
+
+И чтоб фильмы по этой метрике повыбирать бы, скармливая туда субтитры.. И книжки.
+
+Это был бы живой статистический словарь языка с грамматикой. Могла б быть революция в языкознании, и явление сравнимое по значимости с Википедией! Особенно если всякие визуализации красиво сделать, по областям типа сленг, региональные специфики, исторические периоды, маршруты распространения, положение того или иного текста в этом пространстве...
+Показать место Йодиш в области грамматических конструкций))
+
+В научных кругах наверняка под это дело можно грант найти, и затем жить на рекламу или пожертвования.. (в тему к #54)
+
+Для подхода [KinoLanguage - обучение языкам по кино](https://www.facebook.com/KinoLanguage/) очень приходилось бы.
+
+Новость про движок https://steemit.com/.../welcome-to-free-text-clustering в тему,
+124,http://github.com/Nashev/textBrain/issues/124,Классификация утверждений по воздействию на читателей,Nashev, , ,OPEN,Knowledge types UseCase - Distant reading UseCase - News crawling https://indicator.ru/article/2017/12/13/viktor-vakhshtayn-slyot-prosvetiteley-2017/ — вот как здесь,
+123,http://github.com/Nashev/textBrain/issues/123,Читать и консолидировать знания прочитанные и ранее известные — две разные задачи,Nashev, , ,OPEN,Осознать, что прочитал, соотнести с известным, выявить противоречия или понять ранее не понятое с помощью новых утверждений, сложить общую картину — это всё отдельные от собственно чтения задачи. Надо решать отдельно, и надо людей учить этому отдельно.
+
+Иметь тестовый набор текстов, первые из которых дают незаметные или мало заметные непонятки или даже заблуждения, а последующие их раскрывают в новом свете, дают повод переосмыслить. Детективы напоминает. Квесты. Изучение математики или физики, поверхностное потом глубокое...
+
+Сделать на его основе курс обучения анализу текста, консолидации знаний.,
+122,http://github.com/Nashev/textBrain/issues/122,Пользоваться коммерческими публичными Knowledge Graph ,Nashev, , ,OPEN,https://console.bluemix.net/docs/services/discovery/building-kg.html#watson-discovery-knowledge-graph
+
+http://www.geomarketing.com/amazons-neptune-database-will-expand-the-knowledge-graph-heres-how
+
+,
+121,http://github.com/Nashev/textBrain/issues/121,Snappy,Nashev, , ,OPEN,Internal code architecture https://github.com/google/snappy , http://google.github.io/snappy/ — архиватор повышенной скорости записи и чтения, возможно пригодится для хранения базы на диске,
+120,http://github.com/Nashev/textBrain/issues/120,"Безяева М.Г. Семантика коммуникативного уровня звучащего языка",Nashev, , ,OPEN,http://www.twirpx.com/file/1419999/
+
+> Книга посвящена коммуникативному уровню звучащего языка в его системной организации (целеустановка, реализующие ее конструкции и т.д.).
+> Введение.
+> Требование.
+> Просьба
+> Совет и Предложение.
+> Предупреждение. Предостережение и Угроза.
+> Успокаивание.
+> Желание говорящего.
+> Намерение говорящего.
+> Заключение.
+> Библиография.
+
+https://istina.msu.ru/profile/bezyaeva/
+Учитель у https://istina.msu.ru/profile/KorostelevaAA/, AKA willie-wonka.livejournal.com,
+119,http://github.com/Nashev/textBrain/issues/119,N-граммы, статья про начало очередных работ на тему и мысли по поводу,Nashev, , ,OPEN,Knowledge types UseCase - Distant reading https://habrahabr.ru/company/sensecognition/blog/202662/ 
+
+> "Первичная задача — идентификация в завершенных текстах персонажей, их действий и целей (в терминах, использованных в тексте). То есть поиск явной морали.
+> 
+> Выбрать из сказки о курочке рябе персонажей (дед, баба, ряба, мышка) их действия (снесла курочка, дед бил, баба била) и объекты действий (яйцо). То есть вначале предполагается, что один текст — одна ситуация, со связанными персонажами
+> 
+> Вспомогательная задача — идентифицировать границы и переходы ситуаций в тексте и связь ситуаций между текстами, для работы с незавершенными текстами и, наоборот, со сборниками завершенных текстов."
+
+> Я не понял, вы пытаетесь изобрести n-gram'ные языковые модели?
+> Ну перед тем как пускаться во все тяжкие, посмотрите что народ уже успел понапридумывать за 60 лет в компьютерной лингвистике. 
+> 
+> Ваш способ, как и n-gram'ы уткнется в комбинаторную сложность. И никуда от нее не денетесь. Частично, эту проблему снимают рекуррентные нейронные сети (см Mikolov —[ RNN Based Language Models](https://www.google.ru/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&ved=0CDYQFjAB&url=http%3A%2F%2Fwww.fit.vutbr.cz%2Fresearch%2Fgroups%2Fspeech%2Fpubli%2F2010%2Fmikolov_interspeech2010_IS100722.pdf&ei=RaOVUv_IBMW8ygOP0IHoAg&usg=AFQjCNHrawfdgsTvAfpSq8avDcc2oqAXeA&sig2=vIEQ8dBGb31WDKkBS46qcw&bvm=bv.57155469,d.bGQ))
+
+
+> Пока, если коротко, могу привести метафорический пример смысла. Есть два пути выявления смысла. Первый это обобщение некоторых признаков. Например, белое круглое в небе — это признаки. Их обобщение — луна. Второй это выявление упущенных признаков. Например, луна, белое круглое. Упущено — в небе. Разумеется над определениями еще нужно поработать, обещаю это сделать к следующей статье.,
+118,http://github.com/Nashev/textBrain/issues/118,Изучить OpenCog,Nashev, , ,OPEN,https://ru.wikipedia.org/wiki/OpenCog
+https://github.com/opencog
+https://github.com/opencog/link-grammar
+https://habrahabr.ru/post/160255/ - OpenCog — проект создания ИР (AGI), Ярослав Логинов
+
+https://m.hh.ru/vacancy/23214057:
+
+> Responsibilities:
+> Develop algorithms for unsupervised language learning for English, Russian, Chinese and other languages
+> Implement algorithms as C/C++/Scheme/Python code for open-source project http://opencog.org/
+> Requirements:
+> Be able to study existing code re-factor and maintain it
+> Be able to learn new and domain-specific languages
+> Have working knowledge for at least some of the following and be able to learn the rest:
+> C/C++
+> Scheme
+> Python
+> N-Grams: https://en.wikipedia.org/wiki/Grams_(search)
+> Spanning trees: https://en.wikipedia.org/wiki/Spanning_tree
+> Link grammar: https://en.wikipedia.org/wiki/Link_grammar
+> Word-sense disambiguation: https://en.wikipedia.org/wiki/Word-sense_disambiguation
+> Word2Vec: https://en.wikipedia.org/wiki/Word2vec
+> Neural networks: https://en.wikipedia.org/wiki/Artificial_neural_network
+> Terms:
+> Full time
+> Partially may be telecommuting/remote
+> Ability to read, write and understand spoken English
+> Ph.D. study may be possible and welcome in scope of work
+> Flexible schedule is possible
+> Project is expected to be long term,
+117,http://github.com/Nashev/textBrain/issues/117,Точка зрения как вариант метамодели,Nashev, , ,OPEN,Одна и та же система, рассмотренная с разных точек зрения, может оказываться более или менее удобной для анализа. 
+
+Например, солнечная — если рассматривать относительно земли — сложно считать траектории, если смотреть от солнца — радикально всё упрощается. 
+
+Одна и та же система связанных данных тоже может быть описана по-разному, и производить по ней те или иные вычисления может быть проще или сложнее. От элементарно до невозможно.
+
+Если описание данных без избыточности, это одна чёткая точка зрения. Если избыточность есть, то возможно представлены несколько точек зрения. И появляется задача выбора. Вернее, проблема выбора. Выбора, какой частью имеющихся данных воспользоваться для той или иной задачи. Особенно если выбор должен сделать автомат, оптимизатор выполнения запроса, а среди этих данных есть ещё и подразумеваемые, при необходимости вводимые по каким-то правилам.
+
+В частности, может быть дана собственно куча информации о фактическом движении планет и солнца, и надо будет как-то автоматом выбрать систему отсчёта.
+
+В эту же тему — встречался алгоритм поиска центральных осей облака точек.,
+116,http://github.com/Nashev/textBrain/issues/116,Побить на уровни стека и не смешивать,Nashev, , ,OPEN,#115 два уровня БД, хранение и управление
+Задача про агентов, копошащихся в БД — тоже подобные два уровня
+Разные клиентские приложения — прикладные и системные
+,
+115,http://github.com/Nashev/textBrain/issues/115,https://grakn.ai/,Nashev, , ,OPEN,Internal code architecture Иметь ввиду
+
+Возможно, как способ хранения и мне подойдёт
+
+> Grakn is a distributed hyper-relational database for knowledge-oriented systems. Grakn enables machines to manage complex data that serves as a knowledge base for cognitive/AI systems.
+> 
+> Graql is Grakn's reasoning (through OLTP) and analytics (through OLAP) query language. Graql is a much higher level abstraction over traditional query language - SQL, NoSQL, or Graphs.
+
+Из видео https://youtu.be/OeFrudRlXAM?t=17m8s на странице https://grakn.ai/pages/overview/index.html увидел, что оно построено поверх Апачевских Cassandra, HBase (хранилища), Hadoop, Spark (кластеризация), Kafka (брокер сообщений (использован для индексации)) и Tinkerpop (обработка графов)
+
+в https://www.quora.com/Why-would-someone-use-Cassandra-over-HBase-Are-they-both-similar-or-does-one-solve-a-specific-type-of-problem-better-than-the-other написано про первые три из них:
+> Cassandra is highly available system, uses P2P, AP in brewers theorem, multi data center support, no overhead of moving OLTP data to OLAP if considering dse.
+HBase is CP system, tight integration with Hadoop
+
+,
+114,http://github.com/Nashev/textBrain/issues/114,https://nlpub.ru/Russian_Distributional_Thesaurus,Nashev, , ,OPEN,Internal code architecture Knowledge types Иметь ввиду эту разработку
+Там и корпус научного русского языка хороший есть, по fb2 книгам с lib.Russian.ec, и выводы из него интересные.
+
+> Russian Distributional Thesaurus (сокр. RDT) — проект создания открытого дистрибутивного тезауруса русского языка. На данный момент ресурс содержит несколько компонент: вектора слов (word embeddings), граф подобия слов (дистрибутивный тезаурус), множество гиперонимов и инвентарь смыслов слов. Все ресурсы были построены автоматически на основании корпуса текстов книг на русском языке (12.9 млрд словоупотреблений). ,
+113,http://github.com/Nashev/textBrain/issues/113,Система адаптивного обучения ,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Adaptive teaching Автоматизация обучения, основанная на построении модели знаний ученика и корректном формировании для него индивидуальной учебной траектории — наше светлое будущее.
+
+Мечтаю об учебнике, описанном Нилом Стивенсоном в книжке Алмазный век или Букварь для благородных девиц
+
+(из моих комментов к https://www.facebook.com/shperk/posts/10159401222250153),
+112,http://github.com/Nashev/textBrain/issues/112,"Обработка естественного языка: с чего начать и что изучать дальше" обзор,Nashev, , ,OPEN,Иметь ввиду, из https://proglib.io/p/how-to-start-nlp/ :
+> Обработка естественного языка: с чего начать и что изучать дальше
+> От Ekaterina Ponomareva -15.10.201701210
+> Если вас интересует, что такое обработка естественного языка, как в ней разобраться и  как начать его использовать, то эта статья для вас.
+> 
+> Где-то я читала, что если ты встречаешь какой-то вопрос дважды, то возможно хорошая идея — написать об этом в блог. Следуя этому правилу и желанию сохранить в будущем немного времени, вот мой ответ на стандартный вопрос: «Я изучал *такую-то* науку и мне интересно NLP (Natural Language Processing — обработка естественного языка), как мне начать его изучать?»
+> 
+>  
+> 
+> Перед тем, как вы начнёте, хочу заметить, что приведённый ниже список скорее всего является неполным и служит лишь отправной точкой. Для лучшего ориентирования в потоке информации также приведены краткое описание и оценка сложности. Рекомендуется иметь базовые навыки программирования (например, на Python).
+> 
+> Онлайн курсы
+> 
+> [Dan Jurafsky & Chris Manning: Natural Language Processing](https://www.youtube.com/watch?v=nfoudtpBV68&list=PL6397E4B26D00A269) — отличное введение в виде серии видео уроков.
+> [Stanford CS224d: Deep Learning for Natural Language Processing](http://cs224d.stanford.edu/syllabus.html) — более продвинутые ML алгоритмы, архитектура нейронной сети для того, чтобы обработка естественного языка.
+> [Coursera: Introduction to Natural Language Processing](https://www.coursera.org/learn/natural-language-processing) — начальный курс NLP от университета Мичигана.
+> [Введение в обработку естественного языка](https://stepik.org/course/1233/) — первый онлайн-курс по прикладной лингвистике, который фокусируется на обработке русского языка
+> Библиотеки и открытые ресурсы
+> 
+> spaCy ([website](https://spacy.io/), [blog](https://explosion.ai/blog/)) — Python; новая открытая библиотека с превосходными примерами, API документацией и демо-приложениями.
+> Natural Language Toolkit (NLTK) ([website](http://www.nltk.org/), [book](http://www.nltk.org/book/)) — Python; практическое введение в программирование для NLP, в основном используемое для обучения.
+> Stanford CoreNLP ([website](https://stanfordnlp.github.io/CoreNLP/)) — Java; высококачественный инструментарий для анализа.
+> Блоги
+> 
+> [Natural language processing blog](https://nlpers.blogspot.com/) (Хэл Дауме)
+> [Google Research blog](https://research.googleblog.com/)
+> [Language Log](http://languagelog.ldc.upenn.edu/nll/) (Марк Либерман)
+> Книги
+> 
+> [Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/) (Даниэль Юрафски и Джеймс Х. Мартин) —  классический учебник, который раскрывает все базовые аспекты обработки естесственного языка.
+> [Foundations of Statistical Natural Language Processing](https://nlp.stanford.edu/fsnlp/) (Крис Мэннинг и Хинрих Шютце) — более продвинутые статистические методы обработки естесственного языка.
+> [Introduction to Information Retrieval](https://nlp.stanford.edu/IR-book/) (Крис Мэннинг, Прабхакар Рагхаван и Хинрих Шютце) — отличный справочник по ранжированию и поиску.
+> [Neural Network Methods in Natural Language Processing](https://www.amazon.com/Network-Methods-Natural-Language-Processing/dp/1627052984) (Yoav Goldberg) — введение в подходы, связанные с нейронными сетями для НЛП, учебник можно найти здесь.
+> Другие источники
+> 
+> [Как создать word2vec модель in TensorFlow](https://www.tensorflow.org/versions/master/tutorials/word2vec) — практическое руководство.
+> [Deep Learning for NLP resources](https://github.com/andrewt3000/dl4nlp) — отсортированный по темам обзор современных ресурсов для глубокого изучения.
+> [Last Words: Computational Linguistics and Deep Learning?—?A look at the importance of Natural Language Processing](http://mitp.nautil.us/article/170/last-words-computational-linguistics-and-deep-learning) (Крис Мэннинг) — авторская статья.
+> [Natural Language Understanding with Distributed Representation](https://github.com/nyu-dl/NLP_DL_Lecture_Note/blob/master/lecture_note.pdf) (Кайнгхуан Чо) — выдержки из лекций по ML/NN подходам к NLU (Natural Language understanding — понимание естественного языка).
+> [Bayesian Inference with Tears](http://www.isi.edu/natural-language/people/bayes-with-tears.pdf) (Кевин Найт) — сборник упражнений для исследователей естественного языка.
+> [Quora: How do I learn Natural Language Processing?](https://www.quora.com/How-do-I-learn-Natural-Language-Processing) — специалисты о том, как учить NLP.
+> Что вы можете сделать сами?
+> 
+> 
+> 
+> Создайте определитель частей речи с использованием скрытой Марковской модели.
+> Используйте алгоритм Кока — Янгера — Касами для распознавания контекстно-свободных грамматик.
+> Проанализируйте семантическое сходство между двумя словами в тексте.
+> Попробуйте использовать Наивный байесовский классификатор, чтобы фильтровать спам.
+> Используйте систему проверки правописания, основанную на алгоритме вычисления расстояния редактирования.
+> Изучите тематическое моделирование с использованием латентного размещения Дирихле,
+111,http://github.com/Nashev/textBrain/issues/111,Автоматическая генерация новостей,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Book writing UseCase - Distant reading UseCase - Knowledge condensing UseCase - News crawling https://digiday.com/media/washington-posts-robot-reporter-published-500-articles-last-year/
+
+https://www.kommersant.ru/doc/3414753 :
+
+Год назад газета The Washington Post начала использовать технологию искусственного интеллекта Heliograf, чтобы писать короткие новости и отчеты об Олимпиаде в Рио-де-Жанейро. В результате робот написал 300 статей и с тех пор используется для публикации материалов про выборы в Конгрессе и губернаторские гонки, а также в дни футбольных матчей.
+
+Из 850 статей, опубликованных роботом Heliograf, более 500 касались выборов в США. Они сгенерировали около полумиллиона кликов. На большую часть этих статей The Washington Post в любом случае не собиралась задействовать сотрудников редакции. Для выборов 2012 года интернет-издание написало только 15% от количества статей, выпущенных в 2016 году. Менеджеры Washington Post ожидают, что в будущем робот сможет не только писать отчеты, но и выявлять тенденции в больших базах данных. Heliograf также может быть использован для обновления текущих событий, например прогноза погоды в режиме реального времени.
+
+Это не первый случай, когда сотрудники СМИ прибегают к помощи технологий искусственного интеллекта. Associated Press использует роботов для автоматизации отчетов о доходах компаний, в то время как USA Today использует видеопрограмму для создания коротких видеороликов.
+
+По оценкам AP, робот на 20% сократил время, затрачиваемое журналистами на сообщения по корпоративным отчетам.
+По словам менеджера по стратегическим вопросам AP Франческо Маркони, автоматизация в освещении финансовых новостей позволила снизить количество ошибок в сообщениях, при том что «количество новостей увеличилось в более чем десять раз».,
+110,http://github.com/Nashev/textBrain/issues/110,Способ формирования текста, похожего на тексты носителей языка,Nashev, , ,OPEN,Concepts UseCase - Book writing UseCase - Distant reading UseCase - Knowledge condensing На примере английскийх текстов, хорошая статья: [Как писать нормальные тексты на английском, не будучи носителем языка (Блог компании Нетология)](https://habrahabr.ru/company/netologyru/blog/335836/)
+
+Скопировал в эвернот.
+N-граммы применять шаблонные, каким-то образом их найдя в тематическом корпусе текстов.
+
+и #10 ,
+109,http://github.com/Nashev/textBrain/issues/109,Взаимосвязанность, равенство, термина в разных текстов - это гипотеза. Менеджер гипотез нужен.,Nashev, , ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Distant reading UseCase - Knowledge condensing UseCase - News crawling Нужно отличать упоминания одного и того же слова в разных текстах.
+
+Выдвигать гипотезу о том, что тексты об одном и том же понимании, оценивать её достоверность по косвенным признакам, и строить варианты интерпретации суммы текстов как исходя из верности такой гипотезы, так и исходя из ложности её. И смотреть, чем отличаются полученыне интерпретации.
+
+В пределе - каждое упоминание слова даже в одном тексте, в одной фразе, надо б сводить с другими упоминаниями то же так вот, через гипотезы и оценку их достоверности, чтоб верно раскрывать случаи типа "на косе косил косой косой косой".
+
+Это к вопросу о создании базы знаний, интегрирующей в себя кучу текстов из разных источников.,
+108,http://github.com/Nashev/textBrain/issues/108,https://github.com/catboost/catboost,Nashev, , ,OPEN,Понять, поможет ли,
+107,http://github.com/Nashev/textBrain/issues/107,Многомерное пространство смыслов слов как граф похожести слов,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Knowledge condensing Подумалось, что оси многомерного пространства смыслов можно счесть оценкой положения слова между антонимами, а можно это считать оценкой похожести слова на каждый из таких антонимов, или степени похожести на вообще любые другие слова, по отдельности. Каждое слово — ось в этом пространстве, и точка в этом же пространстве по осям других слов.
+
+Интересно, можно ли из этого бреда вывести полезные применения?
+
+Похожесть, наверное, можно попробовать получать статистически, из количества похожих контекстов, в которых встретились то или иное слово...,
+106,http://github.com/Nashev/textBrain/issues/106,Грамматический помощник,Nashev, , ,OPEN,GUI Knowledge types UseCase - Adaptive teaching Нужна программа, которая на основании анализа корпуса текстов покажет статистику использования тех или иных грамматических конструкций, словосочетаний и места их применения.
+
+Чтоб изучающие язык могли узнать, как говорят, а как не говорят.,
+105,http://github.com/Nashev/textBrain/issues/105,Мышление мозга,Nashev, , ,OPEN,Архитектурные требования к мышлению
+http://ailev.livejournal.com/1342372.html
+
+Мои архитектурные требования к мышлению – это его абстрактность, адекватность, осознанность, рациональность. Я ничего не говорю о том, как устроено мышление внутри, но я требую от мышления полезного внешнего поведения на его внешней границе: мышление должно быть абстрактно, адекватно, осознанно и рационально.
+
+Абстрактность -- это главное требование, мне в мышлении нужно абстрагироваться от неважного и сосредоточиться на важном. Мышление моделирует мир, а не отражает его в полноте всех ненужных деталей. Мышление должно отделять зёрна от плевел и оперировать зёрнами. Мышление должно уметь отвязываться от индивидов и мыслить типами, прототипами, общими образами: я не знаю, что там у него внутри, но я требую какого-то обобщения с опусканием ненужных для предмета мышления деталей. Мне нужна абстрактность, с конкретными предметами и кошечка справится, и собачка. Абстрагировать кошечке и собачке не удаётся, они работают только с конкретными ситуациями, а я хочу уметь планировать и проектировать, я хочу работать с целыми классами и типами ситуаций. Без абстрагирования я не смогу переносить опыт одних ситуаций на другие, я не смогу эффективно учиться, я не смогу создавать языки. 
+
+Адекватность -- это возможность проверить, связано ли моё абстрактное мышление с реальным миром, или оно всё остаётся в отвязанности от вещного мира и у меня не будет способов проверить его результаты, соотнести его результаты с реальным миром. Адекватны ли мои мыслительные представления о ситуациях реальному (т.е. существующему независимо от меня, материальному) миру? Или мышление меня обманывает и предлагает какие-то неадекватные представления? Мне нужно практичное, применимое для действия мышления, я хочу быть адекватным и не отрываться от реальности.
+
+Осознанность -- это возможность понять, как я мыслю, как я рассуждаю. Если я просто "имею интуицию", это меня не удовлетворит. Я не смогу научить мыслить других, повторять их мои рассуждения. Я не смогу заметить ошибку в моём мышлении, не смогу его улучшить или изменить, не смогу выучить другой способ мылсить, ибо я его не буду замечать, не буду его осознавать. Я не смогу удерживать внимание в мышлении, ибо нельзя удерживать внимание на том, чего не осознаёшь. Я не смогу предъявить неосознаваемое мной мышление для проверки со стороны логики и рациональности, не смогу сознательно принять решение о том, что в той или иной ситуации мне достаточно от мышления интуитивной догадки, а не строгого рационального рассуждения. Я хочу знать, о чём я размышляю, как я это делаю, я хочу иметь возможность выбирать -- мыслить мне о чём-то или не мыслить, я не хочу быть бессознательным мыслящим автоматом. Я хочу быть осознанным в мышлении.
+
+Рациональность -- это возможность провести рассуждение по правилам, логичное рассуждение. Это возможность отстроиться от своей биологической и социальной природы, не делать связанных с этим ошибок. Рациональность -- это возможность проверить результаты быстрого образного интуитивного мышления на отсутствие ошибок рассуждения по правилам, возможность задействовать опыт человечества в мышлении. Это возможность явно (хотя бы в диалоге с самим собой, то есть осознанно) обсудить эти выработанные цивилизацией правила хорошего мышления, обсудить логические основания мышления, обсудить допустимость или недопустимость использования каких-то отдельных приёмов мышления. Я не хочу ошибок мышления, поэтому я должен быть рациональным, я должен уметь распознавать ошибки мышления у себя и других, я должен уметь выразить результаты мышления так, чтобы уменьшить число ошибок в их восприятии. Я хочу быть рациональным, мне нужно уметь делить задачи на части (рацио -- это ведь "деление"), я не хочу чистой образности и эмоциональности кошек и собак, мне нужна цивилизованность в мышлении, использование лучших достижений цивилизации в том, как мыслить.
+
+Все остальные требования к мышлению -- это декомпозиция представленных, или разные варианты их сочетания (так, "сильное мышление" обычно сводится к хорошему абстрагированию и адекватности, "мудрость" это просто другие слова для адекватности, "творческое мышление" -- это задействование правильного абстрагирования). 
+
+И уже потом должна обсуждаться архитектура мышления, те важнейшие решения (осознанность!) по основным принципам его организации, по его структуре, составу частей и их взаимосвязей, которые должны удовлетворить архитектурным требованиям. И в этой архитектуре мышления выделяется "цивилизационная платформа", которая и должна обеспечивать выполнение этих архитектурных требований абстрактности, адекватности, осознанности, рациональности. 
+
+Научение мозга работать с мышлением на уровне этой платформы -- основа обучения любому мышлению, это интеллектуальный фитнес (fitness), готовность к мыслительному действию. Это всё в мышлении нужно "накачать" и "разработать" (как мышцы и суставы для готовности тела к движению -- мозг ведь тоже тренируем, он пластичен!) для того, чтобы дальше иметь возможность абстрактно, адекватно, осознанно и рационально мыслить в какой-то культуре, в каких-то паттернах мышления, на следующем уровне специализации мышления: будь это более специальная по отношению к "просто мышлению" культура системного мышления, вычислительного мышления (computational thinking), танцевального или спортивного мышления в его многочисленных изводах разных жанров танца и видов спорта, или какого-то ещё более специального и быстро меняющегося в своих самых разнообразных мыслительных практиках инженерного или менеджерского мышления. Дальше можно обсуждать, насколько само мышление паттернировано, насколько оно импровизационно в части комбинирования паттернов, насколько спонтанно и хороша ли эта спонтанность, и много чего ещё обсуждать. Впрочем, я всё это обсуждал уже не раз в своих самых разных текстах про мышление (хотя и немного в другой терминологии), и ещё буду не раз это обсуждать. Ссылок не даю, их всё одно будет слишком много.
+
+———————————
+
+На днях решил плотно изучить логику, для чего выбрал The art of reasoning (4ed) для ознакомления с самыми основами, выделив Fundamentals of logic design (7ed) как одно из возможных завершения первого шага, так как последняя книга является вводным курсом логики для инженеров.
+
+Для этой же записи приведу выписки из первых двух глав The art of reasoning. Почему? -- запись о концепции "мышление" с фокусом на differentia при отсутствующем genus.
+
+=Classification=
+==Rules==
+1. A single principle or set of principles should be used consistently so that the categories (species) are mutually exclusive and jointly exhaustive.
+2. The principle or principles used should be essential.
+
+==Strategy, organizing concepts==
+1. Find the highest-level (most abstract) genus.
+2. Identify concepts that are species of that genus; they should all have the same degree of abstractness.
+3. Identify the principle of division that applies to the concepts in step 2; put the principle in brackets.
+4. For each concept in step 2, identify any other concepts that are its species, and identify the principle of division (the single priciiple by which the concepts has been divided into species).
+5. Repeat step 4 for as many levels as necessary.
+
+==Key terms==
+Classify - to group things into species and genuses according to their similarities and differences.
+Referents - the class of things for which a concept stands.
+Genus - a class of things regarded as having various subcategories (its species).
+Species - a class of things regarded as a subcategory of a wider class (a genus)
+Mutually exclusive - in a classification, the property that each species excludes the members of every other species.
+Jointly exhaustive - in a classification, the property that the species taken together cover all the objects int he genus.
+
+
+=Definitions=
+==Main functions==
+1. State the criteria for membership in the class of referends
+2. Indicate the relationship between a concept and other concepts.
+3. Condense the knowledge we have about the referents of a concept.
+
+==Rules==
+A definition should:
+1. Include a genus and a differentia.
+2. Not be too broad or too narrow.
+3. State the essential attributes of the concept's referents.
+4. Not be circular.
+5. Not use negative terms unnecessarily.
+6. Not use vague, obscure, or metaphorical language.
+
+=Strategy:=
+==constructing definitions==
+1. Find the genus of the concepts-the broader concept that includes C and other, related concepts from which one needs to distinguish C.
+2. Choose a differential that distinguish C from other concepts in the same genus. If there is more than one distinguishing attribute, choose the most essential one.
+3. Check to make sure that the resulting definition is not circular, unnecessarily negative or unclear.
+
+==Key terms==
+Definition - a statement that identifies the referents of a concept by specifying the genus they belong to and the essential characteristics (differentia) that distinguish those referents from other members of the genus.
+Genus - a class of things regarded as having various subcategories (its species).
+Differentia - the element in a definition that specifies the attribute(s) distinguishing a species from other species of the same genus.
+Counterexample - a specific instance that proves a definition wrong.
+Stipulative definition - a stipulative definition introduces a new concept (or a new meaning for an existing concept) by specifying the criteria for inclusion in the concept.
+
+,
+104,http://github.com/Nashev/textBrain/issues/104,"Экспериментальный анализ дискурса" - изучить приёмы, терминологию, структурные элементы и т.п.,Nashev,Nashev, ,OPEN,Concepts Knowledge types UseCase - Distant reading UseCase - Knowledge condensing https://books.google.ru/books?id=29CRCgAAQBAJ 
+
+Ольга Федорова
+Litres, 12 янв. 2017 г.
+ISBN 5457884198, 9785457884199 
+"Монография представляет собой описание нового, ещё только формирующегося направления лингвистики – экспериментального анализа дискурса. Основная цель исследований, лёгших в основу данной книги, состояла в выработке, экспериментальной проверке и теоретическом обосновании методологии этого нового направления. Триединая цель определила структуру книги: первая часть содержит четыре главы, каждая из которых посвящена одному из основополагающих аспектов методологии; вторая часть состоит из трёх глав, описывающих собственные эмпирические исследования автора; наконец, третья часть рассматривает наиболее актуальный теоретический вопрос в области экспериментального дискурса, а именно, моделирование взаимодействия собеседников в процессе диалога.
+
+Монография адресована широкому кругу читателей, интересующихся проблемами экспериментальной лингвистики, дискурсивных исследований, корпусного изучения устной речи, а также когнитивной психологии."
+
+психолингвистика, "возможные нейрофизиологические корреляты"
+
+https://istina.msu.ru/profile/olga.fedorova/,
+103,http://github.com/Nashev/textBrain/issues/103,Глагольные конструкции обнаруживать и вообще анализ структуры предложений вести,Nashev, , ,OPEN,Распознавание частей речи.
+
+Выписывание и анализ словосочетаний, разделенных вставками пояснений или вообще чем угодно.
+
+При выписывании словосочетаний можно также выписывать их с подменой отдельных слов на их гиперионимы, на их части речи и т.п. Например, «Вася пел» можно зарегистрировать также в виде «<имя> пел», «<имя> <глагол>» и т.п., то есть в обобщенном виде.
+
+http://kirsanov.com/fresheye/ ищет находящиеся более-менее рядом похожие слова. Надо б подобную фишку тоже уметь замечать. То есть искать словосочетания на уровне звучания основ слов.
+
+Обучение не только собственным анализом, но и получение такой информации из текста, то есть прочитанный текст запоминается в том числе и в том же виде, что и вычисленые открытия, выводы.
+
+Вычислять всё такое сразу или обращать внимание отдельно, постфактум, по отдельному пинку, когда попросят обратить внимание.,
+102,http://github.com/Nashev/TextBrain/issues/102,Оценка достоверности новых сведений при пополнении базы,Nashev, , ,CLOSED,Мысль пришла по мере чтения комментариев к https://habrahabr.ru/post/309626/ 
+
+Для one-shot learning нужно чтоб была очень достоверная информация, но часто нужно иметь возможность загрузить гипотезы и домыслы, и оценивать их достоверность самостоятельно. Детектор бреда, детектор фантазий и фэнтези... 
+Дня всего этого иметь атрибуцию — откуда знаем, когда узнали, чем доказано.,
+101,http://github.com/Nashev/textBrain/issues/101,Оценка достоверности новых сведений при пополнении базы,Nashev, , ,OPEN,Мысль пришла по мере чтения комментариев к https://habrahabr.ru/post/309626/ 
+
+Для one-shot learning нужно чтоб была очень достоверная информация, но часто нужно иметь возможность загрузить гипотезы и домыслы, и оценивать их достоверность самостоятельно. Детектор бреда, детектор фантазий и фэнтези... 
+Дня всего этого иметь атрибуцию — откуда знаем, когда узнали, чем доказано.,
+100,http://github.com/Nashev/textBrain/issues/100,Программы поддержки написания сценариев — изучить, превзойти,Nashev, , ,OPEN,Concepts UseCase - Book writing UseCase - Distant reading Комплексная автоматизированная работа над сценарием — уже почти стандарт.  А вы все по-старинке? Пора догонять!
+
+Сразу предупреждаем, про драматургию тут ни слова. Киносценарий мы рассмотрим, как документ, который задаст параметры производства будущего фильма.
+
+Зачем вообще сценаристам специальный софт? Что он может сделать, а чего нет? Какие самые распространенные программы, и как ими пользоваться? Разбирать будем подробно – от форматирования по стандарту до создания полной базы данных фильма по персонажам и местам действия.
+
+Самое главное, что вы не только поймете, как реализуется комплексная работа над сценарием. В результате интенсива вы освоите интерфейс двух сценарных программ — КИТ Сценарист и Fade In на основе реальных сценариев, а также научитесь с их помощью решать творческие и производственные задачи.
+
+Преподаватель – Александр Кудакаев — автор и режиссер более 20 документальных фильмов. Победитель и дипломант нескольких кинофестивалей. Также Александр уже несколько лет ведет авторский курс во ВГИКе по компьютерным программам в кинопроизводстве.
+
+ 
+
+Программа интенсива
+
+Киносценарий, как управляющий документ в кинопроизводстве. Производственные параметры киносценария.
+История создания компьютерных программ для написания сценария.  Основные разновидности современных сценарных программ.
+Освоение интерфейса программ КИТ Сценарист и Fade In на примере реальных сценариев. Решение творческих и производственных задач.
+Форматирование  киносценария по «американскому стандарту». Особенности русского языка при написании сценария.
+Производственный анализ при использовании сценарных программ. Выявление факторов стоимости будущего фильма.
+ 
+
+Слушателям рекомендуем заранее  скачать программы с http://www.fadeinpro.com/ и https://kitscenarist.ru/.  У первой есть  сокращеннная бесплатная версия, вторая совсем бесплатная
+
+
+https://ru.wikipedia.org/wiki/Программа-ассистент_литератора,
+99,http://github.com/Nashev/textBrain/issues/99,Звучание, транскрипция. Упрощенная, для поиска «звучит подобно», и точная, для TtS,Nashev, , ,OPEN,Concepts Knowledge types UseCase - News crawling Для поиска текстов по примерно услышанному. Для компьютерного чтения текста вслух,
+98,http://github.com/Nashev/textBrain/issues/98,Оценивать связность текста, последовательность изложения,Nashev, , ,OPEN,Concepts UseCase - Book writing UseCase - Distant reading UseCase - Knowledge condensing UseCase - News crawling Реконструировать пропуски на основании знаний из базы. Показывать явные белые пятна в изложении.,
+97,http://github.com/Nashev/textBrain/issues/97,Учесть слои отражения реальности в системе,Nashev, , ,OPEN,«Про мультимодальную семантику (и поминается книжка Geometry meaning), "Коннективистская весна онтологической инженерии", август 2016: http://ailev.livejournal.com/1283541.html
+исследования по линии коннекционистских словарей-тезаурусов-онтологий интенсифицируются на глазах:
+-- сначала они занимаются значениями отдельных слов в "векторных пространствах" aka semantic space, conceptual space и прочими вариантами "геометрий значений" -- даже книжка есть такая, https://mitpress.mit.edu/books/geometry-meaning [есть в bookzz.org],
+-- потом приходят к выводу, что нужно заниматься значениями как таковыми (которые привязываются иногда к словам, иногда к частям слов, иногда к словосочетаниям, и дальше по идее distributional semantics -- фразам, предложениям, документам),
+-- потом (сильно потом!) начинает появляться идея о моделировании отношений (это они и называют онтологиями -- но ведь это только "как говорят о мире"),
+-- и только потом-потом идея сначала о мультимодальной (аудио, видео, тексты) семантике -- http://acl2016.org/index.php?article_id=59,
+-- и только совсем потом о grounding -- привязывания этого всего "лингвистического "как говорят о мире" к реалиям окружающего мира, то есть появляется классическая онтология по линии ответа на вопрос "что есть в мире" (а не "что говорят о том, что есть в мире", отвязка от лингвистики).» из http://ailev.livejournal.com/1322862.html
+
+,
+96,http://github.com/Nashev/textBrain/issues/96,Дедукция, Индукция, лабораторный журнал,Nashev, , ,OPEN,Concepts Internal code architecture Knowledge types Из http://www.lib.ru/INPROZ/PIRSIG/zen.txt_with-big-pictures.html
+
+«Логические утверждения, вносимые в записную книжку, делятся на шесть категорий: (1) постановка проблемы, (2) гипотеза, касающаяся причины проблемы, (З) эксперименты, предназначенные для испытания каждой гипотезы, (4) предсказанные результаты экспериментов, (5) наблюдаемые результаты экспериментов, и (6) заключения из результатов экспериментов. Это ничем не отличается от формальной организации лабораторных тетрадей в коллеждах и высших школах, но цель здесь -- не простая трата времени, а точное руководство мыслями, которое окажется неудачным, если записи не будут точными. »,
+95,http://github.com/Nashev/textBrain/issues/95,Любое произведение легко преобразуется в план-схему, безупречно понятную и однозначную.,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Distant reading  "Борис Эйхенбаум. Как сделана «Шинель» Гоголя
+
+Программная для русского формализма и филологической науки в целом статья, буквально на пальцах объясняющая анатомию и физиологию гоголевской повести. Каким образом к простенькой бытописательной истории о «маленьком человеке» оказался приделан совершенно безумный, фантастический финал, и зачем вообще Гоголю понадобилось сводить под одной обложкой два настолько разных типа повествования (реалистический и романтический) — на этот вопрос у Эйхенбаума есть очень четкий, структурный и железобетонно убедительный ответ. Отдельное достоинство этой статьи — ее можно использовать как универсальную шпаргалку по анализу художественного текста: при помощи эйхенбаумовского инструментария любое произведение легко преобразуется в план-схему, безупречно понятную и однозначную."
+(https://meduza.io/feature/2016/09/21/15-tekstov-chtoby-perezhit-shkolnuyu-programmu-po-literature)
+,
+94,http://github.com/Nashev/textBrain/issues/94,ГОВОРЯЩИЙ, СЛУШАЮЩИЙ и СИТУАЦИЯ – это три кита, на которых всё держится. ,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Book writing UseCase - Knowledge condensing http://willie-wonka.livejournal.com/642885.html: 
+Google Translation более правильно было бы называть Google Replacements, потому что именно таков принцип его действия. 
+Обычный переводчик-человек действует так: он мысленно ставит себя на место говорящего в той же или аналогичной ситуации и, обращаясь к аналогу слушающего, выдаёт аналог нужной реплики. Компьютер же обращается к своему глоссарию (да-да, глоссарию, не, ни разу не словарю), находит ячейку, парную к данной, выгребает то, что в этой ячейке находится, и швыряет пред светлые очи запрашивающего, и делает это очень быстро – гораздо быстрее, чем если бы человек, слюнявя палец, листал разговорник. Если текста много, он делает механические сшивки между содержимым разных ячеек. Но от скорости осуществления этой дури она не перестаёт быть маразмом.
+Когда переводчику, допустим, мексиканского сериала нужно перевести на русский реплику уголовного авторитета, обращающегося к своей «шестёрке», он представляет себе русского уголовного авторитета и его «шестёрку» (по книгам, по кино, по чьим-нибудь рассказам, по личным воспоминаниям, если вдруг они у него есть) в аналогичной (максимально близкой) ситуации и выдаёт нужную реплику. Но мы, люди, делаем это очень быстро, да, дорогой компьютер, очень-очень быстро, настолько быстро, что не всегда сами успеваем заметить и зафиксировать этот этап работы воображения. И да, дорогая машина, тебе для этого понадобится очень много... памяти.
+
+Принципы машинного перевода не должны быть машинными, точно так же, как принципы обучения тупых учеников не должны быть тупыми.
+
+Переводчик-человек может перевести правильно, может сделать ошибку, но если он ошибся, очень часто причиной этого будет то, что он взял не ту ситуацию или подставил не те характеристики говорящего / слушающего.
+- Что, не подходит по смыслу? Подожди-подожди. А кто это кому говорит?
+  …
+- Опять не годится? Все мои варианты не годятся? Ну подожди, а какая там конкретно ситуация?
+
+Компьютер при недостатке информации должен был бы выдавать красную мигающую надпись: НЕ ЗНАЮ СИТУАЦИИ. НЕ ЗНАЮ СИТУАЦИИ. 
+Да! Да! Он должен это делать! Обратное свидетельствует о маразматичности заложенной в него программы. Если компьютер каждый раз, что бы ни было, бодро выдаёт на-гора некий перевод, не смущаясь ничем, ? сразу до свидания. Такого не должно быть.
+
+Запрос: “Are you OK?” по-русски => Компьютер: НЕ ЗНАЮ СИТУАЦИИ. => Два друга бегали по парку, один споткнулся, упал, ободрал колено. Второй видит это и подбегает к нему. Целеустановка: вопрос с оттенком сочувствия. => Компьютер: англ. “Are you OK?” — русск. «Сильно ободрался?»
+
+ГОВОРЯЩИЙ, СЛУШАЮЩИЙ и СИТУАЦИЯ – это три кита, на которых всё держится. 
+
+Компьютер сейчас должен был бы обучаться, во-первых, понимать несложные описания ситуаций вроде приведённого выше (на это машинного интеллекта вполне хватит: понимать их, так сказать, наполнение), во-вторых, вычленять из такого описания информацию о характеристиках ГОВОРЯЩЕГО – СЛУШАЮЩЕГО – СИТУАЦИИ и делать для себя выводы (друзья, бытовая ситуация – на «ты», есть разрешение на использование разговорной лексики...).
+За всю эту уйму времени они пока только поняли, что переводить нужно не слово, а высказывание (Штирлиц догадался), и всё равно иногда переводят не конструкцию, а слова. 
+
+Как выглядит работа нормального электронного переводчика (в основе своей, так сказать; дальше, поверх этой основы, её можно дооптимизировать до фантастического состояния):
+
+Я ТЕБЕ СЕЙЧАС ПОКАЖУ – <иноязычный> аналог?
+Компьютер: ОПИШИТЕ СИТУАЦИЮ.
+Вариант 1. Школьники ссорятся и дерутся между собой. Целеустановка: угроза.
+Компьютер: выдаёт иноязычный аналог № 1.
+
+Вариант 2. Одна из подруг пытается вшить «молнию», но делает это неправильно. Вторая собирается проинструктировать её, как надо. Целеустановка: нейтральный ввод информации.
+Компьютер: выдаёт иноязычный аналог № 2.
+Вариант 3. Не знаю ни кто говорит, ни кому, ни в какой ситуации.
+Компьютер: выдаёт иноязычные аналоги № 1, 2, 3, 4, 5, 6..., располагая их в порядке убывания частотности.
+
+ВОТ ВАМ И ВОДА – <иноязычный> аналог?
+Компьютер: ОПИШИТЕ СИТУАЦИЮ.
+Вариант 1. Воды не оказалось / Вода оказалась непригодной для купания / питья. Целеустановка: разочарование.
+Компьютер: выдаёт иноязычный аналог № 1.
+
+Вариант 2. Один из приятелей раздобыл и принёс воды для всей компании. Целеустановка: констатация факта с оттенком гордости.
+Компьютер: выдаёт иноязычный аналог № 2.
+
+Вариант 3. Понятия не имею.
+Компьютер: выдаёт иноязычные аналоги № 1, 2, 3, 4, 5, 6..., располагая их в порядке убывания частотности.
+
+Сейчас, если запросить электронный перевод русского высказывания «Вот вам и вода» на английский, выдаётся ответ: “So much water”, а если ввести “So much water” и запросить русский перевод, выдаётся ответ: «Так много воды».
+Когда я впервые, введя в электронный переводчик русское высказывание «Вот вам и вода», получу ответ вроде:
+«Выберите целеустановку: 1. Сообщение о факте. 2. Разочарование 
+ЛИБО 
+Опишите кратко ситуацию», ? я пойму, что дело у разработчиков пошло на лад. 
+
+А вообще, если бы разработчики обратились к специалистам, мы бы им к тому же объяснили, как учитывать средства звучания и кинесическую составляющую. Потому что всё сказанное до сих пор относилось к письменной речи, а в реальной жизни речь бывает далеко не только письменная и даже как правило не письменная, а звучащая.
+
+Если когда-нибудь мне скажут, что появилась программа-переводчик, принципы работы которой абсолютно засекречены, но которая всё переводит правильно, просто гениально, я сразу же смогу сказать, в чём заключаются эти засекреченные принципы (\* Здесь должен быть дьявольский смех ): они учитывают характеристики ГОВОРЯЩЕГО, СЛУШАЮЩЕГО и СИТУАЦИИ. Даже смогу рассказать в деталях, как именно они это делают.
+
+https://istina.msu.ru/profile/KorostelevaAA/ AKA willie-wonka.livejournal.com,
+93,http://github.com/Nashev/textBrain/issues/93,Ботать тему - это собирать выводы (советы) и их обоснования, соображения. И то, на какие факты они опираются.,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Distant reading UseCase - Knowledge condensing ,
+92,http://github.com/Nashev/textBrain/issues/92,побуквенный анализ текстов темпоральной нейронной сетью,Nashev, , ,OPEN,https://habrahabr.ru/company/meanotek/blog/266961/#comment_8576445 -> http://arxiv.org/abs/1502.01710
+,
+91,http://github.com/Nashev/textBrain/issues/91,Анализ источников по степени достоверности, чеклист для школьников,Nashev, , ,OPEN,https://m.facebook.com/notes/%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D0%B9-%D1%88%D0%BF%D0%B5%D1%80%D1%85/%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/10153691797470835/
+,
+90,http://github.com/Nashev/textBrain/issues/90,Имитация мозгов vs база знаний с агентами с запрограммированной логикой,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types В наличии борьба двух подходов. #20 с автономным агентами, которые по зашитому в них алгоритму читают базу и вычисляют для неё новые элементы, против попыток сделать минимальную алгоритмизацию «субстрата», движка, механизма универсальных распознавателей, каким-то образом организующую с нуля в базе самопроизвольную организацию информации в различные уровни переработки.
+
+В идеале, хочется второе, но постоянно сползаю в первое. Но и первое упирается в идеи второго и буксует. Нужно думать, как их сочетать осмысленно.
+,
+89,http://github.com/Nashev/textBrain/issues/89,Словам словоформы сопоставить через словарь словоформ типа wiktionary,Nashev, , ,OPEN,Concepts Internal code architecture Knowledge types Не с помощью движка морфологии, а тупо словари залить.
+Может быть с небольшой ручной наводкой на то, где в табличках словоформ брать их, и какими дополнительными сведениями о морфологии, о классификации этой формы слова, их дополнять.
+Возможно, из wiktionary или соответствующей части wikidata (хотя, там пока нету объектов-слов и их морфологии).
+,
+88,http://github.com/Nashev/textBrain/issues/88,Парсеры текста с разбором семантики типа Компрено или Google SyntaxNet,Nashev, , ,OPEN,http://compreno.com/
+http://googleresearch.blogspot.ru/2016/05/announcing-syntaxnet-worlds-most.html
+
+это к вопросу о "конкурентах" #13 
+,
+87,http://github.com/Nashev/textBrain/issues/87,Что в тексте нового для системы, реферат,Nashev,Nashev, ,OPEN,Concepts Knowledge types UseCase - Book writing UseCase - Distant reading UseCase - News crawling Семантическая система создания рефератов по отложенным текстам, показывающая, при желании, лишь ту часть их сути, которая их выделяет на фоне ранее обработанных и прочитанных через эту систему текстов. Да?
+
+(http://ailev.livejournal.com/1263301.html?thread=13641413#t13641413)
+,
+86,http://github.com/Nashev/textBrain/issues/86,Средство подбора параметров,Nashev, , ,OPEN,https://get.carrotsearch.com/lingo4g/latest/doc/#explorer-experiments - прикольная штука, которая для разных значений одного управляющего параметра умеет показывать варианты какой-то целевой оценки результата.
+
+Потенциально, можно два-три параметра так же замутить.
+
+Правда, у меня пока вообще параметров не предполагалось, но вдруг будут? нужно иметь ввиду такой вот способ помощи пользователю в поиске нужной настройки.
+,
+85,http://github.com/Nashev/textBrain/issues/85,Слои слов текста, их связи. Смыслы понятий,Nashev,Nashev, ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Distant reading UseCase - News crawling слово - словоформа - словоформа с использованным регистром - слово с его регистром, размещённое в конкретном тексте (см. #9)
+
+а ещё у него где-то есть:
+- понятие (термин) в конкретном тексте
+- понятие (термин) вообще (понятие, единое для всего содержимого одной конкретной базы textbrain)
+- смыслы
+
+см.также #80 
+
+между "понятием в тексте" и "понятием вообще" могут быть сложные отношения, так как понятие вообще охватывает какие-то одно множество смыслов, а понятие в тексте может охватывать какое-то другое, лишь частично пересекающееся или вовсе не пересекающееся (в случае омонима) с множеством смыслов понятия вообще.
+
+Названия-"слова" для "понятия вообще" и для "смыслов" могут быть не сопоставлены вовсе, и одна из задач интерфейса - выделить, распознать, эти смыслы, выделить из множества или подмножества текстов эти "понятия вообще", и помочь найти или сделать для них "слова", названия, термины. Онтомайнинг.
+
+Навеяно онтосинтезом и онтоанализом из http://ailev.livejournal.com/1262741.html
+,
+84,http://github.com/Nashev/textBrain/issues/84,Инфографика, визуализации,Nashev, , ,OPEN,GUI Knowledge types UseCase - Distant reading UseCase - Knowledge condensing UseCase - News crawling Визуализация http://corpglory.com/demo/rubudget2016/ несколько представлений (группировок) одного и того же массива цифр с подписями. Очень симпатичные
+,
+83,http://github.com/Nashev/textBrain/issues/83,Физическое представление и локальность обработки,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Реализация мыслительного процесса непосредственно поверх хранящейся базы знаний, прямой перезаписью этих знаний по месту хранения. Типа, как в мокрых нейронных сетях. Без необходимости поднять копию всех участвующих знаний в обрабатывающий узел, вычислить результат, записать в новое место. Обрабатывать только локально, в небольшой окрестности пространства базы. С возможностью массовой параллельности агентов, действующих одновременно в разных местах этого пространства. С эмуляцией длинных аксонов и дендритов, обеспечивающих локальность для разнесённых знаний (типа кеширующих внешних колючей, возможно с отдельным процессом обновления оригинала знания по изменённой копии в таком кеше и дальнейшего тиражирования по всем остальным таким копиям. С механизмом разрешения конфликтов, например путём понижения признака достоверности, вплоть до исключения знания или записи о противоположном положении дел)
+
+Эта структура, впрочем, может быть далеко не самым нижним слоем хранения, и жить тупо в табличках реляционной БД.
+,
+82,http://github.com/Nashev/textBrain/issues/82,Накидать известного, потом формировать текст из него в разных видах,Nashev, , ,OPEN,Concepts UseCase - Book writing UseCase - Distant reading На примере формирования ТЗ, если: вписать известные требования, в общем и в частном, и формировать его из них либо по этапам работы, либо по фрагментам результата работы, либо и так и так одновременно, либо ещё как-нибудь. И видеть, где провисло.
+,
+81,http://github.com/Nashev/textBrain/issues/81,Анализ тональности твитов нейроннной сеткой из 10 строк на Питоне,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types UseCase - Distant reading UseCase - News crawling http://habrahabr.ru/company/dca/blog/274027/
+,
+80,http://github.com/Nashev/textBrain/issues/80,Анализ сложных научных текстов на предмет понятий и их употребления,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Distant reading Чтобы понять, о чём текст, как описаны понятия, получить обзор их характеристик - distant reading научных текстов этакий. При объединении в одной базе этого текста с другими, с его источниками литературы и т.п. - возможно получить отличия его трактовок от альтернативных, и/или дополнить его трактовки общеизвестным бэкграундом.
+,
+79,http://github.com/Nashev/textBrain/issues/79,"Гиперкниготексты",Nashev, , ,OPEN,Concepts Knowledge types UseCase - Book writing http://ailev.livejournal.com/103692.html:
+
+> "Я опросил многих своих знакомых, которые умеют писать хорошие тексты. Все они выдали одну и ту же цифру: устойчиво писать можно примерно 7Кзнаков с пробелами хорошего (нехудожественного) текста за день. Есть две крайние стратегии такого написания: либо ты сидишь весь день за компьютером, и вымучиваешь в конце дня законченные 7К, либо напряженно размышляешь весь день на предмет написания, практически весь день ничем больше не занимаясь -- и в конце дня за час-два быстро оформляешь надуманное в виде текста. Быстрее хорошие тексты пишутся очень редко (ежели быстрее, то это означает, что вы все равно потратили раньше значительное время на обдумывание). 
+> 
+> 7Кзнаков -- это много. За месяц работы можно написать 210Кзнаков, за три месяца -- книжку на 600Кзнаков. Но крижку писать много труднее. Добавляется существенное время на увязку текстов между собой. Это время кажется непроизводительным для писателя, ибо от этой работы текста не прибавляется. Но эта работа помогает читателю.
+> 
+> Современные системы управления гипертекстовым контентом имеют две главных категории пользователей: писатели и читатели. Писатели пишут в них кусочки текста, читатели эти тексты потом читают.
+> 
+> У читателя тоже есть своя статистика. За один час читатель может вдумчиво прочесть от тех же 7 до 20Кзнаков. Просмотреть "по диагонали" (это буквализм -- просмотр страницы в таком режиме действительно часто соответствует диагональным, зигзагообразным движениям точки взгляда), чтобы получить представление о предметной области -- до 100К. Гипертекстовые системы диагонали не имеют. Все эти wiki имеют либо что-то типа алфавитных указателей и списков, либо обрывки текста, прихотливо собранные в лабиринт с четким входом но без надежды на выход. Можно годами бродить по этому лабиринту, не понимая, сколько содержания ты уже прочел, десятки раз натыкаясь на один какой-нибудь кусочек содержания, и никогда не сталкиваясь с другим. Беда: в книге я всегда знаю, что прочел ее до половины -- и могу как минимум планировать собственное время на оставшееся чтение (а время и возможность его планировать -- это самый ценный ресурс). Писателю становится легко, у него занимает гораздо меньше времени "вписать" текст в общую гипертекстовую кашу, и эту кашу заваривать могут даже множество писателей. Читателей ожидает большая проблема. Все книжки становятся похожими на энциклопедию. Ежели я забежал на минутку поглядеть, кто такой Навуходоносор и что там с ним связано, то мне, конечно, нужна именно энциклопедия -- маленький кусочек текста и ссылочки на упоминающиеся в нем места, что еще почитать и т.д. Ежели я хочу получить системное представление (получить не справку, а в какой-то мере образование, понимание предметной области) о том времени, откуда взялся Навуходоносор, чтобы потом читать эту справку хоть в каком-то то контексте, то мне нужно прочесть книжку. Да, потратить пару тройку дней, но получить системное представление. Я не встречал еще ни одной гипертекстовой системы, которая давала бы мне такое представление, какое дает обычная большая статья, не говоря уже о книге. Писательское достоинство превращается в читательское разочарование.
+> 
+> А уж когда речь идет о проектах, то всегда наступает стандартная беда: доступны вразнобой тысячи обрывков информации (в виде мемо, комментариев, писем разработчиков, отдельных спецификаций, обрывков инструкций к крошечным кусочкам проекта), но никогда ни у кого не доходят руки до оформления этих кусочков в связное изложение. Электронная форма фиксации знания развращает. Знания фиксируются -- каждая капля бесплатно. Накапать можно сколько хочешь, каплями. Стаканчика накапать таким образом нельзя. Капли просто не сольются в одно целое, так и останутся слабосвязанными (в голове -- не в гипертексте) кусочками информации, а не пониманием.
+> 
+> Увы, я встретил много исследований о том, как лучше писать запутанные гипертексты. Я не встретил исследований о том, как их лучше читать, и что при этом думает о писателях этой мешанины читатель.
+> 
+> Какие можно сделать конструктивные выводы из этого наблюдения?
+> 1) Ежели предполагается подключать к проекту других людей, или проект в какой-то мере является образовательным, то современные гипертекстовые системы следует признать развращающими, и минимизировать их использование для подобных целей. Следует фиксировать результаты проекта не в виде гипертекста, а в виде книжки. Книжку много легче порезать в гипертекст, чем из гипертекста собрать потом книжку.
+> 
+> 2) Гипертекстовые системы нужно "вывернуть наизнанку": вместо основного представления маленьких кусочков текста со ссылками, ведущими в другие кусочки текста, нужно иметь "книжное представление" с единой лентой длинного текста, а ссылки должны вести в другие места этого длинного текста (типа механизма сегодняшних anchors в HTML). То есть писатели должны писать один (в самом крайнем случае -- всего несколько) большой текст-книгу, и размечая куски текста и их связь в этой книге, чтобы читатель мог выбрать либо образовательный режим (чтения книги) либо справочный режим (чтения гипертекста). Принудительный режим писательства "снизу вверх" (сначала кусочки, которые постепенно собираются в общую структуру по мере их появления) должен быть заменен на выбор такого режима писателем -- он может Insert text (включить уже готовый текст в какую-то точку своего повествования), а может, наоборот, объявить какой-то кусок слитного текста в какой-то мере автономным объектом (абзацем, главой, врезкой, сноской-примечанием и т.д.). Для этого не должно быть нужно манипулировать открывающимися окошками и формами -- только выделениями текста разными стилями, или даже вставкой заголовков с соответствующими стилями. Окошки -- опциональны (например, даже тот же Ворд предлагает стандартных два окошка в один и тот же текст).
+> 
+> 3) Конечно, действительность может быть много богаче, но принцип остается тем же: ежели писателя посадить писать книгу, он напишет книгу. Ежели ему сказать, что он "заполняет формочки" и "провязывает связи" -- он напишет набор формочек. Дальше нужно просто определиться: писатель пишет для себя, или все-таки для читателя. Если для читателя -- нужно дать писателю инструментальные средства писать для читателя. Пока единственным таким средством является Ворд. В Ворде можно написать книжку. В известных мне веб-системах -- нельзя (много-много сильно связанного между собой текста -- это еще не книжка). В ворде плохо писать справочники. В CMS (и особенно -- в викоидах) только их писать и можно. Нужен другой инструментарий, инструментарий не синтеза текста из кусочков, а декомпозиции большого замысла в гипертекст! Должен быть обеспечен писательский WYSIWYG на другом уровне -- уровня аутлайна (в некоторых CMS, правда, это есть, равно как и в Ворде) и главное -- уровня общего текста (а это уже есть только в Ворде. В CMS WYSIWYG-представления абсолютно разные для аутлайна и для собственно текста). Писатель не должен во время письма слишком часто и трудоемко перещелкивать уровни сборки текста, контексты его представления. Писатель должен иметь возможность видет текст в виде маршрута, по которому его читатель читает -- лента "сверху вниз". Это задает новое направление для дизайна гипертекстовых систем. Это уже не столько системы управления контентом (контент асинхронно приходит из разных мест и асинхронно распределяется в разные места), сколько системы обеспечения понимания и управления пониманием. Это совсем другой фокус внимания для разработчиков подобных систем: они должны сосредоточиться не на контенте, а на процессе обеспечения понимания читателя и процессе такого его писательства, которое будет стимулировать читательское понимание. 
+> 
+> Назовем эти системы гиперкниготекстовыми, а порождаемые ими "сложные интерактивные книги со средствами стимулирования понимания" -- гиперкниготекстами.
+> 
+> 4) Учитывая то, что вдумчивые читатели зачастую сами являются писателями, этот подход предъявляет другие требования к построению систем аннотирования (комментирования) подобных гиперкниготекстов.
+> 
+> 5) Учитывая то, что традиционное синдицирование контента ("появился такой обрывок информации", "появился еще один обрывок информации") для подобных "книжных" систем теряет смысл, нужно придумывать другую систему отслеживания хода проекта -- интересно, как могла бы выглядеть система отслеживания проекта по написанию книги? Это был бы сплошной changelog, для которого пришлось бы обсуждать его собственную структуру (ну не в терминах же текстового diff его вести ;) Журнал (регистр) подобной гиперкниготекстовой системы тоже бы отличался от традиционного. Да и собственно синдицирование текстов из нескольких проектов (для меня журналирование и синдицирование контента -- близнецы-братья) выглядело бы странным. Как вы будете синдицировать содержание разных книг? Постранично, поглавно или потемно? ;)
+> 
+> 6) Собственно, в системах управления контентом не нужно ничего менять: текст все равно будет храниться как множество связанных друг с другом обрывков, сборка будет производиться на основании метаданных прямо на компьютере читателя с учетом выбранного им (или подразумеваемого писателем) view. Движки-сервера могут быть прежними. Коренным образом должны меняться фронт-энды, клиенты. Не удивлюсь, ежели создание таких систем станет возможным только при появлении какого-нибудь очередного поколения крутых настраиваемых XML-редакторов. А экспериментировать можно будет, делая клиента-прототипа из таких странных программ, как Emacs. И 
+> 
+> 7) Совсем не удивлюсь, ежели такая система вырастет как серверная часть к очередному Ворду или следующему поколению OpenOffice (и это будет позиционироваться как "система коллективной разработки документации". Только "документация" будет настоящим гипертекстом, гиперкниготекстом, синдицируемым контентом из разных источников, поступающим асинхронно). И тогда опять раздадутся вопли обиженных юниксоидов, которые разрабатывали-разрабатывали викоиды, чтобы им удобнее было писать, а потом пришли системы, ориентированные на читателей, и захватили весь мир. Замечу -- читательский мир. Ибо писателей в мире все-таки меньшинство, что бы там ни говорили любители информационной демократии. Кормят жителей земли в развитых странах уже не 50% населения, а 2% населения. Духовно кормить смогут столько же. Так вот, кто-то должен подумать об удобствах не только этих 2%, но и остальных 98%. Вот эта разница и отличает фокус линуксоидно-викоидных систем и... гм... альтернативных.
+> 
+> Дайте мне альтернативную систему, и я напишу онлайновую книжку. Я напишу гиперкниготекст."
+,
+78,http://github.com/Nashev/textBrain/issues/78,Belief state,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Distant reading http://www.open-ease.org/getting-started/: information about when, why and how an action was performed, what effects the action had and what the belief state of the robot looked like during the performance.»
+,
+77,http://github.com/Nashev/textBrain/issues/77,MongoDB NoSQL как основа для хранилища фактов вместо/вместе с RDF ,Nashev, , ,OPEN,,
+76,http://github.com/Nashev/textBrain/issues/76,Поддержание целостности документа со множеством взаимосвязанных частей при внесении в него изменений,Nashev, , ,OPEN,http://megamozg.ru/post/16930/ как пример подобного документа и перечня его частей
+,
+75,http://github.com/Nashev/textBrain/issues/75,Схема средства-цели-объект,Nashev, , ,OPEN,Concepts UseCase - Distant reading UseCase - Knowledge condensing Вот у тебя n позиций. И в каждой есть треугольник (схема средства-цели-объект). Ну, и все. Ты находишься в четвертой, рефлексивной. Здесь у тебя квазиобъект, а здесь средства и цели. Ты можешь заимствовать одну из позиций, входить в нее и работать в ней. Вообще, все это и называется методологией. Техники работы в таких системах и называются методологией.
+131) П.Щедровицкий: Я могу заимствовать чужую позицию, входить в нее. Но при этом, за счет того, что у меня помимо методологической техники есть еще много других, то я могу это делать, захватывая не только инструментальный план этой позиции, но и психологическое состояние данного конкретного индивида, выполняющего эту позицию. То есть просто могу войти в тебя.
+132) Коллективная мыследеятельность всегда предполагает, что если пользоваться этой триадой (средства с выходом в подход, цели с выходом в ценности и объект с выходом в онтологию), то любой из этих элементов может быть вынут из мыследеятельности, из отдельных позиций, конфигурирован и передан обратно. Я могу обобществить цели: собрать частные цели, сделать из них некий другой продукт и вернуть назад в эти позиции, согласовав их индивидуальные цели с групповыми и коллективными. То же самое я могу делать с объектами и средствами.
+
+http://berezkin.info/?page_id=490
+
+Там библиотека ещё крутая, тренировать базу
+,
+74,http://github.com/Nashev/textBrain/issues/74,Основные дидактические единицы в тексте,Nashev, , ,OPEN,выделение в тексте основных дидактических единиц (таких как ключевые понятия (#85), ведущие идеи, тезисы и антитезисы, факты, законы, методы, выводы, метафоры, примеры). (https://newtonew.com/discussions/digital-amentia)
+,
+73,http://github.com/Nashev/textBrain/issues/73,Разнообразие исключений и тонкостей филологии, языка,Nashev, , ,OPEN,http://www.nkj.ru/archive/articles/15881
+Учесть
+,
+72,http://github.com/Nashev/textBrain/issues/72,Виды кодирования информации в живых нейронных сетях,Nashev, , ,OPEN,http://postnauka.ru/video/47810
+,
+71,http://github.com/Nashev/textBrain/issues/71,Алегории,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Distant reading Понимать за конкретными примером общий смысл, если рядом про этот пример такое анонсировано.
+
+Вернее, понимать всегда, но доверие источника записывать более весомым
+,
+70,http://github.com/Nashev/textBrain/issues/70,поиск повторов описаний,Nashev, , ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Book writing UseCase - News crawling обнаруживать описания объекта (указание на его свойство) и строить гистограммы количества описаний в абзацах теста. Где много описаний одного объекта - там он описывается. Если несколько пиков вдоль текста - описывается несколько раз, далее можно смотреть не повтор ли. 
+
+Для этого заранее выписать перечень (дерево) описываемых объектов и смотреть самые часто описываемые. 
+,
+69,http://github.com/Nashev/textBrain/issues/69,суть понимания,Nashev, , ,OPEN,Concepts Internal code architecture Knowledge types UseCase - Distant reading http://magazine.mospsy.ru/nomer11/s10.shtml и http://magazine.mospsy.ru/nomer12/s09.shtml большие обзоры наблюдений о сути понимания с точки зрения педагогики.
+
+Там расписано, что должно быть вычислено, чтобы прочитанное можно было считать понятым.
+,
+68,http://github.com/Nashev/textBrain/issues/68,генератор текста,Nashev, , ,OPEN,говорить задуманный системой смысл цитатами из прочитанного. Как говорят другие. цитатами не только прямыми, но и просто подобными по форме
+,
+67,http://github.com/Nashev/textBrain/issues/67,Анализ черновиков,Nashev, , ,OPEN,Concepts Knowledge types UseCase - Book writing Разбирать текст и обнаруживать по мере разбора неоднозначности, выявляя тем самым пропущенные слова, рассогласования, неоднозначные анафоры и т.п. ошибки и недостатки текста. Показывать интерпретацию, новизну, повторы, связи с контекстом
+,
+66,http://github.com/Nashev/textBrain/issues/66,Распознаватели типа стохастические угадыватели,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types UseCase - News crawling http://www.nkj.ru/news/26063/
+http://www.nature.com/ncomms/2015/150311/ncomms7454/full/ncomms7454.html
+Генерировать случайные гипотезы ответов в надежде угадать.
+Уместно в условиях неопределённости и при наличии способа подтвердить или опровергнуть догадку.
+Сгенерить, проверить и записать отрицательный или положительный результат. При чем именно оба варианта.
+Про сгенерированное понимать и помнить, что оно сгенерировано как гипотеза.
+,
+65,http://github.com/Nashev/textBrain/issues/65,Замеченное противоречие - это тоже вид элемента знания,Nashev,Nashev, ,OPEN,Concepts Knowledge types Связанные с элементами знания противоречия - это тоже элементы знания. И элементы знаний, связанные с конкретным противоречием, составляющие его. И примеры, и упоминания его, и следствия его - все должно быть явно оформлено и доступно для удобного и наглядного обзора.
+
+Анализ при слиянии и пополнении баз знаний должен их обнаруживать и оформлять.
+
+Попутная мысль: Заблуждения, мнения, байки, мемы, афоризмы, цитаты - тоже. Виды повторяющихся N-грамм это атрибуты?
+,
+64,http://github.com/Nashev/textBrain/issues/64,К книгописательству,Nashev, , ,OPEN,Сделали подборку http://q99.it/gcoEw5p бесплатных сервисов, которые помогают в работе над текстом. 
+
+http://istio.com/ — проверит орфографию, посчитает количество знаков, ключи, плотность и другие seo-показатели. 
+
+http://ru.readability.io/ — оценит читабельность текста. Именно здесь вы узнаете,  будет ли ваш текст понятен Гомеру Симпсону, или нет.
+
+http://www.8nog.com/counter/ — считает знаки, удаляет двойные пробелы.
+
+http://www.artlebedev.ru/tools/typograf/ — типограф, который сделает красивые кавычки и превратит дефисы в тире. 
+
+http://www.typograf.ru/  — еще один типограф (мне он нравится больше). 
+
+http://glvrd.ru/  — поможет отшлифовать текст в информационном стиле. 
+
+http://www.zenpen.io/ — онлайн-редактор (когда не хочется загружать гугл-докс и ворд). 
+
+https://tech.yandex.ru/speller/ — проверяет орфографию в русском, украинском и английском тексте.  
+
+https://webmaster.yandex.ru/content/ — сообщает Яндексу о вашем новом оригинальном тексте.  
+
+http://wordstat.yandex.ru/ — помогает подобрать ключевые слова.
+
+ http://translit.net/ — переведет текст в транслит и обратно.
+
+ http://www.topwriter.ru/comparison/ — сравнивает два текста между собой (полезно для рерайтеров).
+
+https://speechpad.ru/ — перевод аудио в текст (не идеально, но быстро интервью расшифровать можно).  
+
+http://findcopy.ru/ — проверка уникальности текста  (результат проверки можно получить в виде ссылки). 
+
+http://www.synonymizer.ru/ — поможет подобрать синоним.
+
+http://advego.ru/text/ 
+
+copytrust.ru - защита авторских прав
+
+ http://wordassociations.ru/ - сервис подбора словесных ассоциаций
+
+http://text.ru/antiplagiat - проверка текста на антиплагиат. Хорошо для рерайтеров. А еще с помощью этого ресурса я ищу иногда свои статьи, которые напечатали в СМИ,а ссылку на них журналист забыл мне выслать Этот же сервис выявит орфографические ошибки, водянистость и прочие критерии текста
+
+Веб-сервис проверки правописания http://orfogrammka.ru/index.html
+
+http://quittance.ru/tautology.php 
+Све­жий Взгляд отыс­ки­ва­ет в тек­сте ме­ста, по­до­зри­тель­ные на пред­мет од­ной из са­мых рас­про­стра­нен­ных сти­ли­сти­че­ских по­греш­но­стей: рас­по­ло­жен­ных близ­ко по тек­сту фо­не­ти­че­ски и мор­фо­ло­ги­че­ски сход­ных слов, чей па­рал­ле­лизм ни­как не мо­ти­ви­ро­ван (так на­зы­ва­е­мая па­ро­ни­мия, или «неча­ян­ная тав­то­ло­гия»). © Дмит­рий Кир­са­нов, до­ку­мен­та­ция про­грам­мы «Све­жий Взгляд»
+,
+63,http://github.com/Nashev/textBrain/issues/63,Про контекст,Nashev, , ,OPEN,Concepts Internal code architecture http://www.ruslang.ru/agens.php?id=vopjaz_cont_0115
+
+К. Лауринавичюте, О.В. Драгой, М.В. Иванова, С.В. Купцова (Москва), А.С. Уличева (Гонконг). Психологическая нереальность синтаксических следов 102-110
+
+Чтобы разделить влияние синтаксически- и контекстно-ориентированных стратегий при лингвистической обработке специальных вопросов в данном исследовании использовалась регистрация движений глаз и парадигма «визуальный мир».
+
+Согласно синтаксически-ориентированной стратегии, при обработке вопросов типа "Кто девочку поцеловал в школе?" активация референта, соответствующего объекту (девочка), во время прослушивания глагола будет свидетельствовать о следе синтаксического перемещения.
+
+Согласно контекстно-ориентированной стратегии, то, что слово девочка присутствует в вопросе, исключает ее из числа возможных антецедентов вопросительного слова, следовательно, данный референт не будет активирован; напротив, активируется агенс переходного действия.
+
+Действительно, результаты показывают, что доля фиксаций на дополнении (девочка) была во время прослушивания глагола меньше, чем на подлежащем, и уменьшалась со временем.
+
+Таким образом, поиск референта, соответствующего вопросительному слову, в первую очередь определяется контекстом.
+
+Ключевые слова: синтаксические следы, специальные вопросы, движения глаз.
+
+Анна Кестучё Лауринавичюте (НИУ «Высшая школа экономики») alaurinavichute@hse.ru.
+Ольга Викторовна Драгой (НИУ «Высшая школа экономики» / Московский НИИ психиатрии Росздрава).
+Мария Васильевна Иванова (НИУ «Высшая школа экономики»).
+Светлана Николаевна Купцова (НИУ «Высшая школа экономики» / Институт высшей нервной деятельности и нейрофизиологии РАН).
+Анастасия Сергеевна Уличева (Университет Гонконга)
+,
+62,http://github.com/Nashev/textBrain/issues/62,Text Encoding Initiative (TEI) support,Nashev,Nashev, ,OPEN,Internal code architecture Knowledge types UseCase - Book writing UseCase - News crawling https://en.wikipedia.org/wiki/Text_Encoding_Initiative
+,
+61,http://github.com/Nashev/textBrain/issues/61,Визуализация сюжета,Nashev, , ,OPEN,GUI Knowledge types UseCase - Distant reading UseCase - Knowledge condensing Визуализация http://ria.ru/infografika/20150213/1047587528.html
+,
+60,http://github.com/Nashev/textBrain/issues/60,Анализ сюжетов,Nashev, , ,OPEN,http://theoryandpractice.ru/posts/10216-six-plots
+https://github.com/mjockers/syuzhet
+http://www.brainpickings.org/2012/11/26/kurt-vonnegut-on-the-shapes-of-stories/
+http://motherboard.vice.com/read/computers-find-that-there-are-six-plots
+,
+59,http://github.com/Nashev/textBrain/issues/59,Тесты писать,  TDD внедрить. ,Nashev,Nashev, ,OPEN,Internal code architecture ,
+58,http://github.com/Nashev/textBrain/issues/58,Описать то, что уже там напрограммировал,Nashev,Nashev, ,OPEN,Internal code architecture На русском для начала, наверное,  и на английском в FPdoc
+
+А то уже и сам забыл, что там зачем.
+
+А описав - думать, как с этим соотносится все что тут рядом понапридумывал. 
+,
+57,http://github.com/Nashev/textBrain/issues/57,Воображаемые миры,Nashev,Nashev, ,OPEN,Concepts Knowledge types UseCase - Book writing Слово воображаемые в этом тексте возможно стоит заменить на конструируемые, с учетом того, что хранить и генерировать их могут не только мозги с воображением, но и компьютер с алгоритмами.
 
 Ещё правильнее говорить о представлении о мире. Реальном, воображаемом, возможном. Да и не о мире только, ещё и об обстоятельствах, предметах, о чём угодно. Представления требуют проверки непротиворечивости, для этого нужна логика, модальная логика и т.п. Представления о реальности должны сверяться с сенсорным потоком, о литературном мире - с первоисточником. Тут возникает вопрос о самом мире, о любом предмете представления, существует ли он - но этот вопрос не важен, вроде бы. Почему то... Важно наличие и надежность источника представлений. Его стабильность. Их закономерность.
 
@@ -43,25 +702,33 @@ Id, Title, Creator, Assignee, Milestone, State, Body Text
 
 Всё это написано по мере чтения книжки "Философские проблемы семантики возможных миров", Целищев В. В., изд.  Краснад", Москва, 2009 г. http://urss.ru, в которой автор описывает заочный спор Хинтикки с Куайном, и добавляет соображений от себя.
 
-На 46 странице в примере - подмена понятий. Возможный мир это не реальный мир. Ни один. Объекты возможных миров - это не индивидуирующие их функции.,
-56,Исходные тексты,Nashev, , ,OPEN,Это тоже элементы знания, видимо. При хранении на диске базы знаний #6 их можно тож забирать себе в базу, в папку элементов такого вот типа, "исходный текст"
+На 46 странице в примере - подмена понятий. Возможный мир это не реальный мир. Ни один. Объекты возможных миров - это не индивидуирующие их функции.
+,
+56,http://github.com/Nashev/textBrain/issues/56,Исходные тексты,Nashev, , ,OPEN,Concepts Internal code architecture Knowledge types UseCase - News crawling Это тоже элементы знания, видимо. При хранении на диске базы знаний #6 их можно тож забирать себе в базу, в папку элементов такого вот типа, "исходный текст"
 
 Для элементов типа HTML-страницы из интернета тож можно их копии утягивать себе в такую папку, но не забывать исходный адрес (например, чтоб при необходимости можно было почистить эту папку утянутого, и потом при повторной необходимости утягивать всё заново).
 
-Элементы знания, говорящие о привязке конкретного слова к конкретному месту в тексте, наверное могут быть виртуальными, и реконструироваться по тексту каждый раз когда вдруг нужны, в памяти? Или их многовато для большого текста? Как их адресовать? Как они живут, если текст меняется - редактируется пользователем или при обновлении с веб-адреса оказывается изменённым?..,
-55,Мобильные версии чего-нибудь для чего-нибудь,Nashev, , ,OPEN,Как одно из возможных решений #54,
-54,Монетизацию придумать и сделать,Nashev, , ,OPEN,,
-53,RDF vs Виды элементов знаний,Nashev,null, ,OPEN,В затее #9 выписываются элементы знания. В #32 описываются отдельные сети/базы знаний. В #6 описывается, как их хранить на диске.
+Элементы знания, говорящие о привязке конкретного слова к конкретному месту в тексте, наверное могут быть виртуальными, и реконструироваться по тексту каждый раз когда вдруг нужны, в памяти? Или их многовато для большого текста? Как их адресовать? Как они живут, если текст меняется - редактируется пользователем или при обновлении с веб-адреса оказывается изменённым?..
+,
+55,http://github.com/Nashev/textBrain/issues/55,Мобильные версии чего-нибудь для чего-нибудь,Nashev, , ,OPEN,Как одно из возможных решений #54
+,
+54,http://github.com/Nashev/textBrain/issues/54,Монетизацию придумать и сделать,Nashev, , ,OPEN,,
+53,http://github.com/Nashev/textBrain/issues/53,RDF vs Виды элементов знаний,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types В затее #9 выписываются элементы знания. В #32 описываются отдельные сети/базы знаний. В #6 описывается, как их хранить на диске.
 
-Надо б понять, как всё это соотносится с идеями RDF, с их триплетами и с их пространствами имён.,
-52,Браузер знаний локальный ("инспектор объектов"),Nashev, , ,OPEN,В дополнение к #15 и #16 хочется что-то вроде инспектора объектов иметь, чтоб любой элемент знаний можно было прям на месте посмотреть - его причины, следствия и прочее, что у него есть, и если надо - перейти на них.
+Надо б понять, как всё это соотносится с идеями RDF, с их триплетами и с их пространствами имён.
+,
+52,http://github.com/Nashev/textBrain/issues/52,Браузер знаний локальный ("инспектор объектов"),Nashev, , ,OPEN,GUI В дополнение к #15 и #16 хочется что-то вроде инспектора объектов иметь, чтоб любой элемент знаний можно было прям на месте посмотреть - его причины, следствия и прочее, что у него есть, и если надо - перейти на них.
 
-Как сейчас, встав на TSimpleTextFileSourceItem я вижу его источник в исходном тексте (#14), так встав на любой другой элемент знания, я хочу видеть всё про него.,
-51,Анализ тональности,Nashev, , ,OPEN,http://habrahabr.ru/post/149605/
-пересекается с #46,
-50,Умная записная книжка,Nashev, , ,OPEN,Ты в неё вписываешь очередные свои утверждения, планы, подходы - а она их интегрирует в ранее записанное, сверяет, выявляет противоречия и следствия, и всё это предъявляет автору. ,
-49,визуализация формирования текста,Nashev, , ,OPEN,сверху сформированный текст, под ним облако связанных ниточками с последними его словами смыслов и их следствий на пару- тройку шагов вперед (с регулятором), тающее в тумане отдаленных следствий. Смыслы в облаке представлены цветными точками и подписями к ним, возможно всплывающими, и связаны такими же ниточками друг с другом. Можно выбрать смысл, который уложится в текст следующим. Можно добавлять правила для автоматического выбора. ,
-48,Синонимы, синсеты,Nashev, , ,OPEN,Факт о том, что слова значат одно и то же, но это разные слова (отличать этот факт от форм слова и их связи с основной формой слова #47).
+Как сейчас, встав на TSimpleTextFileSourceItem я вижу его источник в исходном тексте (#14), так встав на любой другой элемент знания, я хочу видеть всё про него.
+,
+51,http://github.com/Nashev/textBrain/issues/51,Анализ тональности,Nashev, , ,OPEN,http://habrahabr.ru/post/149605/
+пересекается с #46
+,
+50,http://github.com/Nashev/textBrain/issues/50,Умная записная книжка,Nashev, , ,OPEN,Concepts Ты в неё вписываешь очередные свои утверждения, планы, подходы - а она их интегрирует в ранее записанное, сверяет, выявляет противоречия и следствия, и всё это предъявляет автору. 
+,
+49,http://github.com/Nashev/textBrain/issues/49,визуализация формирования текста,Nashev, , ,OPEN,Concepts GUI Knowledge types UseCase - Book writing Визуализация сверху сформированный текст, под ним облако связанных ниточками с последними его словами смыслов и их следствий на пару- тройку шагов вперед (с регулятором), тающее в тумане отдаленных следствий. Смыслы в облаке представлены цветными точками и подписями к ним, возможно всплывающими, и связаны такими же ниточками друг с другом. Можно выбрать смысл, который уложится в текст следующим. Можно добавлять правила для автоматического выбора. 
+,
+48,http://github.com/Nashev/textBrain/issues/48,Синонимы, синсеты,Nashev, , ,OPEN,Concepts Knowledge types Факт о том, что слова значат одно и то же, но это разные слова (отличать этот факт от форм слова и их связи с основной формой слова #47).
 
 Возможно, получать из словарей типа WordNet.
 Возможно, как-то статистически - типа, у этих слов связи с одним и тем же облаком свойств или объектов (#10).
@@ -70,26 +737,37 @@ Id, Title, Creator, Assignee, Milestone, State, Body Text
 
 Виды синонимии: различать/преобразовывать отношения "тождественно равно" в отношения класс-экземпляр, множество-подмножество (класс-подкласс), в этой теме/тексте или вообще всегда и т.д.
 
-Возможно, тут правильнее вообще работать на уровне понятий, объектов (см. RDF, #42), а не слов.,
-47,Основная форма слова (лемма) - морфология,Nashev, , ,OPEN,"[Лемма](https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BC%D0%BC%D0%B0_(%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F))" (морфология) или "[стемма](https://ru.wikipedia.org/wiki/%D1%F2%E5%EC%EC%E8%ED%E3)" (обрезание), или ещё что-то. Результат или основа морфологического анализа, возможно результат статистического анализа или использования словаря типа WordNet.,
-46,Distant reading,Nashev, , ,OPEN,Обеспечить возможность показать обзор понятий и структуры текста - о чем речь, в каком порядке какие факты подаются, где сколько американской хвалебной воды и завтраков...,
-45,Облачные вычисления,Nashev, , ,OPEN,Параллелить вычисления, хранение, и выносить все это в облака,
-44,История изменений по мере анализа лексем,Nashev, , ,OPEN,Историю изменений текущего контекста этого "текстового мозга" хранить в виде "ключевых кадров" и цепочки "диффов" между ними. Любой ключевой кадр (кроме стартового) должно быть можно реконструировать в любой момент по предыдущему и дифам. И так же дропнуть.
+Возможно, тут правильнее вообще работать на уровне понятий, объектов (см. RDF, #42), а не слов.
+,
+47,http://github.com/Nashev/textBrain/issues/47,Основная форма слова (лемма) - морфология,Nashev, , ,OPEN,Concepts GUI Internal code architecture Knowledge types "[Лемма](https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BC%D0%BC%D0%B0_%28%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%29)" (морфология) или "[стемма](https://ru.wikipedia.org/wiki/%D1%F2%E5%EC%EC%E8%ED%E3)" (обрезание), или ещё что-то. Результат или основа морфологического анализа, возможно результат статистического анализа или использования словаря типа WordNet.
+,
+46,http://github.com/Nashev/textBrain/issues/46,Distant reading,Nashev, , ,OPEN,Concepts GUI Knowledge types UseCase - Book writing UseCase - News crawling Обеспечить возможность показать обзор понятий и структуры текста - о чем речь, в каком порядке какие факты подаются, где сколько американской хвалебной воды и завтраков...
+,
+45,http://github.com/Nashev/textBrain/issues/45,Облачные вычисления,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Параллелить вычисления, хранение, и выносить все это в облака
+,
+44,http://github.com/Nashev/textBrain/issues/44,История изменений по мере анализа лексем,Nashev, , ,OPEN,Concepts GUI Internal code architecture Knowledge types Историю изменений текущего контекста этого "текстового мозга" хранить в виде "ключевых кадров" и цепочки "диффов" между ними. Любой ключевой кадр (кроме стартового) должно быть можно реконструировать в любой момент по предыдущему и дифам. И так же дропнуть.
 
-Кадр - это состояние "ума" по мере чтения текста, текущий контекст, текущий набор мнений об описываемой ситуации с оценкой уверенности в них, от убеждений до сомнительных гипотез (прогнозы следствий, варианты интерпретации).,
-43,угадывалка,Nashev, , ,OPEN,Сделать игрушку, которая будет угадывать задуманный пользователем концепт, задавая ему вопросы про свойства задуманного, выбирая их из онтологии. Возможно, как простенький Веб-сервис, генерирующий SPARQL-запросы к общедоступным семантическим сетям. ,
-42,Использовать Корпуса текстов и Semantic WEB. Позиционироваться как NLP,Nashev, , ,OPEN,http://cleverdon.hum.uva.nl/marijn/ESSLLI2014/CLforDH_day4_slides.html
+Кадр - это состояние "ума" по мере чтения текста, текущий контекст, текущий набор мнений об описываемой ситуации с оценкой уверенности в них, от убеждений до сомнительных гипотез (прогнозы следствий, варианты интерпретации).
+,
+43,http://github.com/Nashev/textBrain/issues/43,угадывалка,Nashev, , ,OPEN,Concepts GUI Knowledge types Сделать игрушку, которая будет угадывать задуманный пользователем концепт, задавая ему вопросы про свойства задуманного, выбирая их из онтологии. Возможно, как простенький Веб-сервис, генерирующий SPARQL-запросы к общедоступным семантическим сетям. 
+,
+42,http://github.com/Nashev/textBrain/issues/42,Использовать Корпуса текстов и Semantic WEB. Позиционироваться как NLP,Nashev, , ,OPEN,Concepts http://cleverdon.hum.uva.nl/marijn/ESSLLI2014/CLforDH_day4_slides.html
 http://www.nltk.org/
-http://esslli2014.info/wiki/corpus-linguistics-for-digital-humanities/ (EsslliTuebingen),
-41,визуализации,Nashev, , ,OPEN,http://vcg.informatik.uni-rostock.de/~hs162/treeposter/poster.html - варианты визуализации деревьев
-http://habrahabr.ru/post/231757/ про редакторы структурированных данных,
-40,похожие запросы,Nashev,null, ,OPEN,http://habrahabr.ru/company/hh/blog/231393/
-"У большинства крупных поисковиков и сервисов есть механизм похожих поисковых запросов, когда пользователю предлагаются варианты, тематически близкие к тому, что он искал. Так делают в google, yandex, bing, amazon, несколько дней назад это появилось и у нас на hh.ru!",
-39,Использовать www.transifex.com для поддержки локализаций,Nashev, , ,OPEN,в дополнение к #17 - https://www.transifex.com/projects/p/textbrain/,
-38,Саккады, видео картинки на сетчатке ,Nashev, , ,OPEN,Найти или изобразить, что именно видит сетчатка, с точки зрения сетчатки - на основании трекинга движения глаз и чувствительности разных её частей, включая слепое пятно. Интересное видео должно быть)
+http://esslli2014.info/wiki/corpus-linguistics-for-digital-humanities/ (EsslliTuebingen)
+,
+41,http://github.com/Nashev/textBrain/issues/41,визуализации,Nashev, , ,OPEN,Concepts GUI Визуализация http://vcg.informatik.uni-rostock.de/~hs162/treeposter/poster.html - варианты визуализации деревьев
+http://habrahabr.ru/post/231757/ про редакторы структурированных данных
+,
+40,http://github.com/Nashev/textBrain/issues/40,похожие запросы,Nashev,Nashev, ,OPEN,Concepts GUI UseCase - News crawling http://habrahabr.ru/company/hh/blog/231393/
+"У большинства крупных поисковиков и сервисов есть механизм похожих поисковых запросов, когда пользователю предлагаются варианты, тематически близкие к тому, что он искал. Так делают в google, yandex, bing, amazon, несколько дней назад это появилось и у нас на hh.ru!"
+,
+39,http://github.com/Nashev/textBrain/issues/39,Использовать www.transifex.com для поддержки локализаций,Nashev, , ,OPEN,в дополнение к #17 - https://www.transifex.com/projects/p/textbrain/
+,
+38,http://github.com/Nashev/textBrain/issues/38,Саккады, видео картинки на сетчатке ,Nashev, , ,OPEN,Concepts Найти или изобразить, что именно видит сетчатка, с точки зрения сетчатки - на основании трекинга движения глаз и чувствительности разных её частей, включая слепое пятно. Интересное видео должно быть)
 
-Машинное зрение на основании реальной записи трекинга глаз изобразить так, чтобы алгоритму саккады помогали, а не мешали... ,
-37,Время в пространство, и далее анализ пространства и пространства,Nashev,null, ,OPEN,Нейроны работают с пространствеными паттернами, меняющимися во времени. Но сравнивать они могут лишь одновременные состояния нейронов. Сравнение с ранее имевшимися картинами возможно лишь на базе линий задержки, когда соседний нейрон показывает то состояние, которое было у текущего нейрона мгновение назад.
+Машинное зрение на основании реальной записи трекинга глаз изобразить так, чтобы алгоритму саккады помогали, а не мешали... 
+,
+37,http://github.com/Nashev/textBrain/issues/37,Время в пространство, и далее анализ пространства и пространства,Nashev,Nashev, ,OPEN,Concepts Нейроны работают с пространствеными паттернами, меняющимися во времени. Но сравнивать они могут лишь одновременные состояния нейронов. Сравнение с ранее имевшимися картинами возможно лишь на базе линий задержки, когда соседний нейрон показывает то состояние, которое было у текущего нейрона мгновение назад.
 
 Линия задержки похожа на сдвиговый регистр, преобразующий последовательную цепочку активности в ряд одновременно присутствующих активностей нейронов. Далее, глядя на всю получившуюся развертку сигнала во времени, можно распознать в этой картине что-то, можно параллельным переносом скопировать в память целиком, можно ранее скопированное таким образом загнать и воспроизвести последовательно...
 
@@ -105,20 +783,24 @@ http://habrahabr.ru/post/231757/ про редакторы структурированных данных,
 
 Слова, стоящие рядом со словом "это" ассоциирутся с ним и друг с другом. В детстве такие фразы ребёнок слышит часто. В итоге они начинают и друг с другом ассоциироваться, наверное. 
 
-Все это записано при чтении книжки ["Об интеллекте", Джефф Хокинс](http://dmitry.bancorp.ru/Hawkins/On_Intelligence_Rus.doc) (см. так же http://littlemess.narod.ru/index/0-2 и http://numenta.com/htm-overview/education/HTM_CorticalLearningAlgorithms_ru.pdf),
-36,Автоассоциативность ,Nashev,null, ,OPEN,Частное должно активировать общее, целое должно находиться (активироваться) по отдельным деталям. Это значит, что должен быть активный набор и он должен пополняться по ассоциациям, и применяться для работы детекторов и вывода на экран. Фокус внимания,
-35,Два интерфейса - полный и кнопка "сделайте мне красиво",Nashev,null, ,OPEN,http://habrahabr.ru/company/maxifier/blog/191922/ :
+Все это записано при чтении книжки ["Об интеллекте", Джефф Хокинс](http://dmitry.bancorp.ru/Hawkins/On_Intelligence_Rus.doc) (см. так же http://littlemess.narod.ru/index/0-2 и http://numenta.com/htm-overview/education/HTM_CorticalLearningAlgorithms_ru.pdf)
+,
+36,http://github.com/Nashev/textBrain/issues/36,Автоассоциативность, фокус внимания, текущий контекст,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types UseCase - News crawling Частное должно активировать общее, целое должно находиться (активироваться) по отдельным деталям. Это значит, что должен быть активный набор и он должен пополняться по ассоциациям, и применяться для работы детекторов и вывода на экран. Фокус внимания
+,
+35,http://github.com/Nashev/textBrain/issues/35,Два интерфейса - полный и кнопка "сделайте мне красиво",Nashev,Nashev, ,OPEN,Concepts GUI http://habrahabr.ru/company/maxifier/blog/191922/ :
 
 "А не повезло потому, что в тот момент, не имея достаточного опыта на этом рынке, мы стали разрабатывать продукт, предполагая, что все игроки такие же умные, как эти ребята из MediaRun. Поэтому первая версия интерфейса по сложности очень напоминала приборную панель самолета.
 
-Мы создали очень сложную систему интеллектуальной поддержки принятия решений, с режимом обучения, огромным количеством опций и конфигураций, возможностей подстройки под себя и прочее, прочее, прочее. А затем, все последующие годы, вынуждены были все упрощать, скрывать и минимизировать. Ибо, как выяснилось, мечта обычного клиента – одна кнопка «Сделай мне хорошо». Ну и плюс, система отчетов для начальства вида «У меня все под контролем».",
-34,Корпус текстов русского языка поанализировать,Nashev,null, ,OPEN,,
-33,Брать HTML-тексты по http и отображать их с форматированием,Nashev,null, ,OPEN,И уметь брать тексты по URL как с адресной строки, так и из адресов, найденных в тексте.
+Мы создали очень сложную систему интеллектуальной поддержки принятия решений, с режимом обучения, огромным количеством опций и конфигураций, возможностей подстройки под себя и прочее, прочее, прочее. А затем, все последующие годы, вынуждены были все упрощать, скрывать и минимизировать. Ибо, как выяснилось, мечта обычного клиента – одна кнопка «Сделай мне хорошо». Ну и плюс, система отчетов для начальства вида «У меня все под контролем»."
+,
+34,http://github.com/Nashev/textBrain/issues/34,Корпус текстов русского языка поанализировать,Nashev,Nashev, ,OPEN,Concepts UseCase - News crawling ,
+33,http://github.com/Nashev/textBrain/issues/33,Брать HTML-тексты по http и отображать их с форматированием,Nashev,Nashev, ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - News crawling И уметь брать тексты по URL как с адресной строки, так и из адресов, найденных в тексте.
 
 И уметь игнорировать/понимать разметку HTML. Уметь игнорировать меню, рекламу и прочую обвеску текстов на страницах.
 
-И уметь отображать форматированные тексты с HTML-разметкой (кстати, это может помочь решить #2),
-32,Отдельные сети знаний и их сравнение/объединение/разделение/совместное использование,Nashev, , ,OPEN,Отдельные в рамках одного мозга, для разных контекстов или источников, отдельные в рамках разных мозгов/проектов, для разных исследователей/компьютеров/наборов источников.
+И уметь отображать форматированные тексты с HTML-разметкой (кстати, это может помочь решить #2)
+,
+32,http://github.com/Nashev/textBrain/issues/32,Отдельные сети знаний и их сравнение/объединение/разделение/совместное использование,Nashev, , ,OPEN,Concepts GUI Internal code architecture UseCase - News crawling Отдельные в рамках одного мозга, для разных контекстов или источников, отдельные в рамках разных мозгов/проектов, для разных исследователей/компьютеров/наборов источников.
 
 При этом даже объединив, нужно не терять связи с источниками (или терять их лишь целенаправленно, если захочется) и иметь возможность как-то разделить, что откуда известно.
 
@@ -126,25 +808,35 @@ http://habrahabr.ru/post/231757/ про редакторы структурированных данных,
 
 При разделении - по источникам, по понятиям, по точкам зрения, или ещё как.. Общие части сдублировать или выделить в совместно используемую "библиотеку" более базовых знаний.
 
-Для совместного использования - нужно различать знания по принадлежности, то есть уметь ссылаться из одного мозга в другой (учесть в #24 и #6).,
-31,Фоновый режим работы с чтением новостей с сайта и уведомлениям о новых фактах по запросу,Nashev,null, ,OPEN,Типа поискового краулера или по rss,
-30,Распознаватели и типы элементов знаний - как плагины,Nashev,null, ,OPEN,Компилированные или вовсе скриптовые... Или отдельные утилиты (#20),
-29,Кластерный анализ источников,Nashev,null, ,OPEN,Показывать несколько об одном и том же говорят разные источники. Например, по количеству общих и собственных понятий... ,
-28,Запросы на естественном языке, NLP, Rule Based Queries,Nashev,null, ,OPEN,Понять, что за хрень и как её готовить. Полезна ли? ,
-27,В качестве источника знаний иметь ещё и ручной ввод ,Nashev,null, ,OPEN,К нему относить все элементы знаний, добавляемые через GUI. 
+Для совместного использования - нужно различать знания по принадлежности, то есть уметь ссылаться из одного мозга в другой (учесть в #24 и #6).
+,
+31,http://github.com/Nashev/textBrain/issues/31,Фоновый режим работы с чтением новостей с сайта и уведомлениям о новых фактах по запросу,Nashev,Nashev, ,OPEN,Concepts UseCase - News crawling Типа поискового краулера или по rss
+,
+30,http://github.com/Nashev/textBrain/issues/30,Распознаватели и типы элементов знаний - как плагины,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types UseCase - News crawling Компилированные или вовсе скриптовые... Или отдельные утилиты (#20)
+,
+29,http://github.com/Nashev/textBrain/issues/29,Кластерный анализ источников,Nashev,Nashev, ,OPEN,Concepts GUI UseCase - News crawling Показывать несколько об одном и том же говорят разные источники. Например, по количеству общих и собственных понятий... 
+,
+28,http://github.com/Nashev/textBrain/issues/28,Запросы на естественном языке, NLP, Rule Based Queries,Nashev,Nashev, ,OPEN,UseCase - News crawling Понять, что за хрень и как её готовить. Полезна ли? 
+,
+27,http://github.com/Nashev/textBrain/issues/27,В качестве источника знаний иметь ещё и ручной ввод ,Nashev,Nashev, ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Book writing UseCase - News crawling К нему относить все элементы знаний, добавляемые через GUI. 
 
-Возможно, к нему же относить всё подтверждённое пользователем - типа, выявленные им из текста знания. ,
-26,Частотный анализ словосочетаний,Nashev,null, ,OPEN,Возможно, на анализе повышенного разнообразия мест применения слов и знаков в тексте получится служебные слова и знаки отличить от слов, несущих понятия. 
+Возможно, к нему же относить всё подтверждённое пользователем - типа, выявленные им из текста знания. 
+,
+26,http://github.com/Nashev/textBrain/issues/26,Частотный анализ словосочетаний,Nashev,Nashev, ,OPEN,Concepts GUI Knowledge types UseCase - Book writing UseCase - News crawling Возможно, на анализе повышенного разнообразия мест применения слов и знаков в тексте получится служебные слова и знаки отличить от слов, несущих понятия. 
 
-Выделить устойчивые словосочетания #10. ,
-25,Понятия выделять, хотябы вручную ,Nashev,null, ,OPEN,Кроме слов, нужны понятия.
+Выделить устойчивые словосочетания #10. 
+,
+25,http://github.com/Nashev/textBrain/issues/25,Понятия выделять, хотябы вручную ,Nashev,Nashev, ,OPEN,Concepts GUI Internal code architecture Knowledge types UseCase - Book writing UseCase - News crawling Кроме слов, нужны понятия.
 Синонимы - это слова, связанные с одним понятием.
 Омонимы - это понятия, связанные с одним словом. 
 
 Понятия должны иметь тесную связь с источниками, напрямую, а не через слова - чтобы можно было понимать, где о каком понятии речь шла, и различать тексты о разных понятиях. 
 
-А ещё чтобы утверждения из разных источников можно было различить, и сверять источники через них, оценивать достоверность... ,
-24,Выгрузка элементов знания из памяти и их адресация в таких условиях,Nashev,null, ,OPEN,Наверно стоит, делая #6, в памяти не хранить имена вместо указателей на выгруженные элементы, а подменять указатели указателями на знания-заглушки, которые будут помнить, где искать на диске сам элемент знания.
+А ещё чтобы утверждения из разных источников можно было различить, и сверять источники через них, оценивать достоверность... 
+
+см. #85
+,
+24,http://github.com/Nashev/textBrain/issues/24,Выгрузка элементов знания из памяти и их адресация в таких условиях,Nashev,Nashev, ,OPEN,Internal code architecture Knowledge types Наверно стоит, делая #6, в памяти не хранить имена вместо указателей на выгруженные элементы, а подменять указатели указателями на знания-заглушки, которые будут помнить, где искать на диске сам элемент знания.
 
 Соответственно, при обращении к элементу - иметь ввиду, что он может быть выгружен, и если правильно обратиться к его содержимому, оно будет подгружено.
 
@@ -154,27 +846,36 @@ http://habrahabr.ru/post/231757/ про редакторы структурированных данных,
 
 К внутренностям относятся связи элемента и всё что ещё ему там надо, к обёртке - идентификатор и имя класса внутренностей.
 
-То есть, выгруженный элемент знаний не знает, кто на него ссылается?... хм. Наверно, нужно чтобы выгруженный - он помнил список лишь тех ссылающихся, которые есть в памяти, и нужны кому-то ещё, а загруженный - будет помнить полный список, находя или создавая незагруженными для его работы адресуемые элементы, нужные ему самому.,
-23,TWordWasCapitalizedFact делать не на TModifiedWord,Nashev,null, ,OPEN,А лишь на основании прямого обнаружения в словаре слова в ином регистре.
+То есть, выгруженный элемент знаний не знает, кто на него ссылается?... хм. Наверно, нужно чтобы выгруженный - он помнил список лишь тех ссылающихся, которые есть в памяти, и нужны кому-то ещё, а загруженный - будет помнить полный список, находя или создавая незагруженными для его работы адресуемые элементы, нужные ему самому.
+,
+23,http://github.com/Nashev/textBrain/issues/23,TWordWasCapitalizedFact делать не на TModifiedWord,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types А лишь на основании прямого обнаружения в словаре слова в ином регистре.
 
-Сам TModifiedWord вроде бы вовсе ненужен получается.. Вместо него нужна "основная форма слова" (#47, "[лемма](https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BC%D0%BC%D0%B0_(%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F))" или "[стемма](https://ru.wikipedia.org/wiki/%D1%F2%E5%EC%EC%E8%ED%E3)"), которую и связи с которой надо определять как-нибудь потом, отдельно...,
-22,Из текста в браузер знаний,Nashev,null, ,OPEN,Чтоб в тексте встать на слово - и браузеры знаний на него спозиционировать.,
-21,TextBrain — это ж алфавитный указатель, Index,Nashev,null, ,OPEN,То что у меня на текущий момент получилось - это фактически он и есть. Морфологию вот только подключить...
+Сам TModifiedWord вроде бы вовсе ненужен получается.. Вместо него нужна "основная форма слова" (#47, "[лемма](https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BC%D0%BC%D0%B0_%28%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%29)" или "[стемма](https://ru.wikipedia.org/wiki/%D1%F2%E5%EC%EC%E8%ED%E3)"), которую и связи с которой надо определять как-нибудь потом, отдельно...
+,
+22,http://github.com/Nashev/textBrain/issues/22,Из текста в браузер знаний,Nashev,Nashev, ,OPEN,GUI Чтоб в тексте встать на слово - и браузеры знаний на него спозиционировать.
+,
+21,http://github.com/Nashev/textBrain/issues/21,TextBrain — это ж алфавитный указатель, Index,Nashev,Nashev, ,OPEN,Concepts То что у меня на текущий момент получилось - это фактически он и есть. Морфологию вот только подключить...
 
 И далее - самое интересное - понять, чем оно круче алфавитного указателя. И перепозиционировать сделанное как программу для создания указателя ;)
 
-Осмыслить эту мысль надо.,
-20,Многопоточность, многопроцессность, расчёты отдельно от GUI, утилиты, прогресс/отмена,Nashev,null, ,OPEN,На базе файлового хранилища #6 можно думать об одновременной работе с одним массивом знаний сразу нескольких компьютеров. 
+Осмыслить эту мысль надо.
+,
+20,http://github.com/Nashev/textBrain/issues/20,Многопроцессность, расчёты отдельно от GUI - деление на утилиты,Nashev,Nashev, ,OPEN,GUI Internal code architecture На базе файлового хранилища #6 можно думать об одновременной работе с одним массивом знаний сразу нескольких компьютеров. 
 
 Может получиться как вычислительный кластер, так и многопользовательская система. 
 
-(У других это называется [мультиагентная](http://www.magenta-technology.ru/ru/technology/overview/different/), где агент - это то, что у меня названо "распознаватель", но [говорят](http://www.magenta-technology.ru/ru/technology/why/benefits/) что очень полезно уметь работать и с кучей "агентов"/распознавателей в одном потоке).,
-19,Браузер понятий типа mindmap,Nashev,null, ,OPEN,Чтобы существительное раскрывалось на используемые с ним глаголы и эпитеты, те в свою очередь раскрывались по своим связям и т. д. ,
-18,Описать структуру классов и подходы к их использованию (в wiki или исходниках),Nashev,null, ,OPEN,Если в исходниках - то используя [FPDoc](http://www.freepascal.org/docs-html/fpdoc/fpdocse2.html) и http://wiki.freepascal.org/FPDoc_Editor/ru,
-16,Браузер знаний соорудить, графический,Nashev,null, ,OPEN,В дополнение к браузеру знаний колоночному #15:
+(У других это называется [мультиагентная](http://www.magenta-technology.ru/ru/technology/overview/different/), где агент - это то, что у меня названо "распознаватель", но [говорят](http://www.magenta-technology.ru/ru/technology/why/benefits/) что очень полезно уметь работать и с кучей "агентов"/распознавателей в одном потоке).
+,
+19,http://github.com/Nashev/textBrain/issues/19,Браузер понятий типа mindmap,Nashev,Nashev, ,OPEN,GUI UseCase - Book writing Чтобы существительное раскрывалось на используемые с ним глаголы и эпитеты, те в свою очередь раскрывались по своим связям и т. д. 
+,
+18,http://github.com/Nashev/textBrain/issues/18,Описать структуру классов и подходы к их использованию (в wiki или исходниках),Nashev,Nashev, ,OPEN,GUI Internal code architecture Knowledge types Если в исходниках - то используя [FPDoc](http://www.freepascal.org/docs-html/fpdoc/fpdocse2.html) и http://wiki.freepascal.org/FPDoc_Editor/ru
+,
+17,http://github.com/Nashev/TextBrain/issues/17,Локализовать, на русский, при английских исходниках,Nashev,Nashev, ,CLOSED,GUI Internal code architecture ,
+16,http://github.com/Nashev/textBrain/issues/16,Браузер знаний соорудить, графический,Nashev,Nashev, ,OPEN,GUI В дополнение к браузеру знаний колоночному #15:
 
-Для отображения всех знаний или, что реалистичнее, ближайшего подмножества - на нём можно будет не только дочки дочек и родителей родителей видеть, но и, например, соседей текущего элемента - типа других родителей дочек и других дочек родителей, и их связи, если они есть. Но тут не факт что получится удобно автоматически размещать элементы графа на экране.,
-15,Браузер знаний колоночный,Nashev,null, ,OPEN,Несколько колонок, центральная - текущий элемент, в ней описание и сведения всякие. Слева от центральной - колонка со списком ближайших предков текущего элемента, то есть элементы, непосредственно ссылающиеся на текущий элемент, справа - аналогичный список ближайших потомков. Слава и справа от них - предки и потомки второго уровня, возможно лишь для текущего элемента в ближайшем списке, а можно и все вместе. Или с переключателем на этот счёт... Или всех выделенных, а не выделены по умолчанию никакие.
+Для отображения всех знаний или, что реалистичнее, ближайшего подмножества - на нём можно будет не только дочки дочек и родителей родителей видеть, но и, например, соседей текущего элемента - типа других родителей дочек и других дочек родителей, и их связи, если они есть. Но тут не факт что получится удобно автоматически размещать элементы графа на экране.
+,
+15,http://github.com/Nashev/textBrain/issues/15,Браузер знаний колоночный,Nashev,Nashev, ,OPEN,GUI Несколько колонок, центральная - текущий элемент, в ней описание и сведения всякие. Слева от центральной - колонка со списком ближайших предков текущего элемента, то есть элементы, непосредственно ссылающиеся на текущий элемент, справа - аналогичный список ближайших потомков. Слава и справа от них - предки и потомки второго уровня, возможно лишь для текущего элемента в ближайшем списке, а можно и все вместе. Или с переключателем на этот счёт... Или всех выделенных, а не выделены по умолчанию никакие.
 
 Двойным щелчком по элементу в любом из этих списков - перекинуть элемент в центр, и смотреть с его точки зрения.
 
@@ -182,22 +883,29 @@ http://habrahabr.ru/post/231757/ про редакторы структурированных данных,
 
 С фильтрацией по типу #9 и ещё чему угодно, с расcкраской, с пояснениями, статистикой, всплывалками и синхронизацией с текстом #14 и его картой #8.
 
-Возможно, получится и в виде графа браузер знаний соорудить, графический (см #16 ). ,
-13,Изучать "конкурентов",Nashev,null, ,OPEN,Смотреть что уже есть и тырить идеи ),
-12,Автоматизированный перевод,Nashev,null, ,OPEN,По мотивам http://habrahabr.ru/company/abbyy/blog/208902/
+Возможно, получится и в виде графа браузер знаний соорудить, графический (см #16 ). 
+,
+14,http://github.com/Nashev/TextBrain/issues/14,Отображать сам загруженный/редактируемый текст,Nashev,Nashev, ,CLOSED,GUI Прежде, чем рисовать поверх него (см. #2) и рисовать его карту (см. #8)
+,
+13,http://github.com/Nashev/textBrain/issues/13,Изучать "конкурентов",Nashev,Nashev, ,OPEN,Concepts Knowledge types UseCase - News crawling Смотреть что уже опубликовали конкуренты и тырить идеи )
+,
+12,http://github.com/Nashev/textBrain/issues/12,Автоматизированный перевод,Nashev,Nashev, ,OPEN,Concepts Knowledge types UseCase - Book writing UseCase - News crawling По мотивам http://habrahabr.ru/company/abbyy/blog/208902/
 Если у меня получится показывать понятия и утверждения о них, возможно будет удобно на основе этого перевод текстов делать.
 
 Соответственно, нужны знания об отношении к языку и разноязычные синонимы.
 
 так же для этой задачи полезны 
-* "базы Translation Memory — базы памяти переводов, которые содержат ранее переведенные сегменты текста (словосочетания и предложения). Они создаются и пополняются на основе пар параллельных текстов. 
-* Другой важный ресурс — глоссарии, которые содержат термины и понятия, принятые в той или иной компании либо утвержденные для определенной группы проектов."
-(см про Lingvo.Pro - http://habrahabr.ru/company/abbyy/blog/202300/),
-11,Самообучение, Rule Based Analytic,Nashev,null, ,OPEN,Изначально была идея попробовать не только находить предопределённые типы элементов знаний (см #9), но и  самообучение организовать: чтобы какой-нибудь минимальный комплект простых абстрактных детекторов, работая рекурсивно, образовал прорывной системный эффект, начав распознавать что-то хитрое и сложное. ,
-10,Словосочетания (N-граммы),Nashev,null, ,OPEN,Надо распознавать устойчивые словосочетания. Это такие словосочетания ([N-граммы](https://ru.wikipedia.org/wiki/N-%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)), которые встречаются много раз - сопоставимо с количеством упоминаний составляющих его слов.
+- "базы Translation Memory — базы памяти переводов, которые содержат ранее переведенные сегменты текста (словосочетания и предложения). Они создаются и пополняются на основе пар параллельных текстов. 
+- Другой важный ресурс — глоссарии, которые содержат термины и понятия, принятые в той или иной компании либо утвержденные для определенной группы проектов."
+  (см про Lingvo.Pro - http://habrahabr.ru/company/abbyy/blog/202300/)
+,
+11,http://github.com/Nashev/textBrain/issues/11,Самообучение, Rule Based Analytic,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Knowledge types UseCase - News crawling Изначально была идея попробовать не только находить предопределённые типы элементов знаний (см #9), но и  самообучение организовать: чтобы какой-нибудь минимальный комплект простых абстрактных детекторов, работая рекурсивно, образовал прорывной системный эффект, начав распознавать что-то хитрое и сложное. 
+,
+10,http://github.com/Nashev/textBrain/issues/10,Словосочетания (N-граммы),Nashev,Nashev, ,OPEN,Concepts Knowledge types UseCase - Book writing Визуализация Надо распознавать устойчивые словосочетания. Это такие словосочетания ([N-граммы](https://ru.wikipedia.org/wiki/N-%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)), которые встречаются много раз - сопоставимо с количеством упоминаний составляющих его слов.
 
-Надо отличать склоняемые от не склоняемых или частично склоняемых. Видимо, надо искать их и на уровне базовых словоформ (#47), и на уровне используемых.,
-9,Выписать виды элементов знания,Nashev,null, ,OPEN,Возможно, надо как-то разделять понятия "мы знаем что-то про текст" и "мы знаем что-то про то, что описано в тексте". Не факт, что это возможно. Достаточно ли опираться на то, что "элемент знания" опирается непосредственно на "элемент исходного текста"? Или более глубокие элементы тоже бывают сугубо про текст? Есть ли элементы, которые то так то эдак? Надо б выписать какие элементы знания есть и какие могут быть.
+Надо отличать склоняемые от не склоняемых или частично склоняемых. Видимо, надо искать их и на уровне базовых словоформ (#47), и на уровне используемых.
+,
+9,http://github.com/Nashev/textBrain/issues/9,Выписать виды элементов знания,Nashev,Nashev, ,OPEN,Concepts Knowledge types Возможно, надо как-то разделять понятия "мы знаем что-то про текст" и "мы знаем что-то про то, что описано в тексте". Не факт, что это возможно. Достаточно ли опираться на то, что "элемент знания" опирается непосредственно на "элемент исходного текста"? Или более глубокие элементы тоже бывают сугубо про текст? Есть ли элементы, которые то так то эдак? Надо б выписать какие элементы знания есть и какие могут быть.
 
 Уже есть:
 Слова исходного текста; Используемые словоформы в разных регистрах; Используемые словоформы без регистра. 
@@ -210,23 +918,24 @@ http://habrahabr.ru/post/231757/ про редакторы структурированных данных,
 Распознавать парность скобок, запятых, кавычек и т.п. элементов
 
 Извлечённые факты, такие как:
-Основные понятия текста 
+Основные понятия текста (см. #85)
 Основные утверждения текста
 
 Например то, что упоминается один раз - это то, что текст утверждает нового. То, что упоминается много раз - это то, о чём текст. Иначе - значит в тексте есть лишние повторы утверждений. (это уже части #46)
-
 ,
-8,Карта текста,Nashev,null, ,OPEN,Панелька, на которой в пределах экрана врисован весь массив текста и разным образом отмечены места, отображаемые на экране и места, связанные с нужным в данный момент понятием или ещё чем. 
+8,http://github.com/Nashev/textBrain/issues/8,Карта текста,Nashev,Nashev, ,OPEN,GUI Панелька, на которой в пределах экрана врисован весь массив текста и разным образом отмечены места, отображаемые на экране и места, связанные с нужным в данный момент понятием или ещё чем. 
 
 Как в BeyondCompare и прочих сравнивалках есть двойная полоса с отметками о положении отличий.
 
-Возможно, эта панелька должна выполнять и роль полосы прокрутки - как в хроме, где результаты поиска текста на странице рисуются не только выделением в тексте  (см #2), но и отметками на полосе прокрутки.,
-7,Нужно у знаний хранить признак продуктивности,Nashev,null, ,OPEN,Это может быть таймкод последнего обращения, или счётчик бесполезных обращений, или счётчик полезных обращений, или что-то типа того. 
+Возможно, эта панелька должна выполнять и роль полосы прокрутки - как в хроме, где результаты поиска текста на странице рисуются не только выделением в тексте  (см #2), но и отметками на полосе прокрутки.
+,
+7,http://github.com/Nashev/textBrain/issues/7,Нужно у знаний хранить признак продуктивности,Nashev,Nashev, ,OPEN,Concepts Internal code architecture Это может быть таймкод последнего обращения, или счётчик бесполезных обращений, или счётчик полезных обращений, или что-то типа того. 
 
 Чтобы знать, что допустимо "забыть" из оперативки при подгрузке нового нужного (см #6), а что не стоит.
 
-Cчётчик бесполезных обращений кажется пока наиболее перспективным, если его обнулять или ополовинивать при полезных.,
-6,Работа с памятью / диском,Nashev,null, ,OPEN,Читать файл по частям
+Cчётчик бесполезных обращений кажется пока наиболее перспективным, если его обнулять или ополовинивать при полезных.
+,
+6,http://github.com/Nashev/textBrain/issues/6,Работа с памятью / диском,Nashev,Nashev, ,OPEN,Concepts Internal code architecture UseCase - Book writing Читать файл по частям
 
 Хранить знания мозга по частям, на диске. В человекочитаемом формате и с возможностью версионирования с помощью git (см #5 про редактирование и undo/redo)
 
@@ -239,45 +948,40 @@ Cчётчик бесполезных обращений кажется пока наиболее перспективным, если его обну
 Нужно определить, какие критерии отбора можно сделать.
 
 Мысль: по аналогии с мозгом можно попробовать пойти
-* Действовать по ассоциации: стараться выращивать у элемента знания "дендриты" и "аксоны" с их синапсами, касающимися других конкретных элементов знания, то есть **знаниям надо помнить уникальный индекс других знаний в общем массиве знаний, и обращаться к ним по индексу, а не указателю**.
-* А для выращивания - активные каким-то образом элементы знаний могут тянуться в определённую область, где сейчас что-то происходит из сенсорного потока, почему-то касающееся их. **То есть, новые связи с новым элементом из сенсорного потока будут делаться не для всех старых элементов мозга, а для каким-то образом избранной их части (эмоции их активировали или ещё как?..)** 
-* Далее, разные области мозга отвечают за разные виды информации - зрительная, там, моторная области коры и т.п... Соответственно, можно пробовать расти в нужную область, то есть **возможно нужно уметь отбирать элементы знания ещё и по типу знания, по классу KnowledgeItem (см #9).**
-* Кратковременная память есть, на 5±2 элемента, которая помнит недавние события. Возможно, новые знания имеет смысл изначально искать лишь среди них? **Иметь буфер недавно обрабатывавшихся или недавно добавленных знаний.** (http://habrahabr.ru/post/148461/ чуток в тему, как компактный обзор и инфографика)
-* Работа подсознания есть, когда загружаешь мозг чем-то, отвлекаешься, а котелок варит, и наступает инсайт. То есть, **в общем массиве знаний можно искать что-то фоновым краулером, который не спеша будет планомерно прочёсывать всё подряд, начиная с какой-то тоже близкой области?**
-* Вспомненное, активированное - тоже начинает влиять на то, что придумывается головой. То ли через кратковременную память, то-ли через ещё что-то.. **Можно недавно подгруженные с диска элементы знаний тоже некоторое время прочёсывать в поисках новых знаний, и выгружать лишь те, которые к моменту потребности в оперативке не продуцировали новых знаний** (Отсюда, кстати, вывод #7 - нужно у знаний хранить признак продуктивности - таймкод последнего обращения ли, счётчик бесполезных обращений ли, счётчик полезных обращений или что-то типа того. Чтобы знать, что "забыть" из оперативки, а что не стоит).
-
+- Действовать по ассоциации: стараться выращивать у элемента знания "дендриты" и "аксоны" с их синапсами, касающимися других конкретных элементов знания, то есть **знаниям надо помнить уникальный индекс других знаний в общем массиве знаний, и обращаться к ним по индексу, а не указателю**.
+- А для выращивания - активные каким-то образом элементы знаний могут тянуться в определённую область, где сейчас что-то происходит из сенсорного потока, почему-то касающееся их. **То есть, новые связи с новым элементом из сенсорного потока будут делаться не для всех старых элементов мозга, а для каким-то образом избранной их части (эмоции их активировали или ещё как?..)** 
+- Далее, разные области мозга отвечают за разные виды информации - зрительная, там, моторная области коры и т.п... Соответственно, можно пробовать расти в нужную область, то есть **возможно нужно уметь отбирать элементы знания ещё и по типу знания, по классу KnowledgeItem (см #9).**
+- Кратковременная память есть, на 5±2 элемента, которая помнит недавние события. Возможно, новые знания имеет смысл изначально искать лишь среди них? **Иметь буфер недавно обрабатывавшихся или недавно добавленных знаний.** (http://habrahabr.ru/post/148461/ чуток в тему, как компактный обзор и инфографика)
+- Работа подсознания есть, когда загружаешь мозг чем-то, отвлекаешься, а котелок варит, и наступает инсайт. То есть, **в общем массиве знаний можно искать что-то фоновым краулером, который не спеша будет планомерно прочёсывать всё подряд, начиная с какой-то тоже близкой области?**
+- Вспомненное, активированное - тоже начинает влиять на то, что придумывается головой. То ли через кратковременную память, то-ли через ещё что-то.. **Можно недавно подгруженные с диска элементы знаний тоже некоторое время прочёсывать в поисках новых знаний, и выгружать лишь те, которые к моменту потребности в оперативке не продуцировали новых знаний** (Отсюда, кстати, вывод #7 - нужно у знаний хранить признак продуктивности - таймкод последнего обращения ли, счётчик бесполезных обращений ли, счётчик полезных обращений или что-то типа того. Чтобы знать, что "забыть" из оперативки, а что не стоит).
 
 Индексом элемента знания может быть путь на диске, и состоять он должен из типа и имени. Имя может быть тоже составным, для защиты от переполнения папок. Числовым, строковым - не важно, главное - стабильным и уникальным, допустимым для имени файла и, по возможности, человекочитаемым. 
 
 Элемент знания - отдельный файл или часть в общем файле.
 
-Как при таком подходе представить слова и иные части исходного текста, если их много и они с привязкой к месту в нём, а он потенциально редактируемый? Возможно, стоит отказаться от адресации и строить лишь цепочки со связями типа предыдущее и следующее слово. Индекс им можно  делать как хеш конкатенации индекса предыдущего слова и самого слова. С приписыванием случайной фигни в случае коллизии. Так хеш будет накопительным что позволит ему реже повторяться при встрече одинаковых слов. И он не будет последовательным, как в случае использования счетчика, и не будет смущать при перестановках в результате редактирования текста. ,
-5,Развить систему в сторону динамического формирования текста (Книгописательство!),Nashev,null, ,OPEN,В дополнение к #4 (Анализ текста)
-
-* Пересогласование фраз при замене подлежащего, сказуемого и т.п., вообще при изменении любого слова в структуре предложения.
- * Для этого можно отображать все словоформы слова в контекстном меню
-
-* Перемещение абзацев по структуре текста.
-
-* Пополнение "мозга" дополнительными "знаниями", которые отсутствуют в исходном тексте - и отображение таких знаний особым образом, чтоб было видно, что в тексте их нигде нет. Автоматическое формирование формулировок из этих знаний и удобное добавление их в текст.
-
-* Онлайн-изменение знаний в мозге при модификации текста
-
-* Undo/Redo неограниченной глубины.
- * История изменений. Версионность изменений. (Интеграция с git? #44)
- * Хранение знаний мозга в таком виде, чтобы дифы в истории были достаточно наглядны. (см. #6)
- * Подхват изменений хранимого варианта при смене ветки репозитория или ручной правке файлов
+Как при таком подходе представить слова и иные части исходного текста, если их много и они с привязкой к месту в нём, а он потенциально редактируемый? Возможно, стоит отказаться от адресации и строить лишь цепочки со связями типа предыдущее и следующее слово. Индекс им можно  делать как хеш конкатенации индекса предыдущего слова и самого слова. С приписыванием случайной фигни в случае коллизии. Так хеш будет накопительным что позволит ему реже повторяться при встрече одинаковых слов. И он не будет последовательным, как в случае использования счетчика, и не будет смущать при перестановках в результате редактирования текста. 
 ,
-4,Анализ текста - как сбор его характеристик/метрик, так и вычисление выводов из него.,Nashev,null, ,OPEN,Развить систему в сторону статического анализа текстов:
-* [стемминг](https://ru.wikipedia.org/wiki/%D1%F2%E5%EC%EC%E8%ED%E3) (#47), морфологический анализ, грамматический анализ
-  * для всех слов уметь выписывать их словоформы, с отображением частотности употребления
-  * для выделенного предложения и слова уметь отображать структуру предложения (подлежащее, сказуемое, обороты) и связи слова в предложении - какие слова с текущим согласованы по числу, роду, падежу и т.п. (см. #2)
-  * извлекать перечни понятий, с отображением частотности употребления
-    * для понятия уметь выписывать их свойства - какие они и что делают, и что с ними делают (прилагательные и глаголы), с отображением частотности употребления. 
-* Частотность употребления показывать подсветкой мест в тексте и в карте текста (иметь карту текста! см #8)
-* Уметь связывать синонимы (#48), и при желании, не отличать их друг от друга при анализе. Типа галочки в свойствах слова в выдаче отчёта по нему - "включая связи синонимов".
-* Уметь определять или хотя бы задавать назначение абзаца для понятия - определение, уточнение, изменение, использование.
-* Уметь определять структуру текста - главы, разделы, параграфы, абзацы, предложения. Их вложенность, их зависимость по понятиям - типа, тут введено а тут используется или поясняется. 
+5,http://github.com/Nashev/textBrain/issues/5,Развить систему в сторону динамического формирования текста (Книгописательство!),Nashev,Nashev, ,OPEN,GUI Internal code architecture UseCase - Book writing Визуализация В дополнение к #4 (Анализ текста)
+- Пересогласование фраз при замене подлежащего, сказуемого и т.п., вообще при изменении любого слова в структуре предложения.
+  - Для этого можно отображать все словоформы слова в контекстном меню
+- Перемещение абзацев по структуре текста.
+- Пополнение "мозга" дополнительными "знаниями", которые отсутствуют в исходном тексте - и отображение таких знаний особым образом, чтоб было видно, что в тексте их нигде нет. Автоматическое формирование формулировок из этих знаний и удобное добавление их в текст.
+- Онлайн-изменение знаний в мозге при модификации текста
+- Undo/Redo неограниченной глубины.
+  - История изменений. Версионность изменений. (Интеграция с git? #44)
+  - Хранение знаний мозга в таком виде, чтобы дифы в истории были достаточно наглядны. (см. #6)
+  - Подхват изменений хранимого варианта при смене ветки репозитория или ручной правке файлов
+,
+4,http://github.com/Nashev/textBrain/issues/4,Анализ текста - как сбор его характеристик/метрик, так и вычисление выводов из него.,Nashev,Nashev, ,OPEN,Concepts GUI UseCase - Book writing UseCase - News crawling Развить систему в сторону статического анализа текстов:
+- [стемминг](https://ru.wikipedia.org/wiki/%D1%F2%E5%EC%EC%E8%ED%E3) (#47), морфологический анализ, грамматический анализ
+  - для всех слов уметь выписывать их словоформы, с отображением частотности употребления
+  - для выделенного предложения и слова уметь отображать структуру предложения (подлежащее, сказуемое, обороты) и связи слова в предложении - какие слова с текущим согласованы по числу, роду, падежу и т.п. (см. #2)
+  - извлекать перечни понятий, с отображением частотности употребления
+    - для понятия уметь выписывать их свойства - какие они и что делают, и что с ними делают (прилагательные и глаголы), с отображением частотности употребления. 
+- Частотность употребления показывать подсветкой мест в тексте и в карте текста (иметь карту текста! см #8)
+- Уметь связывать синонимы (#48), и при желании, не отличать их друг от друга при анализе. Типа галочки в свойствах слова в выдаче отчёта по нему - "включая связи синонимов".
+- Уметь определять или хотя бы задавать назначение абзаца для понятия - определение, уточнение, изменение, использование.
+- Уметь определять структуру текста - главы, разделы, параграфы, абзацы, предложения. Их вложенность, их зависимость по понятиям - типа, тут введено а тут используется или поясняется. 
 
 Будут средства всё это смотреть - получится #46.
 
@@ -287,10 +991,12 @@ Cчётчик бесполезных обращений кажется пока наиболее перспективным, если его обну
 
 Для всех результатов иметь экспорт, для включения в публикации на тему анализа.
 
-(см. далее #5: Развить систему в сторону динамического формирования текста) ,
-3,Использовать шаблоны классов для организации списков и итераторов ,Nashev,null, ,OPEN,Чтобы меньше дублировать типовой код,
-2,Рисовать значки поверх текста,Nashev,null, ,OPEN,Выделять слова, части слов, связи слов и т. п. 
-Для определения координат букв - сообщения есть, на http://last12.narod.ru/delphi_memrihonline.htm описаны. ,
-1,Выбор кодировки после выбора файла, с просмотром содержимого,Nashev,null, ,OPEN,Типа как мастер импорта теста в экселе - показать начало теста, дать сменить декодер, еще что-нибудь поднастроить... ,
-17,Локализовать, на русский, при английских исходниках,Nashev,null, ,CLOSED,,
-14,Отображать сам загруженный/редактируемый текст,Nashev,null, ,CLOSED,Прежде, чем рисовать поверх него (см. #2) и рисовать его карту (см. #8),
+(см. далее #5: Развить систему в сторону динамического формирования текста) 
+,
+3,http://github.com/Nashev/textBrain/issues/3,Использовать шаблоны классов для организации списков и итераторов ,Nashev,Nashev, ,OPEN,Internal code architecture Чтобы меньше дублировать типовой код
+,
+2,http://github.com/Nashev/textBrain/issues/2,Рисовать значки поверх текста,Nashev,Nashev, ,OPEN,GUI Internal code architecture UseCase - News crawling Выделять слова, части слов, связи слов и т. п. 
+Для определения координат букв - сообщения есть, на http://last12.narod.ru/delphi_memrihonline.htm описаны. 
+,
+1,http://github.com/Nashev/textBrain/issues/1,Выбор кодировки после выбора файла, с просмотром содержимого,Nashev,Nashev, ,OPEN,GUI Типа как мастер импорта теста в экселе - показать начало теста, дать сменить декодер, еще что-нибудь поднастроить... 
+,
