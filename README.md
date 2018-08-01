@@ -1,7 +1,7 @@
 TextBrain
 =========
 
-Experiments with AI, based on text.
+Experiments with AI, based on text. Some kind of NLP.
 
 Initially it must load text, extract a words, recognize a same words in different cases, 
 store links between them, and add all of them into a single database ("brain") as a "knowledges".
