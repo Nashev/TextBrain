@@ -33,7 +33,7 @@ type
     function GetItem(Index: Integer): TKnowledgeItem; override;
     function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
   public
-    constructor Create(AOwner: TKnowledgeItem); override;
+    constructor Create(AOwner: TKnowledgeItem; ADetector: TDetector); override;
     destructor Destroy; override;
 
     function Count: Integer; override;
@@ -85,13 +85,13 @@ type
     function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; override;
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; virtual; abstract;
   public
-    constructor Create(ADetectorClass: TDetectorClass; AFileName: UTF8String);
+    constructor Create(ADetector: TDetector; AFileName: UTF8String);
     function ToString: UTF8String; override;
     function InfoText: UTF8String; override;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
 
     function EOF: boolean; override;
-    function ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem; override;
+    function ReadNextItem(ADetector: TDetector): TSourceItem; override;
   end;
 
   { TSimpleAnsiTextFileSource }
@@ -121,7 +121,7 @@ type
     function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
-    constructor Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+    constructor Create(ADetector: TDetector; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
     function InfoText: UTF8String; override;
     function ToString: UTF8String; override;
     function GetItemStart: Integer; override;
@@ -229,7 +229,7 @@ type
   private
     FModifiedWord: UTF8String;
   public
-    constructor Create(ADetectorClass: TDetectorClass; AOriginalWord: TWord; AModifiedWord: UTF8String); reintroduce;
+    constructor Create(ADetector: TDetector; AOriginalWord: TWord; AModifiedWord: UTF8String); reintroduce;
     function ToString: UTF8String; override;
   end;
 
@@ -245,7 +245,7 @@ type
   protected
     function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
-    constructor Create(ADetectorClass: TDetectorClass; ACapitalizedWord, ALowercasedWord: TWord);
+    constructor Create(ADetector: TDetector; ACapitalizedWord, ALowercasedWord: TWord);
     function ToString: UTF8String; override;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
   end;
@@ -267,9 +267,9 @@ begin
   FItems.Add(AItem);
 end;
 
-constructor TBasis1.Create(AOwner: TKnowledgeItem);
+constructor TBasis1.Create(AOwner: TKnowledgeItem; ADetector: TDetector);
 begin
-  inherited Create(AOwner);
+  inherited Create(AOwner, ADetector);
   FItems := TObjectList.Create(False);
 end;
 
@@ -524,13 +524,13 @@ begin
   LowercaseWordItem := TWord.FindWord(AKnowledgeItem.Owner, LowercaseWord);
   if not Assigned(LowercaseWordItem) then
     begin
-      LowercaseWordItem := TModifiedWord.Create(SelfClass, OriginalWord, LowercaseWord);
+      LowercaseWordItem := TModifiedWord.Create(Self, OriginalWord, LowercaseWord);
       LowercaseWordItem.IntegrateToBrain(OriginalWord.Owner);
     end
   else
     LowercaseWordItem.Basis.Add(OriginalWord); // TODO: indeed?
 
-  TWordWasCapitalizedFact.Create(SelfClass, OriginalWord, LowercaseWordItem).IntegrateToBrain(OriginalWord.Owner);
+  TWordWasCapitalizedFact.Create(Self, OriginalWord, LowercaseWordItem).IntegrateToBrain(OriginalWord.Owner);
 end;
 
 { TTabledKnowledgeBaseSubset1 }
@@ -565,9 +565,9 @@ end;
 
 { TModifiedWord }
 
-constructor TModifiedWord.Create(ADetectorClass: TDetectorClass; AOriginalWord: TWord; AModifiedWord: UTF8String);
+constructor TModifiedWord.Create(ADetector: TDetector; AOriginalWord: TWord; AModifiedWord: UTF8String);
 begin
-  inherited Create(ADetectorClass);
+  inherited Create(ADetector);
   Basis.Add(AOriginalWord);
   FModifiedWord := AModifiedWord;
 end;
@@ -584,9 +584,9 @@ begin
   Result := False; // always unique
 end;
 
-constructor TWordWasCapitalizedFact.Create(ADetectorClass: TDetectorClass; ACapitalizedWord, ALowercasedWord: TWord);
+constructor TWordWasCapitalizedFact.Create(ADetector: TDetector; ACapitalizedWord, ALowercasedWord: TWord);
 begin
-  inherited Create(ADetectorClass);
+  inherited Create(ADetector);
   Basis.Add(ACapitalizedWord); // Basis[0]
   Basis.Add(ALowercasedWord);  // Basis[1]
 end;
@@ -694,7 +694,7 @@ var
 begin
   if AKnowledgeItem is TSourceItem then
     begin
-      NewWord := TWord.Create(SelfClass);
+      NewWord := TWord.Create(Self);
       NewWord.Basis.Add(AKnowledgeItem);
       NewWord.IntegrateToBrain(AKnowledgeItem.Owner);
     end;
@@ -727,11 +727,11 @@ begin
   Result := (AOtherItem is TSimpleTextFileSourceItem) and (TSimpleTextFileSourceItem(AOtherItem).FPosition = FPosition);
 end;
 
-constructor TSimpleTextFileSourceItem.Create(ADetectorClass: TDetectorClass; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+constructor TSimpleTextFileSourceItem.Create(ADetector: TDetector; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
 var
   s: string;
 begin
-  inherited Create(ADetectorClass);
+  inherited Create(ADetector);
   Basis.Add(ASource);
   FPosition := APosition;
   FSize     := ASize;
@@ -817,15 +817,15 @@ begin
   Result := TTabledKnowledgeBaseSubset1;
 end;
 
-constructor TSimpleTextFileSource.Create(ADetectorClass: TDetectorClass; AFileName: UTF8String);
+constructor TSimpleTextFileSource.Create(ADetector: TDetector; AFileName: UTF8String);
 var
   StringList: TStringList;
 begin
-  inherited Create(ADetectorClass);
+  inherited Create(ADetector);
   FFileName := AFileName;
   StringList := TStringList.Create;
     try
-      StringList.LoadFromFile(UTF8ToSys(FFileName));
+      StringList.LoadFromFile(FFileName);
       FFileContent := EncodeFileStringListToContent(StringList) + #0;
     finally
       StringList.Free;
@@ -839,7 +839,7 @@ begin
   Result := (FPosition = FEndChar);
 end;
 
-function TSimpleTextFileSource.ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem;
+function TSimpleTextFileSource.ReadNextItem(ADetector: TDetector): TSourceItem;
 var
   EndPosition: PUTF8Char;
   NextChar: UTF8String;
@@ -904,7 +904,7 @@ begin
   // check if now there are a delimiter
   if Pos(NextChar, DelimiterChars) > 0 then
     begin
-      Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, CharSize);
+      Result := TSimpleTextFileSourceItem.Create(ADetector, Self, FPosition, CharSize);
       Result.IntegrateToBrain(Owner);
       Inc(FPosition, CharSize);
       Exit;
@@ -921,7 +921,7 @@ begin
     NextChar := Copy(UTF8String(EndPosition^), 1, 1);
   until (EndPosition >= FEndChar) or (Pos(NextChar, DelimiterChars) > 0);
 
-  Result := TSimpleTextFileSourceItem.Create(ADetectorClass, Self, FPosition, EndPosition - FPosition);
+  Result := TSimpleTextFileSourceItem.Create(ADetector, Self, FPosition, EndPosition - FPosition);
   Result.IntegrateToBrain(Owner);
 
   FPosition := EndPosition;

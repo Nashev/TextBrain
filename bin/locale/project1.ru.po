@@ -102,66 +102,66 @@ msgid "No subsets."
 msgstr "Нет вложенных наборов."
 
 #: tmainform.actloadnewansisource.caption
-msgctxt "tmainform.actloadnewansisource.caption"
 msgid "Load new Ansi source..."
-msgstr "Загрузить новый текст в кодировке ANSI..."
+msgstr ""
 
 #: tmainform.actloadnewutf8source.caption
-msgctxt "tmainform.actloadnewutf8source.caption"
 msgid "Load new UTF8 source..."
-msgstr "Загрузить новый текст в кодировке UTF-8..."
+msgstr ""
 
-#: tmainform.buttonclear.caption
-msgctxt "tmainform.buttonclear.caption"
+#: tmainform.btnclear.caption
 msgid "Clear"
-msgstr "Очистить"
+msgstr ""
 
-#: tmainform.buttonshowbraincontent.caption
+#: tmainform.btnshowbraincontent.caption
 msgid "Show brain content"
-msgstr "Показать знания"
+msgstr ""
 
-#: tmainform.buttonshowsubsets.caption
-msgctxt "tmainform.buttonshowsubsets.caption"
+#: tmainform.btnshowsubsets.caption
 msgid "Show subsets"
-msgstr "Показать подмножества"
+msgstr ""
+
+#: tmainform.btntreecolumnsgohome.caption
+msgid "Home"
+msgstr ""
 
 #: tmainform.caption
 msgid "Text Brain"
-msgstr "Text Brain"
+msgstr ""
 
 #: tmainform.mmiabout.caption
 msgid "About..."
-msgstr "О программе..."
+msgstr ""
 
 #: tmainform.mmiexit.caption
 msgid "Exit"
-msgstr "Выход"
-
-#: TMAINFORM.MMIEXITSEPARATOR.CAPTION
-msgctxt "TMAINFORM.MMIEXITSEPARATOR.CAPTION"
-msgid "-"
-msgstr "-"
+msgstr ""
 
 #: tmainform.mmigithub.caption
 msgid "Open http://github.com/Nashev/TextBrain in default browser"
-msgstr "Открыть http://github.com/Nashev/TextBrain в основном браузере"
+msgstr ""
 
 #: tmainform.mmihelp.caption
 msgid "Help"
-msgstr "Справка"
+msgstr ""
 
 #: tmainform.mmisources.caption
-msgctxt "tmainform.mmisources.caption"
 msgid "Sources"
-msgstr "Исходный текст"
+msgstr ""
 
 #: tmainform.toggleboxpause.caption
-msgctxt "tmainform.toggleboxpause.caption"
 msgid "Pause"
-msgstr "Пауза"
+msgstr ""
 
 #: tmainform.toggleboxsilent.caption
-msgctxt "tmainform.toggleboxsilent.caption"
 msgid "Silent"
-msgstr "Тихий режим"
+msgstr ""
+
+#: tmainform.tsoutmemo.caption
+msgid "Text output"
+msgstr ""
+
+#: tmainform.tsthreecolumns.caption
+msgid "Three-columns knowledge browser"
+msgstr ""
 

@@ -84,27 +84,27 @@ msgid "No subsets."
 msgstr ""
 
 #: tmainform.actloadnewansisource.caption
-msgctxt "TMAINFORM.ACTLOADNEWANSISOURCE.CAPTION"
 msgid "Load new Ansi source..."
 msgstr ""
 
 #: tmainform.actloadnewutf8source.caption
-msgctxt "TMAINFORM.ACTLOADNEWUTF8SOURCE.CAPTION"
 msgid "Load new UTF8 source..."
 msgstr ""
 
-#: tmainform.buttonclear.caption
-msgctxt "TMAINFORM.BUTTONCLEAR.CAPTION"
+#: tmainform.btnclear.caption
 msgid "Clear"
 msgstr ""
 
-#: tmainform.buttonshowbraincontent.caption
+#: tmainform.btnshowbraincontent.caption
 msgid "Show brain content"
 msgstr ""
 
-#: tmainform.buttonshowsubsets.caption
-msgctxt "TMAINFORM.BUTTONSHOWSUBSETS.CAPTION"
+#: tmainform.btnshowsubsets.caption
 msgid "Show subsets"
+msgstr ""
+
+#: tmainform.btntreecolumnsgohome.caption
+msgid "Home"
 msgstr ""
 
 #: tmainform.caption
@@ -119,11 +119,6 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#: TMAINFORM.MMIEXITSEPARATOR.CAPTION
-msgctxt "TMAINFORM.MMIEXITSEPARATOR.CAPTION"
-msgid "-"
-msgstr ""
-
 #: tmainform.mmigithub.caption
 msgid "Open http://github.com/Nashev/TextBrain in default browser"
 msgstr ""
@@ -133,17 +128,22 @@ msgid "Help"
 msgstr ""
 
 #: tmainform.mmisources.caption
-msgctxt "TMAINFORM.MMISOURCES.CAPTION"
 msgid "Sources"
 msgstr ""
 
 #: tmainform.toggleboxpause.caption
-msgctxt "TMAINFORM.TOGGLEBOXPAUSE.CAPTION"
 msgid "Pause"
 msgstr ""
 
 #: tmainform.toggleboxsilent.caption
-msgctxt "TMAINFORM.TOGGLEBOXSILENT.CAPTION"
 msgid "Silent"
+msgstr ""
+
+#: tmainform.tsoutmemo.caption
+msgid "Text output"
+msgstr ""
+
+#: tmainform.tsthreecolumns.caption
+msgid "Three-columns knowledge browser"
 msgstr ""
 

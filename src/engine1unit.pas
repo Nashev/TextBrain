@@ -35,7 +35,7 @@ type
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; virtual; abstract;
     procedure Merge(AOtherItem: TKnowledgeItem); virtual;
   public
-    constructor Create(ADetectorClass: TDetectorClass);
+    constructor Create(ADetector: TDetector);
     destructor Destroy; override;
     procedure IntegrateToBrain(ABrain: TBrain); // need be called when this item will be ready for merge.
 
@@ -45,8 +45,8 @@ type
 
     //property DetectorClass: TDetectorClass read FDetectorClass;
 
-    property Basis: TBasis read FBasis;
-    property Consequences: TTabledKnowledgeBaseSubset read FConsequences; // opposite side of Basis: filled only when item added to some basis
+    property Basis: TBasis read FBasis; // what knowledge items are basis for this knowledge item
+    property Consequences: TTabledKnowledgeBaseSubset read FConsequences; // opposite side of Basis: filled only when item added as part of basis of any other knowledge item
 
     function ToString: UTF8String; virtual; abstract; reintroduce;
     function InfoText: UTF8String; virtual;
@@ -58,9 +58,8 @@ type
 
   TSource = class(TKnowledgeItem)
   public
-    function ToString: UTF8String; virtual; abstract; reintroduce;
     function EOF: Boolean; virtual; abstract;
-    function ReadNextItem(ADetectorClass: TDetectorClass): TSourceItem; virtual; abstract;
+    function ReadNextItem(ADetector: TDetector): TSourceItem; virtual; abstract;
   end;
 
   TSourceItem = class(TKnowledgeItem)
@@ -182,10 +181,13 @@ type
   { TBasis }
 
   TBasis = class(TTabledKnowledgeBaseSubset)
+  private
     FOwner: TKnowledgeItem;
+    FDetector: TDetector;
   public
-    constructor Create(AOwner: TKnowledgeItem); virtual; reintroduce;
+    constructor Create(AOwner: TKnowledgeItem; ADetector: TDetector); virtual; reintroduce;
     property Owner: TKnowledgeItem read FOwner;
+    property Detector: TDetector read FDetector;
     function Add(AItem: TKnowledgeItem): TKnowledgeItem; override;
   end;
 
@@ -244,14 +246,16 @@ end;
 function TEmptyIterator.CurrentItem: TKnowledgeItem;
 begin
   Assert(False, 'TEmptyIterator.CurrentItem called!');
+  Result := nil;
 end;
 
 { TBasis }
 
-constructor TBasis.Create(AOwner: TKnowledgeItem);
+constructor TBasis.Create(AOwner: TKnowledgeItem; ADetector: TDetector);
 begin
   inherited Create(nil);
   FOwner := AOwner;
+  FDetector := ADetector;
 end;
 
 function TBasis.Add(AItem: TKnowledgeItem): TKnowledgeItem;
@@ -368,7 +372,7 @@ procedure TSourceDetector.Evalute(AKnowledgeItem: TKnowledgeItem);
 begin
   if AKnowledgeItem is TSource then
     while not TSource(AKnowledgeItem).EOF do
-      TSource(AKnowledgeItem).ReadNextItem(SelfClass);
+      TSource(AKnowledgeItem).ReadNextItem(Self);
 end;
 
 { TTabledKnowledgeIterator }
@@ -483,11 +487,10 @@ end;
 
 { TKnowledgeItem }
 
-constructor TKnowledgeItem.Create(ADetectorClass: TDetectorClass);
+constructor TKnowledgeItem.Create(ADetector: TDetector);
 begin
   inherited Create;
-  //FDetectorClass := ADetectorClass;
-  FBasis := GetBasisClass.Create(Self);
+  FBasis := GetBasisClass.Create(Self, ADetector);
   FConsequences := GetConsequencesClass.Create(nil);
 end;
 

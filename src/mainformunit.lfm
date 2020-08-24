@@ -1,18 +1,18 @@
 object MainForm: TMainForm
   Left = 464
-  Height = 634
+  Height = 696
   Top = 219
-  Width = 1183
+  Width = 1057
   Caption = 'Text Brain'
-  ClientHeight = 615
-  ClientWidth = 1183
+  ClientHeight = 676
+  ClientWidth = 1057
   Menu = MainMenu
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '0.9.31'
+  LCLVersion = '2.0.10.0'
   object SourceMemo: TMemo
     Left = 0
-    Height = 496
+    Height = 557
     Top = 24
     Width = 526
     Align = alLeft
@@ -21,23 +21,9 @@ object MainForm: TMainForm
     ScrollBars = ssAutoBoth
     TabOrder = 0
   end
-  object KnowledgeMemo: TMemo
-    Left = 531
-    Height = 496
-    Top = 24
-    Width = 652
-    Align = alClient
-    HideSelection = False
-    OnClick = KnowledgeMemoClick
-    OnKeyDown = KnowledgeMemoKeyDown
-    OnKeyUp = KnowledgeMemoKeyDown
-    ScrollBars = ssAutoBoth
-    TabOrder = 1
-    WordWrap = False
-  end
-  object Splitter1: TSplitter
+  object splSourceMemo: TSplitter
     Left = 526
-    Height = 496
+    Height = 557
     Top = 24
     Width = 5
   end
@@ -45,28 +31,18 @@ object MainForm: TMainForm
     Left = 0
     Height = 24
     Top = 0
-    Width = 1183
+    Width = 1057
     Align = alTop
     ClientHeight = 24
-    ClientWidth = 1183
-    TabOrder = 3
-    object ButtonClear: TButton
-      Left = 1051
-      Height = 21
-      Top = 0
-      Width = 123
-      Anchors = [akTop, akRight]
-      Caption = 'Clear'
-      OnClick = ButtonClearClick
-      TabOrder = 0
-    end
+    ClientWidth = 1057
+    TabOrder = 2
     object ToggleBoxPause: TToggleBox
       Left = 0
       Height = 21
       Top = 0
       Width = 114
       Caption = 'Pause'
-      TabOrder = 1
+      TabOrder = 0
     end
     object ToggleBoxSilent: TToggleBox
       Left = 120
@@ -76,50 +52,176 @@ object MainForm: TMainForm
       Caption = 'Silent'
       Checked = True
       State = cbChecked
-      TabOrder = 2
+      TabOrder = 1
     end
-    object ButtonShowSubsets: TButton
-      Left = 883
-      Height = 21
-      Top = 0
-      Width = 163
-      Anchors = [akTop, akRight]
-      Caption = 'Show subsets'
-      OnClick = ButtonShowSubsetsClick
-      TabOrder = 3
-    end
-  end
-  object ButtonShowBrainContent: TButton
-    Left = 715
-    Height = 21
-    Top = 0
-    Width = 163
-    Anchors = [akTop, akRight]
-    Caption = 'Show brain content'
-    OnClick = ButtonShowBrainContentClick
-    TabOrder = 4
   end
   object StatusMemo: TMemo
     Left = 0
     Height = 90
-    Top = 525
-    Width = 1183
+    Top = 586
+    Width = 1057
     Align = alBottom
     HideSelection = False
-    TabOrder = 5
+    TabOrder = 3
   end
   object Splitter2: TSplitter
     Cursor = crVSplit
     Left = 0
     Height = 5
-    Top = 520
-    Width = 1183
+    Top = 581
+    Width = 1057
     Align = alBottom
     ResizeAnchor = akBottom
   end
+  object pcBrowser: TPageControl
+    Left = 531
+    Height = 557
+    Top = 24
+    Width = 526
+    ActivePage = tsThreeColumns
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 5
+    OnChange = pcBrowserChange
+    object tsThreeColumns: TTabSheet
+      Caption = 'Three-columns knowledge browser'
+      ClientHeight = 529
+      ClientWidth = 518
+      object CenterMemo: TMemo
+        Left = 155
+        Height = 505
+        Top = 24
+        Width = 208
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 0
+      end
+      object RightMemo: TMemo
+        Left = 368
+        Height = 505
+        Top = 24
+        Width = 150
+        Align = alRight
+        OnClick = LeftOrRightMemoClick
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+      end
+      object LeftMemo: TMemo
+        Left = 0
+        Height = 505
+        Top = 24
+        Width = 150
+        Align = alLeft
+        OnClick = LeftOrRightMemoClick
+        ScrollBars = ssAutoBoth
+        TabOrder = 2
+        WordWrap = False
+      end
+      object splLeftMemo: TSplitter
+        Left = 150
+        Height = 505
+        Top = 24
+        Width = 5
+      end
+      object splRighMemo: TSplitter
+        Left = 363
+        Height = 505
+        Top = 24
+        Width = 5
+        Align = alRight
+        ResizeAnchor = akRight
+      end
+      object pnlOutMemoToolbar1: TPanel
+        Left = 0
+        Height = 24
+        Top = 0
+        Width = 518
+        Align = alTop
+        ClientHeight = 24
+        ClientWidth = 518
+        TabOrder = 5
+        object btnTreeColumnsGoHome: TButton
+          Left = 458
+          Height = 22
+          Top = 1
+          Width = 59
+          Align = alRight
+          Anchors = [akTop, akRight]
+          AutoSize = True
+          Caption = 'Home'
+          OnClick = btnTreeColumnsGoHomeClick
+          TabOrder = 0
+        end
+      end
+    end
+    object tsOutMemo: TTabSheet
+      Caption = 'Text output'
+      ClientHeight = 529
+      ClientWidth = 518
+      object pnlOutMemoToolbar: TPanel
+        Left = 0
+        Height = 24
+        Top = 0
+        Width = 518
+        Align = alTop
+        ClientHeight = 24
+        ClientWidth = 518
+        TabOrder = 0
+        object btnClear: TButton
+          Left = 464
+          Height = 22
+          Top = 1
+          Width = 53
+          Align = alRight
+          Anchors = [akTop, akRight]
+          AutoSize = True
+          Caption = 'Clear'
+          OnClick = ButtonClearClick
+          TabOrder = 0
+        end
+        object btnShowSubsets: TButton
+          Left = 1
+          Height = 22
+          Top = 1
+          Width = 97
+          Align = alLeft
+          AutoSize = True
+          Caption = 'Show subsets'
+          OnClick = ButtonShowSubsetsClick
+          TabOrder = 1
+        end
+        object btnShowBrainContent: TButton
+          Left = 98
+          Height = 22
+          Top = 1
+          Width = 129
+          Align = alLeft
+          AutoSize = True
+          Caption = 'Show brain content'
+          OnClick = btnShowBrainContentClick
+          TabOrder = 2
+        end
+      end
+      object OutMemo: TMemo
+        Left = 0
+        Height = 505
+        Top = 24
+        Width = 518
+        Align = alClient
+        HideSelection = False
+        OnClick = OutMemoClick
+        OnKeyDown = OutMemoKeyDown
+        OnKeyUp = OutMemoKeyDown
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+      end
+    end
+  end
   object ActionList: TActionList
-    left = 88
-    top = 32
+    Left = 88
+    Top = 32
     object actLoadNewAnsiSource: TAction
       Caption = 'Load new Ansi source...'
       OnExecute = actLoadNewAnsiSourceExecute
@@ -130,8 +232,8 @@ object MainForm: TMainForm
     end
   end
   object MainMenu: TMainMenu
-    left = 88
-    top = 96
+    Left = 88
+    Top = 96
     object mmiSources: TMenuItem
       Caption = 'Sources'
       object mmiLoadAnsi: TMenuItem
@@ -161,7 +263,7 @@ object MainForm: TMainForm
     end
   end
   object OpenDialog: TOpenDialog
-    left = 168
-    top = 32
+    Left = 168
+    Top = 32
   end
 end
