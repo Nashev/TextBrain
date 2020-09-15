@@ -1,4 +1,4 @@
-unit MainFormUnit;
+unit MainForm2Unit;
 
 {$IFDEF  FPC}
 {$mode objfpc}{$H+}

@@ -3,3 +3,12 @@
 /dcu/i386-win32
 /dcu/x86_64-win64
 *.dbg
+__history
+__recovery
+/src/ModelSupport_TextBrain2
+/src/out
+/src/Win32
+*.~dsk
+*.local
+*.tvsconfig
+*.dsk

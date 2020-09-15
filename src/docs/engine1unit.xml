@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fpdoc-descriptions><package name="project1"><module name="Engine1Unit"><element name="TKnowledgeItem.IsSameKnowledge"/><element name="TKnowledgeItem"><short>Is a base class for all knowledge items in a text brain</short>
-      <descr>It have link to they Brain, list of consequences and a basis subset of knowledge
-</descr>
-      </element>
-    <element name="TKnowledgeItem.Basis"><short>Basis is a set of knowledge items, which are was a sources to make this new knowledge item</short>
-      </element><element name="TKnowledgeItem.Consequences"><short>Consequences is a list of produced knowledge items, which are have this knowledge item as a basis</short><descr>This is an opposite side of Basis: filled only when this item added to some body basis
-</descr>
+<fpdoc-descriptions><package name="project1"><module name="Engine1Unit">
+      <element name="TKnowledgeItem"><short>Is a base class for all knowledge items in a text brain</short>
+      <descr>It have link to they Brain, list of consequences and a basis subset of knowledge/descr>
+      </element><element name="TKnowledgeItem.Basis"><short>Basis is a set of knowledge items, which are was a sources to make this new knowledge item</short>
+      </element><element name="TKnowledgeItem.Consequences"><short>Consequences is a list of produced knowledge items, which are have this knowledge item as a basis</short><descr>This is an opposite side of Basis: filled only when this item added to some body basis</descr>
       </element><element name="TKnowledgeItem.ToString"><short>String representation of this item itself</short>
       </element><element name="TKnowledgeItem.InfoText"><short>Full generated text description of this knowledge item. Usually include string representation and some specific aditional info</short>
       </element><element name="TKnowledgeItem.IntegrateToBrain"><descr>Note: This method need be called when this item will be ready for merge.</descr>
       </element><element name="TBasis"><short>TBasis is a TTabledKnowledgeBaseSubset with Owner knowledge item, made by Detector from set of other items. It adds the Owner to basis item's Consequences lists</short>
       </element><element name="TTabledKnowledgeBaseSubset"><short>Is an abstract collection of a knowledge items. Has Items property and direct iterator over this Items.</short>
       <descr>Descendants can implement different way to store all contained TKnowledgeItem instances.
-As an array, or as a memory stream, or a queue, or a TCollection, etc
-</descr>
+As an array, or as a memory stream, or a queue, or a TCollection, etc</descr>
       </element><element name="TKnowledgeBaseSubset"><short>Base subset of knowledge items with support to organize tree of subsets: it have a link to superset and list of subsets</short>
-      <descr>It provide an possibility to get Iterator to theirs own contents and a notifications of content's changing to all their's subsets
-</descr>
+      <descr>It provide an possibility to get Iterator to theirs own contents and a notifications of content's changing to all their's subsets</descr>
       </element><element name="TFunctionalKnowledgeBaseSubset.GetIterator"><short>Not used yet</short>
-      </element>
-    <element name="TBrain"><short>Abstract class of TKnowledgeItem's owner, that is a 1) holder of all knowledges (TTabledKnowledgeBaseSubset) and 2) holder of all knowledge detectors</short>
+      </element><element name="TBrain"><short>Abstract class of TKnowledgeItem's owner, that is a 1) holder of all knowledges (TTabledKnowledgeBaseSubset) and 2) holder of all knowledge detectors</short>
       </element>
     <short>First try to make some test brain engine</short>
     <element name="TBasis.Detector"><short>Detector, used to make Owner for this Basis from the Items in this subset</short>

@@ -14,7 +14,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 557
     Top = 24
-    Width = 526
+    Width = 323
     Align = alLeft
     HideSelection = False
     ReadOnly = True
@@ -22,7 +22,7 @@ object MainForm: TMainForm
     TabOrder = 0
   end
   object splSourceMemo: TSplitter
-    Left = 526
+    Left = 323
     Height = 557
     Top = 24
     Width = 5
@@ -74,10 +74,10 @@ object MainForm: TMainForm
     ResizeAnchor = akBottom
   end
   object pcBrowser: TPageControl
-    Left = 531
+    Left = 328
     Height = 557
     Top = 24
-    Width = 526
+    Width = 729
     ActivePage = tsThreeColumns
     Align = alClient
     TabIndex = 0
@@ -86,23 +86,24 @@ object MainForm: TMainForm
     object tsThreeColumns: TTabSheet
       Caption = 'Three-columns knowledge browser'
       ClientHeight = 529
-      ClientWidth = 518
+      ClientWidth = 721
       object CenterMemo: TMemo
-        Left = 155
+        Left = 304
         Height = 505
         Top = 24
-        Width = 208
+        Width = 144
         Align = alClient
         ScrollBars = ssAutoBoth
         TabOrder = 0
       end
       object RightMemo: TMemo
-        Left = 368
+        Left = 453
         Height = 505
         Top = 24
-        Width = 150
+        Width = 268
         Align = alRight
-        OnClick = LeftOrRightMemoClick
+        OnClick = BrowserMemoClick
+        OnDblClick = LeftOrRightMemoDblClick
         ScrollBars = ssAutoBoth
         TabOrder = 1
         WordWrap = False
@@ -111,21 +112,21 @@ object MainForm: TMainForm
         Left = 0
         Height = 505
         Top = 24
-        Width = 150
+        Width = 299
         Align = alLeft
-        OnClick = LeftOrRightMemoClick
+        OnDblClick = LeftOrRightMemoDblClick
         ScrollBars = ssAutoBoth
         TabOrder = 2
         WordWrap = False
       end
       object splLeftMemo: TSplitter
-        Left = 150
+        Left = 299
         Height = 505
         Top = 24
         Width = 5
       end
       object splRighMemo: TSplitter
-        Left = 363
+        Left = 448
         Height = 505
         Top = 24
         Width = 5
@@ -136,13 +137,13 @@ object MainForm: TMainForm
         Left = 0
         Height = 24
         Top = 0
-        Width = 518
+        Width = 721
         Align = alTop
         ClientHeight = 24
-        ClientWidth = 518
+        ClientWidth = 721
         TabOrder = 5
         object btnTreeColumnsGoHome: TButton
-          Left = 458
+          Left = 661
           Height = 22
           Top = 1
           Width = 59
@@ -158,18 +159,18 @@ object MainForm: TMainForm
     object tsOutMemo: TTabSheet
       Caption = 'Text output'
       ClientHeight = 529
-      ClientWidth = 518
+      ClientWidth = 721
       object pnlOutMemoToolbar: TPanel
         Left = 0
         Height = 24
         Top = 0
-        Width = 518
+        Width = 721
         Align = alTop
         ClientHeight = 24
-        ClientWidth = 518
+        ClientWidth = 721
         TabOrder = 0
         object btnClear: TButton
-          Left = 464
+          Left = 667
           Height = 22
           Top = 1
           Width = 53
@@ -207,10 +208,10 @@ object MainForm: TMainForm
         Left = 0
         Height = 505
         Top = 24
-        Width = 518
+        Width = 721
         Align = alClient
         HideSelection = False
-        OnClick = OutMemoClick
+        OnClick = BrowserMemoClick
         OnKeyDown = OutMemoKeyDown
         OnKeyUp = OutMemoKeyDown
         ScrollBars = ssAutoBoth

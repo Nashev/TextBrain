@@ -1,0 +1,345 @@
+object MainForm: TMainForm
+  Left = 464
+  Top = 219
+  Caption = 'Text Brain'
+  ClientHeight = 696
+  ClientWidth = 1057
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Left = 464
+  Top = 219
+  DesignerMasterStyle = 0
+  object SourceMemo: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    HideSelectionOnExit = False
+    ReadOnly = True
+    TextSettings.WordWrap = True
+    Align = Left
+    ControlType = Platform
+    Position.Y = 24.000000000000000000
+    Size.Width = 323.000000000000000000
+    Size.Height = 577.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Top = 24
+    Viewport.Width = 319.000000000000000000
+    Viewport.Height = 573.000000000000000000
+  end
+  object splSourceMemo: TSplitter
+    Align = Left
+    Cursor = crHSplit
+    MinSize = 20.000000000000000000
+    Position.X = 323.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 5.000000000000000000
+    Size.Height = 577.000000000000000000
+    Size.PlatformDefault = False
+    Left = 323
+    Top = 24
+  end
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 1057.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object ToggleBoxPause: TCheckBox
+      Size.Width = 73.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Pause'
+    end
+    object ToggleBoxSilent: TCheckBox
+      IsChecked = True
+      Position.X = 88.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Silent'
+      Left = 120
+    end
+  end
+  object StatusMemo: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    HideSelectionOnExit = False
+    Align = Bottom
+    Position.Y = 606.000000000000000000
+    Size.Width = 1057.000000000000000000
+    Size.Height = 90.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Top = 586
+    Viewport.Width = 1053.000000000000000000
+    Viewport.Height = 86.000000000000000000
+  end
+  object Splitter2: TSplitter
+    Align = Bottom
+    Cursor = crVSplit
+    MinSize = 20.000000000000000000
+    Position.Y = 601.000000000000000000
+    Size.Width = 1057.000000000000000000
+    Size.Height = 5.000000000000000000
+    Size.PlatformDefault = False
+    Top = 581
+  end
+  object pcBrowser: TTabControl
+    Align = Client
+    Size.Width = 729.000000000000000000
+    Size.Height = 577.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 5
+    TabPosition = Top
+    Left = 328
+    Top = 24
+    Sizes = (
+      729s
+      551s
+      729s
+      551s)
+    object tsThreeColumns: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 207.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Three-columns knowledge browser'
+      ExplicitSize.cx = 50.000000000000000000
+      ExplicitSize.cy = 50.000000000000000000
+      object CenterMemo: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        HideSelectionOnExit = False
+        Align = Client
+        ControlType = Platform
+        Size.Width = 152.000000000000000000
+        Size.Height = 527.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Left = 304
+        Top = 24
+        Viewport.Width = 148.000000000000000000
+        Viewport.Height = 523.000000000000000000
+      end
+      object RightMemo: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        HideSelectionOnExit = False
+        Align = Right
+        ControlType = Platform
+        Position.X = 461.000000000000000000
+        Position.Y = 24.000000000000000000
+        Size.Width = 268.000000000000000000
+        Size.Height = 527.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        OnClick = BrowserMemoClick
+        OnDblClick = LeftOrRightMemoDblClick
+        Left = 453
+        Top = 24
+        Viewport.Width = 264.000000000000000000
+        Viewport.Height = 523.000000000000000000
+      end
+      object LeftMemo: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        HideSelectionOnExit = False
+        Align = Left
+        ControlType = Platform
+        Position.Y = 24.000000000000000000
+        Size.Width = 299.000000000000000000
+        Size.Height = 527.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        OnClick = BrowserMemoClick
+        OnDblClick = LeftOrRightMemoDblClick
+        Top = 24
+        Viewport.Width = 295.000000000000000000
+        Viewport.Height = 523.000000000000000000
+      end
+      object splLeftMemo: TSplitter
+        Align = Left
+        Cursor = crHSplit
+        MinSize = 20.000000000000000000
+        Position.X = 299.000000000000000000
+        Position.Y = 24.000000000000000000
+        Size.Width = 5.000000000000000000
+        Size.Height = 527.000000000000000000
+        Size.PlatformDefault = False
+        Left = 299
+        Top = 24
+      end
+      object splRighMemo: TSplitter
+        Align = Right
+        Cursor = crHSplit
+        MinSize = 20.000000000000000000
+        Position.X = 456.000000000000000000
+        Position.Y = 24.000000000000000000
+        Size.Width = 5.000000000000000000
+        Size.Height = 527.000000000000000000
+        Size.PlatformDefault = False
+        Left = 448
+        Top = 24
+      end
+      object pnlOutMemoToolbar1: TPanel
+        Align = Top
+        Size.Width = 729.000000000000000000
+        Size.Height = 24.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        object btnTreeColumnsGoHome: TButton
+          Align = Right
+          Anchors = [akTop, akRight]
+          Position.X = 670.000000000000000000
+          Size.Width = 59.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Home'
+          OnClick = btnTreeColumnsGoHomeClick
+          Left = 661
+          Top = 1
+        end
+      end
+    end
+    object tsOutMemo: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 81.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Text output'
+      ExplicitSize.cx = 50.000000000000000000
+      ExplicitSize.cy = 50.000000000000000000
+      object pnlOutMemoToolbar: TPanel
+        Align = Top
+        Size.Width = 729.000000000000000000
+        Size.Height = 24.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object btnClear: TButton
+          Align = Right
+          Anchors = [akTop, akRight]
+          Position.X = 676.000000000000000000
+          Size.Width = 53.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Clear'
+          OnClick = ButtonClearClick
+          Left = 667
+          Top = 1
+        end
+        object btnShowSubsets: TButton
+          Align = Left
+          Size.Width = 97.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'Show subsets'
+          OnClick = ButtonShowSubsetsClick
+          Left = 1
+          Top = 1
+        end
+        object btnShowBrainContent: TButton
+          Align = Left
+          Position.X = 97.000000000000000000
+          Size.Width = 129.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'Show brain content'
+          OnClick = btnShowBrainContentClick
+          Left = 98
+          Top = 1
+        end
+      end
+      object OutMemo: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        HideSelectionOnExit = False
+        Align = Client
+        Size.Width = 729.000000000000000000
+        Size.Height = 527.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        OnClick = BrowserMemoClick
+        Top = 24
+        Viewport.Width = 729.000000000000000000
+        Viewport.Height = 527.000000000000000000
+      end
+    end
+  end
+  object MainMenu: TMainMenu
+    Left = 88
+    Top = 96
+    object mmiSources: TMenuItem
+      Text = 'Sources'
+      object mmiLoadAnsi: TMenuItem
+        Action = actLoadNewAnsiSource
+        Enabled = True
+        Locked = True
+        ImageIndex = -1
+      end
+      object mmiLoadUTF8: TMenuItem
+        Action = actLoadNewUTF8Source
+        Enabled = True
+        Locked = True
+        ImageIndex = -1
+      end
+      object mmiExitSeparator: TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object mmiExit: TMenuItem
+        Locked = True
+        Text = 'Exit'
+        OnClick = mmiExitClick
+      end
+    end
+    object mmiHelp: TMenuItem
+      Text = 'Help'
+      object mmiGithub: TMenuItem
+        Locked = True
+        Text = 'Open http://github.com/Nashev/TextBrain in default browser'
+        OnClick = mmiGithubClick
+      end
+      object mmiAbout: TMenuItem
+        Locked = True
+        Text = 'About...'
+        OnClick = mmiAboutClick
+      end
+    end
+  end
+  object OpenDialog: TOpenDialog
+    Left = 168
+    Top = 32
+  end
+  object ActionList: TActionList
+    Left = 88
+    Top = 32
+    object actLoadNewAnsiSource: TAction
+      Text = 'Load new Ansi source...'
+      OnExecute = actLoadNewAnsiSourceExecute
+    end
+    object actLoadNewUTF8Source: TAction
+      Text = 'Load new UTF8 source...'
+      OnExecute = actLoadNewUTF8SourceExecute
+    end
+  end
+end

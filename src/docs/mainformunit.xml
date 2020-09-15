@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fpdoc-descriptions><package name="project1"><module name="MainFormUnit"><element name="TMainForm"><short>Main form owns Brain and allow users to manipulate them</short>
+<fpdoc-descriptions><package name="project1"><module name="MainFormUnit">
+      <element name="TMainForm"><short>Main form owns Brain and allow users to manipulate them</short>
       </element><element name="TNewItemDetector"><short>It's special detector that only shows new brain's knowledge items at the MainForm if this activity are enabled</short>
-      </element>
-    <element name="TMainForm.FBrain"><short>Main brain instance in this app</short>
+      </element><element name="TMainForm.FBrain"><short>Main brain instance in this app</short>
       </element>
     </module>
   </package>

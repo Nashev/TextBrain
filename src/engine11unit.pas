@@ -1,6 +1,9 @@
-unit Engine11Unit;
+﻿unit Engine11Unit;
+/// <summary>First try to implement of first try of text's brain engine</summary>
 
+{$IFDEF  FPC}
 {$mode objfpc}{$H+}
+{$ENDIF}
 
 interface
 
@@ -8,6 +11,14 @@ uses
   Classes, SysUtils, contnrs, Engine1Unit;
 
 type
+{$IFNDEF FPC}
+  SizeInt = Integer;
+  SizeUint = Word;
+  UTF8String = string;
+{$ELSE}
+  TFileName = UTF8String;
+{$ENDIF}
+
   PUTF8Char = type PChar;
 
   EWrongCallException = class(Exception)
@@ -55,42 +66,45 @@ type
   end;
 
   { TBrain1 }
-
+  /// <summary>Implementation of TBrain, first (and, today, just single)</summary>
   TBrain1 = class(TBrain)
   private
     FDetectors: TObjectList;
     FItems: TTabledKnowledgeBaseSubset1;
   protected
-    function GetItem(Index: integer): TKnowledgeItem; override;
-    function GetDetector(Index: integer): TDetector; override;
+    function GetItem(Index: Integer): TKnowledgeItem; override;
+    function GetDetector(Index: Integer): TDetector; override;
     function InternalAdd(AItem: TKnowledgeItem): TKnowledgeItem; override;
   public
     constructor Create; reintroduce;
     destructor Destroy; override;
 
-    function Count: integer; override;
+    function Count: Integer; override;
     property Detectors: TObjectList read FDetectors;
-    function DetectorCount: integer; override;
+    function DetectorCount: Integer; override;
   end;
 
   { TSimpleTextFileSource }
 
   TSimpleTextFileSource = class(TSource)
   private
-    FFileName: UTF8String;
+    FFileName: TFileName;
     FFileContent: UTF8String;
     FPosition, FEndChar: PUTF8Char;
   protected
     function GetBasisClass: TBasisClass; override;
     function GetConsequencesClass: TTabledKnowledgeBaseSubsetClass; override;
+    {$IFNDEF FPC}
+    function GetEncoding: TEncoding; virtual; abstract;
+    {$ENDIF}
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; virtual; abstract;
   public
-    constructor Create(ADetector: TDetector; AFileName: UTF8String);
+    constructor Create(ADetector: TDetector; AFileName: TFileName);
     function ToString: UTF8String; override;
     function InfoText: UTF8String; override;
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
 
-    function EOF: boolean; override;
+    function EOF: Boolean; override;
     function ReadNextItem(ADetector: TDetector): TSourceItem; override;
   end;
 
@@ -99,12 +113,18 @@ type
   TSimpleAnsiTextFileSource = class(TSimpleTextFileSource)
   protected
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; override;
+    {$IFNDEF FPC}
+    function GetEncoding: TEncoding; override;
+    {$ENDIF}
   end;
 
   { TSimpleUTF8TextFileSource }
 
   TSimpleUTF8TextFileSource = class(TSimpleTextFileSource)
     function EncodeFileStringListToContent(AStringList: TStringList): UTF8String; override;
+    {$IFNDEF FPC}
+    function GetEncoding: TEncoding; override;
+    {$ENDIF}
   end;
 
   { TSimpleTextFileSourceItem }
@@ -121,7 +141,7 @@ type
     function TryMergeToBrain(ABrain: TBrain): Boolean; override;
   public
     function IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean; override;
-    constructor Create(ADetector: TDetector; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+    constructor Create(ADetector: TDetector; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: Integer);
     function InfoText: UTF8String; override;
     function ToString: UTF8String; override;
     function GetItemStart: Integer; override;
@@ -252,7 +272,7 @@ type
 
 implementation
 
-uses FileUtil, Math;
+uses {$IFDEF FPC} FileUtil,{$ENDIF} Math;
 
 { TBasis1 }
 
@@ -320,7 +340,7 @@ function TWordIndex.ContentText: UTF8String;
       with TWordIndexRealInfo(AWordIndexInfo) do
         begin
           AddContentText(APrefix + '*', LowerWordInfo);
-          Result := Result + APrefix + Format(rsWordIndexContentText, [Word.ToString, Weight]) + #13#10;
+          Result := Result + APrefix + UTF8String(Format(rsWordIndexContentText, [Word.ToString, Weight])) + #13#10;
           AddContentText(APrefix + '*', HigherWordInfo);
         end;
   end;
@@ -344,9 +364,9 @@ resourcestring
 
 function TWordIndex.InfoText: UTF8String;
 begin
-  Result := inherited InfoText + Format(rsWordIndexInfoText, [Root.Weight]);
+  Result := inherited InfoText + UTF8String(Format(rsWordIndexInfoText, [Root.Weight]));
   if Root is TWordIndexRealInfo then
-    Result := Result + Format(rsWordIndexInfoTextAddon, [TWordIndexRealInfo(Root).Word.InfoText]);
+    Result := Result + UTF8String(Format(rsWordIndexInfoTextAddon, [TWordIndexRealInfo(Root).Word.InfoText]));
 end;
 
 { TWordIndexStubInfo }
@@ -490,7 +510,7 @@ function TWordIndexRealInfo.FindWord(AWord: UTF8String): TWord;
 var
   Compare: Integer;
 begin
-  Result := nil;
+  {$IFDEF FPC} Result := nil; {$ENDIF}
   Compare := CompareStr(AWord, Word.ToString);
   if Compare = 0 then
     Result := Word
@@ -514,12 +534,12 @@ begin
   else
     OriginalWord := TWord(AKnowledgeItem);
 
-  NewWordUnicode := UTF8Decode(OriginalWord.ToString);
+  NewWordUnicode := {$IFDEF FPC}UTF8Decode{$ENDIF}(OriginalWord.ToString);
   LowercaseWordUnicode := WideLowerCase(NewWordUnicode);
   if LowercaseWordUnicode = NewWordUnicode then
     Exit;
 
-  LowercaseWord := UTF8Encode(LowercaseWordUnicode);
+  LowercaseWord := {$IFDEF FPC}UTF8Encode{$ENDIF}(LowercaseWordUnicode);
 
   LowercaseWordItem := TWord.FindWord(AKnowledgeItem.Owner, LowercaseWord);
   if not Assigned(LowercaseWordItem) then
@@ -596,7 +616,7 @@ resourcestring
 
 function TWordWasCapitalizedFact.ToString: UTF8String;
 begin
-  Result := Format(rsWordWasCapitalizedFactToString, [Basis[0].ToString, Basis[1].ToString]);
+  Result := UTF8String(Format(rsWordWasCapitalizedFactToString, [Basis[0].ToString, Basis[1].ToString]));
 end;
 
 function TWordWasCapitalizedFact.IsSameKnowledge(AOtherItem: TKnowledgeItem): Boolean;
@@ -727,7 +747,7 @@ begin
   Result := (AOtherItem is TSimpleTextFileSourceItem) and (TSimpleTextFileSourceItem(AOtherItem).FPosition = FPosition);
 end;
 
-constructor TSimpleTextFileSourceItem.Create(ADetector: TDetector; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: integer);
+constructor TSimpleTextFileSourceItem.Create(ADetector: TDetector; ASource: TSimpleTextFileSource; APosition: PUTF8Char; ASize: Integer);
 var
   s: string;
 begin
@@ -735,11 +755,11 @@ begin
   Basis.Add(ASource);
   FPosition := APosition;
   FSize     := ASize;
-  s := copy(Source.FFileContent, 1, SizeInt(FPosition - @Source.FFileContent[1]));
-  FItemStart := Length(UTF8Decode(UTF8String(@s[1])));
+  s := copy(Source.FFileContent, 1,  SizeInt(FPosition - @Source.FFileContent[1]));
+  FItemStart := Length({$IFDEF FPC}UTF8Decode{$ENDIF}(UTF8String(@s[1])));
 
   s := copy(String(FPosition), 1, FSize);
-  FItemLength := Length(UTF8Decode(UTF8String(@s[1])));
+  FItemLength := Length({$IFDEF FPC}UTF8Decode{$ENDIF}(UTF8String(@s[1])));
 end;
 
 resourcestring
@@ -817,7 +837,7 @@ begin
   Result := TTabledKnowledgeBaseSubset1;
 end;
 
-constructor TSimpleTextFileSource.Create(ADetector: TDetector; AFileName: UTF8String);
+constructor TSimpleTextFileSource.Create(ADetector: TDetector; AFileName: TFileName);
 var
   StringList: TStringList;
 begin
@@ -825,7 +845,7 @@ begin
   FFileName := AFileName;
   StringList := TStringList.Create;
     try
-      StringList.LoadFromFile(FFileName);
+      StringList.LoadFromFile(FFileName {$IFNDEF FPC}, GetEncoding{$ENDIF});
       FFileContent := EncodeFileStringListToContent(StringList) + #0;
     finally
       StringList.Free;
@@ -834,9 +854,9 @@ begin
   FEndChar := @FFileContent[Length(FFileContent)];
 end;
 
-function TSimpleTextFileSource.EOF: boolean;
+function TSimpleTextFileSource.EOF: Boolean;
 begin
-  Result := (FPosition = FEndChar);
+  Result := (FPosition >= FEndChar);
 end;
 
 function TSimpleTextFileSource.ReadNextItem(ADetector: TDetector): TSourceItem;
@@ -895,9 +915,7 @@ const
     '„“«»—… ' (* $nbsp; *)
   ;
 begin
-  Assert(eof);
-
-  RestSize := FEndChar - FPosition;
+  Assert(not eof);
 
   CharSize := UTF8CharSize(FPosition);
   NextChar := Copy(UTF8String(FPosition^), 1, 1);
@@ -929,19 +947,31 @@ end;
 
 { TSimpleUTF8TextFileSource }
 
-function TSimpleUTF8TextFileSource.EncodeFileStringListToContent(
-  AStringList: TStringList): UTF8String;
+function TSimpleUTF8TextFileSource.EncodeFileStringListToContent(AStringList: TStringList): UTF8String;
 begin
-  Result := AStringList.Text;
+  Result := UTF8String(AStringList.Text);
 end;
+
+{$IFNDEF FPC}
+function TSimpleUTF8TextFileSource.GetEncoding: TEncoding;
+begin
+  Result := TEncoding.UTF8;
+end;
+{$ENDIF}
 
 { TSimpleAnsiTextFileSource }
 
-function TSimpleAnsiTextFileSource.EncodeFileStringListToContent(
-  AStringList: TStringList): UTF8String;
+function TSimpleAnsiTextFileSource.EncodeFileStringListToContent(AStringList: TStringList): UTF8String;
 begin
-  Result := AnsiToUTF8(AStringList.Text);
+  Result := {$IFDEF FPC}AnsiToUTF8{$ENDIF}(AStringList.Text);
 end;
+
+{$IFNDEF FPC}
+function TSimpleAnsiTextFileSource.GetEncoding: TEncoding;
+begin
+  Result := nil; // default
+end;
+{$ENDIF}
 
 { TBrain1 }
 
@@ -964,22 +994,22 @@ begin
   inherited Destroy;
 end;
 
-function TBrain1.GetDetector(Index: integer): TDetector;
+function TBrain1.GetDetector(Index: Integer): TDetector;
 begin
   Result := TDetector(FDetectors[Index]);
 end;
 
-function TBrain1.DetectorCount: integer;
+function TBrain1.DetectorCount: Integer;
 begin
   Result := FDetectors.Count;
 end;
 
-function TBrain1.GetItem(Index: integer): TKnowledgeItem;
+function TBrain1.GetItem(Index: Integer): TKnowledgeItem;
 begin
   Result := FItems[Index];
 end;
 
-function TBrain1.Count: integer;
+function TBrain1.Count: Integer;
 begin
   Result := FItems.Count;
 end;

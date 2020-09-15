@@ -35,14 +35,13 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="28">
+    <Units Count="29">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="35" Y="17"/>
         <UsageCount Value="240"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainformunit.pas"/>
@@ -52,11 +51,11 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainFormUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="128"/>
-        <CursorPos Y="138"/>
+        <TopLine Value="227"/>
+        <CursorPos X="25" Y="232"/>
         <UsageCount Value="240"/>
         <Bookmarks Count="1">
-          <Item0 X="6" Y="225" ID="1"/>
+          <Item0 X="6" Y="231" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -65,294 +64,295 @@
         <Filename Value="engine1unit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Engine1Unit"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos X="22" Y="51"/>
         <UsageCount Value="240"/>
-        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="engine11unit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Engine11Unit"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="710"/>
-        <CursorPos X="34" Y="722"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="265"/>
+        <CursorPos Y="285"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\classesh.inc"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit4>
       <Unit5>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\stringl.inc"/>
         <TopLine Value="754"/>
         <CursorPos X="28" Y="770"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit5>
       <Unit6>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\classes\streams.inc"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit6>
       <Unit7>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\filutilh.inc"/>
         <CursorPos X="35" Y="9"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit7>
       <Unit8>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
         <TopLine Value="246"/>
         <CursorPos X="7" Y="270"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit8>
       <Unit9>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\fpmake.inc"/>
         <TopLine Value="104"/>
         <CursorPos X="24" Y="178"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit9>
       <Unit10>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win32\windows.pp"/>
         <TopLine Value="21"/>
         <CursorPos X="16" Y="40"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="49"/>
       </Unit10>
       <Unit11>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\ustringh.inc"/>
         <CursorPos X="54" Y="98"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="48"/>
       </Unit11>
       <Unit12>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\systemh.inc"/>
         <TopLine Value="252"/>
         <CursorPos X="14" Y="297"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="43"/>
       </Unit12>
       <Unit13>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\wstringh.inc"/>
         <CursorPos X="14" Y="42"/>
-        <UsageCount Value="81"/>
+        <UsageCount Value="58"/>
       </Unit13>
       <Unit14>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\objpash.inc"/>
         <TopLine Value="54"/>
         <CursorPos X="8" Y="79"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="35"/>
       </Unit14>
       <Unit15>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\objpas.inc"/>
         <TopLine Value="381"/>
         <CursorPos X="11" Y="396"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="35"/>
       </Unit15>
       <Unit16>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\win\sysutils.pp"/>
         <TopLine Value="1251"/>
         <CursorPos X="19" Y="1217"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="54"/>
       </Unit16>
       <Unit17>
         <Filename Value="D:\work\FPC\2.4.4\source\packages\fcl-base\src\contnrs.pp"/>
         <TopLine Value="1926"/>
         <CursorPos X="19" Y="1951"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="54"/>
       </Unit17>
       <Unit18>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysstrh.inc"/>
         <TopLine Value="57"/>
         <CursorPos X="34" Y="82"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="54"/>
       </Unit18>
       <Unit19>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\objpas\sysutils\sysstr.inc"/>
         <TopLine Value="125"/>
         <CursorPos X="3" Y="144"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="53"/>
       </Unit19>
       <Unit20>
         <Filename Value="D:\work\FPC\2.4.4\source\rtl\inc\wstrings.inc"/>
         <TopLine Value="1400"/>
         <CursorPos X="27" Y="1428"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="27"/>
       </Unit20>
       <Unit21>
         <Filename Value="C:\lazarus\lcl\include\custommemo.inc"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="170"/>
         <CursorPos Y="190"/>
-        <UsageCount Value="13"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="123"/>
       </Unit21>
       <Unit22>
         <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\objpas\classes\stringl.inc"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="774"/>
         <CursorPos X="3" Y="791"/>
-        <UsageCount Value="13"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="123"/>
       </Unit22>
       <Unit23>
         <Filename Value="C:\lazarus\lcl\stdctrls.pp"/>
         <UnitName Value="StdCtrls"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="857"/>
         <CursorPos X="21" Y="886"/>
-        <UsageCount Value="13"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="123"/>
       </Unit23>
       <Unit24>
         <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="654"/>
-        <CursorPos X="14" Y="673"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="410"/>
+        <CursorPos X="23" Y="429"/>
+        <UsageCount Value="121"/>
       </Unit24>
       <Unit25>
-        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\objpas\sysutils\sysutils.inc"/>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="245"/>
-        <CursorPos X="7" Y="247"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="1649"/>
+        <CursorPos X="30" Y="1655"/>
+        <UsageCount Value="121"/>
       </Unit25>
       <Unit26>
-        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="2889"/>
-        <CursorPos Y="2915"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="182"/>
+        <CursorPos X="8" Y="201"/>
+        <UsageCount Value="120"/>
       </Unit26>
       <Unit27>
-        <Filename Value="mainformunit.lfm"/>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\objpas\classes\lists.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="231"/>
-        <CursorPos X="64" Y="237"/>
+        <TopLine Value="40"/>
+        <CursorPos Y="59"/>
         <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit27>
+      <Unit28>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="40"/>
+        <CursorPos Y="62"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit28>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="557" TopLine="538"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="350" TopLine="326"/>
       </Position1>
       <Position2>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="558" TopLine="538"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="349" TopLine="326"/>
       </Position2>
       <Position3>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="236" TopLine="212"/>
+        <Caret Line="336" TopLine="326"/>
       </Position3>
       <Position4>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="539" TopLine="532"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="365" Column="5" TopLine="347"/>
       </Position4>
       <Position5>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="540" Column="7" TopLine="523"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="80" Column="39" TopLine="62"/>
       </Position5>
       <Position6>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="237" TopLine="212"/>
+        <Caret Line="337" TopLine="317"/>
       </Position6>
       <Position7>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="261" TopLine="242"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="342" TopLine="317"/>
       </Position7>
       <Position8>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="237" TopLine="212"/>
+        <Caret Line="343" TopLine="317"/>
       </Position8>
       <Position9>
-        <Filename Value="engine11unit.pas"/>
-        <Caret Line="261" TopLine="242"/>
+        <Filename Value="mainformunit.pas"/>
+        <Caret Line="239" TopLine="220"/>
       </Position9>
       <Position10>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="326" Column="90" TopLine="318"/>
+        <Caret Line="240" TopLine="220"/>
       </Position10>
       <Position11>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="29" TopLine="12"/>
+        <Caret Line="241" TopLine="220"/>
       </Position11>
       <Position12>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="324" TopLine="306"/>
+        <Caret Line="242" TopLine="220"/>
       </Position12>
       <Position13>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="84" Column="60" TopLine="66"/>
+        <Caret Line="243" TopLine="220"/>
       </Position13>
       <Position14>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="324" Column="66" TopLine="323"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="284" TopLine="265"/>
       </Position14>
       <Position15>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="151" Column="23" TopLine="129"/>
+        <Filename Value="engine11unit.pas"/>
+        <Caret Line="285" TopLine="265"/>
       </Position15>
       <Position16>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="179" TopLine="159"/>
+        <Caret Line="244" TopLine="220"/>
       </Position16>
       <Position17>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="264" Column="17" TopLine="242"/>
+        <Caret Line="245" TopLine="220"/>
       </Position17>
       <Position18>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="24" Column="62" TopLine="2"/>
+        <Caret Line="246" TopLine="220"/>
       </Position18>
       <Position19>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="132" Column="64" TopLine="111"/>
+        <Caret Line="135" TopLine="116"/>
       </Position19>
       <Position20>
         <Filename Value="mainformunit.pas"/>
-        <Caret Line="151" Column="20" TopLine="129"/>
+        <Caret Line="136" TopLine="116"/>
       </Position20>
       <Position21>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="235" Column="26" TopLine="216"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="59" TopLine="40"/>
       </Position21>
       <Position22>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="274" Column="35" TopLine="242"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="60" TopLine="40"/>
       </Position22>
       <Position23>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="285" Column="25" TopLine="266"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="61" TopLine="40"/>
       </Position23>
       <Position24>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="314" TopLine="291"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="59" TopLine="40"/>
       </Position24>
       <Position25>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="354" Column="68" TopLine="338"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="62" TopLine="40"/>
       </Position25>
       <Position26>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="418" Column="29" TopLine="397"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="59" TopLine="40"/>
       </Position26>
       <Position27>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="422" TopLine="388"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="60" TopLine="40"/>
       </Position27>
       <Position28>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="24" Column="25" TopLine="2"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="61" TopLine="40"/>
       </Position28>
       <Position29>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="130" Column="38" TopLine="120"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="59" TopLine="40"/>
       </Position29>
       <Position30>
-        <Filename Value="mainformunit.pas"/>
-        <Caret Line="24" Column="36" TopLine="24"/>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32memostrings.inc"/>
+        <Caret Line="62" TopLine="40"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -391,14 +391,29 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="1">
+    <BreakPoints Count="3">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainformunit.pas"/>
-        <Line Value="239"/>
+        <InitialEnabled Value="False"/>
+        <Line Value="245"/>
       </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="mainformunit.pas"/>
+        <Line Value="337"/>
+      </Item2>
+      <Item3>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="mainformunit.pas"/>
+        <Line Value="246"/>
+      </Item3>
     </BreakPoints>
     <Watches Count="6">
       <Item1>

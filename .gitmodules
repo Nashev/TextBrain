@@ -1,0 +1,3 @@
+[submodule "spring4d"]
+	path = spring4d
+	url = https://Nashev@bitbucket.org/sglienke/spring4d.git
